@@ -79,6 +79,7 @@
       }
       .paragraph {
         z-index: 99;
+        line-height: 20px;
         color: rgba(255, 255, 255, 0.75);
         font-size: 14px;
         margin-bottom: 25px;
@@ -192,6 +193,7 @@
         background-color: rgba(255, 255, 255, 0.3);
       }
       .paragraph-intro {
+        line-height: 20px;
         color: rgba(255, 255, 255, 0.75);
         font-size: 14px;
       }
@@ -200,6 +202,12 @@
         filter: saturate(3);
         filter: contrast(100);
         position: relative;
+      }
+      .icon-contain {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
       }
     </style>
   </head>
@@ -285,6 +293,9 @@
         </div>
       </section>
       <section class="content-oops">
+        <div class="icon-contain">
+          <dotlottie-player src="https://lottie.host/8bd2d742-11ea-402f-985c-cf44e60f2c97/cP08QcTpZr.json" background="transparent" speed="1" style="width: 50px;" loop autoplay></dotlottie-player>
+        </div>
         <h1 id="trendingtitle">
           Oops I forgot to introduce myself..
           <picture>
@@ -358,5 +369,6 @@
         theme: "dark", // dark, light
       });
     </script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   </body>
 </html>
