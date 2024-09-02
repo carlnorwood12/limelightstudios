@@ -133,10 +133,10 @@
         display: inline-flex;
         gap: 5px;
       }
-      .content-trending {
+      .content-trending,
+      .content-suggested {
         padding: 10px 20px;
         position: relative;
-        height: clamp(21.875rem, 17.8571rem + 21.4286vw, 31.25rem);
       }
       #trendingtitle {
         color: white;
@@ -167,6 +167,9 @@
         transform: translateX(-50%);
         width: 180px;
         z-index: 999;
+      }
+      #trendingtitle {
+        font-size: clamp(0.9375rem, 0.5469rem + 1.25vw, 1.25rem);
       }
       picture {
         display: inline-block;
@@ -246,7 +249,34 @@
           </div>
           <div class="swiper-scrollbar"></div>
         </div>
-        <h1 id="trendingtitle">TO BE CONTINUED BIG BUMGJO</h1>
+      </section>
+      <section class="content-suggested">
+        <h1 id="trendingtitle">
+          Suggested For You
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="32" height="32" />
+          </picture>
+        </h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center">
+              <h1 class="movie-title">Alien: Romulus</h1>
+            </div>
+            <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center">
+              <h1 class="movie-title">Alien: Romulus</h1>
+            </div>
+            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center">Slide 1</div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
       </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -257,6 +287,9 @@
         grabCursor: true,
         breakpoints: {
           0: {
+            slidesPerView: 2, // bigger than 0px do this:
+          },
+          200: {
             slidesPerView: 3, // bigger than 0px do this:
           },
           450: {
@@ -292,10 +325,11 @@
         },
       });
     </script>
-    // to increase amount of time spent on website and communicate branding better but it might be too heavy so i might not use this 
+    // to increase amount of time spent on website and communicate branding better but it might be too heavy so i might not use this
     <script src="cursor-trail.min.js"></script>
     <script>
       cursorTrail({
+        paused: false,
         pattern: "colorGlitter",
         animationType: "swing",
         theme: "dark", // dark, light
