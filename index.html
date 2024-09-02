@@ -118,7 +118,10 @@
         opacity: 0.2;
         z-index: -1;
       }
-      section > :nth-child(n + 2) {
+      .content-trending > :nth-child(n + 2) {
+        padding: 0 20px;
+      }
+      .content-suggested > :nth-child(n + 2) {
         padding: 0 20px;
       }
       video {
@@ -133,12 +136,19 @@
         display: inline-flex;
         gap: 5px;
       }
-      .content-trending,
-      .content-suggested {
+      .content-trending, .content-suggested
+      {
         padding: 10px 20px;
         position: relative;
       }
-      #trendingtitle {
+      .content-oops
+      {
+        padding: 6px 20px;
+        position: relative;
+      }
+      #trendingtitle 
+      {
+        margin-bottom: 15px;
         color: white;
       }
       @media screen and (max-width: 350px) {
@@ -186,6 +196,11 @@
       .swiper-scrollbar-drag {
         margin-top: -8px !important;
         background-color: rgba(255, 255, 255, 0.3);
+      }
+      .paragraph-intro
+      {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
       }
     </style>
   </head>
@@ -277,6 +292,16 @@
           </div>
           <div class="swiper-scrollbar"></div>
         </div>
+      </section>
+      <section class="content-oops">
+        <h1 id="trendingtitle">
+          Oops I forgot to introduce myself..
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f633/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f633/512.gif" alt="😳" width="32" height="32" />
+          </picture>
+        </h1>
+        <p class="paragraph-intro">Limelight Studio is all about personalized movies that you're actually going to watch. No more struggling to find your next favourite movie! Ight continue.</p>
       </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
