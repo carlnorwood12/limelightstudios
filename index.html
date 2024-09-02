@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+      ::selection {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+      body,
+      html {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #04000d;
+      }
+      .swiper {
+        border-radius: 10px;
+        padding: 10px 0px !important;
+        width: 100%;
+      }
+      .swiper-wrapper {
+        display: flex;
+        align-items: flex-start;
+      }
+      .swiper-slide {
+        text-align: center;
+        border-radius: 5px;
+        aspect-ratio: 2/3;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      .swiper-slide img {
+        display: block;
+        aspect-ratio: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .content-body {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .content-section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: clamp(21.875rem, 17.8571rem + 21.4286vw, 31.25rem);
+      }
+      .title {
+        color: white;
+        text-wrap: nowrap;
+        font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
+        margin-bottom: 10px;
+        mix-blend-mode: difference;
+        z-index: 100;
+      }
+      .metadata {
+        z-index: 99;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 13px;
+        margin-bottom: 15px;
+      }
+      .paragraph {
+        z-index: 99;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+        margin-bottom: 25px;
+        max-width: 600px; /* Limit width for better readability */
+      }
+      .button {
+        position: relative;
+        z-index: 99;
+        font-size: 13px;
+        border-radius: 30px;
+        background: linear-gradient(#000000, #030c00) padding-box, linear-gradient(to bottom, #b6ff9e, #374c2f) border-box;
+        border: 1px solid transparent;
+        color: #b6ff9e;
+        text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.3);
+        padding: 10px 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.5s ease;
+      }
+      .button:first-of-type {
+        filter: grayscale(1);
+        margin-right: 5px;
+      }
+      .button:hover {
+        transform: scale(1.05);
+        text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.5);
+      }
+      .button::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        background-image: url(blob2.svg);
+        opacity: 0.2;
+        z-index: -1;
+      }
+      section > :nth-child(n + 2) {
+        padding: 0 20px;
+      }
+      video {
+        position: absolute;
+        object-fit: cover;
+        -webkit-mask-image: linear-gradient(black, transparent);
+        mask-image: linear-gradient(black, transparent);
+        width: 100%;
+        height: 100%;
+      }
+      .buttons {
+        display: inline-flex;
+        gap: 5px;
+      }
+      .content-trending {
+        padding: 10px 20px;
+        position: relative;
+        height: clamp(21.875rem, 17.8571rem + 21.4286vw, 31.25rem);
+      }
+      #trendingtitle {
+        color: white;
+      }
+      @media screen and (max-width: 350px) {
+        body {
+          overflow-x: scroll;
+        }
+      }
+      #play {
+        width: 13px;
+        vertical-align: middle;
+        margin-top: -5px;
+      }
+      #star {
+        width: 12px;
+        vertical-align: middle;
+        margin-top: -2px;
+      }
+      .metadata-group {
+        display: flex;
+        gap: 15px;
+      }
+      #limelight {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        z-index: 999;
+      }
+      picture {
+        display: inline-block;
+        margin-top: -10px;
+      }
+      .movie-title {
+        position: relative;
+        margin-bottom: -15px;
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        z-index: 999 !important;
+      }
+      .swiper-scrollbar-drag {
+        margin-top: -8px !important;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-body">
+      <section class="content-section hero">
+        <video playsinline autoplay muted loop>
+          <source src="alien.mp4" type="video/mp4" />
+        </video>
+        <img src="limelight-01.svg" id="limelight" />
+        <h1 class="title">Alien: Romulus</h1>
+        <div class="metadata-group">
+          <p class="metadata">
+            <img src="star.svg" id="star" />
+            4.2
+          </p>
+          <p class="metadata">
+            <img src="hourglass.svg" id="star" />
+            1h 59m
+          </p>
+          <p class="metadata">
+            <img src="drama.svg" id="star" />
+            Science Fiction, Horror
+          </p>
+        </div>
+        <p class="paragraph">While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.</p>
+        <div class="buttons">
+          <button class="button">
+            <img src="play.svg" id="play" />
+            <span>Watch Now</span>
+          </button>
+          <button class="button">
+            <span>Start Free Trial</span>
+          </button>
+        </div>
+      </section>
+      <section class="content-trending">
+        <h1 id="trendingtitle">
+          Trending
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="32" height="32" />
+          </picture>
+        </h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center">
+              <h1 class="movie-title">Alien: Romulus</h1>
+            </div>
+            <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center">
+              <h1 class="movie-title">Alien: Romulus</h1>
+            </div>
+            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center">Slide 1</div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+        <h1 id="trendingtitle">
+          TO BE CONTINUED
+        </h1>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 6,
+        spaceBetween: 10,
+        grabCursor: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 3, // bigger than 0px do this:
+          },
+          450: {
+            slidesPerView: 4, // bigger than 450px do this:
+          },
+          600: {
+            slidesPerView: 5, // bigger than 600px do this:
+          },
+          750: {
+            slidesPerView: 6, // bigger than 750px do this:
+          },
+          900: {
+            slidesPerView: 7, // bigger than 900px do this:
+          },
+        },
+        simulateTouch: true,
+        mousewheel: {
+          invert: false,
+          forceToAxis: true,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true,
+          hide: true,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+  </body>
+</html>
