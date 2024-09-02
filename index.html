@@ -118,14 +118,8 @@
         opacity: 0.2;
         z-index: -1;
       }
-      section > :nth-child(n + 2) 
+      .hero > :nth-child(n + 2) 
       {
-        padding: 0 20px;
-      }
-      .content-trending > :nth-child(n + 2) {
-        padding: 0 20px;
-      }
-      .content-suggested > :nth-child(n + 2) {
         padding: 0 20px;
       }
       video {
@@ -142,17 +136,17 @@
       }
       .content-trending, .content-suggested
       {
-        padding: 10px 20px;
+        padding: 0px 20px;
         position: relative;
       }
       .content-oops
       {
-        padding: 6px 20px;
+        padding: 20px 20px;
         position: relative;
       }
       #trendingtitle 
       {
-        margin-bottom: 15px;
+        padding: 5px 0px;
         color: white;
       }
       @media screen and (max-width: 350px) {
@@ -186,10 +180,8 @@
         font-size: clamp(0.9375rem, 0.5469rem + 1.25vw, 1.25rem);
       }
       picture {
-        display: inline-block;
-        margin-top: -10px;
+        vertical-align: middle;
       }
-      
       .movie-title {
         position: relative;
         margin-bottom: -15px;
@@ -252,7 +244,7 @@
           Trending
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="32" height="32" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="20" height="20" />
           </picture>
         </h1>
         <div class="swiper mySwiper">
@@ -280,7 +272,7 @@
           Suggested For You
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="32" height="32" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="20" height="" />
           </picture>
         </h1>
         <div class="swiper mySwiper">
