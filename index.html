@@ -24,7 +24,7 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        background-color: #04000d;
+        background-color: #000000;
       }
       .swiper {
         border-radius: 10px;
@@ -135,7 +135,9 @@
         gap: 5px;
       }
       .content-trending,
-      .content-suggested {
+      .content-suggested,
+      .content-awards,
+      .content-video {
         padding: 0px 20px;
         position: relative;
       }
@@ -194,6 +196,7 @@
       }
       .paragraph-intro {
         line-height: 20px;
+        text-align: center;
         color: rgba(255, 255, 255, 0.75);
         font-size: 14px;
       }
@@ -204,10 +207,73 @@
         position: relative;
       }
       .icon-contain {
+        position: relative;
+        height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 10px;
+      }
+      #twinkle {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        width: 70px;
+        z-index: 999;
+      }
+      .awarded {
+        position: relative;
+        height: 400px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 0.5) 30%, black 50%, rgba(0, 0, 0, 0.5) 70%, transparent 90%);
+        mask-image: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 0.5) 30%, black 50%, rgba(0, 0, 0, 0.5) 70%, transparent 90%);
+        background-image: url(1326785.jpeg);
+        background-size: cover;
+        background-position: top center;
+      }
+      #awarded {
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        border-radius: 8px;
+        padding: 5px 20px;
+        color: #fbfbfb;
+      }
+      #awards {
+        width: 100%;
+        border-radius: 8px;
+      }
+      #golden {
+        margin-left: 10px;
+        margin-top: -5px;
+        width: 25px;
+      }
+      #top-rated {
+        font-family: "Montserrat", sans-serif;
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      #twinkle1 {
+        position: absolute;
+        left: 0;
+        width: clamp(0.9375rem, -0.2344rem + 3.75vw, 1.875rem);
+      }
+      #twinkle2 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+      }
+      #twinkle3 {
+        position: absolute;
+        right: 0;
+        width: clamp(0.9375rem, -0.2344rem + 3.75vw, 1.875rem);
+      }
+      #top-rated-video {
+        border-radius: 8px;
       }
     </style>
   </head>
@@ -215,9 +281,10 @@
     <div class="content-body">
       <section class="content-section hero">
         <video playsinline autoplay muted loop>
-          <source src="alien.mp4" type="video/mp4" />
+          <source src="teaser_alien.mp4" type="video/mp4" />
         </video>
         <img src="limelight-01.svg" id="limelight" />
+        <img src="twinkle.svg" id="twinkle" />
         <h1 class="title">Alien: Romulus</h1>
         <div class="metadata-group">
           <p class="metadata">
@@ -256,14 +323,14 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center"></div>
             <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center"></div>
-            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center"></div>
           </div>
           <div class="swiper-scrollbar"></div>
         </div>
@@ -280,37 +347,56 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center"></div>
             <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center"></div>
-            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center">Slide 1</div>
-            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center">Slide 1</div>
+            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center"></div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </section>
+      <section class="content-suggested">
+        <h1 id="trendingtitle">
+          Continue Watching
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="32" height="32" />
+          </picture>
+        </h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center"></div>
           </div>
           <div class="swiper-scrollbar"></div>
         </div>
       </section>
       <section class="content-oops">
         <div class="icon-contain">
-          <dotlottie-player src="https://lottie.host/8bd2d742-11ea-402f-985c-cf44e60f2c97/cP08QcTpZr.json" background="transparent" speed="1" style="width: 50px;" loop autoplay></dotlottie-player>
+          <img src="twinkle.svg" id="twinkle1" />
+          <h1 id="trendingtitle">
+            Oops I forgot to introduce myself..
+            <picture>
+              <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.webp" type="image/webp" />
+              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.gif" alt="😈" width="32" height="32" />
+            </picture>
+          </h1>
+          <img src="twinkle.svg" id="twinkle3" />
         </div>
-        <h1 id="trendingtitle">
-          Oops I forgot to introduce myself..
-          <picture>
-            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f640/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f640/512.gif" alt="🙀" width="20" height="20" />
-          </picture>
-        </h1>
-        <p class="paragraph-intro">Limelight Studio is all about personalized movies that you're actually going to watch. No more struggling to find your next favourite movie! Ight continue.</p>
+        <p class="paragraph-intro">Limelight Studio delivers personalized movies you’ll love—no more endless searching!</p>
       </section>
-      <section class="content-bumgjo">
-        <h1 id="trendingtitle">Put my name back bru</h1>
-        <img src="SCR-20240902-rjre.png" style="width: 100%; height: auto" />
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXA3MjB6MGV5ZzZtbnc4NmVvdmdydmdncG13MXJhdThnb3dweG12bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L3oTUQIDkDJzRu6mzF/giphy.gif" style="width: 100%; height: auto" />
-        <h1 id="trendingtitle">Bumgjo</h1>
-        <img src="SCR-20240902-ruaj.png" style="width: 100%; height: auto" />
+      <section class="content-video" style="height: 400px; padding: 0 20px">
+        <video style="width: calc(100% - 40px); border-radius: 8px" playsinline autoplay muted loop>
+          <source src="oppenheimer_teaser.mp4" type="video/mp4" />
+        </video>
+        <h1 id="awarded">
+          Oppenheimer &nbsp;︱&nbsp; <span class="paragraph-intro">Best Movies of 2023</span>
+          <img src="goldan.png" id="golden" />
+        </h1>
       </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -370,5 +456,16 @@
       });
     </script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <script>
+      window.onscroll = function () {
+        scrollRotate();
+      };
+      function scrollRotate() {
+        let images = document.querySelectorAll("#twinkle1, #twinkle3");
+        images.forEach(function (image) {
+          image.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
+        });
+      }
+    </script>
   </body>
 </html>
