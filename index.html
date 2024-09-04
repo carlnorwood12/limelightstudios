@@ -54,7 +54,6 @@
         padding: 10px 0px !important;
         width: 100%;
       }
-
       .hero-swiper .swiper-slide {
         position: relative;
         display: flex;
@@ -62,8 +61,31 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 70%, rgba(255, 255, 255, 0));
         height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
       }
+
+      .hero-swiper .swiper-slide::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.75;
+        z-index: -1;
+      }
+      /*
+
+      .swiper-slide:hover {
+        filter: saturate(.5);
+        box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
+      }
+        background-image: linear-gradient(to top, rgba(240, 255, 158, 0.05), rgba(255, 255, 255, 0.15));
+        box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.05) inset;
+        transition: filter 0.5s ease, box-shadow 0.5s ease;
+        */
 
       .swiper-slide {
         text-align: center;
@@ -78,7 +100,7 @@
         justify-content: center;
         flex-direction: column;
       }
-      .swiper-slide > :nth-child(n + 2) {
+      .swiper-slide > :nth-child(n + 1) {
         padding: 0 20px;
       }
       .content-section {
@@ -89,11 +111,25 @@
         align-items: flex-start;
         height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
       }
-      .title {
-        background: #ffffff;
-        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 20%, #7c7c7c 100%);
+      .swiper-slide:nth-child(1) .title {
+        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 5%, #cf0f0c 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      .swiper-slide:nth-child(2) .title {
+        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 5%, #ffc502 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .swiper-slide:nth-child(3) .title {
+        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 5%, #faf606 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .title {
+        background: #ffffff;
         text-shadow: 0px 0px 25px rgba(128, 128, 128, 0.3);
         text-wrap: nowrap;
         font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
@@ -168,11 +204,15 @@
         display: inline-flex;
         gap: 5px;
       }
+      .content-trending {
+        margin-top: 20px;
+      }
       .content-trending,
       .content-suggested,
       .content-awards,
-      .content-video {
-        padding: 0px 20px;
+      .content-video,
+      .content-releases {
+        padding: 5px 20px;
         position: relative;
       }
       .content-oops {
@@ -216,7 +256,7 @@
         top: 20px;
         left: 50%;
         transform: translateX(-50%);
-        width: 180px;
+        width: 135px;
         z-index: 999;
       }
       #trendingtitle {
@@ -240,7 +280,7 @@
       .paragraph-intro {
         line-height: 20px;
         text-align: center;
-        color: rgba(255, 255x, 255, 0.75);
+        color: rgba(255, 255, 255, 0.75);
         font-size: 14px;
       }
       .content-bumgjo {
@@ -261,7 +301,7 @@
         position: absolute;
         top: 20px;
         right: 0;
-        width: 70px;
+        width: 65px;
         z-index: 999;
       }
       #awarded {
@@ -325,17 +365,17 @@
   <body>
     <div class="content-body">
       <section class="content-section hero">
+
+        <img src="limelight-01.svg" id="limelight" />
+        <img src="twinkle.svg" id="twinkle" />
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <video style="border-radius: 8px" playsinline autoplay muted loop>
-                <source src="alien.mp4" type="video/mp4" />
-              </video>
+            <div class="swiper-slide" style="background-image: url(alien.jpg); background-size: cover; background-position: center center">
               <h1 class="title">Alien: Romulus</h1>
               <div class="metadata-group">
                 <p class="metadata">
                   <img src="star.svg" id="star" />
-                  4.2
+                  7.4
                 </p>
                 <p class="metadata">
                   <img src="hourglass.svg" id="hour" />
@@ -357,26 +397,50 @@
                 </button>
               </div>
             </div>
-            <div class="swiper-slide">
-              <video style="border-radius: 8px" playsinline autoplay muted loop>
-                <source src="alien.mp4" type="video/mp4" />
-              </video>
-              <h1 class="title">YOO: Romulus</h1>
+            <div class="swiper-slide" style="background-image: url(blinktwice_hero.jpg); background-size: cover; background-position: center center">
+              <h1 class="title">Blink Twice</h1>
               <div class="metadata-group">
                 <p class="metadata">
                   <img src="star.svg" id="star" />
-                  4.2
+                  6.9
                 </p>
                 <p class="metadata">
                   <img src="hourglass.svg" id="hour" />
-                  1h 59m
+                  1h 42m
                 </p>
                 <p class="metadata">
                   <img src="drama.svg" id="star" />
-                  Science Fiction, Horror
+                  Thriller, Mystery
                 </p>
               </div>
-              <p class="paragraph">While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.</p>
+              <p class="paragraph">When tech billionaire Slater King meets cocktail waitress Frida at his fundraising gala, he invites her to join him and his friends on a dream vacation on his private island. As strange things start to happen, Frida questions her reality.</p>
+              <div class="buttons">
+                <button class="button">
+                  <img src="play.svg" id="play" />
+                  <span>Watch Now</span>
+                </button>
+                <button class="button">
+                  <span>Start Free Trial</span>
+                </button>
+              </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url(borderlands_hero.jpg); background-size: cover; background-position: center center">
+              <h1 class="title">Borderlands</h1>
+              <div class="metadata-group">
+                <p class="metadata">
+                  <img src="star.svg" id="star" />
+                  4.4
+                </p>
+                <p class="metadata">
+                  <img src="hourglass.svg" id="hour" />
+                  1h 41m
+                </p>
+                <p class="metadata">
+                  <img src="drama.svg" id="star" />
+                  Action, Adventure
+                </p>
+              </div>
+              <p class="paragraph">Based on the best-selling videogame, this all-star action-adventure follows a ragtag team of misfits on a mission to save a missing girl who holds the key to unimaginable power.</p>
               <div class="buttons">
                 <button class="button">
                   <img src="play.svg" id="play" />
@@ -438,7 +502,7 @@
           <div class="swiper-scrollbar"></div>
         </div>
       </section>
-      <section class="content-trending">
+      <section class="content-releases">
         <h1 id="trendingtitle">
           New Releases
           <picture>
