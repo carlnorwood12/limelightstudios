@@ -26,8 +26,7 @@
         height: 100vh;
         background-color: black;
       }
-      body::before
-      {
+      body::before {
         content: "";
         position: fixed;
         top: 0;
@@ -49,15 +48,23 @@
         opacity: 0.25;
         z-index: 0;
       }
+
       .swiper {
         border-radius: 10px;
         padding: 10px 0px !important;
         width: 100%;
       }
-      .swiper-wrapper {
+
+      .hero-swiper .swiper-slide {
+        position: relative;
         display: flex;
+        text-align: left;
+        flex-direction: column;
+        justify-content: center;
         align-items: flex-start;
+        height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
       }
+
       .swiper-slide {
         text-align: center;
         border-radius: 5px;
@@ -66,17 +73,13 @@
         justify-content: center;
         align-items: flex-end;
       }
-      .swiper-slide img {
-        display: block;
-        aspect-ratio: 1;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
       .content-body {
         display: flex;
         justify-content: center;
         flex-direction: column;
+      }
+      .swiper-slide > :nth-child(n + 2) {
+        padding: 0 20px;
       }
       .content-section {
         position: relative;
@@ -87,17 +90,22 @@
         height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
       }
       .title {
-        color: white;
+        background: #ffffff;
+        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 20%, #7c7c7c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0px 0px 25px rgba(128, 128, 128, 0.3);
         text-wrap: nowrap;
         font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
         margin-bottom: 10px;
-        mix-blend-mode: difference;
         z-index: 100;
       }
       .metadata {
         z-index: 99;
         color: rgba(255, 255, 255, 0.45);
         font-size: 13px;
+        gap: 5px;
+        display: inline-flex;
         margin-bottom: 15px;
       }
       .paragraph {
@@ -106,10 +114,12 @@
         color: rgba(255, 255, 255, 0.75);
         font-size: 14px;
         margin-bottom: 25px;
-        max-width: 600px; /* Limit width for better readability */
+        max-width: 600px;
       }
       .button {
         position: relative;
+        display: inline-flex;
+        gap: 5px;
         z-index: 99;
         font-size: 13px;
         border-radius: 30px;
@@ -180,13 +190,22 @@
       }
       #play {
         width: 13px;
+        height: 12px;
         vertical-align: middle;
-        margin-top: -5px;
+        margin-top: 1px;
+      }
+      #hour {
+        width: 12px;
+        height: 12px;
+        vertical-align: middle;
+        margin-top: 1px;
       }
       #star {
         width: 12px;
+        height: 12px;
         vertical-align: middle;
-        margin-top: -2px;
+
+        margin-top: 1px;
       }
       .metadata-group {
         display: flex;
@@ -221,7 +240,7 @@
       .paragraph-intro {
         line-height: 20px;
         text-align: center;
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255x, 255, 0.75);
         font-size: 14px;
       }
       .content-bumgjo {
@@ -244,15 +263,6 @@
         right: 0;
         width: 70px;
         z-index: 999;
-      }
-      .awarded {
-        position: relative;
-        height: 400px;
-        -webkit-mask-image: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 0.5) 30%, black 50%, rgba(0, 0, 0, 0.5) 70%, transparent 90%);
-        mask-image: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 0.5) 30%, black 50%, rgba(0, 0, 0, 0.5) 70%, transparent 90%);
-        background-image: url(1326785.jpeg);
-        background-size: cover;
-        background-position: top center;
       }
       #awarded {
         font-size: 15px;
@@ -299,40 +309,85 @@
       #top-rated-video {
         border-radius: 8px;
       }
+      video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      #best-rated-h1 {
+        position: absolute;
+        color: white;
+        font-size: 15px;
+      }
     </style>
   </head>
+
   <body>
     <div class="content-body">
       <section class="content-section hero">
-        <video playsinline autoplay muted loop>
-          <source src="teaser_alien.mp4" type="video/mp4" />
-        </video>
-        <img src="limelight-01.svg" id="limelight" />
-        <img src="twinkle.svg" id="twinkle" />
-        <h1 class="title">Alien: Romulus</h1>
-        <div class="metadata-group">
-          <p class="metadata">
-            <img src="star.svg" id="star" />
-            4.2
-          </p>
-          <p class="metadata">
-            <img src="hourglass.svg" id="star" />
-            1h 59m
-          </p>
-          <p class="metadata">
-            <img src="drama.svg" id="star" />
-            Science Fiction, Horror
-          </p>
-        </div>
-        <p class="paragraph">While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.</p>
-        <div class="buttons">
-          <button class="button">
-            <img src="play.svg" id="play" />
-            <span>Watch Now</span>
-          </button>
-          <button class="button">
-            <span>Start Free Trial</span>
-          </button>
+        <div class="swiper hero-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <video style="border-radius: 8px" playsinline autoplay muted loop>
+                <source src="alien.mp4" type="video/mp4" />
+              </video>
+              <h1 class="title">Alien: Romulus</h1>
+              <div class="metadata-group">
+                <p class="metadata">
+                  <img src="star.svg" id="star" />
+                  4.2
+                </p>
+                <p class="metadata">
+                  <img src="hourglass.svg" id="hour" />
+                  1h 59m
+                </p>
+                <p class="metadata">
+                  <img src="drama.svg" id="star" />
+                  Science Fiction, Horror
+                </p>
+              </div>
+              <p class="paragraph">While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.</p>
+              <div class="buttons">
+                <button class="button">
+                  <img src="play.svg" id="play" />
+                  <span>Watch Now</span>
+                </button>
+                <button class="button">
+                  <span>Start Free Trial</span>
+                </button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <video style="border-radius: 8px" playsinline autoplay muted loop>
+                <source src="alien.mp4" type="video/mp4" />
+              </video>
+              <h1 class="title">YOO: Romulus</h1>
+              <div class="metadata-group">
+                <p class="metadata">
+                  <img src="star.svg" id="star" />
+                  4.2
+                </p>
+                <p class="metadata">
+                  <img src="hourglass.svg" id="hour" />
+                  1h 59m
+                </p>
+                <p class="metadata">
+                  <img src="drama.svg" id="star" />
+                  Science Fiction, Horror
+                </p>
+              </div>
+              <p class="paragraph">While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.</p>
+              <div class="buttons">
+                <button class="button">
+                  <img src="play.svg" id="play" />
+                  <span>Watch Now</span>
+                </button>
+                <button class="button">
+                  <span>Start Free Trial</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section class="content-trending">
@@ -383,6 +438,31 @@
           <div class="swiper-scrollbar"></div>
         </div>
       </section>
+      <section class="content-trending">
+        <h1 id="trendingtitle">
+          New Releases
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f48e/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f48e/512.gif" alt="💎" width="20" height="20" />
+          </picture>
+        </h1>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center"></div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </section>
+
       <section class="content-suggested">
         <h1 id="trendingtitle">
           Continue Watching
@@ -406,7 +486,7 @@
             So who are we exactly?...
             <picture>
               <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.webp" type="image/webp" />
-              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.gif" alt="😈" width="32" height="32" />
+              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.gif" alt="😈" width="25" height="25" />
             </picture>
           </h1>
           <img src="twinkle.svg" id="twinkle3" />
@@ -417,11 +497,32 @@
         <video style="width: calc(100% - 40px); border-radius: 8px" playsinline autoplay muted loop>
           <source src="oppenheimer_teaser.mp4" type="video/mp4" />
         </video>
-          Oppenheimer &nbsp;︱&nbsp; <p class="paragraph-intro">Best Movies of 2023</p>
-          <img src="goldan.png" id="golden" />
+      </section>
+      <section class="content-oops">
+        <h1 id="trendingtitle">
+          Our Events
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
+          </picture>
+        </h1>
+        <p class="paragraph-intro" style="text-align: left !important">Limelight Studio delivers personalized movies you’ll love—no more endless searching!</p>
       </section>
     </div>
+
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      const swiper2 = new Swiper(".hero-swiper", {
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
+      });
+    </script>
+
     <script>
       var swiper = new Swiper(".mySwiper", {
         slidesPerView: 6,
