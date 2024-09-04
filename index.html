@@ -84,7 +84,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        height: clamp(21.875rem, 17.8571rem + 21.4286vw, 31.25rem);
+        height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
       }
       .title {
         color: white;
@@ -255,7 +255,7 @@
         background-position: top center;
       }
       #awarded {
-        font-size: 20px;
+        font-size: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -364,7 +364,7 @@
           Suggested For You
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="20" height="" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="20" height="20" />
           </picture>
         </h1>
         <div class="swiper mySwiper">
@@ -388,7 +388,7 @@
           Continue Watching
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="32" height="32" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
           </picture>
         </h1>
         <div class="swiper mySwiper">
@@ -403,7 +403,7 @@
         <div class="icon-contain">
           <img src="twinkle.svg" id="twinkle1" />
           <h1 id="trendingtitle">
-            Oops I forgot to introduce myself..
+            So who are we exactly?...
             <picture>
               <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.webp" type="image/webp" />
               <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.gif" alt="😈" width="32" height="32" />
@@ -417,10 +417,8 @@
         <video style="width: calc(100% - 40px); border-radius: 8px" playsinline autoplay muted loop>
           <source src="oppenheimer_teaser.mp4" type="video/mp4" />
         </video>
-        <h1 id="awarded">
-          Oppenheimer &nbsp;︱&nbsp; <span class="paragraph-intro">Best Movies of 2023</span>
+          Oppenheimer &nbsp;︱&nbsp; <p class="paragraph-intro">Best Movies of 2023</p>
           <img src="goldan.png" id="golden" />
-        </h1>
       </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -469,7 +467,6 @@
         },
       });
     </script>
-    // to increase amount of time spent on website and communicate branding better but it might be too heavy so i might not use this
     <script src="cursor-trail.min.js"></script>
     <script>
       cursorTrail({
