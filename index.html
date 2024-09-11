@@ -24,7 +24,7 @@
         padding: 0;
         width: 100%;
         height: 100vh;
-        background-color: black;
+        background-color: #000000;
       }
       body::before {
         content: "";
@@ -33,25 +33,15 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url(blob2.svg);
-        opacity: 0.25;
-        z-index: 0;
-      }
-      body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url(background_limelight.jpg);
-        opacity: 0.25;
-        z-index: 0;
+        background-image: url(gradient_blob.svg);
+        filter: brightness(0.5);
+        transform: scaleX(-1);
+        background-size: cover;
+        background-position: center center;
+        opacity: 1;
       }
 
       .swiper {
-        border-radius: 10px;
-        padding: 10px 0px !important;
         width: 100%;
       }
       .hero-swiper .swiper-slide {
@@ -60,9 +50,15 @@
         text-align: left;
         flex-direction: column;
         justify-content: center;
+        -webkit-mask-image: linear-gradient(black 80%, transparent);
+        mask-image: linear-gradient(black 80%, transparent);
         align-items: flex-start;
-        mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 70%, rgba(255, 255, 255, 0));
         height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
+      }
+
+      .yoo .swiper-slide {
+        aspect-ratio: 4/3;
+        text-align: left;
       }
 
       .hero-swiper .swiper-slide::after {
@@ -72,27 +68,22 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: black;
-        opacity: 0.75;
+        background-color: #020b10d1;
+        opacity: 1;
         z-index: -1;
+        animation: swipeUp 2s ease-in forwards;
       }
-      /*
 
-      .swiper-slide:hover {
-        filter: saturate(.5);
+      .swiper-slide:not(.hero-swiper):hover {
         box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
+        transition: transform 0.5s ease-in;
       }
-        background-image: linear-gradient(to top, rgba(240, 255, 158, 0.05), rgba(255, 255, 255, 0.15));
-        box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.05) inset;
-        transition: filter 0.5s ease, box-shadow 0.5s ease;
-        */
-
       .swiper-slide {
-        text-align: center;
         border-radius: 5px;
+        box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.05) inset;
+        transition: box-shadow 0.5s ease;
         aspect-ratio: 2/3;
         display: flex;
-        justify-content: center;
         align-items: flex-end;
       }
       .content-body {
@@ -100,7 +91,7 @@
         justify-content: center;
         flex-direction: column;
       }
-      .swiper-slide > :nth-child(n + 1) {
+      .hero-swiper .swiper-slide > :nth-child(n + 1) {
         padding: 0 20px;
       }
       .content-section {
@@ -111,26 +102,18 @@
         align-items: flex-start;
         height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
       }
-      .swiper-slide:nth-child(1) .title {
-        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 5%, #cf0f0c 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      .swiper-slide:nth-child(1) .text-container-hero > .title {
+        color: #f9adad;
       }
-
       .swiper-slide:nth-child(2) .title {
-        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 5%, #ffc502 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #ffeba6;
       }
       .swiper-slide:nth-child(3) .title {
-        background: radial-gradient(ellipse farthest-corner at center center, #ffffff 5%, #faf606 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #fdfca8;
       }
-
       .title {
-        background: #ffffff;
-        text-shadow: 0px 0px 25px rgba(128, 128, 128, 0.3);
+        color: #f9adad;
+        clip-path: inset(0 0 0% 0);
         text-wrap: nowrap;
         font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
         margin-bottom: 10px;
@@ -188,9 +171,6 @@
         opacity: 0.2;
         z-index: -1;
       }
-      .hero > :nth-child(n + 2) {
-        padding: 0 20px;
-      }
       video {
         z-index: 99;
         position: absolute;
@@ -221,7 +201,7 @@
       }
       #trendingtitle {
         padding: 5px 0px;
-        color: white;
+        color: #c9d8e6;
       }
       @media screen and (max-width: 350px) {
         body {
@@ -268,7 +248,6 @@
       .movie-title {
         position: relative;
         margin-bottom: -15px;
-        color: white;
         font-size: 10px;
         font-weight: 700;
         z-index: 999 !important;
@@ -322,7 +301,6 @@
       }
       #golden {
         margin-left: 10px;
-        margin-top: -5px;
         width: 25px;
       }
       #top-rated {
@@ -356,8 +334,48 @@
       }
       #best-rated-h1 {
         position: absolute;
-        color: white;
         font-size: 15px;
+      }
+      ::-webkit-scrollbar {
+        width: 1px;
+      }
+      ::-webkit-scrollbar-track {
+        background: black;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .top-movie-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background-image: url(theshawnredemption.jpg);
+        background-size: cover;
+        background-position: center center;
+        -webkit-mask-image: linear-gradient(to right, transparent 90%, black 80%);
+        mask-image: linear-gradient(to top, transparent 90%, black 80%);
+        border-radius: 8px;
+      }
+      #crown {
+        width: 15px;
+        height: 15px;
+        margin-top: -4px;
+        vertical-align: middle;
+      }
+      .category-h1:nth-child(1) {
+        font-size: clamp(1.125rem, 0.5781rem + 1.75vw, 1.5625rem);
+        background: #000000;
+        background: linear-gradient(to right, #2b0080 0%, #5500ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: brightness(1.2);
+      }
+      .testing {
+        border-radius: 8px;
+        padding: 5px 10px;
       }
     </style>
   </head>
@@ -365,13 +383,13 @@
   <body>
     <div class="content-body">
       <section class="content-section hero">
-
         <img src="limelight-01.svg" id="limelight" />
-        <img src="twinkle.svg" id="twinkle" />
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url(alien.jpg); background-size: cover; background-position: center center">
-              <h1 class="title">Alien: Romulus</h1>
+              <div class="text-container-hero">
+                <h1 class="title">Alien: Romulus</h1>
+              </div>
               <div class="metadata-group">
                 <p class="metadata">
                   <img src="star.svg" id="star" />
@@ -529,6 +547,35 @@
 
       <section class="content-suggested">
         <h1 id="trendingtitle">
+          Browse by Category
+          <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
+          </picture>
+        </h1>
+        <div class="swiper yoo">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide testing" style="background-image: url(gradient_blob.svg); background-size: cover">
+              <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at center center, #5500ff 0%, #1a004d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
+                Sci-Fi <br />
+                Movies
+              </h1>
+            </div>
+            <div class="swiper-slide testing" style="background-image: url(gradient_horror.svg); background-size: cover">
+              <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at center center, #ff2200 0%, #4d0a00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
+                Horror <br />
+                Movies
+              </h1>
+            </div>
+            <div class="swiper-slide testing" style="background-image: url(bbblurry.svg); background-size: cover; filter: hue-rotate(150deg)"></div>
+            <div class="swiper-slide testing" style="background-image: url(bbblurry.svg); background-size: cover; filter: hue-rotate(200deg)"></div>
+            <div class="swiper-slide testing" style="background-image: url(bbblurry.svg); background-size: cover; filter: hue-rotate(250deg)"></div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </section>
+      <section class="content-suggested">
+        <h1 id="trendingtitle">
           Continue Watching
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
@@ -546,21 +593,37 @@
       <section class="content-oops">
         <div class="icon-contain">
           <img src="twinkle.svg" id="twinkle1" />
-          <h1 id="trendingtitle">
-            So who are we exactly?...
-            <picture>
-              <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.webp" type="image/webp" />
-              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f608/512.gif" alt="😈" width="25" height="25" />
-            </picture>
-          </h1>
+          <h1 id="trendingtitle">So who are we exactly?...</h1>
           <img src="twinkle.svg" id="twinkle3" />
         </div>
         <p class="paragraph-intro">Limelight Studio delivers personalized movies you’ll love—no more endless searching!</p>
       </section>
       <section class="content-video" style="height: 400px; padding: 0 20px">
-        <video style="width: calc(100% - 40px); border-radius: 8px" playsinline autoplay muted loop>
-          <source src="oppenheimer_teaser.mp4" type="video/mp4" />
-        </video>
+        <div class="swiper hero-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(theshawnredemption.jpg); background-size: cover; background-position: center center">
+              <div class="text-container-hero">
+                <h1 id="trendingtitle" style="color: #f0ff9ebf">Top Charted On IMBD <img src="crown (1).svg" id="crown" /></h1>
+                <br />
+                <h1 class="title" style="color: #c9d8e6 !important; display: block">The Shawn Redemption</h1>
+              </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url(godfather.jpg); background-size: cover; background-position: center center">
+              <div class="text-container-hero">
+                <h1 id="trendingtitle" style="color: #f0ff9ebf">Top Charted On IMBD <img src="crown (1).svg" id="crown" /></h1>
+                <br />
+                <h1 class="title" style="color: #c9d8e6 !important">The Godfather</h1>
+              </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url(thedarkknight.jpg); background-size: cover; background-position: center center">
+              <div class="text-container-hero">
+                <h1 id="trendingtitle" style="color: #f0ff9ebf">Top Charted On IMBD <img src="crown (1).svg" id="crown" /></h1>
+                <br />
+                <h1 class="title" style="color: #a1a8ce !important">The Dark Knight</h1>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <section class="content-oops">
         <h1 id="trendingtitle">
@@ -583,6 +646,7 @@
         effect: "fade",
         fadeEffect: {
           crossFade: true,
+          duration: 1000,
         },
       });
     </script>
@@ -631,6 +695,46 @@
           clickable: true,
         },
       });
+      var swiper = new Swiper(".yoo", {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        grabCursor: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1, // bigger than 0px do this:
+          },
+          200: {
+            slidesPerView: 2, // bigger than 0px do this:
+          },
+          450: {
+            slidesPerView: 3, // bigger than 450px do this:
+          },
+          600: {
+            slidesPerView: 4, // bigger than 600px do this:
+          },
+          750: {
+            slidesPerView: 5, // bigger than 600px do this:
+          },
+        },
+        simulateTouch: true,
+        mousewheel: {
+          invert: false,
+          forceToAxis: true,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true,
+          hide: true,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
     </script>
     <script src="cursor-trail.min.js"></script>
     <script>
@@ -652,6 +756,21 @@
           image.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
         });
       }
+    </script>
+    <script src="https://unpkg.com/gsap@3.9.1/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script>
+      const text = new SplitType(".text-container-hero", {
+        type: "chars",
+      });
+      gsap.from(text.chars, {
+        opacity: 0,
+        y: 20,
+        stagger: 0.05,
+        duration: 1,
+        ease: "circ.out",
+      });
     </script>
   </body>
 </html>

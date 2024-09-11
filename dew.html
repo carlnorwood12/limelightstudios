@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Blending Effect</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Black background to highlight the effect */
+        }
+
+        .text-container {
+            font-size: 80px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #d6ad60, #d65a60, #c53980);
+            -webkit-background-clip: text;
+            background-clip: text;
+            mix-blend-mode: multiply;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        Kids & Family
+    </div>
+</body>
+</html>
