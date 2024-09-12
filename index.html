@@ -48,6 +48,10 @@
         background-image: url(blob2.svg);
         opacity: 0.3;
       }
+      @font-face {
+        font-family: "Subjectivity";
+        src: url("Subjectivity-Bold.otf");
+      }
 
       .swiper {
         width: 100%;
@@ -67,6 +71,8 @@
         text-align: left;
       }
 
+      /*
+
       .hero-swiper .swiper-slide::after {
         content: "";
         position: absolute;
@@ -79,6 +85,7 @@
         opacity: 0.8;
         animation: swipeUp 2s ease-in forwards;
       }
+        */
 
       .swiper-slide:not(.hero-swiper):hover {
         filter: brightness(1.2);
@@ -177,15 +184,6 @@
         opacity: 0.2;
         z-index: -1;
       }
-      video {
-        z-index: 99;
-        position: absolute;
-        object-fit: cover;
-        -webkit-mask-image: linear-gradient(black, transparent);
-        mask-image: linear-gradient(black, transparent);
-        width: 100%;
-        height: 100%;
-      }
       .buttons {
         display: inline-flex;
         gap: 5px;
@@ -256,7 +254,6 @@
         z-index: 999 !important;
       }
       .swiper-scrollbar-drag {
-        margin-top: -8px !important;
         background-color: rgba(255, 255, 255, 0.3);
       }
       .paragraph-intro {
@@ -642,12 +639,14 @@
       <section class="content-oops">
         <div class="icon-contain">
           <img src="twinkle.svg" id="twinkle1" />
-          <div class="contain-text">
-            <h1 id="trendingtitle">Lemme introduce myself</h1>
-            <picture>
-              <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
-              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
-            </picture>
+          <div class="h1-content">
+              <h1 id="trendingtitle" style="font-size: 20px; font-family: 'Subjectivity'">
+                Lemme introduce myself
+              </h1>
+              <picture>
+                <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.webp" type="image/webp">
+                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.gif" alt="😎" width="32" height="32">
+              </picture>
           </div>
           <img src="twinkle.svg" id="twinkle3" />
         </div>
@@ -656,9 +655,27 @@
       <section class="content-video" style="height: 400px; padding: 0 20px">
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
-
             <div class="swiper-slide">
               
+  <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="100%"
+    height="100%"
+    poster="blinktwice.jpg"
+    data-setup="{}"
+  >
+    <source src="alien.mp4" type="video/mp4" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
             </div>
             <div class="swiper-slide" style="background-image: url(thedarkknight.jpg); background-size: cover; background-position: center center">
               <div class="text-container-hero">
@@ -680,6 +697,7 @@
         </h1>
         <p class="paragraph-intro" style="text-align: left !important">Limelight Studio delivers personalized movies you’ll love—no more endless searching!</p>
       </section>
+
     </div>
 
     <!-- Swiper JS -->
@@ -719,6 +737,12 @@
           },
           900: {
             slidesPerView: 7, // bigger than 900px do this:
+          },
+          1050: {
+            slidesPerView: 8, // bigger than 900px do this:
+          },
+          1200: {
+            slidesPerView: 9, // bigger than 900px do this:
           },
         },
         simulateTouch: true,
