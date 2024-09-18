@@ -5,406 +5,51 @@
     <title>Hello, world!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <style>
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Montserrat", sans-serif;
-      }
-      ::selection {
-        background-color: rgba(255, 255, 255, 0.15);
-      }
-      body,
-      html {
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #000000;
-      }
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url(blurry_background.png);
-        background-size: cover;
-        opacity: 0.5;
-      }
-      body::after
-      {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url(blob2.svg);
-        opacity: 0.3;
-      }
-      @font-face {
-        font-family: "Subjectivity";
-        src: url("Subjectivity-Bold.otf");
-      }
-
-      .swiper {
-        width: 100%;
-      }
-      .hero-swiper .swiper-slide {
-        position: relative;
-        display: flex;
-        text-align: left;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
-      }
-
-      .yoo .swiper-slide {
-        aspect-ratio: 4/3;
-        text-align: left;
-      }
-
-      /*
-
-      .hero-swiper .swiper-slide::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #000;
-        filter: blur(150px);
-        opacity: 0.8;
-        animation: swipeUp 2s ease-in forwards;
-      }
-        */
-
-      .swiper-slide:not(.hero-swiper):hover {
-        filter: brightness(1.2);
-        transition: filter 0.2s ease-in;
-      }
-      .swiper-slide {
-        border-radius: 5px;
-        box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
-        transition: filter 0.2s ease;
-        aspect-ratio: 2/3;
-        display: flex;
-        align-items: flex-end;
-      }
-      .content-body {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-      }
-      .hero-swiper .swiper-slide > :nth-child(n + 3) {
-        padding: 0 20px;
-      }
-      .content-section {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
-      }
-      .swiper-slide:nth-child(1) .text-container-hero > .title {
-        color: #ffffff;
-      }
-      .swiper-slide:nth-child(2) .title {
-        color: #ffeba6;
-      }
-      .swiper-slide:nth-child(3) .title {
-        color: #fdfca8;
-      }
-      .title {
-        color: #f9adad;
-        clip-path: inset(0 0 0% 0);
-        text-wrap: nowrap;
-        font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
-        margin-bottom: 10px;
-        z-index: 100;
-      }
-      .metadata {
-        z-index: 99;
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 13px;
-        gap: 5px;
-        display: inline-flex;
-        margin-bottom: 15px;
-      }
-      .paragraph {
-        z-index: 99;
-        line-height: 20px;
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 14px;
-        margin-bottom: 25px;
-        max-width: 600px;
-      }
-      .button {
-        position: relative;
-        display: inline-flex;
-        gap: 5px;
-        z-index: 99;
-        font-size: 13px;
-        border-radius: 30px;
-        background: linear-gradient(#000000, #030c00) padding-box, linear-gradient(to bottom, #b6ff9e, #374c2f) border-box;
-        border: 1px solid transparent;
-        color: #b6ff9e;
-        text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.3);
-        padding: 10px 15px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.5s ease;
-      }
-      .button:first-of-type {
-        filter: grayscale(1);
-        margin-right: 5px;
-      }
-      .button:hover {
-        transform: scale(1.05);
-        text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.5);
-      }
-      .button::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50px;
-        background-image: url(blob2.svg);
-        opacity: 0.2;
-        z-index: -1;
-      }
-      .buttons {
-        display: inline-flex;
-        gap: 5px;
-      }
-      .content-trending {
-        margin-top: 20px;
-      }
-      .content-trending,
-      .content-suggested,
-      .content-awards,
-      .content-video,
-      .content-releases {
-        padding: 5px 20px;
-        position: relative;
-      }
-      .content-oops {
-        padding: 20px 20px;
-        position: relative;
-      }
-      #trendingtitle 
-      {
-        color: #c9d8e6;
-      }
-      @media screen and (max-width: 350px) {
-        body {
-          overflow-x: scroll;
-        }
-      }
-      #play {
-        width: 13px;
-        height: 12px;
-        vertical-align: middle;
-        margin-top: 1px;
-      }
-      #hour {
-        width: 12px;
-        height: 12px;
-        vertical-align: middle;
-        margin-top: 1px;
-      }
-      #star {
-        width: 12px;
-        height: 12px;
-        vertical-align: middle;
-
-        margin-top: 1px;
-      }
-      .metadata-group {
-        display: flex;
-        gap: 15px;
-      }
-      #limelight {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 135px;
-        z-index: 999;
-      }
-      #trendingtitle {
-        font-size: 17px;
-      }
-      .movie-title {
-        position: relative;
-        margin-bottom: -15px;
-        font-size: 10px;
-        font-weight: 700;
-        z-index: 999 !important;
-      }
-      .swiper-scrollbar-drag {
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-      .paragraph-intro {
-        line-height: 20px;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 14px;
-      }
-      .content-bumgjo {
-        padding: 6px 20px;
-        filter: saturate(3);
-        filter: contrast(100);
-        position: relative;
-      }
-      .icon-contain {
-        position: relative;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-      #twinkle {
-        position: absolute;
-        top: 20px;
-        right: 0;
-        width: 65px;
-        z-index: 999;
-      }
-      #awarded {
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 20px;
-        bottom: 20px;
-        border-radius: 8px;
-        padding: 5px 20px;
-        color: #fbfbfb;
-      }
-      #awards {
-        width: 100%;
-        border-radius: 8px;
-      }
-      #golden {
-        margin-left: 10px;
-        width: 25px;
-      }
-      #top-rated {
-        font-family: "Montserrat", sans-serif;
-        font-size: 17px;
-        color: rgba(255, 255, 255, 0.75);
-      }
-      #twinkle1 {
-        position: absolute;
-        left: 0;
-        width: clamp(0.9375rem, -0.2344rem + 3.75vw, 1.875rem);
-      }
-      #twinkle2 {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-      }
-      #twinkle3 {
-        position: absolute;
-        right: 0;
-        width: clamp(0.9375rem, -0.2344rem + 3.75vw, 1.875rem);
-      }
-      #top-rated-video {
-        border-radius: 8px;
-      }
-      video {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-      #best-rated-h1 {
-        position: absolute;
-        font-size: 15px;
-      }
-      ::-webkit-scrollbar {
-        width: 1px;
-      }
-      ::-webkit-scrollbar-track {
-        background: black;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.5);
-      }
-      .top-movie-container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        background-image: url(theshawnredemption.jpg);
-        background-size: cover;
-        background-position: center center;
-        -webkit-mask-image: linear-gradient(to right, transparent 90%, black 80%);
-        mask-image: linear-gradient(to top, transparent 90%, black 80%);
-        border-radius: 8px;
-      }
-      #crown {
-        width: 15px;
-        height: 15px;
-        margin-top: -4px;
-        vertical-align: middle;
-      }
-      .category-h1:nth-child(1) 
-      {
-        font-size: clamp(1.125rem, 0.875rem + 0.5vw, 1.1875rem);
-        background: linear-gradient(to right, #2b0080 0%, #5500ff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: brightness(1.2);
-      }
-      .testing {
-        border-radius: 8px;
-        box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
-        padding: 5px 10px;
-      }
-      .h1-content
-      {
-        height: 40px;
-        display: flex;
-        margin-bottom: 15px;
-        align-items: flex-end;
-      }
-      picture
-      {
-        margin-left: 5px;
-        margin-bottom: -5px;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
+    <header>
+      <img src="limelight-01.svg" class="limelight" />
+      <a class="hamburger-icon hamburger-left">
+        <img src="twinkle.svg" class="twinkle" />
+      </a>
+      <a class="hamburger-icon hamburger-right">
+        <img src="twinkle.svg" class="twinkle" />
+      </a>
+    </header>
+    <div class="menu-overlay">
+      <div class="menu-cols">
+        <div class="col-2">
+          <div class="middle-logo">
+            <img src="limelight-01.svg" id="limelight" />
+          </div>
+          <div class="menu-link">
+            <a href="index.html">Home</a>
+          </div>
+          <div class="menu-link">
+            <a href="products.html">Contact</a>
+          </div>
+          <div class="menu-link">
+            <a href="servicing.html">About</a>
+          </div>
+          <div class="menu-link">
+            <a href="servicing.html">Blah</a>
+          </div>
+          <div class="menu-link">
+            <a href="servicing.html">Blah</a>
+          </div>
+          <br />
+          <input type="text" placeholder="Search anything..." />
+        </div>
+      </div>
+    </div>
     <div class="content-body">
       <section class="content-section hero">
-        <img src="limelight-01.svg" id="limelight" />
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <div data-us-project="oUekvYCK1JuxxdJJeJkf" style="width:100%; height: 100%; position: absolute;"></div><script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},document.getElementsByTagName("head")[0].appendChild(i)}}();</script></body>
-
-              <div class="text-container-hero">
-                <h1 class="title">Alien: Romulus</h1>
-              </div>
+              <img src="alien.webp" id="movie_hero" />
+              <h1 class="title">Alien: Romulus</h1>
               <div class="metadata-group">
                 <p class="metadata">
                   <img src="star.svg" id="star" />
@@ -430,7 +75,11 @@
                 </button>
               </div>
             </div>
-            <div class="swiper-slide" style="background-image: url(blinktwice_hero.jpg); background-size: cover; background-position: center center">
+            <div class="swiper-slide">
+              <picture class="hero-picture">
+                <source srcset="https://ik.imagekit.io/carl/limelight/blinktwic.png?updatedAt=1726574188936" media="(min-width: 400px)" />
+                <img src="https://ik.imagekit.io/carl/limelight/blinktwice_mobile.jpg?updatedAt=1726575047852" id="movie_hero" />
+              </picture>
               <h1 class="title">Blink Twice</h1>
               <div class="metadata-group">
                 <p class="metadata">
@@ -457,7 +106,8 @@
                 </button>
               </div>
             </div>
-            <div class="swiper-slide" style="background-image: url(borderlands_hero.jpg); background-size: cover; background-position: center center">
+            <div class="swiper-slide">
+              <img src="borderlands.jpg" id="movie_hero" />
               <h1 class="title">Borderlands</h1>
               <div class="metadata-group">
                 <p class="metadata">
@@ -489,9 +139,7 @@
       </section>
       <section class="content-trending">
         <div class="h1-content">
-          <h1 id="trendingtitle">
-            Trending
-          </h1>
+          <h1 id="trendingtitle">Trending</h1>
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp" />
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="20" height="20" />
@@ -515,9 +163,7 @@
       </section>
       <section class="content-suggested">
         <div class="h1-content">
-          <h1 id="trendingtitle">
-            Suggested For You
-          </h1>
+          <h1 id="trendingtitle">Suggested For You</h1>
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" type="image/webp" />
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="20" height="20" />
@@ -541,9 +187,7 @@
       </section>
       <section class="content-releases">
         <div class="h1-content">
-          <h1 id="trendingtitle">
-            New Releases
-          </h1>
+          <h1 id="trendingtitle">New Releases</h1>
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f48e/512.webp" type="image/webp" />
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f48e/512.gif" alt="💎" width="20" height="20" />
@@ -568,9 +212,7 @@
 
       <section class="content-suggested">
         <div class="h1-content">
-          <h1 id="trendingtitle">
-            Browse  by Category
-          </h1>
+          <h1 id="trendingtitle">Browse by Category</h1>
           <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
@@ -596,7 +238,7 @@
                 Movies
               </h1>
             </div>
-             <div class="swiper-slide testing" style="background-image: url(blurple.png); background-size: cover">
+            <div class="swiper-slide testing" style="background-image: url(blurple.png); background-size: cover">
               <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #8c26ff 0%, #ba7dff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
                 Feature <br />
                 Movies
@@ -620,10 +262,8 @@
       </section>
       <section class="content-suggested">
         <div class="h1-content">
-          <h1 id="trendingtitle">
-            Continue Watching
-          </h1>
-           <picture>
+          <h1 id="trendingtitle">Continue Watching</h1>
+          <picture>
             <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
             <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
           </picture>
@@ -640,64 +280,37 @@
         <div class="icon-contain">
           <img src="twinkle.svg" id="twinkle1" />
           <div class="h1-content">
-              <h1 id="trendingtitle" style="font-size: 20px; font-family: 'Subjectivity'">
-                Lemme introduce myself
-              </h1>
-              <picture>
-                <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.webp" type="image/webp">
-                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.gif" alt="😎" width="32" height="32">
-              </picture>
+            <h1 id="trendingtitle">So why should you join us?</h1>
+            <picture>
+              <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.webp" type="image/webp" />
+              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.gif" alt="😎" width="20" height="20" />
+            </picture>
           </div>
           <img src="twinkle.svg" id="twinkle3" />
         </div>
         <p class="paragraph-intro">Limelight Studio delivers personalized movies you’ll love—no more endless searching!</p>
       </section>
       <section class="content-video" style="height: 400px; padding: 0 20px">
-        <div class="swiper hero-swiper">
+        <div class="swiper hero-swiper" style="box-shadow: rgb(255, 0, 0) 0px 1px 2px, rgba(255, 0, 0, 0.07) 0px 2px 4px, rgba(255, 0, 0, 0.07) 0px 4px 8px, rgba(255, 0, 0, 0.07) 0px 8px 16px, rgba(255, 0, 0, 0.07) 0px 16px 32px, rgba(255, 0, 0, 0.07) 0px 32p">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              
-  <video
-    id="my-video"
-    class="video-js"
-    controls
-    preload="auto"
-    width="100%"
-    height="100%"
-    poster="blinktwice.jpg"
-    data-setup="{}"
-  >
-    <source src="alien.mp4" type="video/mp4" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-      >
-    </p>
-  </video>
+              <img src="spongebob.gif" id="gifs" />
+              <div class="text-container-hero">
+                <h1 class="title-join">Unlimited Shows, <span style="color: #f0ff9e">anytime.</span></h1>
+                <p class="paragraph-join">Watch your favorite shows on any device, anywhere you go.</p>
+              </div>
             </div>
             <div class="swiper-slide" style="background-image: url(thedarkknight.jpg); background-size: cover; background-position: center center">
+              <img src="https://media.giphy.com/media/3o85xCVh0TmBrQr36U/giphy.gif?cid=ecf05e47rkilvfr22hn21l7xr98qzoq3dwh1jxlct56jjy00&ep=v1_gifs_search&rid=giphy.gif&ct=g" id="gifs" />
               <div class="text-container-hero">
-                <h1 id="trendingtitle" style="color: #f0ff9ebf">Top Charted On IMBD <img src="crown (1).svg" id="crown" /></h1>
-                <br />
-                <h1 class="title" style="color: #a1a8ce !important">The Dark Knight</h1>
+                <h1 class="title-join">Your Own Feed,<span style="color: #ff9ea2"> Finally.</span></h1>
+                <p class="paragraph-join">Create the most out of creating your own environment.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="content-oops">
-        <h1 id="trendingtitle">
-          Our Events
-          <picture>
-            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
-          </picture>
-        </h1>
-        <p class="paragraph-intro" style="text-align: left !important">Limelight Studio delivers personalized movies you’ll love—no more endless searching!</p>
-      </section>
-
+      
     </div>
 
     <!-- Swiper JS -->
@@ -830,7 +443,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/split-type"></script>
     <script>
-      const text = new SplitType(".text-container-hero", {
+      const text = new SplitType(".title-join", {
         type: "chars",
       });
       gsap.from(text.chars, {
@@ -841,5 +454,21 @@
         ease: "circ.out",
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+        $("header").click(function () {
+          if ($(".twinkle").hasClass("rotate")) {
+            $(".twinkle").removeClass("rotate");
+          } else {
+            $(".twinkle").addClass("rotate");
+          }
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
