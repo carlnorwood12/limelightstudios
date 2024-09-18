@@ -382,7 +382,7 @@ video {
   display: flex;
   align-items: flex-end;
   margin-bottom: 15px;
-  box-sizing: border-box; /* Ensures padding is included within height */
+  box-sizing: border-box;
 }
 #gifs {
   position: relative;
@@ -535,10 +535,10 @@ header {
   width: 15px;
 }
 .twinkle {
-  transition: transform 1s ease; /* Apply transition */
+  transition: transform 1s ease;
 }
 .twinkle.rotate {
-  transform: rotate(180deg); /* Rotate 360 degrees forward */
+  transform: rotate(180deg); 
 }
 @font-face {
   font-family: "Objectivity";
