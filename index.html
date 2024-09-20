@@ -262,11 +262,12 @@
       </section>
       <section class="content-suggested">
         <div class="h1-content">
-          <h1 id="trendingtitle">Continue Watching</h1>
+          <h1 id="trendingtitle">Continue Watching
           <picture>
-            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.webp" type="image/webp" />
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f440/512.gif" alt="👀" width="20" height="20" />
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1fae7/512.webp" type="image/webp">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fae7/512.gif" alt="🫧" width="20" height="20">
           </picture>
+          </h1>
         </div>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
@@ -280,7 +281,7 @@
         <div class="icon-contain">
           <img src="twinkle.svg" id="twinkle1" />
           <div class="h1-content">
-            <h1 id="trendingtitle">So why should you join us?</h1>
+            <h1 id="trendingtitle"><b>So why should you join us?</b></h1>
             <picture>
               <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.webp" type="image/webp" />
               <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.gif" alt="😎" width="20" height="20" />
@@ -290,14 +291,15 @@
         </div>
         <p class="paragraph-intro">Limelight Studio delivers movies you’ll love—no more endless searching!</p>
       </section>
-      <section class="content-reasons" style="padding: 0 20px">
-        <div class="swiper hero-swiper" style="  height: clamp(12.5rem, -12.5rem + 50vw, 18.75rem); border-radius: 8px;">
+      <section class="content-reasons" style="padding: 0 20px;">
+        <div class="swiper hero-swiper" style="height: clamp(12.5rem, -12.5rem + 50vw, 18.75rem); border-radius: 8px;">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="text-container-hero">
                 <div class="contain-text-icon">
                   <img src="twinkle_dark.svg" id="twinkle-text" />
-                  <h1 class="title-join">Unlimited Shows, anytime.</span></h1>
+                  <h1 class="title-join">Unlimited Shows, anytime.
+                  </h1>
                 </div>
                 <p class="paragraph-join">Watch your favorite shows on any device, anywhere you go.</p>
               </div>
@@ -306,12 +308,15 @@
               <div class="text-container-hero">
                 <div class="contain-text-icon">
                   <img src="twinkle_dark.svg" id="twinkle-text" />
-                  <h1 class="title-join">The Power is Yours.</span></h1>
+                  <h1 class="title-join">The Power is Truly Yours.</span></h1>
                 </div>
                 <p class="paragraph-join">Create personalized profiles based on your taste.</p>
               </div>
             </div>
+                <div class="swiper-scrollbar"></div>
+
           </div>
+      
         </div>
       </section>
       <br />
@@ -327,8 +332,13 @@
       const swiper2 = new Swiper(".hero-swiper", {
         effect: "fade",
         fadeEffect: {
-          crossFade: true,
+          effect: 'fade',
           duration: 1000,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true,
+          hide: true,
         },
       });
     </script>
