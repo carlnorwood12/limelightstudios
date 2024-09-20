@@ -64,7 +64,6 @@ body::after {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
 }
 .yoo .swiper-slide {
   aspect-ratio: 4/3;
@@ -99,7 +98,7 @@ body::after {
   justify-content: center;
   flex-direction: column;
 }
-.hero-swiper .swiper-slide > :nth-child(n + 2) {
+.hero-swiper .swiper-slide > :nth-child(n + 1) {
   padding: 0 20px;
 }
 .content-section {
@@ -120,11 +119,10 @@ body::after {
   color: #fdfca8;
 }
 .title-join {
-  color: #d7cbeb;
+  color: #0d1107;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
   font-size: clamp(1.25rem, -1.25rem + 5vw, 1.875rem);
-  margin-bottom: 10px;
   z-index: 100;
 }
 .title {
@@ -141,21 +139,36 @@ body::after {
   font-size: 13px;
   gap: 5px;
   display: inline-flex;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+.hero-swiper .swiper-slide::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(yellow.png);
+  filter:sepia(1);
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+  pointer-events: none;
 }
 .paragraph {
   z-index: 99;
   line-height: 20px;
   color: rgba(255, 255, 255, 0.75);
   font-size: 14px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   max-width: 600px;
 }
 .paragraph-join {
   z-index: 99;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
   font-size: 14px;
   max-width: 600px;
+  margin-top: 15px;
 }
 .button {
   position: relative;
@@ -318,6 +331,11 @@ body::after {
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
+  z-index: 99;
+}
+#twinkle-text {
+  z-index: 99;
+  width: 15px;
 }
 #twinkle3 {
   position: absolute;
@@ -331,6 +349,11 @@ video {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+.contain-text-icon {
+  align-items: center;
+  display: flex;
+  gap: 7px;
 }
 #best-rated-h1 {
   position: absolute;
@@ -416,16 +439,6 @@ video {
   justify-content: center;
   flex-direction: column;
   height: 200px;
-}
-.hero-swiper .swiper-slide::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.8;
 }
 .hamburger-icon {
   position: absolute;
@@ -538,7 +551,7 @@ header {
   transition: transform 1s ease;
 }
 .twinkle.rotate {
-  transform: rotate(180deg); 
+  transform: rotate(180deg);
 }
 @font-face {
   font-family: "Objectivity";
