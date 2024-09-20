@@ -48,7 +48,10 @@
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="alien.webp" id="movie_hero" />
+              <div class="mask-wrapper">
+                <img src="alien.webp" id="movie_hero" />
+                <img src="mask.svg" id="mask" />
+              </div>
               <h1 class="title">Alien: Romulus</h1>
               <div class="metadata-group">
                 <p class="metadata">
@@ -76,10 +79,11 @@
               </div>
             </div>
             <div class="swiper-slide">
-              <picture class="hero-picture">
-                <source srcset="https://ik.imagekit.io/carl/limelight/blinktwic.png?updatedAt=1726574188936" media="(min-width: 400px)" />
-                <img src="https://ik.imagekit.io/carl/limelight/blinktwice_mobile.jpg?updatedAt=1726575047852" id="movie_hero" />
-              </picture>
+              <div class="mask-wrapper">
+                <img src="blinktwice_banner.png" id="movie_hero" />
+                                <img src="mask.svg" id="mask" />
+
+              </div>
               <h1 class="title">Blink Twice</h1>
               <div class="metadata-group">
                 <p class="metadata">
@@ -329,20 +333,21 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
     <script>
-      const swiper2 = new Swiper(".hero-swiper", {
-        effect: "fade",
-        fadeEffect: {
-          effect: 'fade',
-          duration: 1000,
-        },
-        scrollbar: {
-          el: ".swiper-scrollbar",
-          draggable: true,
-          hide: true,
-        },
-      });
+
     </script>
     <script>
+
+      const swiper2 = new Swiper(".hero-swiper", 
+      {
+        effect: "fade",
+    grabCursor: true,
+    centeredSlides: true,
+    autoplay: {
+      delay: 20000,
+      disableOnInteraction: false,
+    },
+
+      });
       var swiper = new Swiper(".mySwiper", {
         slidesPerView: 6,
         spaceBetween: 10,
