@@ -204,7 +204,7 @@
                 Family
               </h1>
             </div>
-            <div class="swiper-slide testing" style="background-image: url(red.png); background-size: cover">
+            <div class="swiper-slide testing" style="background-image: url(red.png); background-size: cover;">
               <h1 class="category-h1" style="background: radial-gradient(circle farthest-corner at top center, #820019 0%, #2b0008 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
                 Horror <br />
                 Movies
@@ -302,6 +302,50 @@
             <h1 id="trendingtitle">Questions? Answers.</h1>
           </div>
           <img src="twinkle.svg" id="twinkle3" />
+        </div>
+      </section>
+      <section class="content-reasons">
+        <div class="swiper hero-swiper" style="height: clamp(12.5rem, -12.5rem + 50vw, 18.75rem); border-radius: 8px; filter: grayscale(1);">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="text-container-hero">
+                <div class="contain-text-icon">
+                  <h1 class="title-join">Can I break in as long as i have a ticket?</h1>
+                  </h1>
+                </div>
+                <p class="paragraph-join">
+                  Yes.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="text-container-hero">
+                <div class="contain-text-icon">
+                  <h1 class="title-join">Can I sneak snacks into the cinema?</h1>
+                  </h1>
+                </div>
+                <p class="paragraph-join">Yea but dont get caught</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="text-container-hero">
+                <div class="contain-text-icon">
+                  <h1 class="title-join">Can I steal the popcorn?</h1>
+                  </h1>
+                </div>
+                <p class="paragraph-join">Maybe</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="text-container-hero">
+                <div class="contain-text-icon">
+                  <h1 class="title-join">Highly Customizable Profiles.</span></h1>
+                </div>
+                <p class="paragraph-join">Create personalized profiles based on your taste.</p>
+              </div>
+            </div>
+            <div class="swiper-scrollbar"></div>
+          </div>
         </div>
       </section>
       <br />
@@ -444,7 +488,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/split-type"></script>
     <script>
-      const text = new SplitType(".title-join", {
+      const text = new SplitType(".tile-join", {
         type: "chars",
       });
       gsap.from(text.chars, {
