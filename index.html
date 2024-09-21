@@ -253,7 +253,6 @@
             <div class="swiper-slide">
               <div class="text-container-hero">
                 <div class="contain-text-icon">
-                  <img src="twinkle_dark.svg" id="twinkle-text" />
                   <h1 class="title-join">Unlimited Shows, anytime.
                   </h1>
                 </div>
@@ -263,7 +262,6 @@
             <div class="swiper-slide">
               <div class="text-container-hero">
                 <div class="contain-text-icon">
-                  <img src="twinkle_dark.svg" id="twinkle-text" />
                   <h1 class="title-join">Discounted food, everytime.
                   </h1>
                 </div>
@@ -273,7 +271,6 @@
             <div class="swiper-slide">
               <div class="text-container-hero">
                 <div class="contain-text-icon">
-                  <img src="twinkle_dark.svg" id="twinkle-text" />
                   <h1 class="title-join">Watch at any venue.
                   </h1>
                 </div>
@@ -283,7 +280,6 @@
             <div class="swiper-slide">
               <div class="text-container-hero">
                 <div class="contain-text-icon">
-                  <img src="twinkle_dark.svg" id="twinkle-text" />
                   <h1 class="title-join">Highly Customizable Profiles.</span></h1>
                 </div>
                 <p class="paragraph-join">Create personalized profiles based on your taste.</p>
@@ -336,14 +332,6 @@
                 <p class="paragraph-join">Maybe</p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="text-container-hero">
-                <div class="contain-text-icon">
-                  <h1 class="title-join">Highly Customizable Profiles.</span></h1>
-                </div>
-                <p class="paragraph-join">Create personalized profiles based on your taste.</p>
-              </div>
-            </div>
             <div class="swiper-scrollbar"></div>
           </div>
         </div>
@@ -365,14 +353,26 @@
       const swiper2 = new Swiper(".hero-swiper", 
       {
         effect: "fade",
-    grabCursor: true,
-    centeredSlides: true,
-    autoplay: {
-      delay: 20000,
-      disableOnInteraction: false,
-    },
-
+        grabCursor: true,
+        centeredSlides: true,
+        autoplay: 
+        {
+          delay: 20000,
+          disableOnInteraction: false,
+        },
       });
+      const swiper3 = new Swiper(".hero-swiper", 
+      {
+        effect: "fade",
+        grabCursor: true,
+        centeredSlides: true,
+        autoplay: 
+        {
+          delay: 20000,
+          disableOnInteraction: false,
+        },
+      });
+
       var swiper = new Swiper(".mySwiper", {
         slidesPerView: 6,
         spaceBetween: 10,

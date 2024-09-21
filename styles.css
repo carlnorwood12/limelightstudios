@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  -webkit-tap-highlight-color: rgba(225, 255, 255, 0.2);
 }
 ::selection {
   background-color: rgba(255, 255, 255, 0.15);
@@ -65,6 +66,14 @@ body::after {
   justify-content: center;
   align-items: flex-start;
 }
+.card-swiper .swiper-slide {
+  position: relative;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 .yoo .swiper-slide {
   aspect-ratio: 4/3;
   text-align: left;
@@ -89,6 +98,10 @@ body::after {
 .hero-swiper .swiper-slide {
   box-shadow: none !important;
 }
+
+.card-swiper .swiper-slide {
+  box-shadow: none !important;
+}
 .swiper-slide {
   position: relative;
   border-radius: 5px;
@@ -98,12 +111,20 @@ body::after {
   display: flex;
   align-items: flex-end;
 }
+#icon
+{
+  position: absolute;
+  width: 100px;
+}
 .content-body {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .hero-swiper .swiper-slide {
+  padding: 0 20px;
+}
+.card-swiper .swiper-slide {
   padding: 0 20px;
 }
 .content-reasons .swiper-slide 
