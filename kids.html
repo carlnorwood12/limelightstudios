@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <img src="limelight-01.svg" class="limelight" />
+      <a class="hamburger-icon hamburger-left">
+        <img src="twinkle.svg" class="twinkle" />
+      </a>
+      <a class="hamburger-icon hamburger-right">
+        <img src="twinkle.svg" class="twinkle" />
+      </a>
+    </header>
+    <div class="menu-overlay">
+      <div class="menu-cols">
+        <div class="col-2">
+          <div class="middle-logo">
+            <img src="limelight-01.svg" id="limelight" />
+          </div>
+          <div class="menu-link">
+            <a href="index.html">Home</a>
+          </div>
+          <div class="menu-link">
+            <a href="products.html">Contact</a>
+          </div>
+          <div class="menu-link">
+            <a href="servicing.html">About</a>
+          </div>
+          <div class="menu-link">
+            <a href="servicing.html">Blah</a>
+          </div>
+          <div class="menu-link">
+            <a href="servicing.html">Blah</a>
+          </div>
+          <div class="menu-link">
+            <div class="center-menulink">
+              <img src="log-in.svg" id="log-in" />
+              <a href="servicing.html">Login / Register</a>
+            </div>
+          </div>
+          <br />
+          <input type="text" placeholder="Search anything..." />
+        </div>
+      </div>
+    </div>
+    <div class="content-body">
+      <section class="content-section category">
+        <div class="swiper-slide testing" style="background-image: url(yellow.png); background-size: cover" onclick="location.href='kids.html';">
+          <div class="text-container-category">
+            <h1 class="category-h1" style="background: radial-gradient(circle farthest-corner at top center, #825b00 0%, #2b1e00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 25px; padding: 10px">Kids & Family</h1>
+            <p class="paragraph-category">Create long-lasting memories with the family!</p>
+          </div>
+        </div>
+      </section>
+      <section class="content-suggested" style="margin-top: 30px">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(alien_romulus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(blinktwice.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(borderlands.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(deadpool.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(ghostlight.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(itendswithus.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(longlegs.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center"></div>
+            <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center"></div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </section>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script></script>
+    <script>
+      const swiper2 = new Swiper(".hero-swiper", {
+        effect: "fade",
+        grabCursor: true,
+        centeredSlides: true,
+        autoplay: {
+          delay: 20000,
+          disableOnInteraction: false,
+        },
+      });
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 6,
+        spaceBetween: 10,
+        grabCursor: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 2, // bigger than 0px do this:
+          },
+          200: {
+            slidesPerView: 3, // bigger than 0px do this:
+          },
+          450: {
+            slidesPerView: 4, // bigger than 450px do this:
+          },
+          600: {
+            slidesPerView: 5, // bigger than 600px do this:
+          },
+          750: {
+            slidesPerView: 6, // bigger than 750px do this:
+          },
+          900: {
+            slidesPerView: 7, // bigger than 900px do this:
+          },
+          1050: {
+            slidesPerView: 8, // bigger than 900px do this:
+          },
+          1200: {
+            slidesPerView: 9, // bigger than 900px do this:
+          },
+        },
+        simulateTouch: true,
+        mousewheel: {
+          invert: false,
+          forceToAxis: true,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true,
+          hide: true,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+      var swiper = new Swiper(".yoo", {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        grabCursor: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1, // bigger than 0px do this:
+          },
+          200: {
+            slidesPerView: 2, // bigger than 0px do this:
+          },
+          450: {
+            slidesPerView: 3, // bigger than 450px do this:
+          },
+          600: {
+            slidesPerView: 4, // bigger than 600px do this:
+          },
+          750: {
+            slidesPerView: 5, // bigger than 600px do this:
+          },
+        },
+        simulateTouch: true,
+        mousewheel: {
+          invert: false,
+          forceToAxis: true,
+        },
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true,
+          hide: true,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+    <script src="cursor-trail.min.js"></script>
+    <script>
+      cursorTrail({
+        paused: false,
+        pattern: "colorGlitter",
+        animationType: "swing",
+        theme: "dark", // dark, light
+      });
+    </script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <script>
+      window.onscroll = function () {
+        scrollRotate();
+      };
+      function scrollRotate() {
+        let images = document.querySelectorAll("#twinkle1, #twinkle3");
+        images.forEach(function (image) {
+          image.style.transform = "rotate(" + window.pageYOffset / 2 + "deg)";
+        });
+      }
+    </script>
+    <script src="https://unpkg.com/gsap@3.9.1/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script>
+      const text = new SplitType(".title-join", {
+        type: "chars",
+      });
+      gsap.from(text.chars, {
+        opacity: 0,
+        y: 20,
+        stagger: 0.05,
+        duration: 1,
+        ease: "circ.out",
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+        $("header").click(function () {
+          if ($(".twinkle").hasClass("rotate")) {
+            $(".twinkle").removeClass("rotate");
+          } else {
+            $(".twinkle").addClass("rotate");
+          }
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

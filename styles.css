@@ -106,7 +106,12 @@ body::after {
 .hero-swiper .swiper-slide {
   padding: 0 20px;
 }
-.content-reasons .swiper-slide {
+.content-reasons .swiper-slide 
+{
+  padding: 20px;
+}
+.content-reasons
+{
   padding: 0 20px;
 }
 .content-section {
@@ -121,7 +126,7 @@ body::after {
   color: #0d1107;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
-  font-size: clamp(1.25rem, -1.25rem + 5vw, 1.875rem);
+  font-size: clamp(1.0625rem, -0.9375rem + 4vw, 1.5625rem);
   z-index: 100;
 }
 .title {
@@ -161,6 +166,11 @@ body::after {
   margin-bottom: 20px;
   max-width: 600px;
 }
+.paragraph-category
+{
+  z-index: 99;
+  font-size: 12px;
+}
 .paragraph-join {
   z-index: 99;
   color: rgba(0, 0, 0, 0.75);
@@ -188,6 +198,13 @@ body::after {
 .button:first-of-type {
   margin-right: 5px;
   filter: grayscale(1);
+}
+.category
+{
+  background-image: url(yellow.png);
+  background-size: cover;
+  height: 300px;
+
 }
 .button:hover {
   transform: scale(1.05);
@@ -432,11 +449,20 @@ video {
   object-fit: cover;
 }
 .text-container-hero {
-  width: 100%;
+  background-color: red;
   position: absolute;
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.text-container-category
+{
+  position: absolute;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .hamburger-icon {
   position: absolute;
