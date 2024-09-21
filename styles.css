@@ -106,17 +106,6 @@ body::after {
 .hero-swiper .swiper-slide {
   padding: 0 20px;
 }
-.hero-swiper .swiper-slide::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-  z-index: 1;
-  pointer-events: none;
-}
 .content-reasons .swiper-slide {
   padding: 0 20px;
 }
@@ -185,18 +174,20 @@ body::after {
   z-index: 99;
   font-size: 13px;
   border-radius: 30px;
-  background: linear-gradient(#000000, #030c00) padding-box, linear-gradient(to bottom, #b6ff9e, #374c2f) border-box;
-  border: 1px solid transparent;
-  color: #b6ff9e;
-  text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.3);
+  background-image: url(buttonbackground.svg);
+  filter: hue-rotate(250deg);
+  background-size: cover;
+  background-position: center center;
+  border: none;
+  color: black;
   padding: 10px 15px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 .button:first-of-type {
-  filter: grayscale(1);
   margin-right: 5px;
+  filter: grayscale(1);
 }
 .button:hover {
   transform: scale(1.05);
@@ -247,10 +238,9 @@ body::after {
   }
 }
 #play {
-  width: 13px;
-  height: 12px;
+  width: 15px;
   vertical-align: middle;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 #hour {
   width: 12px;
@@ -278,10 +268,6 @@ body::after {
 }
 .swiper-scrollbar-drag {
   background-color: #fff;
-}
-.swiper-scrollbar {
-  background-color: #000;
-  height: 1px;
 }
 .paragraph-intro {
   line-height: 20px;
@@ -506,12 +492,23 @@ video {
   width: 100%;
   height: 100%;
 }
-.menu-link {
+.menu-link:not(:last-of-type) 
+{
   position: relative;
   margin-left: 20px;
   width: max-content;
   margin-top: 20px;
   z-index: 99;
+}
+.center-menulink
+{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+#log-in
+{
+  width: 12px;
 }
 a {
   text-decoration: none;
@@ -522,8 +519,20 @@ a {
 .menu-link a {
   font-size: 20px;
   color: white;
-  font-weight: 100;
+  font-weight: 500;
   cursor: pointer;
+}
+.menu-link:nth-of-type(7)
+{
+  margin-left: 20px;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.45);
+}
+.menu-link:nth-of-type(7) a 
+{
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 100;
+    font-size: 12px;
 }
 .menu-link a:hover {
   color: #f0ff9e;
