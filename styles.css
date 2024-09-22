@@ -129,12 +129,34 @@ body::after {
 .content-reasons .swiper-slide {
   padding: 20px;
 }
+.grid > * {
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
+}
+.grid > :last-child 
+{
+  background: #d1c0eb;
+  border-radius: 16px;
+  
+}
+.grid > :first-child {
+  background-color: #d1c0eb;
+}
+.grid > :nth-child(2) {
+  background-color: white;
+}
+.grid > :nth-child(3) 
+{
+  background-color: white;
+}
+.container {
+  height: clamp(25rem, -25rem + 100vw, 37.5rem);
+  aspect-ratio: 1;
+}
 .content-reasons {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  width: 100%;
 }
 .content-section {
   position: relative;
@@ -145,14 +167,14 @@ body::after {
   height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
 }
 .title-join {
-  color: #0d1107;
+  color: black;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
   font-size: clamp(1.0625rem, -0.9375rem + 4vw, 1.5625rem);
   z-index: 100;
 }
 .title {
-  color: #ffffff;
+  color: black;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
   font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
@@ -174,10 +196,6 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(cardbackground.svg);
-  filter: saturate(1.5);
-  background-size: cover;
-  background-position: center center;
   z-index: 1;
   pointer-events: none;
 }
@@ -229,9 +247,6 @@ body::after {
 .button:hover {
   transform: scale(1.05);
   text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.5);
-}
-.first-swiper {
-  background-color: red;
 }
 .button::after {
   content: "";
@@ -363,6 +378,10 @@ body::after {
   left: 0;
   width: 15px;
 }
+#background {
+  position: absolute;
+  z-index: -9;
+}
 #twinkle2 {
   position: absolute;
   left: 50%;
@@ -437,7 +456,6 @@ video {
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
   padding: 5px 10px;
   max-height: 150px;
-  background-color: red;
 }
 .h1-content {
   height: 40px;
@@ -473,7 +491,6 @@ video {
   object-fit: cover;
 }
 .text-container-hero {
-  background-color: red;
   position: absolute;
   display: flex;
   justify-content: center;

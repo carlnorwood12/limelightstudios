@@ -1,4 +1,4 @@
-<svg class="main svelte-1ahfjoa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 700 525"><style>.multiply { mix-blend-mode: multiply }
+<svg class="main svelte-1ahfjoa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 700 700"><style>.multiply { mix-blend-mode: multiply }
             .normal { mix-blend-mode: normal }
             .overlay { mix-blend-mode: overlay }
             .screen { mix-blend-mode: screen }
@@ -13,4 +13,4 @@
             .difference { mix-blend-mode: difference }
             .exclusion { mix-blend-mode: exclusion }
             .hue { mix-blend-mode: hue }
-        </style><defs><filter id="blur1" width="120%" height="120%" filterUnits="userSpaceOnUse" x="-10%" y="-10%"><feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="700" height="525" fill="#130a20"></rect><g filter="url(#blur1)"><circle cy="251.5" cx="9" r="200" fill="#261541" class="normal svelte-1ahfjoa"></circle></g></svg>
+        </style><defs><filter id="blur1" width="120%" height="120%" filterUnits="userSpaceOnUse" x="-10%" y="-10%"><feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="700" height="700" fill="#000"></rect><g filter="url(#blur1)"><circle cy="376" cx="350" r="200" fill="#d1c0eb" class="normal svelte-1ahfjoa"></circle></g></svg>
