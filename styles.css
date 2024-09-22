@@ -36,7 +36,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(blurry_background.png);
+  background-image: url(backgorund.png);
   background-size: cover;
   opacity: 0.5;
 }
@@ -111,8 +111,7 @@ body::after {
   display: flex;
   align-items: flex-end;
 }
-#icon
-{
+#icon {
   position: absolute;
   width: 100px;
 }
@@ -127,12 +126,10 @@ body::after {
 .card-swiper .swiper-slide {
   padding: 0 20px;
 }
-.content-reasons .swiper-slide 
-{
+.content-reasons .swiper-slide {
   padding: 20px;
 }
-.content-reasons
-{
+.content-reasons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,7 +174,8 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(buttonbackground.svg);
+  background-image: url(cardbackground.svg);
+  filter: saturate(1.5);
   background-size: cover;
   background-position: center center;
   z-index: 1;
@@ -191,8 +189,7 @@ body::after {
   margin-bottom: 20px;
   max-width: 600px;
 }
-.paragraph-category
-{
+.paragraph-category {
   z-index: 99;
   font-size: 12px;
 }
@@ -224,12 +221,10 @@ body::after {
   margin-right: 5px;
   filter: grayscale(1);
 }
-.category
-{
+.category {
   background-image: url(yellow.png);
   background-size: cover;
   height: 300px;
-
 }
 .button:hover {
   transform: scale(1.05);
@@ -366,7 +361,7 @@ body::after {
 #twinkle1 {
   position: absolute;
   left: 0;
-  width: clamp(0.9375rem, -0.2344rem + 3.75vw, 1.875rem);
+  width: 15px;
 }
 #twinkle2 {
   position: absolute;
@@ -382,7 +377,7 @@ body::after {
 #twinkle3 {
   position: absolute;
   right: 0;
-  width: clamp(0.9375rem, -0.2344rem + 3.75vw, 1.875rem);
+  width: 15px;
 }
 #top-rated-video {
   border-radius: 8px;
@@ -441,7 +436,7 @@ video {
   border-radius: 8px;
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
   padding: 5px 10px;
-  max-height: 160px;
+  max-height: 150px;
   background-color: red;
 }
 .h1-content {
@@ -463,8 +458,7 @@ video {
   object-fit: cover;
   border-radius: 5px;
 }
-#mask
-{
+#mask {
   object-fit: cover;
   background-color: #000000b0;
   width: 100%;
@@ -485,8 +479,7 @@ video {
   justify-content: center;
   flex-direction: column;
 }
-.text-container-category
-{
+.text-container-category {
   position: absolute;
   gap: 20px;
   display: flex;
@@ -543,27 +536,27 @@ video {
 .menu-cols {
   display: flex;
 }
+.testing {
+  filter: saturate(1.5);
+}
 video {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.menu-link:not(:last-of-type) 
-{
+.menu-link:not(:last-of-type) {
   position: relative;
   margin-left: 20px;
   width: max-content;
   margin-top: 15px;
   z-index: 99;
 }
-.center-menulink
-{
+.center-menulink {
   display: flex;
   gap: 5px;
   align-items: center;
 }
-#log-in
-{
+#log-in {
   width: 12px;
 }
 a {
@@ -577,17 +570,15 @@ a {
   color: #d1c0eb;
   cursor: pointer;
 }
-.menu-link:nth-of-type(7)
-{
+.menu-link:nth-of-type(7) {
   margin-left: 20px;
   margin-top: 20px;
   color: rgba(255, 255, 255, 0.45);
 }
-.menu-link:nth-of-type(7) a 
-{
-    color: rgba(255, 255, 255, 0.45);
-    font-weight: 100;
-    font-size: 12px;
+.menu-link:nth-of-type(7) a {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 100;
+  font-size: 12px;
 }
 .menu-link a:hover {
   color: #f0ff9e;
@@ -640,4 +631,43 @@ header {
   justify-content: center;
   align-items: center;
   height: 50px;
+}
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 50% 50%;
+} /* ---- stats.js ---- */
+.count-particles {
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13e8e9;
+  font-size: 0.8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+.js-count-particles {
+  font-size: 1.1em;
+}
+#stats,
+.count-particles {
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#stats {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+.count-particles {
+  border-radius: 0 0 3px 3px;
 }

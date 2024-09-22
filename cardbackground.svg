@@ -13,4 +13,4 @@
             .difference { mix-blend-mode: difference }
             .exclusion { mix-blend-mode: exclusion }
             .hue { mix-blend-mode: hue }
-        </style><defs><filter id="blur1" width="120%" height="120%" filterUnits="userSpaceOnUse" x="-10%" y="-10%"><feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="700" height="525" fill="#130a20"></rect><g filter="url(#blur1)"><circle cy="251.5" cx="9" r="200" fill="#261541" class="normal svelte-1ahfjoa"></circle></g></svg>
+        </style><defs><filter id="blur1" width="120%" height="120%" filterUnits="userSpaceOnUse" x="-10%" y="-10%"><feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="700" height="525" fill="#d1c0eb"></rect><g filter="url(#blur1)"><circle cy="516" cx="691" r="500" fill="#f0ff9e" class="normal svelte-1ahfjoa"></circle><circle cy="242.5" cx="365" r="200" fill="#ffffff" class="normal svelte-1ahfjoa"></circle><circle cy="148.5" cx="691" r="200" fill="#d1c0eb" class="normal svelte-1ahfjoa"></circle></g></svg>
