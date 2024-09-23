@@ -1003,7 +1003,7 @@ video {
 .uk-accordion-icon {
   flex: none;
   transition: 0.3s transform;
-  color: hsl(var(--muted-foreground));
+  color: #d1c0eb;
 }
 .uk-open > .uk-accordion-title > .uk-accordion-icon {
   transform: rotate(180deg);
