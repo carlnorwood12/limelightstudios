@@ -466,6 +466,12 @@ video {
   gap: 5px;
   box-sizing: border-box;
 }
+hr {
+  width: 90%;
+  height: 1px;
+  border: 0;
+  border-top: 0.5px solid #d1c0eb;
+}
 .h1-content picture img {
   display: inline-block;
   vertical-align: middle;
