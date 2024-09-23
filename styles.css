@@ -147,7 +147,7 @@ video {
   z-index: 999;
 }
 .container {
-  height: clamp(21.875rem, -28.125rem + 100vw, 34.375rem);
+  height: clamp(15.625rem, 7.2917rem + 33.3333vw, 28.125rem);
   aspect-ratio: 1;
   z-index: 99;
 }
@@ -467,7 +467,7 @@ video {
   box-sizing: border-box;
 }
 hr {
-  width: 90%;
+  width: 85%;
   height: 1px;
   border: 0;
   border-top: 0.5px solid #d1c0eb;
