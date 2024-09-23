@@ -61,7 +61,6 @@
                            <video playsinline autoplay muted loop>
                               <source src="alien.mp4" type="video/mp4">
                            </video>
-                           <img src="mask2.svg" id="mask" />
                         </div>
                         <h1 class="title">Alien: Romulus</h1>
                         <div class="metadata-group">
@@ -90,6 +89,10 @@
                         <button id="mute-video" type="button">
                         <img src="volume-off.svg" id="volume-off" />
                         <img src="volume.svg" id="volume-on" />
+                        </button>
+                        <button id="hide" type="button">
+                           <img src="eye.svg" id="eye" />
+                           <img src="eye-off.svg" id="eye-off" />
                         </button>
                      </div>
                      <div class="swiper-slide">
@@ -560,7 +563,12 @@
             $('#volume-off').toggle();
             $('#volume-on').toggle(); 
          });
-
+         $("#hide").click( function ()
+         {
+            $('#eye').toggle();
+            $(".swiper-slide > *:nth-child(n+2):not(:nth-last-child(-n+2))").toggle();
+            $('#eye-off').toggle(); 
+         });
          });
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

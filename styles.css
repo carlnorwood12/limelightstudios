@@ -579,16 +579,41 @@ video {
 #log-in {
   width: 12px;
 }
-#volume-off {
+#volume-off 
+{
   width: 15px;
 }
 #volume-on {
   display: none;
   width: 15px;
 }
+#eye {
+  width: 15px;
+}
+#eye-off {
+  display: none;
+  width: 15px;
+}
 #mute-video {
   position: absolute;
   left: 20px;
+  bottom: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  background-image: url(blob2.svg);
+  background-size: cover;
+  background-position: center center;
+  z-index: 9999;
+}
+#hide
+{
+  position: absolute;
+  left: 60px;
   bottom: 20px;
   width: 30px;
   height: 30px;
