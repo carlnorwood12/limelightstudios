@@ -57,8 +57,11 @@
                   <div class="swiper-wrapper">
                      <div class="swiper-slide">
                         <div class="mask-wrapper">
-                           <img src="alien.webp" id="movie_hero" />
-                           <img src="mask.svg" id="mask" />
+                           /* needs to be AAC not AC3 */
+                           <video playsinline autoplay muted loop>
+                              <source src="alien.mp4" type="video/mp4">
+                           </video>
+                           <img src="mask2.svg" id="mask" />
                         </div>
                         <h1 class="title">Alien: Romulus</h1>
                         <div class="metadata-group">
@@ -84,6 +87,10 @@
                            <span>Start Membership</span>
                            </button>
                         </div>
+                        <button id="mute-video" type="button">
+                        <img src="volume-off.svg" id="volume-off" />
+                        <img src="volume.svg" id="volume-on" />
+                        </button>
                      </div>
                      <div class="swiper-slide">
                         <div class="mask-wrapper">
@@ -309,68 +316,68 @@
             <ul class="uk-accordion" uk-accordion>
                <li>
                   <a class="uk-accordion-title" href>
-                     Item 1
+                     Fix the cinema room stupid ass jit
                      <span class="uk-accordion-icon">
                         <uk-icon icon="chevron-down"></uk-icon>
                      </span>
                   </a>
                   <div class="uk-accordion-content">
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                     <p>sit down</p>
                   </div>
                </li>
                <li>
                   <a class="uk-accordion-title" href>
-                     Item 1
+                     lemme bring my snacks
                      <span class="uk-accordion-icon">
                         <uk-icon icon="chevron-down"></uk-icon>
                      </span>
                   </a>
                   <div class="uk-accordion-content">
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                     <p>hell no fatass</p>
                   </div>
                </li>
                <li>
                   <a class="uk-accordion-title" href>
-                     Item 1
+                     Yall keep trying to finesse me for snacks
                      <span class="uk-accordion-icon">
                         <uk-icon icon="chevron-down"></uk-icon>
                      </span>
                   </a>
                   <div class="uk-accordion-content">
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                     <p>bring yo own then</p>
                   </div>
                </li>
                <li>
                   <a class="uk-accordion-title" href>
-                     Item 1
+                     im hungry
                      <span class="uk-accordion-icon">
                         <uk-icon icon="chevron-down"></uk-icon>
                      </span>
                   </a>
                   <div class="uk-accordion-content">
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                     <p>yo fatass already ate</p>
                   </div>
                </li>
                <li>
                   <a class="uk-accordion-title" href>
-                     Item 2
+                     do you have popcorn
                      <span class="uk-accordion-icon">
                         <uk-icon icon="chevron-down"></uk-icon>
                      </span>
                   </a>
                   <div class="uk-accordion-content">
-                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+                     <p>no</p>
                   </div>
                </li>
                <li>
                   <a class="uk-accordion-title" href>
-                     Item 3
+                     lemme get a refund 
                      <span class="uk-accordion-icon">
                         <uk-icon icon="chevron-down"></uk-icon>
                      </span>
                   </a>
                   <div class="uk-accordion-content">
-                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                     <p>yes</p>
                   </div>
                </li>
             </ul>
@@ -399,11 +406,6 @@
            loop: true,
            grabCursor: true,
            centeredSlides: true,
-           autoplay: 
-           {
-             delay: 20000,
-             disableOnInteraction: false,
-           },
          });
          var swiper = new Swiper(".mySwiper", {
            slidesPerView: 6,
@@ -544,6 +546,21 @@
                $(".twinkle").addClass("rotate");
              }
            });
+           $("#mute-video").click( function ()
+           {
+               if( $("video").prop('muted') ) 
+               {
+                  $("video").prop('muted', false);
+               } 
+               else 
+               {
+                  $("video").prop('muted', true);
+               }
+
+            $('#volume-off').toggle();
+            $('#volume-on').toggle(); 
+         });
+
          });
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

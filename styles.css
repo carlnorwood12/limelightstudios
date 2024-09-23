@@ -196,7 +196,7 @@ video {
   color: rgba(255, 255, 255, 0.75);
   font-size: 14px;
   margin-bottom: 20px;
-  max-width: 600px;
+  max-width: 550px;
 }
 .paragraph-category {
   z-index: 99;
@@ -479,8 +479,7 @@ hr {
   width: 100%;
   height: 100%;
 }
-#mask2
-{
+#mask2 {
   object-fit: cover;
   background-color: #00000019;
   width: 100%;
@@ -579,6 +578,29 @@ video {
 }
 #log-in {
   width: 12px;
+}
+#volume-off {
+  width: 15px;
+}
+#volume-on {
+  display: none;
+  width: 15px;
+}
+#mute-video {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  background-image: url(blob2.svg);
+  background-size: cover;
+  background-position: center center;
+  z-index: 9999;
 }
 a {
   text-decoration: none;
