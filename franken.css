@@ -123,22 +123,6 @@ table {
   border-collapse: collapse;
 }
 button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-feature-settings: inherit;
-  font-variation-settings: inherit;
-  font-size: 100%;
-  font-weight: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  margin: 0;
-  padding: 0;
-}
-button,
 select {
   text-transform: none;
 }
@@ -211,11 +195,6 @@ dialog {
 }
 textarea {
   resize: vertical;
-}
-input::placeholder,
-textarea::placeholder {
-  opacity: 1;
-  color: #9ca3af;
 }
 button,
 [role="button"] {
@@ -980,7 +959,11 @@ video {
   --uk-list-bullet-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%220%200%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23f9fafb%22%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E);
 }
 .uk-accordion {
-  background-color: black;
+
+  background-image: url(brand.png); 
+  background-size: cover;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   border-radius: 8px;
 }
 .uk-accordion li
@@ -997,15 +980,11 @@ video {
   padding-right: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
-
-  background: radial-gradient(ellipse farthest-corner at bottom center, #fff 0%, #d1c0eb 50%, #978baa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .uk-accordion-icon {
   flex: none;
   transition: 0.3s transform;
-  color: #d1c0eb;
+  color: black;
 }
 .uk-open > .uk-accordion-title > .uk-accordion-icon {
   transform: rotate(180deg);
@@ -1016,7 +995,8 @@ video {
 .uk-accordion-content {
   display: flow-root;
   padding-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.75)
 }
 .uk-accordion-content[hidden] {
   display: none;

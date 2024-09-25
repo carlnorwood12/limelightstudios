@@ -20,6 +20,10 @@
   --outer-radius: 24px;
   --inner-radius: 19px;
 }
+::placeholder
+{
+  color: black;
+}
 body,
 html {
   position: absolute;
@@ -38,7 +42,7 @@ body::before {
   height: 100%;
   background-image: url(backgorund.png);
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 @font-face {
   font-family: "Subjectivity";
@@ -165,7 +169,11 @@ video {
   z-index: 100;
 }
 .title {
-  color: rgba(255, 255, 255, 0.75);
+  background: radial-gradient(ellipse farthest-corner at bottom center, #fff 0%, #d1c0eb 50%, #978baa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: grayscale(1);
+  mix-blend-mode: difference;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
   font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
@@ -436,17 +444,14 @@ video {
   vertical-align: middle;
 }
 .category-h1:nth-child(1) {
-  font-size: clamp(1.125rem, 0.875rem + 0.5vw, 1.1875rem);
-  background: linear-gradient(to right, #2b0080 0%, #5500ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.0625rem, 0.9375rem + 0.5vw, 1.25rem);
   filter: brightness(1.2);
 }
 .testing {
   border-radius: 8px;
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
   padding: 5px 10px;
-  max-height: 150px;
+  max-height: 160px;
 }
 .h1-content {
   height: 40px;
@@ -529,8 +534,9 @@ hr {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
-  background-image: url(button2.svg);
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   z-index: 999 !important;
 }
@@ -579,8 +585,7 @@ video {
 #log-in {
   width: 12px;
 }
-#volume-off 
-{
+#volume-off {
   width: 15px;
 }
 #volume-on {
@@ -610,8 +615,7 @@ video {
   background-position: center center;
   z-index: 9999;
 }
-#hide
-{
+#hide {
   position: absolute;
   left: 60px;
   bottom: 20px;
@@ -635,7 +639,7 @@ a {
 }
 .menu-link a {
   font-size: 17px;
-  color: #d1c0eb;
+  color: white;
   cursor: pointer;
 }
 .menu-link:nth-of-type(7) {
@@ -644,7 +648,7 @@ a {
   color: rgba(255, 255, 255, 0.45);
 }
 .menu-link:nth-of-type(7) a {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 100;
   font-size: 12px;
 }
@@ -676,9 +680,6 @@ header {
   display: flex;
   justify-content: center;
   z-index: 1000;
-}
-::placeholder {
-  color: black;
 }
 .twinkle {
   width: 15px;
