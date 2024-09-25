@@ -53,6 +53,14 @@
          <div class="content-body">
             <section class="content-section hero">
                <div class="swiper hero-swiper">
+                  <button id="mute-video" type="button">
+                  <img src="volume-off.svg" id="volume-off" />
+                  <img src="volume.svg" id="volume-on" />
+                  </button>
+                  <button id="hide" type="button">
+                  <img src="eye.svg" id="eye" />
+                  <img src="eye-off.svg" id="eye-off" />
+                  </button>
                   <div class="swiper-wrapper">
                      <div class="swiper-slide">
                         <div class="mask-wrapper">
@@ -85,19 +93,13 @@
                            <span>Start Membership</span>
                            </button>
                         </div>
-                        <button id="mute-video" type="button">
-                        <img src="volume-off.svg" id="volume-off" />
-                        <img src="volume.svg" id="volume-on" />
-                        </button>
-                        <button id="hide" type="button">
-                           <img src="eye.svg" id="eye" />
-                           <img src="eye-off.svg" id="eye-off" />
-                        </button>
                      </div>
                      <div class="swiper-slide">
                         <div class="mask-wrapper">
-                           <img src="blinktwice_banner.png" id="movie_hero" />
-                           <img src="mask.svg" id="mask" />
+                           /* needs to be AAC not AC3 */
+                           <video playsinline autoplay muted loop>
+                              <source src="blink_twice.mp4" type="video/mp4">
+                           </video>
                         </div>
                         <h1 class="title">Blink Twice</h1>
                         <div class="metadata-group">
@@ -559,14 +561,14 @@
                {
                   $("video").prop('muted', true);
                }
-
+         
             $('#volume-off').toggle();
             $('#volume-on').toggle(); 
          });
          $("#hide").click( function ()
          {
             $('#eye').toggle();
-            $(".swiper-slide > *:nth-child(n+2):not(:nth-last-child(-n+2))").toggle();
+            $(".swiper-slide > *:nth-child(n+2)").toggle();
             $('#eye-off').toggle(); 
          });
          });

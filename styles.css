@@ -20,8 +20,7 @@
   --outer-radius: 24px;
   --inner-radius: 19px;
 }
-::placeholder
-{
+::placeholder {
   color: black;
 }
 body,
@@ -279,8 +278,11 @@ video {
   position: relative;
 }
 #trendingtitle {
-  color: #d1c0eb;
-  font-weight: 500;
+  background: #d1c0eb;
+  background: radial-gradient(ellipse farthest-corner at bottom center, #d1c0eb 0%, #a27fd6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
   font-size: 17px;
 }
 @media screen and (max-width: 350px) {
