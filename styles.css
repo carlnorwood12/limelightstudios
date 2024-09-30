@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(225, 255, 255, 0.2);
+  -webkit-tap-highlight-color: rgba(225, 255, 255, 0);
 }
 ::selection {
   background-color: rgba(255, 255, 255, 0.15);
@@ -68,6 +68,11 @@ html {
 .yoo .swiper-slide {
   aspect-ratio: 4/3;
   text-align: left;
+}
+
+.button:active
+{
+  filter: brightness(1.3);
 }
 
 /*
