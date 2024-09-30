@@ -8,9 +8,9 @@
       }
     </style>
     <linearGradient id="linear-gradient" x1="748.13" y1="-89.2" x2="704.72" y2="245.41" gradientTransform="translate(0 154) scale(1 -1)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#abe4ff"/>
-      <stop offset=".46" stop-color="#e6f7ff"/>
-      <stop offset="1" stop-color="#abe4ff"/>
+      <stop offset="0" stop-color="#a2a2f5"/>
+      <stop offset=".46" stop-color="#9595f4"/>
+      <stop offset="1" stop-color="#a2a2f5"/>
     </linearGradient>
   </defs>
   <rect class="cls-1" width="1452.85" height="151.79"/>
