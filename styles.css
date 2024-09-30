@@ -37,6 +37,7 @@ html {
   left: 0px;
   height: 100%;
   width: 100%;
+  background: radial-gradient(circle at 50% 50%, #14142b 10%, #0a0a15 70%);
 }
 @font-face {
   font-family: "Subjectivity";
