@@ -30,18 +30,13 @@ html {
   padding: 0;
   width: 100%;
   height: 100vh;
-  background-color: #000000;
 }
-body::before {
-  content: "";
+.radial-gradient {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 0px;
+  left: 0px;
   height: 100%;
-  background-image: url(backgorund.png);
-  background-size: cover;
-  opacity: 0.6;
+  width: 100%;
 }
 @font-face {
   font-family: "Subjectivity";
@@ -156,7 +151,11 @@ video {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: clamp(25rem, 17.1875rem + 25vw, 31.25rem);
+  height: clamp(28.125rem, 19.7917rem + 33.3333vw, 40.625rem);
+}
+.wave {
+  position: absolute;
+  z-index: -99;
 }
 .title-join {
   background: radial-gradient(ellipse farthest-corner at bottom center, #fff 0%, #d1c0eb 50%, #978baa 100%);
@@ -171,8 +170,6 @@ video {
   background: radial-gradient(ellipse farthest-corner at bottom center, #fff 0%, #d1c0eb 50%, #978baa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: grayscale(1);
-  mix-blend-mode: difference;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
   font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
@@ -278,11 +275,8 @@ video {
   position: relative;
 }
 #trendingtitle {
-  background: #d1c0eb;
-  background: radial-gradient(ellipse farthest-corner at bottom center, #d1c0eb 0%, #a27fd6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+  color: white;
+  opacity: 0.5;
   font-size: 17px;
 }
 @media screen and (max-width: 350px) {
@@ -451,7 +445,8 @@ video {
 }
 .testing {
   border-radius: 8px;
-  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
+  backdrop-filter: blur(10px);
   padding: 5px 10px;
   max-height: 160px;
 }
@@ -671,7 +666,8 @@ input {
   max-width: 150px;
 }
 .limelight {
-  width: 150px;
+  max-width: 170px;
+  width: 30%;
 }
 header {
   position: fixed;

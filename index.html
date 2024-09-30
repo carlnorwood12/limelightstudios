@@ -9,6 +9,8 @@
       <link rel="stylesheet" href="styles.css" />
    </head>
    <body>
+             <div class="radial-gradient"></div>
+
       <div id="particles-js">
          <header>
             <img src="limelight-01.svg" class="limelight" />
@@ -51,7 +53,7 @@
             </div>
          </div>
          <div class="content-body">
-            <section class="content-section hero">
+         <section class="content-section hero">
                <div class="swiper hero-swiper">
                   <button id="mute-video" type="button">
                   <img src="volume-off.svg" id="volume-off" />
@@ -149,6 +151,8 @@
                      <div class="swiper-slide" style="background-image: url(thecrow.jpg); background-size: cover; background-position: center center"></div>
                      <div class="swiper-slide" style="background-image: url(theunion.jpg); background-size: cover; background-position: center center"></div>
                      <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center"></div>
+                                          <div class="swiper-slide" style="background-image: url(twisters.jpg); background-size: cover; background-position: center center"></div>
+
                   </div>
                   <div class="swiper-scrollbar"></div>
                </div>
@@ -266,6 +270,7 @@
                      </video>
                   </div>
                   <div class="swiper hero-swiper" style="height: 100%; border-radius: 8px;">
+                     <img src="wave-haikei.svg" class="wave" />
                      <div class="swiper-wrapper">
                         <div class="swiper-slide">
                            <div class="text-container-hero">
@@ -438,6 +443,12 @@
              1200: {
                slidesPerView: 9, // bigger than 900px do this:
              },
+             1350: {
+               slidesPerView: 10, // bigger than 900px do this:
+             },
+              1500: {
+               slidesPerView: 11, // bigger than 900px do this:
+             },
            },
            simulateTouch: true,
            mousewheel: {
@@ -478,8 +489,11 @@
              750: {
                slidesPerView: 5, // bigger than 600px do this:
              },
-             1100: {
+             900: {
                slidesPerView: 6, // bigger than 600px do this:
+             },
+             1050: {
+               slidesPerView: 7, // bigger than 600px do this:
              },
            },
            simulateTouch: true,
@@ -543,7 +557,16 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
       <script>
-         $(document).ready(function () {
+         $(document).mousemove(function(event) 
+         {
+            var windowWidth = $(window).width();
+            var windowHeight = $(window).height();
+            var scrollX = $(window).scrollLeft();
+            var scrollY = $(window).scrollTop();
+            var mouseXpercentage = Math.round((event.pageX - scrollX) / windowWidth * 100);
+            var mouseYpercentage = Math.round((event.pageY - scrollY) / windowHeight * 100);
+            $('.radial-gradient').css('background', 'radial-gradient(circle at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #14142b 10%, #0a0a15 70%)');
+         });
            $("header").click(function () {
              if ($(".twinkle").hasClass("rotate")) {
                $(".twinkle").removeClass("rotate");
@@ -570,7 +593,6 @@
             $('#eye').toggle();
             $(".swiper-slide > *:nth-child(n+2)").toggle();
             $('#eye-off').toggle(); 
-         });
          });
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js" integrity="sha512-+LXqbM6YLduaaxq6kNcjMsQgZQUTdZp7FTaArWYFt1nxyFKlQSMdIF/WQ/VgsReERwRD8w/9H9cahFx25UDd+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
