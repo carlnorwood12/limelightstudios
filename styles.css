@@ -70,6 +70,21 @@ html {
   aspect-ratio: 4/3;
   text-align: left;
 }
+@media screen and (max-width: 800px) 
+{
+  video
+  {
+    display: none !important;
+  }
+  #mute-video
+  {
+    display: none !important;
+  }
+  #hide
+  {
+    display: none !important;
+  }
+}
 
 .button:active
 {
