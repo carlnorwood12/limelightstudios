@@ -20,7 +20,7 @@
   --inner-radius: 19px;
 }
 ::placeholder {
-  color: black;
+  color: white;
 }
 picture {
   filter: grayscale(1);
@@ -584,23 +584,12 @@ hr {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
+  background: rgba(10, 10, 21, 0.95);
+  border-bottom: 1px solid white;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   z-index: 999 !important;
-}
-.menu-overlay::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(https://ik.imagekit.io/carl/organicme/svgs/blob.svg?updatedAt=1707298248742);
-  opacity: 0.1;
-  z-index: 0;
-  pointer-events: none;
 }
 .col-2 {
   flex: 1;
@@ -701,8 +690,8 @@ a {
   outline: none;
 }
 input {
-  color: black;
-  background-color: #f0ff9e;
+  color: white;
+  background-color: transparent;
   border: none;
   height: 30px;
   text-align: center;
