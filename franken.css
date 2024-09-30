@@ -977,7 +977,8 @@ video {
   justify-content: space-between;
   font-size: 15px;
   overflow: hidden;
-  color: #a3a3d4;
+  color: #8686cb;
+  font-weight: 500;
   align-items: flex-start;
   padding-left: 0;
   padding-right: 0;

@@ -23,6 +23,10 @@
 ::placeholder {
   color: black;
 }
+picture
+{
+  filter: grayscale(1);
+}
 body,
 html {
   position: absolute;
@@ -275,9 +279,10 @@ video {
   padding: 10px 20px;
   position: relative;
 }
-#trendingtitle {
-  color: white;
-  opacity: 0.5;
+#trendingtitle 
+{
+  color: #5E5EB9;
+  mix-blend-mode: screen;
   font-size: 17px;
 }
 @media screen and (max-width: 350px) {
