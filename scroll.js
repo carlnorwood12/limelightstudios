@@ -82,6 +82,11 @@ tl4.to(".content-suggested .swiper-slide", {
   duration: 1,
 });
 
+
+
+
+
+
 let tl5 = gsap.timeline({
   scrollTrigger: {
     trigger: ".content-releases .swiper-slide",
@@ -95,7 +100,14 @@ tl5.from(".content-releases .swiper-slide", {
   stagger: 0.125,
   y: 50,
   opacity: 0,
-  filter: "blur(5px)",
   duration: 1,
 });
+tl3.to(".content-releases .swiper-slide", {
+  stagger: 0.125,
+  y: 0,
+  opacity: 1,
+  duration: 1,
+});
+
+
 gsap.fromTo(".button", { scale: 0.8, opacity: 0, stagger: 0.2 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
