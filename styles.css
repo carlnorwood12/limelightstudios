@@ -56,7 +56,6 @@ html {
 
 .swiper {
   width: 100%;
-  padding: 10px 0px;
 }
 .hero-swiper .swiper-slide {
   position: relative;
@@ -65,6 +64,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.45);
 }
 .card-swiper .swiper-slide {
   position: relative;
@@ -73,13 +73,14 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.45);
 }
 .yoo .swiper-slide {
   aspect-ratio: 4/3;
   text-align: left;
 }
 @media screen and (max-width: 800px) {
-  video {
+  .content-section video {
     display: none !important;
   }
   #mute-video {
@@ -153,6 +154,30 @@ video {
   width: 100%;
   object-fit: cover;
 }
+.dif {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 90%;
+  -webkit-mask-image: linear-gradient(to left, black, transparent);
+  mask-image: linear-gradient(to left, black, transparent);
+  filter: url(#grain);
+  -webkit-filter: url(#grain);
+}
+.dif2 {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 65%;
+  -webkit-mask-image: linear-gradient(to left, black, transparent);
+  mask-image: linear-gradient(to left, black, transparent);
+  filter: url(#grain);
+  -webkit-filter: url(#grain);
+}
 .grid {
   position: relative;
 }
@@ -161,7 +186,9 @@ video {
   z-index: 999;
 }
 .container {
-  height: clamp(15.625rem, 7.2917rem + 33.3333vw, 28.125rem);
+  height: 350px;
+  background-color: rgba(0, 0, 0, 0.65);
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
   aspect-ratio: 1;
   z-index: 99;
 }
@@ -181,7 +208,6 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px clamp(0.9375rem, 0.7292rem + 0.8333vw, 1.25rem);
 }
 .content-section {
   position: relative;
@@ -196,20 +222,17 @@ video {
   z-index: -99;
 }
 .title-join {
-  background: #7a7af1;
-  background: linear-gradient(to right, #f0ff9e 10%, #7a7af1 100%);
+  background-image: url(swiper_pink.webp);
+  background-size: cover;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: "Subjectivity", sans-serif;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
-  font-size: clamp(1.0625rem, 0.5208rem + 2.1667vw, 1.875rem);
+  font-size: clamp(1.25rem, 0.8333rem + 1.6667vw, 1.875rem);
   z-index: 100;
 }
 .title {
-  background: radial-gradient(ellipse farthest-corner at bottom center, #fff 0%, #d1c0eb 50%, #978baa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
   font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
@@ -270,7 +293,6 @@ video {
   padding: 10px 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.5s ease;
 }
 .button:nth-of-type(2) {
   position: relative;
@@ -287,7 +309,6 @@ video {
   padding: 10px 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.5s ease;
 }
 .button:first-of-type {
   margin-right: 5px;
@@ -296,7 +317,7 @@ video {
 .category {
   background-image: url(yellow.png);
   background-size: cover;
-  height: 300px;
+  height: 350px;
 }
 .button:hover {
   transform: scale(1.05);
@@ -325,8 +346,9 @@ video {
 .content-suggested,
 .content-awards,
 .content-video,
+.content-reasons,
 .content-releases {
-  padding: 5px clamp(0.9375rem, 0.7292rem + 0.8333vw, 1.25rem);
+  padding: 0px 20px;
   position: relative;
 }
 .content-oops {
@@ -334,7 +356,8 @@ video {
   position: relative;
 }
 #trendingtitle {
-  color: #7a7af1;
+  color: #9ca1ed;
+  mix-blend-mode: screen;
   font-size: 17px;
 }
 @media screen and (max-width: 350px) {
@@ -493,15 +516,16 @@ video {
   vertical-align: middle;
 }
 .category-h1:nth-child(1) {
-  font-size: clamp(1.0625rem, 0.9375rem + 0.5vw, 1.25rem);
+  font-size: clamp(0.9375rem, -1.5625rem + 5vw, 1.5625rem);
   filter: brightness(1.2);
+  z-index: 999;
 }
 .testing {
   border-radius: 8px;
   background-color: rgba(10, 10, 21, 1);
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
   padding: 5px 10px;
-  max-height: 160px;
+  max-height: 200px;
 }
 .h1-content {
   height: 40px;
@@ -676,11 +700,10 @@ a {
 .menu-link:nth-of-type(7) {
   margin-left: 20px;
   margin-top: 20px;
-  color: rgba(255, 255, 255, 0.45);
 }
 .menu-link:nth-of-type(7) a {
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 100;
+  color: #5c5c77;
+  font-weight: 300;
   font-size: 12px;
 }
 .menu-link a:hover {

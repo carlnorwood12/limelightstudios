@@ -184,23 +184,20 @@ legend {
   padding: 0;
 }
 .uk-accordion {
-
   list-style: none;
   position: relative;
   border-radius: 8px;
-  background-color: rgba(10, 10, 21, 1);
+  background-color: rgba(0, 0, 0, 0.65);
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
   width: 100%;
   border-radius: 15px;
   padding: 20px;
 }
 
-.uk-accordion li:not(:last-child)
-{
+.uk-accordion li:not(:last-child) {
   border-bottom: 1px solid #201b27cd !important;
 }
-.uk-accordion li
-{
+.uk-accordion li {
   padding: 8px;
 }
 .uk-accordion-title {
@@ -208,7 +205,7 @@ legend {
   justify-content: space-between;
   font-size: 15px;
   overflow: hidden;
-  color: #9393DF;
+  color: #9393df;
   font-weight: 500;
   align-items: flex-start;
   padding-left: 0;
@@ -219,7 +216,7 @@ legend {
 .uk-accordion-icon {
   flex: none;
   transition: 0.3s transform;
-  color: #9393DF;
+  color: #9393df;
 }
 .uk-open > .uk-accordion-title > .uk-accordion-icon {
   transform: rotate(180deg);
