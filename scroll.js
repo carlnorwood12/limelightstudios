@@ -111,3 +111,4 @@ tl3.to(".content-releases .swiper-slide", {
 
 
 gsap.fromTo(".button", { scale: 0.8, opacity: 0, stagger: 0.2 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
+gsap.fromTo(".button2", { scale: 0.8, opacity: 0, stagger: 0.2 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
