@@ -32,17 +32,44 @@ let tl3 = gsap.timeline({
   scrollTrigger: {
     trigger: ".yoo .swiper-slide",
     start: "top bottom",
-    end: "bottom+=200 bottom",
+    end: "bottom bottom",
     scrub: true,
     id: "scrub",
   },
 });
-tl3.from(" .yoo .swiper-slide", {
-  scale: 0.95,
-  y: 10,
-  stagger: 0.05, 
+tl3.from(" .yo .swiper-slide", {
+  stagger: 0.125,
+  y: 50,
   opacity: 0,
-  filter: "grayscale(100%)",
-  ease: "power3.out",
+  duration: 1,
+});
+let tl4 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".content-suggested .swiper-slide",
+    start: "top bottom",
+    end: "bottom bottom",
+    scrub: true,
+    id: "scrub",
+  },
+});
+tl4.from(".content-suggested .swiper-slide", {
+  stagger: 0.125,
+  y: 50,
+  opacity: 0,
+  duration: 1,
+});
+let tl5 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".content-releases .swiper-slide",
+    start: "top bottom",
+    end: "bottom bottom",
+    scrub: true,
+    id: "scrub",
+  },
+});
+tl5.from(".content-releases .swiper-slide", {
+  stagger: 0.125,
+  y: 50,
+  opacity: 0,
   duration: 1,
 });
