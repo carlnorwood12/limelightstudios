@@ -3,6 +3,8 @@
    <head>
       <meta charset="UTF-8" />
       <title>Hello, world!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
       <link rel="stylesheet" href="franken.css" />
@@ -123,13 +125,15 @@
                         <p class="paragraph">When tech billionaire Slater King meets cocktail waitress Frida at his fundraising gala, he invites her to join him and his friends on a dream vacation on his private island. As strange things start to happen, Frida questions her reality.</p>
                         <div class="buttons">
                            <a href="servicing.html">
-                           <button class="button">
-                           <span>Book Tickets</span>
+                              <button class="button">
+                                 <span>Book Tickets</span>
+                              </button>
                            </a>
-                           </button>
-                           <button class="button">
-                           <span>Start Membership</span>
-                           </button>
+                            <a href="servicing.html">
+                              <button class="button2">
+                                 <span>Start Membership</span>
+                              </button>
+                           </a>
                         </div>
                      </div>
                   </div>
@@ -198,39 +202,47 @@
                </div>
                <div class="swiper yoo">
                   <div class="swiper-wrapper">
-                     <div class="swiper-slide testing" style="background-image: url(swiper_yellow.webp); background-size: cover" onclick="location.href='kids.html';">
+                     <div class="swiper-slide testing" style="background-image: url(swiper_orange.webp); background-size: cover" onclick="location.href='kids.html';">
                         <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #651500 0%, #220700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
-                           Family
+                           Comedy
                         </h1>
+                        <img src="performing-arts.svg" id="horror" />
                      </div>
                      <div class="swiper-slide testing" style="background-image: url(swiper_red.webp); background-size: cover;">
                         <h1 class="category-h1" style="background: radial-gradient(circle farthest-corner at top center, #640014 0%, #210007 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
                            Horror 
                         </h1>
+                        <img src="jack-o-lantern.svg" id="horror" />
                      </div>
                      <div class="swiper-slide testing" style="background-image: url(swiper_pink.webp); background-size: cover">
                         <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #210064 0%, #0b0021 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
                            Romantic
-                           
                         </h1>
+                        <img src="two-hearts.svg" id="horror" />
                      </div>
                      <div class="swiper-slide testing" style="background-image: url(swiper_blue.webp); background-size: cover;">
                         <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #000365 0%, #000122 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
-                           Feature
-                           
+                           Musical
                         </h1>
+                        <img src="musical-notes.svg" id="horror" />
                      </div>
                      <div class="swiper-slide testing" style="background-image: url(swiper_aqua.webp); background-size: cover">
                         <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #004e66 0%, #001a22 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
                            Sci-Fi
-                           
                         </h1>
+                        <img src="flying-saucer.svg" id="horror" />
+                     </div>
+                     <div class="swiper-slide testing" style="background-image: url(swiper_yellow.webp); background-size: cover">
+                        <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #634d01 0%, #211a00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
+                           Crime
+                        </h1>
+                        <img src="pistol.svg" id="horror" />
                      </div>
                      <div class="swiper-slide testing" style="background-image: url(swiper_green.webp); background-size: cover">
                         <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #00660f 0%, #002205 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
-                           Comedy
-                           
+                           Sports
                         </h1>
+                        <img src="baseball.svg" id="horror" />
                      </div>
                   </div>
                   <div class="swiper-scrollbar"></div>
@@ -247,9 +259,6 @@
                <div class="container" style="width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative; overflow: hidden;">
                   <div class="mask-wrapper">
                      <div class="dif">
-                        <video playsinline autoplay muted loop>
-                           <source src="limelight.mp4" type="video/mp4">
-                        </video>
                      </div>
                   </div>
                   <div class="swiper hero-swiper" style="height: 100%; border-radius: 8px;">
@@ -448,23 +457,23 @@
            },
          });
          var swiper = new Swiper(".yoo", {
-           slidesPerView: 3,
+           slidesPerView: 2,
            spaceBetween: 10,
            grabCursor: true,
            breakpoints: {
-             0: {
+             400: {
                slidesPerView: 2, // bigger than 450px do this:
              },
-             400: {
-               slidesPerView: 3, // bigger than 450px do this:
+             550: {
+               slidesPerView: 3, // bigger than 600px do this:
              },
-             600: {
+             700: {
                slidesPerView: 4, // bigger than 600px do this:
              },
-             750: {
+             850: {
                slidesPerView: 5, // bigger than 600px do this:
              },
-             950: {
+              1000: {
                slidesPerView: 6, // bigger than 600px do this:
              },
            },

@@ -44,14 +44,12 @@ let tl3 = gsap.timeline({
 
 tl3.from(" .yoo .swiper-slide", {
   stagger: 0.125,
-  filter: "blur(5px)",
   y: 50,
   opacity: 0,
   duration: 1,
 });
 tl3.to(".yoo .swiper-slide", {
   stagger: 0.125,
-  filter: "blur(0)",
   y: 0,
   opacity: 1,
   duration: 1,
@@ -69,14 +67,12 @@ let tl4 = gsap.timeline({
 
 tl4.from(".content-suggested .swiper-slide", {
   stagger: 0.125,
-  filter: "blur(5px)",
   y: 50,
   opacity: 0,
   duration: 1,
 });
 tl4.to(".content-suggested .swiper-slide", {
   stagger: 0.125,
-  filter: "blur(0)",
   y: 0,
   opacity: 1,
   duration: 1,

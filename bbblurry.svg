@@ -1,2 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800" opacity="1"><defs><filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-	<feGaussianBlur stdDeviation="130" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="277.5" ry="277.5" cx="512.0687166383755" cy="507.5972101501145" fill="#683da5"></ellipse><ellipse rx="277.5" ry="277.5" cx="228.88394572472697" cy="626.1888529992228" fill="#683da5"></ellipse><ellipse rx="277.5" ry="277.5" cx="371.7756705558737" cy="388.04107154726364" fill="#683da5"></ellipse></g></svg>
+<svg class="main svelte-1ahfjoa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 652 652"><style>.multiply { mix-blend-mode: multiply }
+            .normal { mix-blend-mode: normal }
+            .overlay { mix-blend-mode: overlay }
+            .screen { mix-blend-mode: screen }
+            .darken { mix-blend-mode: darken }
+            .lighten { mix-blend-mode: lighten }
+            .color-dodge { mix-blend-mode: color-dodge }
+            .saturation { mix-blend-mode: saturation }
+            .color { mix-blend-mode: color }
+            .luminosity { mix-blend-mode: luminosity }
+            .hard-light { mix-blend-mode: hard-light }
+            .soft-light { mix-blend-mode: soft-light }
+            .difference { mix-blend-mode: difference }
+            .exclusion { mix-blend-mode: exclusion }
+            .hue { mix-blend-mode: hue }
+        </style><defs><filter id="blur1" width="120%" height="120%" filterUnits="userSpaceOnUse" x="-10%" y="-10%"><feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="652" height="652" fill="#000"></rect><g filter="url(#blur1)"><circle cy="277" cx="643" r="150" fill="#8fb5c71a" class="normal svelte-1ahfjoa"></circle><circle cy="9" cx="312" r="300" fill="#8fb5c71a" class="normal svelte-1ahfjoa"></circle><circle cy="264" cx="9" r="150" fill="#8fb5c71a" class="normal svelte-1ahfjoa"></circle></g></svg>

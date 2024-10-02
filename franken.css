@@ -210,8 +210,8 @@ legend {
   align-items: flex-start;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: .8rem;
+  padding-bottom: .8rem;
 }
 .uk-accordion-icon {
   flex: none;
