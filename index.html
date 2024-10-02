@@ -3,8 +3,6 @@
    <head>
       <meta charset="UTF-8" />
       <title>Hello, world!</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
       <link rel="stylesheet" href="franken.css" />
@@ -66,7 +64,7 @@
                         <div class="mask-wrapper">
                            <div class="dif2">
                               <video playsinline autoplay muted loop>
-                                 <source src="alien.mp4" type="video/mp4">
+                                 <source src="alien.webm" type="video/mp4">
                               </video>
                            </div>
                         </div>
@@ -103,7 +101,7 @@
                         <div class="mask-wrapper">
                            <div class="dif2">
                               <video playsinline autoplay muted loop>
-                                 <source src="blink_twice.mp4" type="video/mp4">
+                                 <source src="blink_twice.webm" type="video/mp4">
                               </video>
                            </div>
                         </div>
@@ -232,33 +230,36 @@
                         </h1>
                         <img src="flying-saucer.svg" id="horror" />
                      </div>
-                     <div class="swiper-slide testing" style="background-image: url(swiper_yellow.webp); background-size: cover">
-                        <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #634d01 0%, #211a00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
-                           Crime
-                        </h1>
-                        <img src="pistol.svg" id="horror" />
-                     </div>
                      <div class="swiper-slide testing" style="background-image: url(swiper_green.webp); background-size: cover">
                         <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #00660f 0%, #002205 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
-                           Sports
+                           Adventure
                         </h1>
-                        <img src="baseball.svg" id="horror" />
+                        <img src="palm-tree.svg" id="horror" />
+                     </div>
+                     <div class="swiper-slide testing" style="background-image: url(swiper_yellow.webp); background-size: cover">
+                        <h1 class="category-h1" style="background: #ff2200; background: radial-gradient(circle farthest-corner at top center, #634d01 0%, #211a00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent">
+                           Action
+                        </h1>
+                        <img src="bomb.svg" id="horror" />
                      </div>
                   </div>
                   <div class="swiper-scrollbar"></div>
                </div>
             </section>
-            <section class="content-oops">
-               <div class="icon-contain">
-                  <img src="twinkle_purple.svg" id="twinkle1" />
-                  <hr />
-                  <img src="twinkle_purple.svg" id="twinkle3" />
-               </div>
-            </section>
             <section class="content-reasons">
+               <div class="h1-content2">
+                  <h1 id="trendingtitle2">
+                     <img src="twinkle.svg" id="twinkle1" />
+                        Join us to unlock exclusive member-only offers
+                     <img src="twinkle.svg" id="twinkle3" />
+                  </h1>
+               </div>
                <div class="container" style="width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative; overflow: hidden;">
                   <div class="mask-wrapper">
                      <div class="dif">
+                        <video playsinline autoplay muted loop>
+                           <source src="limelight.webm" type="video/webm">
+                        </video>
                      </div>
                   </div>
                   <div class="swiper hero-swiper" style="height: 100%; border-radius: 8px;">
@@ -302,10 +303,9 @@
                      </div>
                   </div>
                </div>
-         </div>
          </section>
          <section class="content-suggested">
-            <div class="h1-content">
+            <div class="h1-content2" style="justify-content: flex-start">
                <h1 id="trendingtitle">Frequently Asked Questions</h1>
             </div>
             <ul class="uk-accordion" uk-accordion>
@@ -457,25 +457,28 @@
            },
          });
          var swiper = new Swiper(".yoo", {
-           slidesPerView: 2,
+           slidesPerView: 1,
            spaceBetween: 10,
            grabCursor: true,
            breakpoints: {
-             400: {
-               slidesPerView: 2, // bigger than 450px do this:
+               200: {
+                  slidesPerView: 2, // bigger than 0px do this:
+               },
+             430: {
+               slidesPerView: 3, // bigger than 450px do this:
              },
-             550: {
-               slidesPerView: 3, // bigger than 600px do this:
-             },
-             700: {
+             660: {
                slidesPerView: 4, // bigger than 600px do this:
              },
-             850: {
+             890: {
                slidesPerView: 5, // bigger than 600px do this:
              },
-              1000: {
+             1120: {
                slidesPerView: 6, // bigger than 600px do this:
              },
+            1350: {
+            slidesPerView: 7, // bigger than 600px do this:
+            },
            },
            simulateTouch: true,
            mousewheel: {

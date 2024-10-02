@@ -1,9 +1,10 @@
+// Timeline 1 - .uk-accordion Animation
 let tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".uk-accordion",
-    start: "top bottom",
-    end: "bottom bottom",
-    scrub: true,
+    start: "top+=800 bottom+=800", // Increased to 800px offset for start and end
+    end: "bottom+=800 bottom+=800",
+    scrub: 1, // Smooth scrub for consistent timing
     id: "scrub",
   },
 });
@@ -11,16 +12,16 @@ tl.from(".uk-accordion", {
   scale: 0.95,
   opacity: 0,
   filter: "grayscale(100%)",
-  filter: "blur(10px)",
   duration: 1,
 });
 
+// Timeline 2 - .container Animation
 let tl2 = gsap.timeline({
   scrollTrigger: {
     trigger: ".container",
-    start: "top bottom",
-    end: "bottom bottom",
-    scrub: true,
+    start: "top+=800 bottom+=800", // 800px offset for start and end
+    end: "bottom+=800 bottom+=800",
+    scrub: 1,
     id: "scrub",
   },
 });
@@ -28,83 +29,31 @@ tl2.from(".container", {
   scale: 0.95,
   opacity: 0,
   filter: "grayscale(100%)",
-  filter: "blur(5px)",
   duration: 1,
 });
 
-let tl3 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".yoo .swiper-slide",
-    start: "top bottom",
-    end: "bottom bottom",
-    scrub: true,
-    id: "scrub",
+
+/* inspiration: https://gsap.com/community/forums/topic/31455-scrolltrigger-with-offset/ */
+gsap.set(".swiper-slide:not(.hero-swiper .swiper-slide)", { opacity: 0 });
+ScrollTrigger.batch(".swiper-slide:not(.hero-swiper .swiper-slide)", {
+  start: "top 95%",
+  once: true,
+  onEnter: (batch) => {
+    gsap.from(batch, {
+      duration: 0.5,
+      opacity: 0,
+      stagger: 0.05,
+      ease: "ease",
+    });
+    gsap.to(batch, {
+      duration: 0.5,
+      opacity: 1,
+      stagger: 0.05,
+      ease: "ease",
+    });
   },
 });
 
-tl3.from(" .yoo .swiper-slide", {
-  stagger: 0.125,
-  y: 50,
-  opacity: 0,
-  duration: 1,
-});
-tl3.to(".yoo .swiper-slide", {
-  stagger: 0.125,
-  y: 0,
-  opacity: 1,
-  duration: 1,
-});
 
-let tl4 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".content-suggested .swiper-slide",
-    start: "top bottom",
-    end: "bottom bottom",
-    scrub: true,
-    id: "scrub",
-  },
-});
-
-tl4.from(".content-suggested .swiper-slide", {
-  stagger: 0.125,
-  y: 50,
-  opacity: 0,
-  duration: 1,
-});
-tl4.to(".content-suggested .swiper-slide", {
-  stagger: 0.125,
-  y: 0,
-  opacity: 1,
-  duration: 1,
-});
-
-
-
-
-
-
-let tl5 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".content-releases .swiper-slide",
-    start: "top bottom",
-    end: "bottom bottom",
-    scrub: true,
-    id: "scrub",
-  },
-});
-tl5.from(".content-releases .swiper-slide", {
-  stagger: 0.125,
-  y: 50,
-  opacity: 0,
-  duration: 1,
-});
-tl3.to(".content-releases .swiper-slide", {
-  stagger: 0.125,
-  y: 0,
-  opacity: 1,
-  duration: 1,
-});
-
-
-gsap.fromTo(".button", { scale: 0.8, opacity: 0, stagger: 0.2 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
-gsap.fromTo(".button2", { scale: 0.8, opacity: 0, stagger: 0.2 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
+gsap.fromTo(".button", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
+gsap.fromTo(".button2", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });

@@ -20,9 +20,6 @@
 ::placeholder {
   color: white;
 }
-picture {
-  filter: grayscale(1);
-}
 .swiper-scrollbar.swiper-scrollbar-horizontal {
   bottom: 0px;
   height: 1px;
@@ -65,9 +62,9 @@ html {
   justify-content: center;
   align-items: flex-start;
 }
-/* 
+.content-section .hero-swiper .swiper-slide {
   background-color: rgba(0, 0, 0, 0.45);
-  */
+}
 .card-swiper .swiper-slide {
   position: relative;
   display: flex;
@@ -81,8 +78,11 @@ html {
   aspect-ratio: 9/6;
   max-height: 145px;
 }
-.yoo .swiper-slide-active {
+.yoo .swiper-slide:active {
   border: 2px solid #9ca1ed;
+}
+.yoo .swiper-slide:hover {
+  filter: brightness(1.1);
 }
 @media screen and (max-width: 800px) {
   .content-section video {
@@ -165,7 +165,7 @@ video {
   top: 50%;
   transform: translateY(-50%);
   height: 100%;
-  width: 90%;
+  width: 100%;
   -webkit-mask-image: linear-gradient(to left, black, transparent);
   mask-image: linear-gradient(to left, black, transparent);
   filter: url(#grain);
@@ -191,11 +191,12 @@ video {
   z-index: 999;
 }
 .container {
-  height: clamp(15.625rem, -21.875rem + 75vw, 25rem);
-  background-image: url("magicpattern-mesh-gradient-1727878387694.png");
-  background-size: cover;
+  aspect-ratio: 16/9;
+
+  background: linear-gradient(#FDB171, #fff) padding-box, linear-gradient(to right, #ffac6e, #ff526f, #8550ff, #5661ff, #52d8fc, #6aff74) border-box;
+  border: 2px solid transparent;
+  max-height: 500px;
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
-  aspect-ratio: 1;
   z-index: 99;
 }
 /*
@@ -212,11 +213,7 @@ video {
   pointer-events: none;
 }
   */
-.content-reasons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .content-section {
   position: relative;
   display: flex;
@@ -234,9 +231,9 @@ video {
   background: radial-gradient(circle farthest-corner at top center, #111126 0%, #0a0a15 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: clamp(1.125rem, 0.5893rem + 2.8571vw, 2.375rem);
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
-  font-size: clamp(1.25rem, 0.8333rem + 1.6667vw, 1.875rem);
   z-index: 100;
 }
 .title {
@@ -244,6 +241,7 @@ video {
   text-wrap: nowrap;
   font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
   margin-bottom: 10px;
+  color: white;
   z-index: 100;
 }
 .metadata {
@@ -271,6 +269,13 @@ video {
   font-size: 14px;
   margin-bottom: 20px;
   max-width: 550px;
+  /* https://stackoverflow.com/questions/15909489/text-overflow-ellipsis-on-two-lines */
+  display: -webkit-box;
+  max-width: 400px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .paragraph-category {
   z-index: 99;
@@ -304,13 +309,43 @@ video {
   position: relative;
 }
 .content-oops {
+  height: 50px;
+  margin: 40px 0px 40px;
   padding: 10px 15px;
-  position: relative;
+  background: rgba(10, 10, 21, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bannertext {
+  position: absolute;
+  font-size: 20px;
+  color: black;
+  padding: 0 15px;
+  z-index: 99;
+  white-space: nowrap;
 }
 #trendingtitle {
   color: #9ca1ed;
   mix-blend-mode: screen;
+  font-family: "Subjectivity";
   font-size: 17px;
+}
+#trendingtitle2 {
+  position: relative;
+  background: linear-gradient(to right, #ffac6e, #ff526f, #8550ff, #5661ff, #52d8fc, #6aff74);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  mix-blend-mode: screen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
 }
 @media screen and (max-width: 350px) {
   body {
@@ -403,7 +438,7 @@ video {
 }
 #twinkle1 {
   position: absolute;
-  left: 0;
+  left: 10px;
   width: 15px;
 }
 #background {
@@ -423,7 +458,7 @@ video {
 }
 #twinkle3 {
   position: absolute;
-  right: 0;
+  right: 10px;
   width: 15px;
 }
 #top-rated-video {
@@ -480,18 +515,33 @@ video {
   padding: 5px 10px;
 }
 .h1-content {
-  height: 40px;
+  height: 60px;
   display: flex;
   align-items: flex-end;
   margin-bottom: 15px;
   gap: 5px;
   box-sizing: border-box;
 }
+.h1-content2 {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+  gap: 5px;
+  box-sizing: border-box;
+}
+.h1-content2 {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  box-sizing: border-box;
+}
 hr {
-  width: 85%;
+  width: 90%;
   height: 1px;
   border: 0;
-  border-top: 0.5px solid #d1c0eb;
+  border-top: 0.5px solid #9ca1ed;
 }
 .h1-content picture img {
   display: inline-block;
@@ -561,7 +611,7 @@ hr {
   background-repeat: no-repeat;
   background-position: center center;
   background: rgba(10, 10, 21, 0.95);
-  border-bottom: 1px solid white;
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -621,6 +671,7 @@ hr {
   background-size: cover;
   background-position: center center;
   z-index: 9999;
+  cursor: pointer;
 }
 #hide {
   position: absolute;
@@ -730,6 +781,8 @@ header {
   left: 15px;
   width: clamp(2.5rem, 1.25rem + 2.5vw, 2.8125rem);
   mix-blend-mode: luminosity;
+  filter: invert(1);
+  z-index: 999;
 }
 .button2 {
   position: relative;
@@ -746,6 +799,16 @@ header {
   padding: 10px 15px;
   font-weight: 700;
   cursor: pointer;
+  transition: filter 0.3s ease;
+}
+.swiper-slide:hover {
+  filter: brightness(1.1);
+  transition: filter 0.3s ease;
+}
+
+.button2:hover {
+  filter: brightness(1.15);
+  transition: filter 0.3s ease;
 }
 .button:first-of-type {
   margin-right: 5px;
