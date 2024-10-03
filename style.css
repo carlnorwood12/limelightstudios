@@ -7,22 +7,19 @@ body {
   align-items: center;
   background-color: black;
 }
-body::after
-{
+body::after {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("magicpattern-starry-night-1727958699790.png") no-repeat center center/cover;
+  background: url("magicpattern-starry-night-1727970940950.png") no-repeat center center/cover;
   mix-blend-mode: screen;
   animation: color 10s infinite;
 }
 
-
-@keyframes color 
-{
+@keyframes color {
   0% {
     filter: hue-rotate(0deg);
   }
@@ -34,11 +31,9 @@ body::after
   }
   30% {
     filter: hue-rotate(135deg);
-
   }
   40% {
     filter: hue-rotate(180deg);
-
   }
   50% {
     filter: hue-rotate(225deg);
@@ -60,9 +55,6 @@ body::after
   }
 }
 
-
-
-
 :root {
   --darker: #5c5c77;
   --blue: #9ca1ed;
@@ -73,13 +65,14 @@ body::after
 
 .form {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 10px;
   background: rgba(10, 10, 21, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0px 0px 3px 0.05px #ffffff33 inset;
-  padding: clamp(1.875rem, 1.3393rem + 2.8571vw, 3.125rem);
+  padding: clamp(1.5625rem, 1.2946rem + 1.4286vw, 2.1875rem);
   width: 70%;
   max-width: 450px;
   height: 450px;
@@ -92,7 +85,6 @@ body::after
   padding-left: 10px;
   color: var(--darker);
 }
-
 
 input:hover,
 textarea:hover,
@@ -132,14 +124,14 @@ input:focus-within {
   background: radial-gradient(circle at 50% 50%, #14142b 10%, #0a0a15 70%);
 }
 .h1 {
-  font-size: clamp(1.25rem, 0.9821rem + 1.4286vw, 1.875rem);
-  white-space: nowrap;
   letter-spacing: 0.05rem;
   background: linear-gradient(to right, #ffac6e, #ff526f, #8550ff, #5661ff, #52d8fc, #6aff74);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: nowrap;
   background-clip: text;
   mix-blend-mode: screen;
+  font-size: clamp(1.25rem, 0.9821rem + 1.4286vw, 1.875rem);
   font-family: "Montserrat", sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -150,7 +142,6 @@ input:focus-within {
   font-size: 14px;
   margin-left: 5px;
   color: #9ca1ed;
-  font-weight: 500;
   cursor: pointer;
   transition: filter 0.2s ease;
 }
@@ -160,8 +151,7 @@ input:focus-within {
   background-size: cover;
   background-position: center center;
   border: none;
-  padding: 10px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 900;
   border-radius: 13px;
   height: 50px;
@@ -177,7 +167,8 @@ input:focus-within {
 .p {
   text-align: center;
   color: rgba(255, 255, 255, 0.75);
-  font-size: 14px;
+  white-space: nowrap;
+  font-size: clamp(0.75rem, 0.7232rem + 0.1429vw, 0.8125rem);
   margin: 20px 0;
 }
 .p-already {
@@ -208,9 +199,10 @@ input:focus-within {
 .did-floating-input,
 .did-floating-select {
   font-size: 12px;
+  color: white;
   display: block;
   width: 100%;
-  height: 45px;
+  height: 50px;
   border: none;
   padding: 0 20px;
   background-color: transparent;
@@ -224,8 +216,15 @@ input:focus-within {
 *:focus {
   outline: none;
 }
+.did-floating-input:not(:focus) ~ .did-floating-label {
+  top: 17px;
+}
 .did-floating-input:focus ~ .did-floating-label,
 .did-floating-select:focus ~ .did-floating-label {
+  top: -8px;
+  font-size: 13px;
+}
+.did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
   top: -8px;
   font-size: 13px;
 }
