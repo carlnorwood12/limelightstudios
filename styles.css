@@ -78,7 +78,8 @@ html {
   aspect-ratio: 9/6;
   max-height: 145px;
 }
-.yoo .swiper-slide:active {
+.swiper-slide:not(.hero-swiper .swiper-slide):active
+{
   border: 2px solid #9ca1ed;
 }
 .yoo .swiper-slide:hover {

@@ -5,7 +5,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "sfpro";
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: rgba(225, 255, 255, 0);
 }
 
 :root {
@@ -16,7 +19,12 @@
   --black: #000000;
   --green: #96d485;
   --outer-radius: 24px;
-  --inner-radius: 19px;
+  --inner-radius: 15px;
+}
+
+@font-face {
+  font-family: "Subjectivity";
+  src: url("Subjectivity-Bold.otf");
 }
 ::selection {
   background-color: rgba(255, 255, 255, 0.1);
@@ -409,13 +417,12 @@ a:hover {
 
 .h1text-transparent {
   position: relative;
-  text-transform: uppercase;
   padding: 10px;
   white-space: nowrap;
-  font-family: "bowlby";
   letter-spacing: 0.05rem;
   font-size: clamp(1.25rem, 1.1161rem + 0.7143vw, 1.5625rem);
-  color: var(--blue);
+  color: #9ca1ed;
+  font-family: "Montserrat", sans-serif;
   border: none;
   transition: filter 0.3s ease;
   z-index: 0;
@@ -816,7 +823,6 @@ swiper-slide .title {
 .contact-1,
 .contact-2 {
   flex-grow: 1;
-  padding: clamp(0.625rem, 0.4911rem + 0.7143vw, 0.9375rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -827,9 +833,23 @@ iframe {
   border: 0;
 }
 
+
+.radial-gradient {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at 50% 50%, #14142b 10%, #0a0a15 70%);
+}
 form {
   position: relative;
-  padding: clamp(0.625rem, 0.3571rem + 1.4286vw, 1.25rem);
+  border-radius: 8px;
+  padding: 50px 30px 20px 30px;
+  background: rgba(10, 10, 21, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0px 0px 3px 0.05px #ffffff33 inset;
   width: 100%;
   max-width: 450px;
   z-index: 99;
@@ -852,9 +872,8 @@ input[type="submit"]:hover {
 input,
 textarea {
   position: relative;
-  background-color: transparent;
   color: var(--bodytext);
-  background-image: url("/svg/bbblurry.svg");
+  background-image: url("bbblurry.svg");
   background-size: cover;
   background-position: center center;
   box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset, rgba(0, 0, 0, 1) 0px 0px 0px 1px;
@@ -906,12 +925,10 @@ textarea {
 input[type="submit"] {
   width: calc(100% - 20px);
   padding: 10px;
-  background-image: url(/svg/buttonbackground.svg);
+  background-image: url(buttonbackground.svg);
   background-size: cover;
   border: none;
-  font-family: "sfprobold";
-  border-radius: var(--inner-radius);
-  color: var(--black);
+  color: black;
   font-size: 1.1em;
   cursor: pointer;
   transition: filter 0.3s ease;

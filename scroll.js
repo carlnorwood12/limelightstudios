@@ -32,7 +32,6 @@ tl2.from(".container", {
   duration: 1,
 });
 
-
 /* inspiration: https://gsap.com/community/forums/topic/31455-scrolltrigger-with-offset/ */
 gsap.set(".swiper-slide:not(.hero-swiper .swiper-slide)", { opacity: 0 });
 ScrollTrigger.batch(".swiper-slide:not(.hero-swiper .swiper-slide)", {
@@ -53,6 +52,18 @@ ScrollTrigger.batch(".swiper-slide:not(.hero-swiper .swiper-slide)", {
     });
   },
 });
+
+
+
+gsap.from(".form", {
+  duration: 0.5,
+  opacity: 1,
+  ease: "ease",
+});
+
+
+
+
 
 
 gsap.fromTo(".button", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
