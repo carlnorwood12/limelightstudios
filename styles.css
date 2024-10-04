@@ -78,8 +78,7 @@ html {
   aspect-ratio: 9/6;
   max-height: 145px;
 }
-.swiper-slide:not(.hero-swiper .swiper-slide):active
-{
+.swiper-slide:not(.hero-swiper .swiper-slide):active {
   border: 2px solid #9ca1ed;
 }
 .yoo .swiper-slide:hover {
@@ -192,8 +191,9 @@ video {
   z-index: 999;
 }
 .container {
+  position: relative;
   aspect-ratio: 16/11;
-  background-image: url("grad2.png");
+  background-image: url("gradient.webp");
   background-size: cover;
   background-position: center center;
   max-height: 700px;
@@ -228,7 +228,11 @@ video {
   z-index: -99;
 }
 .title-join {
-  color: white;
+  background: #f6f8f9;
+  background: radial-gradient(circle farthest-corner at center center, #f6f8f9 0%, #e5ebee 30%, #d7dee3 60%, #f5f7f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   font-size: clamp(1.125rem, 0.5893rem + 2.8571vw, 2.375rem);
   clip-path: inset(0 0 0% 0);
   text-wrap: nowrap;
@@ -316,6 +320,35 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#poporn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  right: 40px;
+  width: clamp(3.125rem, -12.5rem + 50vw, 18.75rem);
+}
+@media screen and (max-width: 500px) {
+  #poporn {
+    display: none;
+  }
+}
+
+.el {
+  position: absolute; /* Use fixed positioning for it to stay in place while scrolling */
+  right: 0; /* Align to the right */
+  width: 100%; /* Full viewport width */
+  height: 100%; /* Full viewport height */
+  background-image: url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2V5YW0wOHNzcTZudG0wNGl2N3d2N2RudXRtaW9qaW4zYnB4MWxociZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uWzS6ZLs0AaVOJlgRd/giphy.gif");
+  background-size: contain; /* Contain the background image */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+  mask-size: cover;
+  mask-image: url("hello.svg"); /* Use the SVG mask */
+  mask-repeat: no-repeat;
+  mix-blend-mode: color;
+  mask-position: center; /* Ensure it is above other content, if necessary */
 }
 #bannertext {
   position: absolute;
