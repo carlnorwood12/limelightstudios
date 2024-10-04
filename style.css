@@ -6,6 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
+  overflow: hidden;
 }
 body::after {
   content: "";
