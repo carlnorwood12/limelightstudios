@@ -816,6 +816,30 @@ header {
   filter: invert(1);
   z-index: 999;
 }
+
+.button3 {
+  position: absolute;
+  top: 65%;
+  left: 20px;
+  display: inline-flex;
+  gap: 5px;
+  z-index: 99;
+  font-size: 13px;
+  background-image: url("SCR-20241004-ssma.png");
+  background-size: cover;
+  background-position: center center;
+  border-radius: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
 .button2 {
   position: relative;
   display: inline-flex;
@@ -823,11 +847,11 @@ header {
   z-index: 99;
   font-size: 13px;
   border-radius: 30px;
-  background-image: url(buttonbackground.svg);
+  background-image: url("SCR-20241004-ssma.png");
   background-size: cover;
   background-position: center center;
   border: none;
-  color: black;
+  color: white;
   padding: 10px 15px;
   font-weight: 700;
   cursor: pointer;
@@ -839,6 +863,10 @@ header {
 }
 
 .button2:hover {
+  filter: brightness(1.15);
+  transition: filter 0.3s ease;
+}
+.button3:hover {
   filter: brightness(1.15);
   transition: filter 0.3s ease;
 }
