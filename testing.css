@@ -17,6 +17,12 @@
   font-synthesis: none; /* for safari so its not bold */
 }
 
+
+h1, h2, h3, h4, h5, h6, span
+{
+  margin: 0;
+  padding: 0;
+}
 ::selection {
   background-color: rgba(255, 255, 255, 0.15);
 }
@@ -70,6 +76,10 @@ html {
   background-color: #9ca1ed;
   padding: 20px;
 }
+.hero a
+{
+  z-index: 999;
+}
 
 .hero__image {
   position: absolute;
@@ -95,7 +105,7 @@ html {
   font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
   color: #ffffff;
   text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
-  margin-bottom: 15px;
+  margin-bottom: clamp(0.9375rem, 0.6098rem + 1.5244vw, 1.5625rem);
   padding-right: 10px; /* no clip with text shadow */
   font-family: "Subjectivity";
   white-space: nowrap;
@@ -123,44 +133,7 @@ html {
   z-index: 99;
   color: rgba(0, 0, 0, 0.75);
   font-size: clamp(0.75rem, 0.6189rem + 0.6098vw, 1rem);
-  margin-bottom: var(--margin);
-}
-
-.button {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(40px);
-  user-select: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  height: 40px;
-  width: 150px;
-  padding: 10px 16px;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 700;
-  margin-top: 5px;
-  white-space: nowrap;
-  text-decoration: none;
-  color: #000;
-  border: none;
-  background-color: #f0ff9e;
-  background-image: radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.5s ease-out;
-  z-index: 99;
-}
-.button object {
-  transition: transform 0.3s ease;
-}
-.button:hover {
-  transform: scale(1.025) translateY(40px);
-}
-.button:hover object {
-  transform: translateX(2px);
+  margin-bottom: clamp(0.9375rem, 0.6098rem + 1.5244vw, 1.5625rem);
 }
 
 .swiper-pagination-bullet-active {
@@ -169,11 +142,6 @@ html {
 
 .button-submit 
 {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) translateY(40px);
-  left: 20px;
-  margin: 10px 0;
   background-color: var(--button-background);
   user-select: none;
   display: inline-flex;
@@ -190,10 +158,10 @@ html {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.5s ease-out;
-  z-index: 99;
   transform-origin: center center;
   aspect-ratio: 10/3;
   padding: 10px 16px;
+  z-index: 999999999999999 !important;
 }
 
 .button-submit img {
@@ -212,4 +180,11 @@ html {
 .button-submit:hover {
   filter: brightness(var(--button-hover-brightness));
   transition: all 0.2s ease;
+}
+
+h1
+{
+  display: inline;
+  margin: 0;
+  padding: 0;
 }
