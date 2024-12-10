@@ -1,0 +1,96 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(225, 255, 255, 0);
+  font-family: "Open Sans", serif;
+  font-synthesis: none; /* for safari so its not bold */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  height: 100vh;
+}
+
+:root {
+  --darker: #5c5c77;
+  --blue: #9ca1ed;
+  --black: #ffffff;
+  --white: rgba(255, 255, 255, 0.75);
+  --light-blue: #b0b4f1;
+  --background-color: #14142b;
+  --background-color-dark: #0a0a15;
+  --button-background: #f0ff9e;
+  --button-hover-brightness: 1.1;
+  --input-background: rgba(255, 255, 255, 0.2);
+  --input-focus-background: #cbd1ff;
+  --text-color: rgba(0, 0, 0, 0.75);
+  --selection-background: rgba(255, 255, 255, 0.1);
+  --highlight-color: rgba(225, 255, 255, 0);
+}
+
+.container {
+  position: relative;
+  background-color: red;
+  width: 100%;
+  display: flex;
+  border-radius: 20px;
+  aspect-ratio: 16/11;
+  max-height: 700px;
+  padding: clamp(0.3125rem, -0.8346rem + 5.3354vw, 2.5rem);
+  z-index: 99;
+}
+.button-submit {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  margin: 10px 0;
+  background-color: var(--button-background);
+  user-select: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  background-image: radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.5s ease-out;
+  z-index: 99;
+  height: clamp(2.5rem, 2.3361rem + 0.7622vw, 2.8125rem);
+  width: 150px;
+}
+.button-submit img {
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.button-submit:hover {
+  transform: scale(1.015);
+}
+
+.button-submit:hover img {
+  transform: translateX(2px);
+}
+
+.button-submit:hover {
+  filter: brightness(var(--button-hover-brightness));
+  transition: all 0.2s ease;
+}
