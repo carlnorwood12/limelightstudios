@@ -124,7 +124,6 @@ html {
   color: rgba(0, 0, 0, 0.75);
   font-size: clamp(0.75rem, 0.6189rem + 0.6098vw, 1rem);
   margin-bottom: var(--margin);
-  max-width: 400px;
 }
 
 .button {
@@ -171,9 +170,9 @@ html {
 .button-submit 
 {
   position: absolute;
-  top: 60%;
+  top: 50%;
+  transform: translateY(-50%) translateY(40px);
   left: 20px;
-  max-width: 150px;
   margin: 10px 0;
   background-color: var(--button-background);
   user-select: none;
@@ -183,7 +182,7 @@ html {
   gap: 5px;
   border: none;
   font-family: inherit;
-  font-size: 15px;
+  font-size: clamp(0.8125rem, 0.7797rem + 0.1524vw, 0.875rem);
   font-weight: 700;
   white-space: nowrap;
   text-decoration: none;
@@ -193,8 +192,8 @@ html {
   transition: 0.5s ease-out;
   z-index: 99;
   transform-origin: center center;
-  height: 45px;
-  width: 100%;
+  aspect-ratio: 10/3;
+  padding: 10px 16px;
 }
 
 .button-submit img {
