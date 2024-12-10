@@ -29,7 +29,6 @@
               <img src="discounted_food.webp" alt="Sample Image" class="hero__image" />
               <h1 class="title">Discounted food<span class="desktop-only">, anytime.</span></h1>
               <p class="paragraph-join">Become a member and get 20% off food & drinks!</p>
-
             <a href="servicing.html">
               <button class="button-submit" type="submit">
                 Get Started
@@ -66,6 +65,12 @@
         </div>
       </div>
     </section>
+    <script src="https://unpkg.com/gsap@3.9.1/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script>
+      const text = new SplitType(".title", { type: "chars" });
+      gsap.from(text.chars, { clippath: "inset(0 0 0% 0)", opacity: 0, y:20, stagger: 0.05, duration: 1, ease: "power1.out" }, { clippath: "inset(0 0 100% 0)" });
+    </script>
     <script src="https://unpkg.com/franken-ui@1.1.0/dist/js/core.iife.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
