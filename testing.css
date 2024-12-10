@@ -1,3 +1,7 @@
+
+@import "resets.css";
+
+
 *,
 ::after,
 ::before {
@@ -13,37 +17,32 @@
   font-synthesis: none; /* for safari so its not bold */
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100dvh;
-  height: 100vh;
+::selection {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 :root {
   --darker: #5c5c77;
-  --blue: #9ca1ed;
-  --black: #ffffff;
-  --white: rgba(255, 255, 255, 0.75);
-  --light-blue: #b0b4f1;
-  --background-color: #14142b;
-  --background-color-dark: #0a0a15;
-  --button-background: #f0ff9e;
-  --button-hover-brightness: 1.1;
-  --input-background: rgba(255, 255, 255, 0.2);
-  --input-focus-background: #cbd1ff;
-  --text-color: rgba(0, 0, 0, 0.75);
-  --selection-background: rgba(255, 255, 255, 0.1);
-  --highlight-color: rgba(225, 255, 255, 0);
+  --blue: #14142b;
+  --margin: 15px;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 344px;
+  overflow-x: scroll;
+  background-color: #464343;
+}
+
+.swiper {
+  width: 100%;
 }
 
 .container {
   position: relative;
-  background-color: red;
   width: 100%;
   display: flex;
   border-radius: 20px;
@@ -52,10 +51,129 @@ body {
   padding: clamp(0.3125rem, -0.8346rem + 5.3354vw, 2.5rem);
   z-index: 99;
 }
-.button-submit {
+
+.hero-swiper {
+  height: 100%;
+  border-radius: 20px;
+}
+
+.hero-swiper .swiper-slide {
+  position: relative;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero {
+  background-color: #9ca1ed;
+  padding: 20px;
+}
+
+.hero__image {
   position: absolute;
-  bottom: 0;
+  right: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  background: radial-gradient(ellipse 100% 100% at right center, transparent 0%, #9ca1ed);
+}
+
+.title {
+  clip-path: inset(0);
+  font-size: clamp(1.5625rem, 0.7813rem + 2.5vw, 2.1875rem);
+  color: #ffffff;
+  text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
+  margin-bottom: 15px;
+  padding-right: 10px; /* no clip with text shadow */
+  font-family: "Subjectivity";
+  white-space: nowrap;
+  z-index: 100;
+}
+.desktop-only {
+  display: inline;
+  font-family: "Subjectivity";
+  color: #f0ff9e;
+}
+
+@media (max-width: 500px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .title {
+    white-space: normal;
+  }
+}
+
+.paragraph-join {
+  z-index: 99;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: clamp(0.75rem, 0.6189rem + 0.6098vw, 1rem);
+  margin-bottom: var(--margin);
+  max-width: 400px;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
   left: 20px;
+  transform: translateY(40px);
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 40px;
+  width: 150px;
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 5px;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #000;
+  border: none;
+  background-color: #f0ff9e;
+  background-image: radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+  z-index: 99;
+}
+.button object {
+  transition: transform 0.3s ease;
+}
+.button:hover {
+  transform: scale(1.025) translateY(40px);
+}
+.button:hover object {
+  transform: translateX(2px);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important;
+}
+
+.button-submit 
+{
+  position: absolute;
+  top: 60%;
+  left: 20px;
+  max-width: 150px;
   margin: 10px 0;
   background-color: var(--button-background);
   user-select: none;
@@ -64,19 +182,21 @@ body {
   align-items: center;
   gap: 5px;
   border: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
+  font-family: inherit;
+  font-size: 15px;
   font-weight: 700;
   white-space: nowrap;
   text-decoration: none;
   background-image: radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.5s ease-out;
+  transition: 0.5s ease-out;
   z-index: 99;
-  height: clamp(2.5rem, 2.3361rem + 0.7622vw, 2.8125rem);
-  width: 150px;
+  transform-origin: center center;
+  height: 45px;
+  width: 100%;
 }
+
 .button-submit img {
   transition: transform 0.3s ease;
   pointer-events: none;

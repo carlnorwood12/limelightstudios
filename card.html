@@ -1,23 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Hello, world!</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="" />
-  <link rel="stylesheet" type="text/css" href="testing.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <div class="container">
-        <a href="servicing.html">
-        <button class="button-submit" type="submit">
-            Get Started
-            <img src="right.svg" width="20px" aria-label="Icon"></img>
-        </button>
-        </a>
-    </div>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="testing.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <section class="content-reasons">
+      <div class="container">
+        <div class="swiper hero-swiper">
+          <div class="swiper-wrapper">
+            <a href="servicing.html">
+              <button class="button-submit" type="submit">
+                Get Started
+                <img src="right.svg" width="20px" aria-label="Icon"></img>
+            </button>
+            </a>
+            <div class="swiper-slide card hero">
+              <img src="unlimited_shows.webp" alt="Sample Image" class="hero__image" />
+              <h1 class="title">Unlimited shows<span class="desktop-only">, anytime.</span></h1>
+              <p class="paragraph-join">Watch any movie, at anytime with a monthly membership</p>
+            </div>
+            <div class="swiper-slide card hero">
+              <img src="discounted_food.webp" alt="Sample Image" class="hero__image" />
+              <h1 class="title">Discounted food<span class="desktop-only">, anytime.</span></h1>
+              <p class="paragraph-join">Become a member and get 20% off food & drinks!</p>
+            </div>
+            <div class="swiper-slide card hero">
+              <img src="any_venue.webp" alt="Sample Image" class="hero__image" />
+              <h1 class="title">Any venue<span class="desktop-only">, anywhere.</span></h1>
+              <p class="paragraph-join">Membership perks available at any of our venues.</p>
+            </div>
+            <div class="swiper-slide card hero">
+              <img src="exclusive_access.webp" alt="Sample Image" class="hero__image" />
+              <h1 class="title">Exclusive access<span class="desktop-only">, always.</span></h1>
+              <p class="paragraph-join">Create personalized profiles based on your taste.</p>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/franken-ui@1.1.0/dist/js/core.iife.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper2 = new Swiper(".hero-swiper", {
+        effect: "fade",
+        grabCursor: true,
+        followFinger:false,
+        centeredSlides: true,
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: true,
+        },
+      });
+    </script>
+  </body>
 </html>

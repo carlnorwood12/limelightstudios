@@ -1,0 +1,126 @@
+/* ----------- defaults ----------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", serif;
+  font-synthesis: none; /* for safari so its not bold */
+}
+
+
+@font-face {
+    font-family: "Subjectivity";
+    src: url("Subjectivity-Bold.otf");
+}
+
+
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+body {
+  margin: 0;
+  padding: 0;
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* 9. Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* 10. Define color variables */
+:root {
+  --darker: #5c5c77;
+  --blue: #9ca1ed;
+  --black: #ffffff;
+  --white: rgba(255, 255, 255, 0.75);
+  --light-blue: #b0b4f1;
+  --background-color: #14142b;
+  --background-color-dark: #0a0a15;
+  --button-background: #f0ff9e;
+  --button-hover-brightness: 1.1;
+  --input-background: rgba(255, 255, 255, 0.2);
+  --input-focus-background: #cbd1ff;
+  --text-color: rgba(0, 0, 0, 0.75);
+  --selection-background: rgba(255, 255, 255, 0.1);
+  --highlight-color: rgba(225, 255, 255, 0);
+}
+
+/* 11. Selection styles */
+::selection {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 12. Tap highlight color */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 13. Form controls and links */
+input,
+textarea,
+button,
+select,
+a {
+  border-radius: var(--inner-radius);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
