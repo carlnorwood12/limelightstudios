@@ -15,9 +15,10 @@
         <div class="swiper hero-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide card hero">
-              <img src="unlimited_shows.webp" alt="Sample Image" class="hero__image" />
+              <img src="unlimited_shows.webp" alt="Sample Image" class="hero__image" loading="lazy" />
+              <div class="swiper-lazy-preloader"></div>
               <h1 class="title">Unlimited shows<span class="desktop-only">, anytime.</span></h1>
-              <p class="paragraph-join">Watch any movie, at anytime with a monthly membership</p>
+              <p class="paragraph-join">Any movie, at anytime with a monthly membership</p>
               <a href="servicing.html">
                 <button class="button-submit" type="submit">
                   Get Started
@@ -26,7 +27,8 @@
               </a>
             </div>
             <div class="swiper-slide card hero">
-              <img src="discounted_food.webp" alt="Sample Image" class="hero__image" />
+              <img src="discounted_food.webp" alt="Sample Image" class="hero__image" loading="lazy" />
+              <div class="swiper-lazy-preloader"></div>
               <h1 class="title">Discounted food<span class="desktop-only">, anytime.</span></h1>
               <p class="paragraph-join">Become a member and get 20% off food & drinks!</p>
             <a href="servicing.html">
@@ -37,7 +39,7 @@
             </a>
             </div>
             <div class="swiper-slide card hero">
-              <img src="any_venue.webp" alt="Sample Image" class="hero__image" />
+              <img src="any_venue.webp" alt="Sample Image" class="hero__image" loading="lazy" />
               <h1 class="title">Any venue<span class="desktop-only">, anywhere.</span></h1>
               <p class="paragraph-join">Membership perks available at any of our venues.</p>
 
@@ -49,7 +51,8 @@
             </a>
             </div>
             <div class="swiper-slide card hero">
-              <img src="exclusive_access.webp" alt="Sample Image" class="hero__image" />
+              <img src="exclusive_access.webp" alt="Sample Image" class="hero__image" loading="lazy" />
+              <div class="swiper-lazy-preloader"></div>
               <h1 class="title">Exclusive access<span class="desktop-only">, always.</span></h1>
               <p class="paragraph-join">Create personalized profiles based on your taste.</p>
 
@@ -65,12 +68,6 @@
         </div>
       </div>
     </section>
-    <script src="https://unpkg.com/gsap@3.9.1/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-    <script>
-      const text = new SplitType(".title", { type: "chars" });
-      gsap.from(text.chars, { clippath: "inset(0 0 0% 0)", opacity: 0, y:20, stagger: 0.05, duration: 1, ease: "power1.out" }, { clippath: "inset(0 0 100% 0)" });
-    </script>
     <script src="https://unpkg.com/franken-ui@1.1.0/dist/js/core.iife.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
@@ -83,6 +80,10 @@
           el: ".swiper-pagination",
           dynamicBullets: true,
         },
+        preloadImages: false,
+            lazy: {
+                loadPrevNext: true
+            },
       });
     </script>
   </body>
