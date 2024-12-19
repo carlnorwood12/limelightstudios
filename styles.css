@@ -262,8 +262,34 @@ html {
   outline-offset: 0px;
 }
 
-/* Hover styles for desktop devices */
-@media (hover: hover) and (pointer: fine) {
+@media (max-width: 768px) and (hover: none) and (pointer: coarse) 
+{
+  .swiper-slide .btn {
+    position: absolute;
+    bottom: 20px;    
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 40px;
+    background-color: white;
+    user-select: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) 
+{
   .swiper-slide:hover::before {
     filter: brightness(0.7);
     background-size: 110%;
@@ -280,7 +306,7 @@ html {
 
   .btn:hover 
   {
-    filter: grayscale(1);
+    filter: invert(1);
     transition: filter 0.2s ease-in-out;
   }
   /* Styles for touch devices */
@@ -291,20 +317,18 @@ html {
     transform: translateX(-50%);
     width: 100px;
     height: 40px;
-    background-color: white !important;
+    background-color: white;
     user-select: none;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
-    border: none;
     font-family: inherit;
     font-size: 15px;
     font-weight: 700;
     white-space: nowrap;
     text-decoration: none;
     color: black;
-    border: none;
     border-radius: 8px;
     cursor: pointer;
   }
@@ -319,7 +343,6 @@ html {
 .swiper-slide:hover {
   transform: scale(0.95);
   filter: brightness(1.1);
-
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
 }
 
@@ -493,7 +516,6 @@ video {
   font-size: clamp(1.25rem, 0.7584rem + 2.2866vw, 2.1875rem);
   color: #ffffff;
   clip-path: inset(0 0 0% 0);
-
   text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
   padding-right: 10px; /* no clip with text shadow */
   font-family: "Subjectivity";
