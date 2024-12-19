@@ -188,7 +188,6 @@ html {
 }
 
 
-
 .hero-swiper .swiper-slide {
   position: relative;
   display: flex;
@@ -251,15 +250,80 @@ html {
   position: relative;
   border-radius: 5px;
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
-  transition: filter 0.2s ease;
   aspect-ratio: 2/3;
   display: flex;
   box-shadow: 0 0 0 2px black;
   flex-direction: column;
+  overflow: hidden;
   align-items: flex-start;
   justify-content: flex-end;
   cursor: pointer;
+  transition: filter 0.2s ease, transform 0.5s ease, outline 1s ease; /* Combined transitions */
+  outline-offset: 0px;
 }
+
+/* Hover styles for desktop devices */
+@media (hover: hover) and (pointer: fine) {
+  .swiper-slide:hover::before {
+    filter: brightness(0.7);
+    background-size: 110%;
+    transition: all 0.3s ease-in-out; /* Make the background animation smooth */
+  }
+
+  .swiper-slide .btn {
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, bottom 0.3s ease-in-out; /* Increase duration for smoothness */
+  }
+
+  .btn:hover 
+  {
+    filter: grayscale(1);
+    transition: filter 0.2s ease-in-out;
+  }
+  /* Styles for touch devices */
+  .swiper-slide .btn {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 40px;
+    background-color: #f0ff9e !important;
+    user-select: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+    background-image: radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .swiper-slide:hover .btn {
+    bottom: 20px;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  }
+}
+.swiper-slide:hover {
+  transform: scale(0.95);
+  filter: brightness(1.1);
+
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
+}
+
 #icon {
   position: absolute;
   width: 100px;
@@ -429,6 +493,8 @@ video {
 .title {
   font-size: clamp(1.25rem, 0.7584rem + 2.2866vw, 2.1875rem);
   color: #ffffff;
+  clip-path: inset(0 0 0% 0);
+
   text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
   padding-right: 10px; /* no clip with text shadow */
   font-family: "Subjectivity";
@@ -736,7 +802,7 @@ video {
   border-radius: 8px;
   background-color: rgba(10, 10, 21, 1);
   box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
-  padding: 5px 10px;
+  padding: 10px 10px;
 }
 .swiper-slide.testing:nth-child(1) {
   background-color: white;
@@ -1361,7 +1427,9 @@ a:focus::after {
 .marquee-container
 {
   
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 1);
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(253, 4, 4, 0) 100%);
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(255, 0, 0, 0) 100%);
   position: relative;
   height: 100px;
   display: flex;
@@ -1617,4 +1685,12 @@ z-index: 999999999;
 {
 height: 100%;
 
+}
+
+
+.swiper-slide:hover .btn {
+  bottom: 20px;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, bottom 0.3s ease-in-out;
 }
