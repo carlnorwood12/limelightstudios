@@ -291,7 +291,7 @@ html {
     transform: translateX(-50%);
     width: 100px;
     height: 40px;
-    background-color: #f0ff9e !important;
+    background-color: white !important;
     user-select: none;
     display: inline-flex;
     justify-content: center;
@@ -303,7 +303,6 @@ html {
     font-weight: 700;
     white-space: nowrap;
     text-decoration: none;
-    background-image: radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
     color: black;
     border: none;
     border-radius: 8px;
