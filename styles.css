@@ -121,10 +121,12 @@ html {
 
 
 @font-face {
-  font-family: "Subjectivity";
-  src: url("Subjectivity-ExtraBold.otf");
+  font-family: 'Subjectivity';
+  src: url('subjectivity-extrabold-webfont.woff2') format('woff2'),
+       url('subjectivity-extrabold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-
 .swiper {
   width: 100%;
 }
@@ -149,7 +151,7 @@ html {
   font-size: clamp(1.25rem, 0.7584rem + 2.2866vw, 2.1875rem);
   color: #ffffff;
   text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
-  padding-right: 10px; /* no clip with text shadow */
+  padding: 10px 10px 0 0;
   font-family: "Subjectivity", sans-serif;
 }
 .grid
