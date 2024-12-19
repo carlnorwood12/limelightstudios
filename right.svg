@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 27.7 18.8">
+  <!-- Generator: Adobe Illustrator 29.0.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 192)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.5px;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M.8,9.4h26.1"/>
+  <path class="st0" d="M26.9,9.3c-1-.5-2.8-1.5-4.4-3.4-1.7-2-2.4-4.1-2.7-5.2"/>
+  <path class="st0" d="M26.9,9.4c-1,.5-2.8,1.5-4.4,3.4-1.7,2-2.4,4.1-2.7,5.2"/>
+</svg>

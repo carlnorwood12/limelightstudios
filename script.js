@@ -28,6 +28,7 @@ $(document).ready(function () {
     }
   }
   $("header").click(toggleMenu);
+  /*
   $(".menu-link a").click(function (event) {
     event.preventDefault();
     let targetUrl = $(this).attr("href");
@@ -37,6 +38,7 @@ $(document).ready(function () {
       window.location.href = targetUrl;
     }, menuTimeline.duration() * 1000);
   });
+  */
 
   $(".menu-overlay").css("pointer-events", "none");
 });
