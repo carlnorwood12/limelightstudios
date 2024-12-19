@@ -150,7 +150,7 @@ html {
   color: #ffffff;
   text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
   padding-right: 10px; /* no clip with text shadow */
-  font-family: "Subjectivity";
+  font-family: "Subjectivity", sans-serif;
 }
 .grid
 {
@@ -307,7 +307,7 @@ html {
   .btn:hover 
   {
     filter: invert(1);
-    transition: filter 0.2s ease-in-out;
+    transition: filter 0.5s ease-in-out;
   }
   /* Styles for touch devices */
   .swiper-slide .btn {
@@ -508,7 +508,7 @@ video {
   color: black;
   font-size: clamp(1rem, 0.2134rem + 3.6585vw, 2.5rem);
   clip-path: inset(0 0 0% 0);
-  font-family: "Subjectivity";
+  font-family: "Subjectivity", sans-serif;
   text-wrap: nowrap;
   z-index: 100;
 }
@@ -518,7 +518,7 @@ video {
   clip-path: inset(0 0 0% 0);
   text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
   padding-right: 10px; /* no clip with text shadow */
-  font-family: "Subjectivity";
+  font-family: "Subjectivity", sans-serif;
   white-space: nowrap;
   z-index: 100;
 }
@@ -1210,13 +1210,13 @@ header {
 }
 .desktop-only {
   display: inline;
-  font-family: "Subjectivity";
+  font-family: "Subjectivity", sans-serif;
   color: #9ca1ed;
 }
 .title-span
 {
   display: inline;
-  font-family: "Subjectivity";
+  font-family: "Subjectivity", sans-serif;
   color: #9ca1ed;
 }
 
