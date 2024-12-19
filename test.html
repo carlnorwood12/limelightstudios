@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Hello, world!</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta name="description" content="" />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+   </head>
+   <meta charset="UTF-8" />
+   <title>Hello, world!</title>
+   <style>
+      body
+      {
+      height: 100vh;
+      background-color: black;
+      }
+      .container 
+      {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height: 100%;
+      }
+      .item-0 {
+      flex-basis: 20%;
+      background-color: rebeccapurple;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .item-1 {
+      flex-basis: 90%;
+      background-color: red;
+      padding: 20px 50px;
+      }
+      .map {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      z-index: 1;
+      }
+      .map-container 
+      {
+      height: 100%;
+      }
+      .title {
+      font-size: clamp(1.25rem, 0.7584rem + 2.2866vw, 2.1875rem);
+      color: #ffffff;
+      text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
+      padding-right: 10px; /* no clip with text shadow */
+      font-family: "Subjectivity";
+      white-space: nowrap;
+      z-index: 100;
+      }
+      .paragraph-join {
+      z-index: 99;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: clamp(0.75rem, 0.6189rem + 0.6098vw, 1rem);
+      margin-bottom: clamp(0.9375rem, 0.6098rem + 1.5244vw, 1.5625rem);
+      }
+   </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="item-0">
+            <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+               <h1 class="title">Discovering<span class="desktop-only"> ⎯ Venues</span></h1>
+               <p class="paragraph-join">Answers to the most frequently asked questions.</p>
+            </div>
+         </div>
+         <div class="item-1">
+            <div class="map-container">
+               <div id="map" class="map"></div>
+            </div>
+         </div>
+      </div>
+      <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="map.js"></script>    
+      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+      <script>
+         $(document).mousemove(function (event) {
+           var windowWidth = $(window).width();
+           var windowHeight = $(window).height();
+           var scrollX = $(window).scrollLeft();
+           var scrollY = $(window).scrollTop();
+           var mouseXpercentage = Math.round(((event.pageX - scrollX) / windowWidth) * 100);
+           var mouseYpercentage = Math.round(((event.pageY - scrollY) / windowHeight) * 100);
+           $(".radial-gradient").css("background", "radial-gradient(circle at " + mouseXpercentage + "% " + mouseYpercentage + "%, #14142B 0%, #14142B 2%, #14142A 4%, #13132A 6%, #131329 8%, #131328 9%, #121228 11%, #121227 13%, #121226 14%, #111125 16%, #111123 18%, #101022 20%, #0F0F21 22%, #0F0F20 24%, #0E0E1E 27%, #0E0E1D 30%, #0D0D1C 33%, #0D0D1B 36%, #0C0C19 40%, #0B0B18 44%, #0B0B17 48%, #0B0B16 53%, #0A0A16 59%, #0A0A15 64%, #0A0A15 71%)");
+         });
+      </script>
+   </body>
+</html>

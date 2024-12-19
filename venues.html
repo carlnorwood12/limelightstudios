@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Hello, world!</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta name="description" content="" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+      <link rel="stylesheet" type="text/css" href="styles.css" />
+   </head>
+   <body>
+      <div class="radial-gradient"></div>
+      <div class="container-venues">
+        <div class="item-0">
+              <h1 class="title">Discovering<span class="title-span"> ⎯ Venues</span></h1>
+              <p class="paragraph-venues">Let’s find the nearest venue to you<span class="paragraph-venues-2">, making it easy to get to the perfect spot.</span></h1>
+        </div>
+        <div class="item-1">
+           <div class="map-container">
+              <div id="map" class="map"></div>
+           </div>
+        </div>
+     </div>
+      <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="map.js"></script>    
+      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+      <script>
+         $(document).mousemove(function (event) {
+           var windowWidth = $(window).width();
+           var windowHeight = $(window).height();
+           var scrollX = $(window).scrollLeft();
+           var scrollY = $(window).scrollTop();
+           var mouseXpercentage = Math.round(((event.pageX - scrollX) / windowWidth) * 100);
+           var mouseYpercentage = Math.round(((event.pageY - scrollY) / windowHeight) * 100);
+           $(".radial-gradient").css("background", "radial-gradient(circle at " + mouseXpercentage + "% " + mouseYpercentage + "%, #14142B 0%, #14142B 2%, #14142A 4%, #13132A 6%, #131329 8%, #131328 9%, #121228 11%, #121227 13%, #121226 14%, #111125 16%, #111123 18%, #101022 20%, #0F0F21 22%, #0F0F20 24%, #0E0E1E 27%, #0E0E1D 30%, #0D0D1C 33%, #0D0D1B 36%, #0C0C19 40%, #0B0B18 44%, #0B0B17 48%, #0B0B16 53%, #0A0A16 59%, #0A0A15 64%, #0A0A15 71%)");
+         });
+      </script>
+   </body>
+</html>
