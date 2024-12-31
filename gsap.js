@@ -1,0 +1,1 @@
+gsap.from(".dif2 img", { duration: 2, opacity: 0, scale: 0.3});
