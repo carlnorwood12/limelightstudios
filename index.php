@@ -12,7 +12,10 @@ include 'connection.php';
     <meta charset="UTF-8" />
     <title>Hello, world!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Limelight Cinema is the absolute char of the piece of meat it has everything go alone now it wont kill you grapes in the microwave">
+  <meta name="keywords" content="Limelight Cinema">
     <meta name="theme-color" content="#000">
+<title>Limelight Cinema</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="dropdown.css">
@@ -315,7 +318,6 @@ include 'connection.php';
                     </div>
                     <div class="swiper-slide card">
                         <img src="exclusive_access.webp" alt="Sample Image" class="hero__image" loading="lazy" />
-                        <div class="swiper-lazy-preloader"></div>
                         <h1 class="title">Exclusive access<span class="desktop-only">, always.</span></h1>
                         <p class="paragraph-join">Create personalized profiles based on your taste.</p>
                         <a href="servicing.html">
