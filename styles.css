@@ -1,0 +1,834 @@
+/* Reset and Global Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(225, 255, 255, 0);
+}
+*::after, *::before {
+  pointer-events: none;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  line-height: 1;
+}
+p {
+  margin: 0;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+::selection {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Root Variables */
+:root {
+  --darker: #5c5c77;
+  --blue: #14142b;
+  --margin-top: 10px;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 1px;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
+}
+::placeholder {
+  color: white;
+}
+
+/* Body and HTML Styles */
+body,
+html {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-width: 344px;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Font Faces */
+@font-face {
+  font-family: "MontserratBold";
+  src: url("/font/Montserrat-ExtraBold.ttf");
+}
+@font-face {
+  font-family: 'Subjectivity';
+  src: url('/font/subjectivity-extrabold-webfont.woff2') format('woff2'),
+  url('/font/subjectivity-extrabold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Kept styles unrelated to header and menu overlay */
+
+.twinkle {
+  width: 15px;
+  transition: transform 1s ease;
+}
+.twinkle.rotate {
+  transform: rotate(180deg);
+}
+.star {
+  font-size: 16px;
+  margin-right: 4px;
+  width: 15px;
+}
+.details {
+  color: rgba(255, 255, 255, 0.75);
+  mix-blend-mode: screen;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 99;
+}
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.content .book-button {
+  margin-top: 10px;
+}
+.comingSoon .book-now:hover > img {
+  animation: bell 1s ease-in-out infinite;
+  transform-origin: top center;
+  transition: all 0.3s ease;
+}
+.genre {
+  color: rgba(255, 255, 255, 0.75);
+}
+.genre-badge {
+  display: inline-flex;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 50px;
+  background: rgba(60, 9, 17, 0.79);
+  box-shadow: 0px 0px 1.5px 0.05px #ff2146 inset;
+  color: #ff2146;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 99;
+}
+.genre-text {
+  filter: drop-shadow(0 0 0.5px #ff2146);
+}
+.genre-badge img {
+  filter: drop-shadow(0 0 1px #ff2146);
+}
+.genre-container-index {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+  align-items: center;
+  gap: 8px;
+}
+.genre-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+}
+.title-span {
+  display: inline;
+  font-family: "Subjectivity", sans-serif;
+  color: #9ca1ed;
+}
+/* radio */
+.radio-wrapper-13 .rdo {
+  position: relative;
+  display: block;
+  float: left;
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.15s ease;
+}
+.radio-wrapper-13 .rdo:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: calc(50% - 3.5px);
+  left: calc(50% - 3.5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transform: scale(0);
+}
+.radio-wrapper-13 label {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.radio-wrapper-13 input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.radio-wrapper-13 input[type="radio"]:checked + .rdo {
+  background-image: linear-gradient(#9ca1ed, #5962e1);
+}
+.radio-wrapper-13 input[type="radio"]:checked + .rdo:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.15s ease;
+}
+/* checkbox */
+.checkbox-wrapper {
+  display: inline-block;
+  cursor: pointer;
+}
+.checkbox-wrapper input {
+  display: none;
+}
+.checkbox-wrapper label {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.checkbox-wrapper label:hover {
+  filter: brightness(1.15);
+}
+.checkbox-wrapper .box {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.1);
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+.checkbox-wrapper input:checked + label .box > p {
+  display: block;
+}
+.checkbox-wrapper .box > p {
+  font-size: 10px;
+  font-weight: 700;
+  color: #000;
+  display: none;
+}
+.checkbox-wrapper svg {
+  width: 20px;
+  height: 20px;
+  stroke: black;
+  cursor: pointer;
+  stroke-width: 2;
+  stroke-dasharray: 25;
+  stroke-dashoffset: 25;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+  position: absolute;
+}
+.checkbox-wrapper input:checked + label .box {
+  background: #9ca1ed;
+  box-shadow: 0px 0px 15px 0px #5962e1;
+  animation: scaleEffect 0.3s;
+}
+.contain-the-image {
+  position: relative;
+  border: 20px solid transparent;
+  transform: scale(0.8);
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+  .contain-the-image {
+    display: none;
+  }
+
+  .left-text {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
+.container-them {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  z-index: 99;
+}
+.content-wrapper > * {
+  padding: 0 clamp(1.25rem, 0.2668rem + 4.5732vw, 3.125rem);
+}
+.content-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+  overflow: hidden;
+}
+html::after {
+  content: '';
+  position: absolute;
+  z-index: 44;
+  inset: 0;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, 0.9);
+  animation: background-image-fade 2s ease-in-out forwards;
+}
+.wave {
+  position: absolute;
+  z-index: -99;
+}
+.text-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+.arrow {
+  width: clamp(1.5625rem, 0.7431rem + 3.811vw, 3.125rem);
+  animation: move 1s infinite;
+}
+.arrow2 {
+  width: 20px;
+}
+.title {
+  font-size: clamp(1.625rem, 1.4284rem + 0.9146vw, 2rem);
+  color: #ffffff;
+  text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  font-family: "MontserratBold", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 9999999;
+}
+.title-faq {
+  background: radial-gradient(circle farthest-corner at center center, #FFFFFF 0%, #bcbcbc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.5625rem, 1.2348rem + 1.5244vw, 2.1875rem);
+  padding: 30px 15px;
+  font-family: "MontserratBold", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+  line-height: clamp(2.1875rem, 1.8598rem + 1.5244vw, 2.8125rem);
+}
+.title-banner {
+  font-size: 50px;
+  text-align: center;
+  white-space: nowrap;
+  color: rgba(255, 255, 255,1);
+  text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  font-family: "MontserratBold", sans-serif;
+  z-index: 9999999;
+}
+iframe {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999;
+}
+.p-welcome {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 75px;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  z-index: 9999999;
+}
+.title-sorry {
+  font-size: clamp(1.25rem, 0.7584rem + 2.2866vw, 2.1875rem);
+  color: #ffffff;
+  padding-right: 10px;
+  font-family: "Subjectivity", sans-serif;
+  text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, 2px 1px 1px #000000, 1px 2px 1px #000000, 3px 2px 1px #000000, 2px 3px 1px #000000, 4px 3px 1px #000000;
+  margin-bottom: -400px;
+  font-weight: bolder;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 9999999;
+}
+.max-w-2xl .title {
+  margin-bottom: 20px;
+}
+.content-wrapper .metadata-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+  width: fit-content;
+  color: #5c5c77;
+  gap: 10px;
+}
+.left-text .metadata-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 15px;
+  color: #5c5c77;
+  gap: 10px;
+}
+.info-icon {
+  width: 16px;
+  height: 16px;
+}
+.h1-content {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.arrow2 {
+  width: 12px;
+  height: 12px;
+}
+.info-content {
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+.metadata img {
+  vertical-align: middle;
+  width: 15px;
+  margin-right: 5px;
+}
+.text {
+  font-size: 14px;
+  color: #5c5c77;
+}
+.paragraph-left {
+  z-index: 99;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+.top-movie-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-image: url(theshawnredemption.jpg);
+  background-size: cover;
+  background-position: center center;
+  -webkit-mask-image: linear-gradient(to right, transparent 90%, black 80%);
+  mask-image: linear-gradient(to top, transparent 90%, black 80%);
+  border-radius: 8px;
+}
+.category {
+  border-radius: 8px;
+  background-color: rgba(10, 10, 21, 1);
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
+  padding: 10px 10px;
+  width: 200px;
+  height: 130px;
+}
+.left-text {
+  border-radius: 8px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.left-text h1 {
+  margin-bottom: 10px;
+}
+.contain-image {
+  position: relative;
+  border-radius: 8px;
+  aspect-ratio: 2/3;
+  width: 100%;
+  height: 100%;
+}
+.venue-list2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+.left-seats, .right-seats {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.left-seats {
+  flex-basis: 50%;
+  justify-content: flex-start;
+}
+.right-seats {
+  flex-basis: 50%;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 650px) {
+  .right-seats {
+    display: none;
+  }
+}
+.booking-stage {
+  position: relative;
+  z-index: 999999999;
+}
+.container {
+  text-align: center;
+  padding: 20px;
+}
+.booking-step {
+  position: relative;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.booking-flow {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.progress-tracker {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.step-icon {
+  background-color: #000;
+  color: #ffffff4d;
+  border-radius: 50%;
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.3) inset;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s ease;
+  z-index: 999999;
+}
+#line {
+  position: relative;
+  margin-bottom: 50px;
+  width: 100%;
+  height: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+}
+.text {
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff4d;
+}
+@keyframes background-image-fade {
+  0% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.text2 {
+  position: absolute;
+  bottom: -40px;
+  white-space: nowrap;
+}
+.step.active .step-icon {
+  background-color: #9ca1ed;
+  color: black;
+  border-color: var(--color-primary);
+}
+.booking-swiper {
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+}
+.booking-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.booking-step-content {
+  display: flex;
+  align-items: center;
+  color: #ffffff4d;
+  gap: 10px;
+}
+.pin-icon {
+  width: 20px;
+}
+.booking-step-text {
+  color: #ffffff4d;
+}
+.booking-slide.swiper-slide-active > .booking-step-content > .booking-step-number {
+  color: #9ca1ed;
+}
+.swiper-pagination.swiper-pagination-progressbar.swiper-pagination-horizontal {
+  margin-top: 49px;
+  height: 1px !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+.swiper-pagination-progressbar-fill {
+  background: #9ca1ed !important;
+}
+.step-label {
+  position: absolute;
+  bottom: -30px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #ffffff4d;
+}
+.title-select {
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+}
+.step.active .step-label {
+  color: #9ca1ed;
+}
+.title-seats {
+  color: #5c5c77;
+  font-size: 15px;
+}
+.content-area {
+  width: 100%;
+  height: auto;
+}
+h2 {
+  font-size: 100px;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+}
+td {
+  padding: 10px;
+  text-align: center;
+}
+td p {
+  color: #FFFFFF33;
+}
+.venue-option {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+.movie-details-column
+{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.venue-option:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.venue-option input[type="radio"] {
+  margin-right: 12px;
+}
+.venue-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.venue-name {
+  font-weight: bold;
+  color: white;
+}
+.movie-details-row
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.movie-snacks
+{
+  width: 20px;
+}
+.options-subtitle
+{
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.options-price
+{
+  font-size: 15px;
+  color: #5c5c77;
+}
+.venue-availability {
+  font-size: 14px;
+  color: #5c5c77;
+}
+#bookingSummary
+{
+  color: white;
+  text-decoration: underline;
+}
+.booking-nav-button {
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking-nav-button-left:hover, .booking-nav-button-right:hover
+{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.booking-nav-button-left
+{
+  left: 0;
+}
+.booking-nav-button-right {
+  right: 0;
+}
+
+.booking-process
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.quantity {
+  position: absolute;
+  right: 20px;
+}
+.venue-list4
+{
+  position: relative;
+}
+
+.quantity {
+  display: flex;
+  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.quantity button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(100%);
+  -webkit-backdrop-filter: blur(20px) saturate(100%);
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 20px;
+  width: 30px;
+  height: auto;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+#confirmBookingBtn
+{
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 20px;
+}
+.input-box {
+  width: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  border: none;
+  padding: 8px 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Hide the number input spin buttons */
+.input-box::-webkit-inner-spin-button,
+.input-box::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-box[type="number"] {
+  -moz-appearance: textfield;
+}

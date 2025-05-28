@@ -1,0 +1,205 @@
+:root {
+    --darker: #5c5c77;
+    --blue: #9ca1ed;
+    --black: #000000;
+    --white: #ffffff;
+    --light-blue: #B0B4F1;
+    --background-color: #14142b;
+    --background-color-dark: #0a0a15;
+    --button-background: #f0ff9e;
+    --button-hover-brightness: 1.1;
+    --input-background: rgba(255, 255, 255, 0.2);
+    --input-focus-background: #CBD1FF;
+    --text-color: rgba(255, 255, 255, 0.75);
+    --selection-background: rgba(255, 255, 255, 0.1);
+    --highlight-color: rgba(225, 255, 255, 0);
+}
+body
+{
+    background-color: black;
+}
+aside
+{
+    border: none !important;
+    background-color: #000 !important;
+}
+.page-wrapper
+{
+    border: none !important;
+}
+th
+{
+    background-color: black !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+.nav-item {
+    width: 100%;
+    padding: 0 5px;
+    overflow: hidden; /* Prevent overflow when width is smaller */
+}
+.card-title
+{
+    color: rgba(255, 255, 255, 0.5) !important;
+
+}
+
+.nav-item .nav-link {
+    width: 100%; /* Start with a width of 0 */
+    transition: width 0.5s ease; /* Smooth width transition */
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.dropdown .nav-link:hover {
+    width: calc(100% - 20px);
+}.nav-item:nth-of-type(2) .nav-link:hover,
+.nav-item:nth-of-type(3) .nav-link:hover,
+.nav-item:nth-of-type(4) .nav-link:hover,
+.nav-item:nth-of-type(5) .nav-link:hover,
+.nav-item:nth-of-type(6) .nav-link:hover,
+.nav-item:nth-of-type(7) .nav-link:hover,
+.nav-item:nth-of-type(8) .nav-link:hover
+ {
+    width: calc(100% - 20px);
+}
+.nav-item:nth-of-type(1) .nav-link:hover > .nav-link-title
+{
+    color: #f0ff9e !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(2) .nav-link:hover > .nav-link-title
+{
+    color: #e79eff !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(3) .nav-link:hover > .nav-link-title
+{
+    color: #e79eff !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(4) .nav-link:hover > .nav-link-title
+{
+    color: #ad9eff !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(5) .nav-link:hover > .nav-link-title
+{
+    color: #9ec9ff !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(6) .nav-link:hover > .nav-link-title
+{
+    color: #b6ff9e !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(7) .nav-link:hover > .nav-link-title
+{
+    color: #ff9ea2 !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-item:nth-of-type(8) .nav-link:hover > .nav-link-title
+{
+    color: #ffd49e !important; /* Change text color on hover */
+    transition: all 0.15s ease; /* Smooth transition effect */
+}
+.nav-link-title
+{
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.5s ease;
+}
+.text-reset, .text-name
+{
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+.text-name
+{
+    margin-left: 10px;
+    color: white !important;
+}
+th:first-child
+{
+    width: 20px !important;
+}
+.card
+{
+    background-color: black !important;
+}
+input
+{
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+
+
+.btn
+{
+    position: relative;
+    background-color: rgb(4, 21, 19) !important;
+    color: #2BCFC1 !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    border: none !important;
+}
+.btn-1
+{
+    background-color: #150406 !important;
+    color: #cf2b39 !important;
+    border: none !important;
+}
+.col-auto:nth-of-type(3) .btn
+{
+    background-color: #150406 !important;
+    color: #cf2b39 !important;
+    border: none !important;
+}
+.btn:hover
+{
+    transform: scale(1.05) !important;
+}
+.btn-list .btn:first-child
+{
+    background-color: #040d15 !important;
+    color: #2b7bcf !important;
+    border: none !important;
+
+}
+.btn-list .btn:last-child
+{
+    background-color: #150406 !important;
+    color: #cf2b39 !important;
+    border: none !important;
+}
+.h1-title
+{
+    letter-spacing: 0.05rem !important;
+    white-space: nowrap !important;
+    font-size: 20px !important;
+    color: #9ca1ed !important;
+    background-color: black !important;
+    font-weight: 800 !important;
+    padding-right: 10px !important;
+    width: 100%    !important;
+    text-align: left  !important;
+    margin-bottom: 20px !important;
+}
+.navbar-brand-image
+{
+    width: 150px !important;
+}
+.navbar.navbar-vertical.navbar-expand-lg
+{
+    display: flex !important;
+    justify-content: center !important;
+}
+input
+{
+    all: unset;
+}
+@media (max-width: 767px)
+{
+    .text-reset, .text-name
+    {
+        margin-left: 0 !important;
+    }
+}
