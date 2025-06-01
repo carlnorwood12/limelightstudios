@@ -147,7 +147,7 @@ if (isset($_POST['save_movie'])) {
                             <p></p>
                         </div>
                         <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270"
-                            id="go-right" alt="enter movie">
+                            id="/svg/menu/go-right" alt="enter movie">
                     </div>
                     <div class="menu-link">
                         <a href="index.html">Home</a>
