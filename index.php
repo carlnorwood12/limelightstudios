@@ -86,7 +86,7 @@ if (isset($_REQUEST["search_term"])) {
                             <div class="row-buttons">
                             <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
                                     <?php if ($_SESSION['user_status'] === 'Admin'): ?>
-                                        <a href="adminpanel.php">
+                                        <a href="adminpanel/dashboard.php">
                                             <button class="nav-buttons dashboard">
                                                 <img src="/svg/adminpanel/dashboard.svg" alt="dashboard" class="menu-icon">
                                                 Dashboard
@@ -102,24 +102,22 @@ if (isset($_REQUEST["search_term"])) {
                                     <?php endif; ?>
 
                                     <!-- Both Admin and Adult users see Profile button -->
-                                    <a href="profile.php">
+                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? '/adminpanel/profile-admin.php' : 'profile.php' ?>">
                                         <button class="nav-buttons settings">
                                             <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
                                         </button>
                                     </a>
-
-                                <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
-                                    <!-- Junior users only see Profile button -->
-                                    <a href="profile.php">
-                                        <button class="nav-buttons settings">
-                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
-                                            Profile
-                                        </button>
-                                    </a>
-
-                                <?php else: ?>
-                                <?php endif; ?>
+                                    <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                                        <!-- Junior users only see Profile button -->
+                                        <a href="profile.php">
+                                            <button class="nav-buttons settings">
+                                                <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
+                                                Profile
+                                            </button>
+                                        </a>
+                                    <?php else: ?>
+                                    <?php endif; ?>
                             </div>
                         </div>
                     </div>

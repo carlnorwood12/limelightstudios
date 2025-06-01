@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include 'connection.php';
+include '../connection.php';
 global $dbhandle;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
