@@ -1,0 +1,85 @@
+
+        /* Remove navbar border - from bookings.php */
+        aside.navbar-vertical {
+            border: none !important;
+            border-right: none !important;
+        }
+
+        .navbar-vertical.navbar-expand-lg {
+            border-right: none !important;
+        }
+
+        /* Set minimum widths to prevent squishing - from bookings.php */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .table {
+            min-width: 1300px !important;
+        }
+
+        /* Profile image styles - from bookings.php */
+        .profile-image-container {
+            margin-right: 10px;
+        }
+
+        .card-footer
+        {
+            background-color: #040d15 !important;
+            border-top: none !important;
+            padding: 10px 20px !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .profile-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin: 0;
+            color: #fff;
+        }
+
+        .profile-role {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+        .navbar-brand {
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+            margin-left: 20px;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .col {
+            padding: 10px 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-list {
+            display: flex;
+            gap: 5px;
+            flex-wrap: nowrap;
+        }

@@ -61,144 +61,109 @@
       <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
       <link rel="stylesheet" href="tailwind_override.css"/>
-      <style>
-         /* Remove navbar border */
-         aside.navbar-vertical {
-         border: none !important;
-         border-right: none !important;
-         }
-         .member-profile-pic {
-         width: 80px;
-         height: 80px;
-         border-radius: 50%;
-         object-fit: cover;
-         border: 3px solid #9ca1ed;
-         }
-         .member-info-cell 
-         {
-            width: 250px;
-         }
-         .member-details {
-         display: flex;
-         flex-direction: column;
-         gap: 0.5rem;
-         }
-         .detail-item {
-         display: flex;
-         gap: 12px;
-         }
-         .detail-label {
-         font-weight: 500;
-         color: #718096;
-         }
-         .detail-value {
-         font-weight: 600;
-         }
-         .table td {
-         vertical-align: middle;
-         }
-         .page-title {
-         font-size: 1.5rem;
-         font-weight: 700;
-         color: #fff;
-         }
-         .profile-image-container {
-         margin-right: 10px;
-         }
-         .profile-image {
-         width: 45px;
-         height: 45px;
-         border-radius: 50%;
-         object-fit: cover;
-         }
-         .profile-info {
-         display: flex;
-         flex-direction: column;
-         }
-         .profile-name {
-            font-weight: 600;
-            font-size: 15px;
-            margin: 0;
-            color: #fff;
-         }
-         .profile-role {
-         font-size: 12px;
-         color: #777;
-         margin: 0;
-         }
-         .navbar-brand {
-         justify-content: flex-start !important;
-         align-items: flex-start !important;
-         margin-left: 20px;
-         }
-         .col
-         {
-            padding: 10px 20px;
-         }
-      </style>
+      <link rel="stylesheet" href="./adminstyles.css"/>
    </head>
    <body>
-      <div class="radial-gradient"></div>
-      <div class="page">
-         <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
-            <div class="container-fluid">
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button>
-               <!-- Updated profile section -->
-               <div class="navbar-brand py-3">
-                  <div class="d-flex align-items-center">
-                     <div class="profile-image-container">
-                        <img class="profile-image" src="upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
-                     </div>
-                     <div class="profile-info">
+<div class="page">
+    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Updated profile section - from bookings.php -->
+            <div class="navbar-brand py-3">
+                <div class="d-flex align-items-center">
+                    <div class="profile-image-container">
+                        <img class="profile-image" src="../upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
+                    </div>
+                    <div class="profile-info">
                         <h3 class="profile-name"><?=$_SESSION['name'] ?? "Please login" ?></h3>
-                        <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
-                     </div>
-                  </div>
-               </div>
-               <div class="navbar-nav flex-row d-lg-none">
-                  <!-- Mobile menu controls -->
-               </div>
-               <div class="collapse navbar-collapse" id="sidebar-menu">
-                  <ul class="navbar-nav pt-lg-3">
-                     <li class="nav-item">
-                        <a class="nav-link" href="profile.php" >
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
-                        </span>
-                        <span class="nav-link-title">
-                        Profile
-                        </span>
+                        <p class="profile-role">
+                            <?= $_SESSION['user_status'] ?? "To view account details" ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-nav flex-row d-lg-none">
+                <!-- Mobile menu controls -->
+            </div>
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.php" >
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <img src="/svg/dashboard.svg" class="icon" width="20px" />
+                            </span>
+                            <span class="nav-link-title">
+                                Dashboard
+                            </span>
                         </a>
-                     </li>
-                     <?php if ($_SESSION['user_status'] !== 'Junior'): ?>
-                        <li class="nav-item">
-                           <a class="nav-link" href="bookings.php">
-                              <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <img src="/svg/adminpanel/bookings.svg" class="icon" width="20px" />
-                              </span>
-                              <span class="nav-link-title">
-                                    Bookings
-                              </span>
-                           </a>
-                        </li>
-                     <?php endif; ?>
-                  </ul>
-               </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="users.php" >
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <img src="/svg/adminpanel/users.svg" class="icon" width="20px" />
+                            </span>
+                            <span class="nav-link-title">
+                                Users
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="staff.php" >
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <img src="/svg/adminpanel/users.svg" class="icon" width="20px" />
+                            </span>
+                            <span class="nav-link-title">
+                                Staff
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="movies.php" >
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <img src="/svg/adminpanel/movies.svg" class="icon" width="20px" />
+                            </span>
+                            <span class="nav-link-title">
+                                Movies
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="screenings.php" >
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <img src="/svg/adminpanel/projector.svg" class="icon" width="20px" />
+                            </span>
+                            <span class="nav-link-title">
+                                Screenings
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookings-admin.php" >
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <img src="/svg/adminpanel/tickets.svg" class="icon" width="20px" />
+                            </span>
+                            <span class="nav-link-title">
+                                Bookings
+                            </span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-         </aside>
-         <div class="page-wrapper">
-            <div class="page-header d-print-none">
-               <div class="container-xl">
-                  <div class="row g-2 align-items-center">
-                     <div class="col">
-                        <h2 class="page-title">Profile</h2>
-                        <p class="text-muted mt-1">View your account information</p>
-                     </div>
-                  </div>
-               </div>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <div class="page-header d-print-none">
+            <div class="container-xl">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <h2 class="page-title">Movies</h2>
+                        <p class="text-muted mt-1">View all movies and manage them easily.</p>
+                    </div>
+                </div>
             </div>
+        </div>
             <div class="page-body">
                <div class="container-xl">
                   <div class="row row-cards">
