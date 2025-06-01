@@ -415,7 +415,6 @@ html {
   cursor: default;
   z-index: 999 !important;
   padding: 10px 0; 
-  background-color: black; 
   -webkit-mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 20%, #fff 80%, rgba(255, 255, 255, 0) 100%);
   mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 20%, #fff 80%, rgba(255, 255, 255, 0) 100%);
 }

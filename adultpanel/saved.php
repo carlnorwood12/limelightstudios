@@ -1,5 +1,4 @@
 <?php
-   // Start session at the very beginning before any output
    session_start();
    include '../connection.php';
    global $dbhandle;
@@ -13,7 +12,6 @@
        if ($result && mysqli_num_rows($result) > 0) {
            $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
            
-           // Set session variables if they're not already set
            if (!isset($_SESSION['name'])) {
                $_SESSION['name'] = $user['name'];
            }
@@ -28,33 +26,29 @@
        }
    }
 
-   // Handle movie deletion if submitted
+   // Handle movie deletion
    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_movie'])) {
       $movie_id = $_POST['movie_id'] ?? 0;
       if ($movie_id > 0) {
          $delete_query = "DELETE FROM saved_movies WHERE id = '$movie_id'";
          if (mysqli_query($dbhandle, $delete_query)) {
-            // Redirect to prevent form resubmission
             header("Location: " . $_SERVER['PHP_SELF'] . "?deleted=1");
             exit;
          }
       }
    }
-$saved_movies_query = "
-    SELECT 
-        sm.id,
-        sm.title,
-        m.poster_url,
-        sm.saved_at
-    FROM 
-        saved_movies sm
-    JOIN 
-        movies m ON sm.title = m.title
-    ORDER BY 
-        sm.saved_at DESC
-";
-
-$saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Error querying saved movies: ' . mysqli_error($dbhandle));
+   
+   // Fetch saved movies
+   $saved_movies_query = "
+       SELECT 
+           id,
+           title,
+           poster_url,
+           saved_at
+       FROM 
+           saved_movies
+       ORDER BY saved_at DESC
+   ";
    
    $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Error querying saved movies: ' . mysqli_error($dbhandle));
    ?>
@@ -69,7 +63,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
       <link rel="stylesheet" href="../adult.css"/>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <style>
-         /* Remove navbar border */
          aside.navbar-vertical {
          border: none !important;
          border-right: none !important;
@@ -79,26 +72,21 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
          border-right: none !important;
          }
 
-         /* Set minimum widths to prevent squishing */
          .table-responsive {
          overflow-x: auto;
          }
 
          .table {
          min-width: 1200px !important;
-         /* Ensure table has a minimum width */
          table-layout: fixed !important;
-         /* Fixed table layout to respect column widths */
          }
 
-         /* Poster cell width - with higher specificity */
          .table th.poster-cell,
          .table td.poster-cell,
          th.poster-cell,
          td.poster-cell {
          width: 200px !important;
          min-width: 200px !important;
-         /* Forced minimum width */
          text-align: center;
          padding: 15px;
          }
@@ -106,24 +94,20 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
          .movie-details-cell {
          width: 400px;
          min-width: 400px;
-         /* Minimum width */
          }
 
          .saved-info-cell {
          width: 250px;
          min-width: 250px;
-         /* Minimum width */
          }
 
          .actions-cell {
          width: 180px;
          min-width: 180px;
-         /* Minimum width */
          }
 
          .poster-thumbnail {
          width: 200px;
-         /* Slightly increased thumbnail size */
          border-radius: 8px;
          transition: transform 0.3s ease;
          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -165,7 +149,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
          gap: 0.5rem;
          }
 
-         /* Button styles */
          .delete-btn {
          position: relative;
          background-color: #150406 !important;
@@ -177,6 +160,8 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
          border-radius: 4px;
          cursor: pointer;
          font-weight: 500;
+         max-width: 100px;
+         min-width: 100px;
          }
 
          .table td {
@@ -196,7 +181,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
          color: #fff;
          }
 
-         /* Profile image styles */
          .profile-image-container {
          margin-right: 10px;
          }
@@ -248,7 +232,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                   </button>
-                  <!-- Updated profile section -->
                   <div class="navbar-brand py-3">
                      <div class="d-flex align-items-center">
                         <div class="profile-image-container">
@@ -260,9 +243,7 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
                         </div>
                      </div>
                   </div>
-                  <div class="navbar-nav flex-row d-lg-none">
-                     <!-- Mobile menu controls -->
-                  </div>
+                  <div class="navbar-nav flex-row d-lg-none"></div>
                   <div class="collapse navbar-collapse" id="sidebar-menu">
                      <ul class="navbar-nav pt-lg-3">
                         <li class="nav-item">
@@ -346,7 +327,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
                                           </td>
                                           <td class="movie-details-cell" data-label="Movie Details">
                                              <div class="movie-details">
-                                                <!-- Movie title -->
                                                 <div class="movie-title">
                                                    <?php echo htmlspecialchars($movie['title']); ?>
                                                 </div>
@@ -383,7 +363,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
                                                    Remove
                                                 </button>
                                              </div>
-                                             <!-- Hidden form for deletion -->
                                              <form id="delete-form-<?php echo $movie['id']; ?>"
                                                 action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"
                                                 style="display: none;">
@@ -414,7 +393,6 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
       <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
          crossorigin="anonymous"></script>
       <script>
-         // Function to handle delete confirmation
          function confirmDelete(movieId, movieTitle) {
             Swal.fire({
                title: 'Are you sure?',
@@ -427,19 +405,16 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
                cancelButtonText: 'Cancel'
             }).then((result) => {
                if (result.isConfirmed) {
-                  // Submit the delete form
                   document.getElementById(`delete-form-${movieId}`).submit();
                }
             });
          }
 
-         // Force cell widths on load
          $(document).ready(function () {
             $('.poster-cell').css('width', '200px');
             $('.poster-cell').css('min-width', '200px');
          });
 
-         // Mouse movement gradient effect
          $(document).mousemove(function (event) {
              var windowWidth = $(window).width();
              var windowHeight = $(window).height();
@@ -455,6 +430,5 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
    </body>
 </html>
 <?php
-   // Close the connection
    mysqli_close($dbhandle);
    ?>

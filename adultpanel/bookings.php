@@ -267,6 +267,8 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          border-radius: 4px;
          cursor: pointer;
          font-weight: 500;
+         max-width: 100px;
+         min-width: 100px;
       }
 
       .table td {

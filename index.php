@@ -528,7 +528,7 @@ if (isset($_POST['save_movie'])) {
                                     echo htmlspecialchars($date->format('F j, Y')); ?></span>
                                 </div>
                                 <button class="save-button"
-                                    onclick="saveMovie('<?php echo addslashes(htmlspecialchars($row['title'])); ?>')">
+                                    onclick="saveMovie('<?php echo addslashes(htmlspecialchars($row['title'])); ?>', '<?php echo addslashes(htmlspecialchars($row['movie_banner'])); ?>')">
                                     <img src="/svg/saveforlater.svg" alt="" class="ticket-icon">
                                     Save
                                 </button>
@@ -820,40 +820,28 @@ if (isset($_POST['save_movie'])) {
         });
     </script>
     <script>
-    function saveMovie(title) {
-    var movieSlide = event.target.closest('.swiper-slide');
-    var posterUrl = movieSlide.querySelector('.movie-image').src;
-    
-    $.ajax({
-        url: '',
-        type: 'POST',
-        data: {
-            save_movie: true,
-            movie_title: title,
-            poster_url: posterUrl
-        },
-        dataType: 'json',
-        success: function (response) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Saved!',
-                text: 'Movie added to your watchlist',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        },
-        error: function() {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'Failed to save movie',
-                timer: 1500,
-                showConfirmButton: false
+        function saveMovie(title, posterUrl) {
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: {
+                    save_movie: true,
+                    movie_title: title,
+                    poster_url: posterUrl
+                },
+                dataType: 'json',
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Saved!',
+                        text: 'Movie added to your watchlist',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
             });
         }
-    });
-}
-</script>
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         $(function () {
