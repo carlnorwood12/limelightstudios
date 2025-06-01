@@ -25,7 +25,6 @@ if (isset($_REQUEST["search_term"])) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<p data-id='" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["title"]) . "</p>";
     }
-
     mysqli_stmt_close($stmt);
     mysqli_close($dbhandle);
     exit;
@@ -33,7 +32,6 @@ if (isset($_REQUEST["search_term"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>LimelightCinema | Home</title>
@@ -282,24 +280,65 @@ if (isset($_REQUEST["search_term"])) {
         <div class="padding" style="padding-top: 0 !important;">
             <div class="h1-content">
                 <div class="h1-background">
-                    <dotlottie-player src="https://lottie.host/417aacf8-1ddd-4521-b218-18431f9b66c6/KO7LQrW1nM.lottie"
-                        background="transparent" speed="1" style="width: 20px; height: 20px" loop
-                        autoplay></dotlottie-player>
-                    <h1 id="trendingtitle">Now Showing</h1>
+                    <?php if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                        <!-- Chick animation for junior users -->
+                        <dotlottie-player src="https://lottie.host/96618697-a731-4531-aaa4-db4c2c871578/hpqsgNi9CQ.json"
+                            background="transparent" speed="1" style="width: 20px; height: 20px" loop
+                            autoplay></dotlottie-player>
+                    <?php else: ?>
+                        <!-- Default animation for adult users -->
+                        <dotlottie-player src="https://lottie.host/417aacf8-1ddd-4521-b218-18431f9b66c6/KO7LQrW1nM.lottie"
+                            background="transparent" speed="1" style="width: 20px; height: 20px" loop
+                            autoplay></dotlottie-player>
+                    <?php endif; ?>
+                    <h1 id="trendingtitle">
+                        <?php 
+                        // Show different title for child users
+                        if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior') {
+                            echo 'Family Friendly';
+                        } else {
+                            echo 'Now Showing';
+                        }
+                        ?>
+                    </h1>
                 </div>
             </div>
-            <select id="a-select">
-                <option value="movie_rating">Movie Rating</option>
-                <option value="highest_rated">Highest Rated</option>
-                <option value="release_date">Release Date</option>
-            </select>
+            
+            <?php if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Junior'): ?>
+                <!-- Only show sorting dropdown for adults/non-junior users -->
+                <select id="a-select">
+                    <option value="movie_rating">Movie Rating</option>
+                    <option value="highest_rated">Highest Rated</option>
+                    <option value="release_date">Release Date</option>
+                </select>
+            <?php endif; ?>
+            
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <?php
-                    $result = mysqli_query($dbhandle, "SELECT * FROM movies");
+                    // Filter movies based on user type
+                    if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior') {
+                        // Junior users: Show only age-appropriate films (U, PG, 12, 12A)
+                        $result = mysqli_query($dbhandle, "SELECT * FROM movies WHERE age_rating IN ('U', 'PG', '12', '12A') ORDER BY title ASC");
+                        
+                        // Check if any child-appropriate movies exist
+                        if (mysqli_num_rows($result) == 0) {
+                            echo '<div class="no-movies-message" style="color: white; text-align: center; padding: 50px;">
+                                    <h3>No family-friendly movies available at the moment!</h3>
+                                    <p>Check back soon for new releases suitable for young viewers.</p>
+                                  </div>';
+                        }
+                    } else {
+                        // Adult users and non-logged in users: Show all movies
+                        $result = mysqli_query($dbhandle, "SELECT * FROM movies ORDER BY id ASC");
+                    }
+                    
+                    // Display movies
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)): ?>
                         <div class="swiper-slide">
-                            <img src="<?php echo htmlspecialchars($row['movie_banner']); ?>" alt="" class="movie-image">
+                            <img src="<?php echo htmlspecialchars($row['movie_banner']); ?>" 
+                                 alt="<?php echo htmlspecialchars($row['title']); ?> movie poster - Rated <?php echo htmlspecialchars($row['age_rating']); ?>" 
+                                 class="movie-image">
                             <div class="content">
                                 <div class="genre-container-index">
                                     <div class="genre-badge" style="filter: <?php
@@ -313,9 +352,11 @@ if (isset($_REQUEST["search_term"])) {
                                         case 'Adventure':
                                             echo 'hue-rotate(56deg);'; // Golden orange
                                             break;
+                                        case 'Family':
                                         case 'family':
                                             echo 'hue-rotate(84deg);'; // Bright yellow-green
                                             break;
+                                        case 'Fantasy':
                                         case 'fantasy':
                                             echo 'hue-rotate(112deg);'; // Lush green
                                             break;
@@ -364,9 +405,11 @@ if (isset($_REQUEST["search_term"])) {
                                         case 'Adventure':
                                             echo 'hue-rotate(56deg);'; // Golden orange
                                             break;
+                                        case 'Family':
                                         case 'family':
                                             echo 'hue-rotate(84deg);'; // Bright yellow-green
                                             break;
+                                        case 'Fantasy':
                                         case 'fantasy':
                                             echo 'hue-rotate(112deg);'; // Lush green
                                             break;
@@ -409,23 +452,26 @@ if (isset($_REQUEST["search_term"])) {
                                 <div class="details">
                                     <span><?php echo htmlspecialchars($row['age_rating']); ?></span>•
                                     <div class="rating-container">
-                                        <img src="/svg/stars/star.svg" alt="" class="star">
+                                        <img src="/svg/stars/star.svg" alt="Star rating icon" class="star">
                                         <span><?php echo htmlspecialchars($row['movie_rating']); ?></span>
                                     </div>
-                                    <span>•&nbsp;&nbsp;<?php $date = new DateTime($row['release_date']);
+                                    <span>•&nbsp;&nbsp;<?php 
+                                    $date = new DateTime($row['release_date']);
                                     $dateformat = $date->format('F j, Y');
                                     echo htmlspecialchars($dateformat); ?></span>
                                 </div>
+                                
                                 <?php if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                                    <!-- Junior users cannot book tickets -->
                                     <button class="book-button" type="button" onclick="notJunior()">
-                                        <img src="/svg/tickets/tickets.svg" alt="" class="ticket-icon">
+                                        <img src="/svg/tickets/tickets.svg" alt="Booking not available for junior users" class="ticket-icon">
                                         Book now
                                     </button>
                                 <?php else: ?>
-                                    <a
-                                        href="booking.php?id=<?php echo urlencode($row['id']); ?>&title=<?php echo urlencode($row['title']); ?>">
+                                    <!-- Adult users can book tickets -->
+                                    <a href="booking.php?id=<?php echo urlencode($row['id']); ?>&title=<?php echo urlencode($row['title']); ?>">
                                         <button class="book-button" type="submit">
-                                            <img src="/svg/tickets/tickets.svg" alt="" class="ticket-icon">
+                                            <img src="/svg/tickets/tickets.svg" alt="Book tickets for <?php echo htmlspecialchars($row['title']); ?>" class="ticket-icon">
                                             Book now
                                         </button>
                                     </a>

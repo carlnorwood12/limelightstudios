@@ -94,11 +94,11 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f1f11e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #000;
   border-radius: 50px;
 }
 
@@ -590,12 +590,17 @@ input:-webkit-autofill:focus {
 }
 
 .swiper-scrollbar {
-  background: rgba(92, 92, 119, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   position: absolute;
   bottom: 10px;
+  max-width: 300px;
   left: 0;
   right: 0;
   height: 5px;
+}
+.swiper-scrollbar-drag
+{
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .swiper-pagination-bullet-active {
@@ -641,7 +646,6 @@ input:-webkit-autofill:focus {
 }
 
 #volume-on {
-  display: none;
   width: 15px;
 }
 #volume-on.hidden {

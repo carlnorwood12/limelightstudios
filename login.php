@@ -12,7 +12,6 @@
 </head>
 <body>
 <div class="radial-gradient"></div>
-
     <div class="form-container">
     	<form class="shadow w-450 p-3" 
     	      action="php/login.php" 
