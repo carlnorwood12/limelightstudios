@@ -1,27 +1,25 @@
 document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', () => {
+        const faqItem = question.parentElement; // Get the parent .faq-item
         const answer = question.nextElementSibling;
-        const isActive = question.classList.contains('active');
-        
+        const isActive = faqItem.classList.contains('active'); // Check active on parent
+                
         // Close other open questions
-        document.querySelectorAll('.faq-question.active').forEach(openQuestion => {
-            if (openQuestion !== question) {
-                openQuestion.classList.remove('active');
-                const openAnswer = openQuestion.nextElementSibling;
-                openAnswer.classList.remove('active');
+        document.querySelectorAll('.faq-item.active').forEach(openItem => {
+            if (openItem !== faqItem) {
+                openItem.classList.remove('active');
+                const openAnswer = openItem.querySelector('.faq-answer');
                 openAnswer.style.maxHeight = null;
             }
         });
-        
+                
         // Toggle current question
         if (isActive) {
             answer.style.maxHeight = null;
-            question.classList.remove('active');
-            answer.classList.remove('active');
+            faqItem.classList.remove('active'); // Remove from parent
         } else {
-            answer.classList.add('active');
             answer.style.maxHeight = answer.scrollHeight + 'px';
-            question.classList.add('active');
+            faqItem.classList.add('active'); // Add to parent
         }
     });
 });
