@@ -1,5 +1,4 @@
 
-        /* Remove navbar border - from bookings.php */
         aside.navbar-vertical {
             border: none !important;
             border-right: none !important;
@@ -9,7 +8,6 @@
             border-right: none !important;
         }
 
-        /* Set minimum widths to prevent squishing - from bookings.php */
         .table-responsive {
             overflow-x: auto;
         }
@@ -18,7 +16,6 @@
             min-width: 1300px !important;
         }
 
-        /* Profile image styles - from bookings.php */
         .profile-image-container {
             margin-right: 10px;
         }
