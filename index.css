@@ -2070,13 +2070,19 @@ img {
 }
 
 .faq-question::after {
-  content: "+"; /* Replaced SVG with a simple plus sign for reliability */
+  content: "+"; 
   font-size: 20px;
   font-weight: bold;
   transform: rotate(0deg);
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
+
+.faq-answer.active p {
+  opacity: 1; 
+  filter: blur(0px); 
+}
+
 
 .faq-answer {
   max-height: 0;

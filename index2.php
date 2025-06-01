@@ -56,6 +56,8 @@ if (isset($_REQUEST["search_term"])) {
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/nice-select2@2.2.0/dist/js/nice-select2.min.js" defer></script>
     <link rel="stylesheet" href="dropdown.css">
     <link rel="stylesheet" href="progressjs.css">
     <link rel="stylesheet" href="index.css">
@@ -703,11 +705,18 @@ if (isset($_REQUEST["search_term"])) {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="/js/faq.js" defer></script>
     <script src="/js/dropdown.js" defer></script>
+    <script src="/js/nice-select.js" defer></script>
     <script src="/js/swiper.js" defer></script>
     <script src="/js/video.js" defer></script>
     <script src="/js/script.js" defer></script>
     <script src="/js/gsap.js" defer></script>
     <script src="/js/scroll.js" defer></script>
+    <script>
+$(document).ready(function() {
+    $('#a-select').niceSelect();
+    $('#select-venue').niceSelect();
+});
+</script>
     <script>
         const text = new SplitType(".title", { type: "chars" });
         gsap.from(text.chars, { opacity: 0, stagger: 0.05, y: 25, rotate: 5, duration: 1 });
