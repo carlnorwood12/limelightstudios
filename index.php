@@ -167,6 +167,7 @@ if (isset($_REQUEST["search_term"])) {
         </div>
     </div>
     <section class="content-section hero">
+        <div data-us-project="StkVPcD0Yf5lLEEatwJ9" style="position: absolute; width:100%; height: 100%"></div><script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.25/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();</script>
         <div class="swiper hero-swiper">
             <button id="mute-video" type="button">
                 <img src="/svg/volume/volume-off.svg" id="volume-off" alt="">
@@ -233,19 +234,6 @@ if (isset($_REQUEST["search_term"])) {
                 <?php endwhile; ?>
             </div>
             <div class="swiper-pagination"></div>
-        </div>
-    </section>
-    <section class="content-banner welcome">
-        <div class="left-welcome">
-            <h1 class="welcome-title">The Ultimate <br> Cinema Experience</h1>
-        </div>
-        <div class="right-welcome">
-            <div class="right-welcome-container">
-                <div class="wrapper">
-                    <img src="https://media1.tenor.com/m/7Jmp-dDhutEAAAAC/scream-cinema-scene.gif" alt="">
-                </div>
-            </div>
-        </div>
         </div>
     </section>
     <section class="content-banner">
