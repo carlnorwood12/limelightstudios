@@ -159,16 +159,110 @@
   </div>
 
   <footer>
-    <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <div><p class="font-medium" style="color: #9ca1ed;">Links</p><ul class="mt-6 space-y-4 text-sm"><li><a href="/" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Home</a></li><li><a href="/venues.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Venues</a></li><li><a href="/contact.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Contact</a></li><li><a href="/about.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">About</a></li></ul></div>
-        <div><p class="font-medium" style="color: #9ca1ed;">Account</p><ul class="mt-6 space-y-4 text-sm"><li><a href="/account" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">My Account</a></li><li><a href="/bookings.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">My Bookings</a></li></ul></div>
-        <div><p class="font-medium" style="color: #9ca1ed;">Entertainment</p><ul class="mt-6 space-y-4 text-sm"><li><a href="/games.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Games</a></li></ul></div>
-        <div><p class="font-medium" style="color: #9ca1ed;">Legal</p><ul class="mt-6 space-y-4 text-sm"><li><a href="/terms" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Terms and Conditions</a></li><li><a href="/privacy" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Privacy Policy</a></li></ul></div>
-      </div>
-      <p class="text-xs text-gray-500 dark:text-gray-400">&copy; 2025 Limelight Cinemas. All rights reserved.</p>
-    </div>
-  </footer>
+        <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Links</p>
+
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li>
+                            <a href="/" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/venues.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                Venues
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/contact.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/about.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                About
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Account</p>
+
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li>
+                            <a href="/profile.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                My Account
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/bookings.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                My Bookings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Entertainment</p>
+
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li>
+                            <a href="/games.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                Games
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Legal</p>
+
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li>
+                            <a href="/terms" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                Terms and Conditions
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/privacy" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                Privacy Policy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+                &copy; 2025 Limelight Cinemas. All rights reserved.
+            </p>
+        </div>
+    </footer>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

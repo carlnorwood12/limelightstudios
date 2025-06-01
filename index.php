@@ -85,12 +85,12 @@ if (isset($_REQUEST["search_term"])) {
                             <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
                             <div class="row-buttons">
                                 <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
-                                    <!-- Admin and Adult both see Dashboard button -->
-                                    <a
-                                        href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : 'bookings.php' ?>">
+                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : ($_SESSION['user_status'] === 'Adult' ? 'bookings.php' : 'login.php') ?>">
                                         <button class="nav-buttons dashboard">
-                                            <img src="/svg/adminpanel/bookings.svg" alt="dashboard" class="menu-icon">
-                                            Bookings
+                                            <img src="/svg/adminpanel/<?= $_SESSION['user_status'] === 'Admin' ? 'dashboard.svg' : 'bookings.svg' ?>" 
+                                                alt="<?= $_SESSION['user_status'] === 'Admin' ? 'dashboard' : 'bookings' ?>" 
+                                                class="menu-icon">
+                                            <?= $_SESSION['user_status'] === 'Admin' ? 'Dashboard' : 'Bookings' ?>
                                         </button>
                                     </a>
 
@@ -661,7 +661,7 @@ if (isset($_REQUEST["search_term"])) {
 
                     <ul class="mt-6 space-y-4 text-sm">
                         <li>
-                            <a href="/account" class="text-white transition"
+                            <a href="/profile.php" class="text-white transition"
                                 style="opacity: 0.5; transition: opacity 0.3s ease;"
                                 onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
                                 My Account
