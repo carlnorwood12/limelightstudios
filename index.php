@@ -84,17 +84,24 @@ if (isset($_REQUEST["search_term"])) {
                             <h3 class="profile-name"><?= $_SESSION['name'] ?? "Please login" ?></h3>
                             <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
                             <div class="row-buttons">
-                                <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
-                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : ($_SESSION['user_status'] === 'Adult' ? 'bookings.php' : 'login.php') ?>">
-                                        <button class="nav-buttons dashboard">
-                                            <img src="/svg/adminpanel/<?= $_SESSION['user_status'] === 'Admin' ? 'dashboard.svg' : 'bookings.svg' ?>" 
-                                                alt="<?= $_SESSION['user_status'] === 'Admin' ? 'dashboard' : 'bookings' ?>" 
-                                                class="menu-icon">
-                                            <?= $_SESSION['user_status'] === 'Admin' ? 'Dashboard' : 'Bookings' ?>
-                                        </button>
-                                    </a>
+                            <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
+                                    <?php if ($_SESSION['user_status'] === 'Admin'): ?>
+                                        <a href="adminpanel.php">
+                                            <button class="nav-buttons dashboard">
+                                                <img src="/svg/adminpanel/dashboard.svg" alt="dashboard" class="menu-icon">
+                                                Dashboard
+                                            </button>
+                                        </a>
+                                    <?php elseif ($_SESSION['user_status'] === 'Adult'): ?>
+                                        <a href="bookings.php">
+                                            <button class="nav-buttons dashboard">
+                                                <img src="/svg/adminpanel/bookings.svg" alt="bookings" class="menu-icon">
+                                                Bookings
+                                            </button>
+                                        </a>
+                                    <?php endif; ?>
 
-                                    <!-- Both also see Profile button -->
+                                    <!-- Both Admin and Adult users see Profile button -->
                                     <a href="profile.php">
                                         <button class="nav-buttons settings">
                                             <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
@@ -112,7 +119,6 @@ if (isset($_REQUEST["search_term"])) {
                                     </a>
 
                                 <?php else: ?>
-
                                 <?php endif; ?>
                             </div>
                         </div>
