@@ -820,13 +820,17 @@ if (isset($_POST['save_movie'])) {
         });
     </script>
     <script>
-        function saveMovie(title) {
+    function saveMovie(title) {
+    var movieSlide = event.target.closest('.swiper-slide');
+    var posterUrl = movieSlide.querySelector('.movie-image').src;
+    
     $.ajax({
         url: '',
         type: 'POST',
         data: {
             save_movie: true,
-            movie_title: title
+            movie_title: title,
+            poster_url: posterUrl
         },
         dataType: 'json',
         success: function (response) {
@@ -837,10 +841,19 @@ if (isset($_POST['save_movie'])) {
                 timer: 1500,
                 showConfirmButton: false
             });
+        },
+        error: function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Failed to save movie',
+                timer: 1500,
+                showConfirmButton: false
+            });
         }
     });
 }
-    </script>
+</script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         $(function () {
