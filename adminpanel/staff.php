@@ -18,40 +18,32 @@ include '../connection.php';
 global $dbhandle;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'] ?? '';
-    $user = $_POST['username'] ?? '';
-    $pass = $_POST['password'] ?? '';
-    $dob = $_POST['dob'] ?? '';
-    $age = $_POST['age'] ?? '';
+    $user_id = $_POST['user_id'] ?? '';
+    $screening_id = $_POST['screening_id'] ?? '';
+    $seats = $_POST['seats'] ?? '';
+    $adult_tickets = $_POST['adult_tickets'] ?? '';
+    $child_tickets = $_POST['child_tickets'] ?? '';
+    $senior_tickets = $_POST['senior_tickets'] ?? '';
+    $popcorn = $_POST['popcorn'] ?? '';
+    $drinks = $_POST['drinks'] ?? '';
+    $booking_time = $_POST['booking_time'] ?? '';
     $hidden = $_POST['hidden'] ?? '';
 
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
-        $delete = "DELETE FROM users WHERE id='$hidden'";
+        $delete = "DELETE FROM bookings WHERE id='$hidden'";
         mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
     }
-    // Handle updating user details
-    if (isset($_POST['update'])) {
-        $account = $_SESSION['user_status'] ?? '';
 
-        if ($age === '' || !is_numeric($age)) {
-            $age_value = "NULL";
-        } else {
-            $age_value = intval($age);
-        }
-
-        $update = "UPDATE users SET username='$user', password='$pass', dob='$dob', account='$account', name='$name', age=$age_value WHERE id='$hidden'";
-        mysqli_query($dbhandle, $update) or die('Cannot update database!');
-    }
     if (isset($_POST['add'])) {
-        // Insert a new row with default values (no values specified)
-        $insert = "INSERT INTO users () VALUES ()";
+        // Insert a new booking with default values
+        $insert = "INSERT INTO bookings (user_id, screening_id, seats, adult_tickets, child_tickets, senior_tickets, popcorn, drinks, booking_time) VALUES ('', '', '', 0, 0, 0, 0, 0, NOW())";
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
 
-// Fetch all users from the database
-$result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying database');
+// Fetch all users from the database where account is 'admin'
+$result = mysqli_query($dbhandle, "SELECT * FROM users WHERE account = 'admin'") or die('Error querying database');
 ?>
 
 <div class="page">
@@ -100,7 +92,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff.php" >
+                        <a class="nav-link active" href="staff.php" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/staff.svg" class="icon" width="20px" />
                             </span>
@@ -149,7 +141,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                 <div class="row g-2 align-items-center">
                     <div class="col">
                         <h2 class="page-title">Staff</h2>
-                        <p class="text-muted mt-1">View and manage all staff members.</p>
+                        <p class="text-muted mt-1">View other staff members.</p>
                     </div>
                 </div>
             </div>
@@ -164,60 +156,41 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                                     <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Password</th>
+                                        <th>Email</th>
                                         <th>Account</th>
                                         <th>Age</th>
                                         <th>Birthday</th>
-                                        <th class="w-1"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)): ?>
                                         <tr>
-                                            <form action="adminpanel.php" method="post">
                                                 <td data-label="Name">
                                                     <div class="d-flex py-1 align-items-center">
                                                         <div class="flex-fill">
                                                             <div class="font-weight-medium">
-                                                                <input class="text-name" type="text" name="name" value="<?php echo htmlspecialchars($row['name'] ?? ''); ?>"/>
-                                                            </div>
-                                                            <div class="text-secondary">
-                                                                <input class="text-reset" type="text" name="username" value="<?php echo htmlspecialchars($row['username'] ?? ''); ?>"/>
+                                                                <?php echo htmlspecialchars($row['name'] ?? ''); ?>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td data-label="Password">
-                                                    <input type="text" name="password" value="<?php echo htmlspecialchars($row['password'] ?? ''); ?>"/>
+                                                <td data-label="Email">
+                                                    <?php echo htmlspecialchars($row['email'] ?? ''); ?>
                                                 </td>
                                                 <td data-label="Account">
-                                                    <input type="text" name="account" value="<?php echo htmlspecialchars($row['account'] ?? ''); ?>"/>
+                                                    <?php echo htmlspecialchars($row['account'] ?? ''); ?>
                                                 </td>
                                                 <td data-label="Age">
-                                                    <input type="text" name="age" value="<?php echo htmlspecialchars($row['age'] ?? ''); ?>"/>
+                                                    <?php echo htmlspecialchars($row['age'] ?? ''); ?>
                                                 </td>
                                                 <td data-label="Birthday">
-                                                    <input type="text" name="dob" value="<?php echo htmlspecialchars($row['dob'] ?? ''); ?>"/>
+                                                    <?php echo htmlspecialchars($row['dob'] ?? ''); ?>
                                                 </td>
-                                                <input type="hidden" name="hidden" value="<?php echo $row['id']; ?>"/>
-                                                <td>
-                                                    <div class="btn-list flex-nowrap">
-                                                        <input type="submit" name="update" value="Update" class="btn"/>
-                                                        <input type="submit" name="delete" value="Delete" class="btn"/>
-                                                    </div>
-                                                </td>
-                                            </form>
                                         </tr>
                                     <?php endwhile; ?>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-footer">
-                                <form action="bookings-admin.php" method="post" class="d-inline">
-                                    <input type="submit" name="add" value="Add Staff" class="btn"/>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

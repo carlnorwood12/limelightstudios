@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Admin Panel | Bookings</title>
+    <title>Admin Panel | Screenings</title>
    <link rel="stylesheet" href="adult.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
@@ -18,42 +18,33 @@ include '../connection.php';
 global $dbhandle;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'] ?? '';
-    $user = $_POST['username'] ?? '';
-    $pass = $_POST['password'] ?? '';
-    $dob = $_POST['dob'] ?? '';
-    $age = $_POST['age'] ?? '';
+    $screening_date = $_POST['screening_date'] ?? '';
+    $start_time = $_POST['start_time'] ?? '';
+    $end_time = $_POST['end_time'] ?? '';
+    $available_seats = $_POST['available_seats'] ?? '';
     $hidden = $_POST['hidden'] ?? '';
 
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
-        $delete = "DELETE FROM users WHERE id='$hidden'";
+        $delete = "DELETE FROM screening WHERE id='$hidden'";
         mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
     }
-    // Handle updating user details
+    // Handle updating screening details
     if (isset($_POST['update'])) {
-        $account = $_SESSION['user_status'] ?? '';
-
-        if ($age === '' || !is_numeric($age)) {
-            $age_value = "NULL";
-        } else {
-            $age_value = intval($age);
-        }
-
-        $update = "UPDATE users SET username='$user', password='$pass', dob='$dob', account='$account', name='$name', age=$age_value WHERE id='$hidden'";
+        $available_seats = intval($available_seats);
+        $update = "UPDATE screening SET screening_date='$screening_date', start_time='$start_time', end_time='$end_time', available_seats=$available_seats WHERE id='$hidden'";
         mysqli_query($dbhandle, $update) or die('Cannot update database!');
     }
     if (isset($_POST['add'])) {
-        // Insert a new row with default values (no values specified)
-        $insert = "INSERT INTO users () VALUES ()";
+        // Insert a new screening with default values
+        $insert = "INSERT INTO screening (screening_date, start_time, end_time, available_seats) VALUES (CURDATE(), '00:00:00', '00:00:00', 0)";
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
 
-// Fetch all users from the database
-$result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying database');
+// Fetch all screenings from the database
+$result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_date DESC, start_time ASC") or die('Error querying database');
 ?>
-
 
 <div class="page">
     <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
@@ -121,7 +112,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="screenings.php" >
+                        <a class="nav-link active" href="screenings.php" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/projector.svg" class="icon" width="20px" />
                             </span>
@@ -164,47 +155,38 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                                 <table class="table table-vcenter table-mobile-md card-table">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Password</th>
-                                        <th>Account</th>
-                                        <th>Age</th>
-                                        <th>Birthday</th>
-                                        <th class="w-1"></th>
+                                        <th>Screening ID</th>
+                                        <th>Date</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Available Seats</th>
+                                        <th class="w-1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)): ?>
                                         <tr>
-                                            <form action="adminpanel.php" method="post">
-                                                <td data-label="Name">
-                                                    <div class="d-flex py-1 align-items-center">
-                                                        <div class="flex-fill">
-                                                            <div class="font-weight-medium">
-                                                                <input class="text-name" type="text" name="name" value="<?php echo htmlspecialchars($row['name'] ?? ''); ?>"/>
-                                                            </div>
-                                                            <div class="text-secondary">
-                                                                <input class="text-reset" type="text" name="username" value="<?php echo htmlspecialchars($row['username'] ?? ''); ?>"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <form action="screenings.php" method="post">
+                                                <td data-label="Screening ID">
+                                                    <strong>#<?php echo htmlspecialchars($row['id'] ?? ''); ?></strong>
                                                 </td>
-                                                <td data-label="Password">
-                                                    <input type="text" name="password" value="<?php echo htmlspecialchars($row['password'] ?? ''); ?>"/>
+                                                <td data-label="Date">
+                                                    <input type="date" name="screening_date" value="<?php echo htmlspecialchars($row['screening_date'] ?? ''); ?>" class="text-name"/>
                                                 </td>
-                                                <td data-label="Account">
-                                                    <input type="text" name="account" value="<?php echo htmlspecialchars($row['account'] ?? ''); ?>"/>
+                                                <td data-label="Start Time">
+                                                    <input type="time" name="start_time" value="<?php echo htmlspecialchars($row['start_time'] ?? ''); ?>"/>
                                                 </td>
-                                                <td data-label="Age">
-                                                    <input type="text" name="age" value="<?php echo htmlspecialchars($row['age'] ?? ''); ?>"/>
+                                                <td data-label="End Time">
+                                                    <input type="time" name="end_time" value="<?php echo htmlspecialchars($row['end_time'] ?? ''); ?>"/>
                                                 </td>
-                                                <td data-label="Birthday">
-                                                    <input type="text" name="dob" value="<?php echo htmlspecialchars($row['dob'] ?? ''); ?>"/>
+                                                <td data-label="Available Seats">
+                                                    <input type="number" min="0" name="available_seats" value="<?php echo htmlspecialchars($row['available_seats'] ?? ''); ?>"/>
                                                 </td>
                                                 <input type="hidden" name="hidden" value="<?php echo $row['id']; ?>"/>
                                                 <td>
                                                     <div class="btn-list flex-nowrap">
                                                         <input type="submit" name="update" value="Update" class="btn"/>
-                                                        <input type="submit" name="delete" value="Delete" class="btn"/>
+                                                        <input type="submit" name="delete" value="Delete" class="btn" onclick="return confirm('Are you sure you want to delete this screening?')"/>
                                                     </div>
                                                 </td>
                                             </form>
@@ -214,7 +196,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                                 </table>
                             </div>
                             <div class="card-footer">
-                                <form action="bookings-admin.php" method="post" class="d-inline">
+                                <form action="screenings.php" method="post" class="d-inline">
                                     <input type="submit" name="add" value="Add Screening" class="btn"/>
                                 </form>
                             </div>
@@ -225,6 +207,19 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $(document).mousemove(function (event) {
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height();
+        var scrollX = $(window).scrollLeft();
+        var scrollY = $(window).scrollTop();
+        var mouseXpercentage = Math.round(((event.pageX - scrollX) / windowWidth) * 100);
+        var mouseYpercentage = Math.round(((event.pageY - scrollY) / windowHeight) * 100);
+        $(".radial-gradient").css("background", "radial-gradient(circle at " + mouseXpercentage + "% " + mouseYpercentage + "%, #14142B 0%, #14142B 2%, #14142A 4%, #13132A 6%, #131329 8%, #131328 9%, #121228 11%, #121227 13%, #121226 14%, #111125 16%, #111123 18%, #101022 20%, #0F0F21 22%, #0F0F20 24%, #0E0E1E 27%, #0E0E1D 30%, #0D0D1C 33%, #0D0D1B 36%, #0C0C19 40%, #0B0B18 44%, #0B0B17 48%, #0B0B16 53%, #0A0A16 59%, #0A0A15 64%, #0A0A15 71%)");
+    });
+</script>
 <script src="./dist/js/tabler.min.js?1692870487" defer></script>
 <script src="./dist/js/demo.min.js?1692870487" defer></script>
 </body>

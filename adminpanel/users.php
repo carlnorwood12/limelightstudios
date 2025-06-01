@@ -178,12 +178,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                                                 <td data-label="Name">
                                                     <div class="d-flex py-1 align-items-center">
                                                         <div class="flex-fill">
-                                                            <div class="font-weight-medium">
-                                                                <input class="text-name" type="text" name="name" value="<?php echo htmlspecialchars($row['name'] ?? ''); ?>"/>
-                                                            </div>
-                                                            <div class="text-secondary">
-                                                                <input class="text-reset" type="text" name="username" value="<?php echo htmlspecialchars($row['username'] ?? ''); ?>"/>
-                                                            </div>
+                                                            <input class="text-name" type="text" name="name" value="<?php echo htmlspecialchars($row['name'] ?? ''); ?>"/>
                                                         </div>
                                                     </div>
                                                 </td>
