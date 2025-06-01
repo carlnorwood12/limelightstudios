@@ -929,7 +929,8 @@ h2 {
   z-index: 99;
 }
 
-.content .book-button {
+.content .book-button, .save-button
+{
   margin-top: 10px;
 }
 
@@ -981,7 +982,7 @@ h2 {
   border: 1px solid transparent;
   color: #f0ff9e;
   font-size: 14px;
-  text-shadow: 0px 0px 20px rgba(182, 255, 158, 0.3);
+  text-shadow: 0px 0px 20px rgba(240, 255, 158, 0.3);
   padding: 10px 15px;
   display: inline-flex;
   align-items: center;
@@ -989,11 +990,34 @@ h2 {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-
-.start-button {
+.save-button
+{
+  position: relative;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: linear-gradient(black, black) padding-box, linear-gradient(to bottom, #ff9edd, #29001b) border-box;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  color: #ff9edd;
+  font-size: 14px;
+  text-shadow: 0px 0px 20px rgba(255, 158, 221, 0.3);
+  padding: 10px 15px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.start-button
+{
   gap: 5px;
 }
+.save-button
+{
+  gap: 10px;
 
+}
 .book-button {
   gap: 10px;
   filter: grayscale(1);
@@ -1029,13 +1053,19 @@ h2 {
 .book-button img {
   transition: transform 0.3s ease;
 }
-
-.book-button:hover > img {
-  transform: scale(1.1) rotate(-10deg);
+.save-button:hover > img 
+{
+  transform: scale(1.1);
+}
+.book-button:hover > img 
+{
+  transform: scale(1.1) rotate(-5deg);
 }
 
 .book-button:hover,
-.start-button:hover {
+.start-button:hover, 
+.save-button:hover
+{
   transform: scale(1.05);
 }
 

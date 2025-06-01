@@ -1,7 +1,7 @@
 <?php
 // Start session at the very beginning before any output
 session_start();
-include 'connection.php';
+include '../connection.php';
 global $dbhandle;
 
 // Check if user is logged in via cookies
@@ -91,7 +91,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
    <title>Adult Bookings</title>
    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-   <link rel="stylesheet" href="adult.css" />
+   <link rel="stylesheet" href="../adult.css"/>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <!-- Add Print.js CSS and JS -->
    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
@@ -451,7 +451,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                <div class="navbar-brand py-3">
                   <div class="d-flex align-items-center">
                      <div class="profile-image-container">
-                        <img class="profile-image" src="upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
+                        <img class="profile-image" src="../upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
                      </div>
                      <div class="profile-info">
                         <h3 class="profile-name"><?=$_SESSION['name'] ?? "Please login" ?></h3>
@@ -481,6 +481,16 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                         </span>
                         <span class="nav-link-title">
                         Bookings
+                        </span>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="saved.php" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                        <img src="/svg/adminpanel/saveforlater.svg" class="icon" width="20px" />
+                        </span>
+                        <span class="nav-link-title">
+                        Saved
                         </span>
                         </a>
                      </li>
@@ -515,7 +525,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                               <thead>
                                  <tr>
                                     <th style="width: 200px !important; min-width: 200px !important;"
-                                       class="poster-cell">Movie</th>
+                                       class="poster-cell">Movie Poster</th>
                                     <th class="booking-details-cell">Booking Details</th>
                                     <th class="tickets-cell">Tickets & Extras</th>
                                     <th class="seats-cell">Seats</th>

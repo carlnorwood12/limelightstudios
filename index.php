@@ -29,9 +29,24 @@ if (isset($_REQUEST["search_term"])) {
     mysqli_close($dbhandle);
     exit;
 }
+if (isset($_POST['save_movie'])) {
+    $movie_title = mysqli_real_escape_string($dbhandle, $_POST['movie_title']);
+    $poster_url = mysqli_real_escape_string($dbhandle, $_POST['poster_url']);
+
+    // Insert movie into saved_movies table
+    $insert_query = "INSERT INTO saved_movies (title, poster_url) VALUES (?, ?)";
+    $insert_stmt = mysqli_prepare($dbhandle, $insert_query);
+    mysqli_stmt_bind_param($insert_stmt, "ss", $movie_title, $poster_url);
+    mysqli_stmt_execute($insert_stmt);
+    mysqli_stmt_close($insert_stmt);
+
+    echo json_encode(['success' => true]);
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>LimelightCinema | Home</title>
@@ -54,7 +69,8 @@ if (isset($_REQUEST["search_term"])) {
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/nice-select2@2.2.0/dist/js/nice-select2.min.js" defer></script>
     <link rel="stylesheet" href="dropdown.css">
     <link rel="stylesheet" href="index.css">
@@ -84,7 +100,7 @@ if (isset($_REQUEST["search_term"])) {
                             <h3 class="profile-name"><?= $_SESSION['name'] ?? "Please login" ?></h3>
                             <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
                             <div class="row-buttons">
-                            <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
+                                <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
                                     <?php if ($_SESSION['user_status'] === 'Admin'): ?>
                                         <a href="adminpanel/dashboard.php">
                                             <button class="nav-buttons dashboard">
@@ -93,7 +109,7 @@ if (isset($_REQUEST["search_term"])) {
                                             </button>
                                         </a>
                                     <?php elseif ($_SESSION['user_status'] === 'Adult'): ?>
-                                        <a href="bookings.php">
+                                        <a href="./adultpanel/bookings.php">
                                             <button class="nav-buttons dashboard">
                                                 <img src="/svg/adminpanel/bookings.svg" alt="bookings" class="menu-icon">
                                                 Bookings
@@ -102,22 +118,23 @@ if (isset($_REQUEST["search_term"])) {
                                     <?php endif; ?>
 
                                     <!-- Both Admin and Adult users see Profile button -->
-                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? '/adminpanel/profile-admin.php' : 'profile.php' ?>">
+                                    <a
+                                        href="<?= $_SESSION['user_status'] === 'Admin' ? '/adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>">
                                         <button class="nav-buttons settings">
                                             <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
                                         </button>
                                     </a>
-                                    <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
-                                        <!-- Junior users only see Profile button -->
-                                        <a href="profile.php">
-                                            <button class="nav-buttons settings">
-                                                <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
-                                                Profile
-                                            </button>
-                                        </a>
-                                    <?php else: ?>
-                                    <?php endif; ?>
+                                <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                                    <!-- Junior users only see Profile button -->
+                                    <a href="profile.php">
+                                        <button class="nav-buttons settings">
+                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
+                                            Profile
+                                        </button>
+                                    </a>
+                                <?php else: ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -129,7 +146,8 @@ if (isset($_REQUEST["search_term"])) {
                         <div class="result">
                             <p></p>
                         </div>
-                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right" alt="enter movie">
+                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270"
+                            id="go-right" alt="enter movie">
                     </div>
                     <div class="menu-link">
                         <a href="index.html">Home</a>
@@ -171,7 +189,9 @@ if (isset($_REQUEST["search_term"])) {
         </div>
     </div>
     <section class="content-section hero">
-        <div data-us-project="StkVPcD0Yf5lLEEatwJ9" style="position: absolute; width:100%; height: 100%"></div><script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.25/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();</script>
+        <div data-us-project="StkVPcD0Yf5lLEEatwJ9" style="position: absolute; width:100%; height: 100%"></div>
+        <script
+            type="text/javascript">!function () { if (!window.UnicornStudio) { window.UnicornStudio = { isInitialized: !1 }; var i = document.createElement("script"); i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.25/dist/unicornStudio.umd.js", i.onload = function () { window.UnicornStudio.isInitialized || (UnicornStudio.init(), window.UnicornStudio.isInitialized = !0) }, (document.head || document.body).appendChild(i) } }();</script>
         <div class="swiper hero-swiper">
             <button id="mute-video" type="button">
                 <img src="/svg/volume/volume-off.svg" id="volume-off" alt="">
@@ -284,7 +304,7 @@ if (isset($_REQUEST["search_term"])) {
                             autoplay></dotlottie-player>
                     <?php endif; ?>
                     <h1 id="trendingtitle">
-                        <?php 
+                        <?php
                         // Show different title for child users
                         if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior') {
                             echo 'Family Friendly';
@@ -295,7 +315,7 @@ if (isset($_REQUEST["search_term"])) {
                     </h1>
                 </div>
             </div>
-            
+
             <?php if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Junior'): ?>
                 <!-- Only show sorting dropdown for adults/non-junior users -->
                 <select id="a-select">
@@ -304,7 +324,7 @@ if (isset($_REQUEST["search_term"])) {
                     <option value="release_date">Release Date</option>
                 </select>
             <?php endif; ?>
-            
+
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <?php
@@ -312,7 +332,7 @@ if (isset($_REQUEST["search_term"])) {
                     if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior') {
                         // Junior users: Show only age-appropriate films (U, PG, 12, 12A)
                         $result = mysqli_query($dbhandle, "SELECT * FROM movies WHERE age_rating IN ('U', 'PG', '12', '12A') ORDER BY title ASC");
-                        
+
                         // Check if any child-appropriate movies exist
                         if (mysqli_num_rows($result) == 0) {
                             echo '<div class="no-movies-message" style="color: white; text-align: center; padding: 50px;">
@@ -324,13 +344,13 @@ if (isset($_REQUEST["search_term"])) {
                         // Adult users and non-logged in users: Show all movies
                         $result = mysqli_query($dbhandle, "SELECT * FROM movies ORDER BY id ASC");
                     }
-                    
+
                     // Display movies
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)): ?>
                         <div class="swiper-slide">
-                            <img src="<?php echo htmlspecialchars($row['movie_banner']); ?>" 
-                                 alt="<?php echo htmlspecialchars($row['title']); ?> movie poster - Rated <?php echo htmlspecialchars($row['age_rating']); ?>" 
-                                 class="movie-image">
+                            <img src="<?php echo htmlspecialchars($row['movie_banner']); ?>"
+                                alt="<?php echo htmlspecialchars($row['title']); ?> movie poster - Rated <?php echo htmlspecialchars($row['age_rating']); ?>"
+                                class="movie-image">
                             <div class="content">
                                 <div class="genre-container-index">
                                     <div class="genre-badge" style="filter: <?php
@@ -447,23 +467,27 @@ if (isset($_REQUEST["search_term"])) {
                                         <img src="/svg/stars/star.svg" alt="Star rating icon" class="star">
                                         <span><?php echo htmlspecialchars($row['movie_rating']); ?></span>
                                     </div>
-                                    <span>•&nbsp;&nbsp;<?php 
+                                    <span>•&nbsp;&nbsp;<?php
                                     $date = new DateTime($row['release_date']);
                                     $dateformat = $date->format('F j, Y');
                                     echo htmlspecialchars($dateformat); ?></span>
                                 </div>
-                                
+
                                 <?php if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
                                     <!-- Junior users cannot book tickets -->
                                     <button class="book-button" type="button" onclick="notJunior()">
-                                        <img src="/svg/tickets/tickets.svg" alt="Booking not available for junior users" class="ticket-icon">
+                                        <img src="/svg/tickets/tickets.svg" alt="Booking not available for junior users"
+                                            class="ticket-icon">
                                         Book now
                                     </button>
                                 <?php else: ?>
                                     <!-- Adult users can book tickets -->
-                                    <a href="booking.php?id=<?php echo urlencode($row['id']); ?>&title=<?php echo urlencode($row['title']); ?>">
+                                    <a
+                                        href="booking.php?id=<?php echo urlencode($row['id']); ?>&title=<?php echo urlencode($row['title']); ?>">
                                         <button class="book-button" type="submit">
-                                            <img src="/svg/tickets/tickets.svg" alt="Book tickets for <?php echo htmlspecialchars($row['title']); ?>" class="ticket-icon">
+                                            <img src="/svg/tickets/tickets.svg"
+                                                alt="Book tickets for <?php echo htmlspecialchars($row['title']); ?>"
+                                                class="ticket-icon">
                                             Book now
                                         </button>
                                     </a>
@@ -503,9 +527,10 @@ if (isset($_REQUEST["search_term"])) {
                                     <span>&nbsp;•&nbsp;<?php $date = new DateTime($row['release_date']);
                                     echo htmlspecialchars($date->format('F j, Y')); ?></span>
                                 </div>
-                                <button class="book-button">
-                                    <img src="/svg/bell.svg" alt="" class="ticket-icon">
-                                    Notify me
+                                <button class="save-button"
+                                    onclick="saveMovie('<?php echo addslashes(htmlspecialchars($row['title'])); ?>')">
+                                    <img src="/svg/saveforlater.svg" alt="" class="ticket-icon">
+                                    Save
                                 </button>
                             </div>
                         </div>
@@ -749,11 +774,11 @@ if (isset($_REQUEST["search_term"])) {
     <script src="/js/gsap.js" defer></script>
     <script src="/js/scroll.js" defer></script>
     <script>
-$(document).ready(function() {
-    $('#a-select').niceSelect();
-    $('#select-venue').niceSelect();
-});
-</script>
+        $(document).ready(function () {
+            $('#a-select').niceSelect();
+            $('#select-venue').niceSelect();
+        });
+    </script>
     <script>
         const text = new SplitType(".title", { type: "chars" });
         gsap.from(text.chars, { opacity: 0, stagger: 0.05, y: 25, rotate: 5, duration: 1 });
@@ -793,6 +818,28 @@ $(document).ready(function() {
                 toggleActions: "play none none none",
             },
         });
+    </script>
+    <script>
+        function saveMovie(title) {
+    $.ajax({
+        url: '',
+        type: 'POST',
+        data: {
+            save_movie: true,
+            movie_title: title
+        },
+        dataType: 'json',
+        success: function (response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Saved!',
+                text: 'Movie added to your watchlist',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }
+    });
+}
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
