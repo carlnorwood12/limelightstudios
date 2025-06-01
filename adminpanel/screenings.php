@@ -215,7 +215,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                             </div>
                             <div class="card-footer">
                                 <form action="bookings-admin.php" method="post" class="d-inline">
-                                    <input type="submit" name="add" value="Add Booking" class="btn"/>
+                                    <input type="submit" name="add" value="Add Screening" class="btn"/>
                                 </form>
                             </div>
                         </div>
