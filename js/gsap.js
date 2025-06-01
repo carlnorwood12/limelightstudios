@@ -26,13 +26,6 @@ gsap.to(".left", {
     ease: "power2.inOut",
     filter: "grayscale(0%)",
 });
-gsap.to(".item-0", {
-    duration: 1,
-    opacity: 1,
-    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-    ease: "power2.inOut",
-    filter: "grayscale(0%)",
-});
 gsap.from(".quiz-image", 
 {
     duration: 2,

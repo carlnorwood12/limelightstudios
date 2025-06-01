@@ -46,7 +46,7 @@
 		</iframe>
 		</div>
 		<div class="right">
-    	<form class="w-450 p-3" 
+    	<form
     	      action="php/signup.php" 
     	      method="post"
     	      enctype="multipart/form-data">

@@ -184,7 +184,7 @@
       },
       {
         width: "100%",
-        opacity: 0.5,
+        opacity: 0.6,
         filter: "blur(50px) grayscale(0)",
         duration: 5,
         ease: "power2.out",

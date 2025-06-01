@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include 'connection.php';
 global $dbhandle;
@@ -42,73 +41,99 @@ if (isset($_COOKIE['logged_in']))
          </a>
          <img src="/svg/logo/limelight.svg" id="limelight-logo" />
       </header>
-      <div class="menu-overlay">
-         <div class="menu-cols">
+
+    <div class="menu-overlay">
+        <div class="menu-cols">
             <div class="col-2">
-               <div class="first-menu-item">
-                  <div class="profile-section">
-                     <div class="profile-image-container">
-                        <img class="profile-image" src="upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
-                     </div>
-                     <div class="profile-info">
-                        <h2 class="profile-name"><?=$_SESSION['name'] ?? "Please login" ?></h2>
-                        <p class="profile-role"><?=$_SESSION['user_status'] ?? "To view account details" ?></p>
-                        <div class="row-buttons">
-                           <a href="adminpanel.php">
-                           <button class="nav-buttons dashboard">
-                           <img src="/svg/adminpanel/dashboard.svg" alt="dashboard" class="menu-icon">
-                           Dashboard
-                           </button>
-                           </a>
-                           <a href="settings2.php">
-                           <button class="nav-buttons settings">
-                           <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
-                           Profile
-                           </button>
-                           </a>
+                <div class="first-menu-item">
+                    <div class="profile-section">
+                        <div class="profile-image-container">
+                            <img class="profile-image"
+                                src="upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>"
+                                alt="Profile Picture">
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="second-menu-item">
-                  <div class="search-contain">
-                     <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
-                     <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
-                  </div>
-                  <div class="menu-link">
-                     <a href="index.html">Home</a>
-                  </div>
-                  <div class="menu-link">
-                     <a href="venues.php">Venues</a>
-                  </div>
-                  <div class="menu-link">
-                     <a href="contact.html">Contact</a>
-                  </div>
-                  <div class="menu-link">
-                     <a href="about.html">About</a>
-                  </div>
-               </div>
-               <div class="third-menu-item">
-                  <a href="logout.php">
-                  <button class="arrow-btn exit-btn">
-                  <span class="arrow-icon">
-                  <img src="/svg/menu/logout.svg" alt="exit">
-                  Logout
-                  </span>
-                  </button>
-                  </a>
-                  <a href="register.php">
-                  <button class="arrow-btn login-btn">
-                  <span class="arrow-icon">
-                  Login / Register
-                  <img src="/svg/menu/login.svg" alt="login">
-                  </span>
-                  </button>
-                  </a>
-               </div>
+                        <div class="profile-info">
+                            <h3 class="profile-name"><?= $_SESSION['name'] ?? "Please login" ?></h3>
+                            <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
+                            <div class="row-buttons">
+                                <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
+                                    <!-- Admin and Adult both see Dashboard button -->
+                                    <a
+                                        href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : 'dashboard.php' ?>">
+                                        <button class="nav-buttons dashboard">
+                                            <img src="/svg/menu/dashboard.svg" alt="dashboard" class="menu-icon">
+                                            Dashboard
+                                        </button>
+                                    </a>
+
+                                    <!-- Both also see Profile button -->
+                                    <a href="settings2.php">
+                                        <button class="nav-buttons settings">
+                                            <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
+                                            Profile
+                                        </button>
+                                    </a>
+
+                                <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                                    <!-- Junior users only see Profile button -->
+                                    <a href="settings2.php">
+                                        <button class="nav-buttons settings">
+                                            <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
+                                            Profile
+                                        </button>
+                                    </a>
+
+                                <?php else: ?>
+
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-menu-item">
+                    <div class="search-contain">
+                        <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
+                        <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
+                    </div>
+                    <div class="menu-link">
+                        <a href="index.html">Home</a>
+                    </div>
+                    <div class="menu-link">
+                        <a href="venues.php">Venues</a>
+                    </div>
+                    <div class="menu-link">
+                        <a href="contact.php">Contact</a>
+                    </div>
+                    <div class="menu-link">
+                        <a href="about.php">About</a>
+                    </div>
+                    <?php if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                        <div class="menu-link">
+                            <a href="games.php">Games</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="third-menu-item">
+                    <a href="logout.php">
+                        <button class="arrow-btn exit-btn">
+                            <span class="arrow-icon">
+                                <img src="/svg/menu/logout.svg" alt="exit">
+                                Logout
+                            </span>
+                        </button>
+                    </a>
+                    <a href="register.php">
+                        <button class="arrow-btn login-btn">
+                            <span class="arrow-icon">
+                                Login / Register
+                                <img src="/svg/menu/login.svg" alt="login">
+                            </span>
+                        </button>
+                    </a>
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
+    </div>
       <div class="container-venues">
          <div class="item-0">
             <h1 id="h1-venues">Discovering Venues</h1>

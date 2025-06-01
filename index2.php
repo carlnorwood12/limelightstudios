@@ -14,6 +14,22 @@ if (isset($_COOKIE['logged_in'])) {
         $filePath = htmlspecialchars($user['profile_picture']);
     }
 }
+if (isset($_REQUEST["search_term"])) {
+    $sql = "SELECT id, title FROM movies WHERE title LIKE ?";
+    $stmt = mysqli_prepare($dbhandle, $sql);
+    $param_term = $_REQUEST["search_term"] . '%';
+    mysqli_stmt_bind_param($stmt, "s", $param_term);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        echo "<p data-id='" . htmlspecialchars($row["id"]) . "'>" . htmlspecialchars($row["title"]) . "</p>";
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($dbhandle);
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +58,7 @@ if (isset($_COOKIE['logged_in'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
     <link rel="stylesheet" href="dropdown.css">
     <link rel="stylesheet" href="progressjs.css">
-    <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -107,6 +123,10 @@ if (isset($_COOKIE['logged_in'])) {
                     <div class="search-contain">
                         <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
                         <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
+                        <div class="result">
+                            <p></p>
+                        </div>
+                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right" alt="enter movie">
                     </div>
                     <div class="menu-link">
                         <a href="index.html">Home</a>
@@ -460,7 +480,8 @@ if (isset($_COOKIE['logged_in'])) {
         <div class="padding-reasons">
             <div class="container-reasons">
                 <div class="swiper card-swiper">
-                    <svg class="animate-spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none">
+                    <svg class="animate-spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"
+                        preserveAspectRatio="none">
                     </svg>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide card">
@@ -676,20 +697,12 @@ if (isset($_COOKIE['logged_in'])) {
     </script>
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"
         async></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" async></script>
-    <script src="https://unpkg.com/split-type" async></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/ScrollTrigger.min.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/nice-select2@2.2.0/dist/js/nice-select2.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="/js/faq.js" defer></script>
-    <script src="/js/nice-select.js" defer></script>
     <script src="/js/dropdown.js" defer></script>
-    <script src="/js/cursor.js" defer></script>
-    <script src="/js/cursor-trail.min.js" defer></script>
     <script src="/js/swiper.js" defer></script>
     <script src="/js/video.js" defer></script>
     <script src="/js/script.js" defer></script>
@@ -702,39 +715,70 @@ if (isset($_COOKIE['logged_in'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-      gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger);
 
-      gsap.fromTo(".animate-spotlight",
-        {
-          width: "0%",
-        },
-        {
-          width: "100%",
-          opacity: 1,
-          filter: "blur(50px) grayscale(0)",
-          duration: 5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".content-reasons",
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-            markers: false,
-          },
-        }
-      );
+        gsap.fromTo(".animate-spotlight",
+            {
+                width: "0%",
+            },
+            {
+                width: "100%",
+                opacity: 1,
+                filter: "blur(50px) grayscale(0)",
+                duration: 5,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".content-reasons",
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse",
+                    markers: false,
+                },
+            }
+        );
 
-      gsap.to(".card-swiper", {
-        opacity: 1,
-        duration: 2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".content-reasons",
-          start: "top 70%",
-          toggleActions: "play none none none",
-        },
-      });
+        gsap.to(".card-swiper", {
+            opacity: 1,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".content-reasons",
+                start: "top 70%",
+                toggleActions: "play none none none",
+            },
+        });
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.search-contain input').on("keyup", function () {
+                var val = $(this).val();
+                var result = $(this).siblings(".result");
+                if (val.length) {
+                    $.get("", { search_term: val }).done(function (data) {
+                        if (data.trim()) {
+                            var firstResult = $(data).first();
+                            if (firstResult.length > 0) {
+                                result.html(firstResult).show();
+                            } else {
+                                result.hide();
+                            }
+                        } else {
+                            result.hide();
+                        }
+                    });
+                } else {
+                    result.empty().hide();
+                }
+            });
+            $('.result').on("click", "p", function () {
+                var title = $(this).text();
+                var id = $(this).data('id');
+                window.location.href = "booking.php?id=" + id + "&title=" + encodeURIComponent(title);
+            });
+        });
+    </script>
+
 </body>
 
 </html>
