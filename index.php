@@ -87,26 +87,26 @@ if (isset($_REQUEST["search_term"])) {
                                 <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
                                     <!-- Admin and Adult both see Dashboard button -->
                                     <a
-                                        href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : 'dashboard.php' ?>">
+                                        href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : 'bookings.php' ?>">
                                         <button class="nav-buttons dashboard">
-                                            <img src="/svg/menu/dashboard.svg" alt="dashboard" class="menu-icon">
-                                            Dashboard
+                                            <img src="/svg/adminpanel/bookings.svg" alt="dashboard" class="menu-icon">
+                                            Bookings
                                         </button>
                                     </a>
 
                                     <!-- Both also see Profile button -->
-                                    <a href="settings2.php">
+                                    <a href="profile.php">
                                         <button class="nav-buttons settings">
-                                            <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
+                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
                                         </button>
                                     </a>
 
                                 <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
                                     <!-- Junior users only see Profile button -->
-                                    <a href="settings2.php">
+                                    <a href="profile.php">
                                         <button class="nav-buttons settings">
-                                            <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
+                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
                                         </button>
                                     </a>

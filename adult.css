@@ -52,58 +52,20 @@ th
 
 .dropdown .nav-link:hover {
     width: calc(100% - 20px);
-}.nav-item:nth-of-type(2) .nav-link:hover,
-.nav-item:nth-of-type(3) .nav-link:hover,
-.nav-item:nth-of-type(4) .nav-link:hover,
-.nav-item:nth-of-type(5) .nav-link:hover,
-.nav-item:nth-of-type(6) .nav-link:hover,
-.nav-item:nth-of-type(7) .nav-link:hover,
-.nav-item:nth-of-type(8) .nav-link:hover
+}
+.nav-item:nth-of-type(1) .nav-link:hover,
+.nav-item:nth-of-type(2) .nav-link:hover
  {
     width: calc(100% - 20px);
 }
 .nav-item:nth-of-type(1) .nav-link:hover > .nav-link-title
 {
-    color: #f0ff9e !important; /* Change text color on hover */
+    color: #fff !important; /* Change text color on hover */
     transition: all 0.15s ease; /* Smooth transition effect */
 }
-
-
-
-
 .nav-item:nth-of-type(2) .nav-link:hover > .nav-link-title
 {
-    color: #e79eff !important; /* Change text color on hover */
-    transition: all 0.15s ease; /* Smooth transition effect */
-}
-.nav-item:nth-of-type(3) .nav-link:hover > .nav-link-title
-{
-    color: #e79eff !important; /* Change text color on hover */
-    transition: all 0.15s ease; /* Smooth transition effect */
-}
-.nav-item:nth-of-type(4) .nav-link:hover > .nav-link-title
-{
-    color: #ad9eff !important; /* Change text color on hover */
-    transition: all 0.15s ease; /* Smooth transition effect */
-}
-.nav-item:nth-of-type(5) .nav-link:hover > .nav-link-title
-{
-    color: #9ec9ff !important; /* Change text color on hover */
-    transition: all 0.15s ease; /* Smooth transition effect */
-}
-.nav-item:nth-of-type(6) .nav-link:hover > .nav-link-title
-{
-    color: #b6ff9e !important; /* Change text color on hover */
-    transition: all 0.15s ease; /* Smooth transition effect */
-}
-.nav-item:nth-of-type(7) .nav-link:hover > .nav-link-title
-{
-    color: #ff9ea2 !important; /* Change text color on hover */
-    transition: all 0.15s ease; /* Smooth transition effect */
-}
-.nav-item:nth-of-type(8) .nav-link:hover > .nav-link-title
-{
-    color: #ffd49e !important; /* Change text color on hover */
+    color: #f0ff9e !important; /* Change text color on hover */
     transition: all 0.15s ease; /* Smooth transition effect */
 }
 .nav-link-title
