@@ -733,7 +733,7 @@ if (isset($_POST['save_movie'])) {
 
                     <ul class="mt-6 space-y-4 text-sm">
                         <li>
-                            <a href="/terms" class="text-white transition"
+                            <a href="/terms.php" class="text-white transition"
                                 style="opacity: 0.5; transition: opacity 0.3s ease;"
                                 onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
                                 Terms and Conditions
@@ -741,7 +741,7 @@ if (isset($_POST['save_movie'])) {
                         </li>
 
                         <li>
-                            <a href="/privacy" class="text-white transition"
+                            <a href="/privacy.php" class="text-white transition"
                                 style="opacity: 0.5; transition: opacity 0.3s ease;"
                                 onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
                                 Privacy Policy

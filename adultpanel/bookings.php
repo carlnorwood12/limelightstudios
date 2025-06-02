@@ -30,7 +30,7 @@ if (isset($_COOKIE['logged_in'])) {
 
 // Check if the user is an adult - FIXED: Changed 'adult' to 'Adult' to match session data
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
-   header("Location: ../index.php");
+   header("Location: ../");
    exit;
 }
 
