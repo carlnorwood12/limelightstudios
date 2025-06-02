@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <meta charset="UTF-8" />
-  <title>Limelight Cinema | Terms and Conditions</title>
+  <title>Limelight Cinema | Terms</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Terms and Conditions for Limelight Cinema" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -186,7 +186,7 @@
     </section>
 
     <section class="terms-section">
-      <h2 class="section-title">12. Contact Information</h2>
+      <h2 class="section-title">12. Contact</h2>
       <div class="terms-content">
         <p>For questions about these Terms and Conditions, please contact us: limelightcinema@gamil.com</p>
     </section>
