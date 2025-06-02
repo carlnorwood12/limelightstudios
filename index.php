@@ -147,7 +147,7 @@ if (isset($_POST['save_movie'])) {
                             <p></p>
                         </div>
                         <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270"
-                            id="/svg/menu/go-right" alt="enter movie">
+                            id="go-right" alt="enter movie">
                     </div>
                     <div class="menu-link">
                         <a href="index.html">Home</a>
@@ -524,7 +524,7 @@ if (isset($_POST['save_movie'])) {
                                     <span>•&nbsp;&nbsp;<span
                                             class="genre-1"><?php echo htmlspecialchars($row['genre_1']); ?></span> / <span
                                             class="genre-2"><?php echo htmlspecialchars($row['genre_2']); ?></span></span>
-                                    <span>&nbsp;•&nbsp;<?php $date = new DateTime($row['release_date']);
+                                    <span>•&nbsp;&nbsp;<?php $date = new DateTime($row['release_date']);
                                     echo htmlspecialchars($date->format('F j, Y')); ?></span>
                                 </div>
                                 <button class="save-button"
@@ -841,7 +841,7 @@ if (isset($_POST['save_movie'])) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Saved!',
-                        text: 'Movie added to your watchlist',
+                        text: 'Movie added to your saved',
                         timer: 1500,
                         showConfirmButton: false
                     });
