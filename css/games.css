@@ -1,64 +1,68 @@
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Montserrat, sans-serif;
     background: url("./svg/quiz_gradient.svg") center center / cover no-repeat;
     background-color: #170107;
     margin: 0;
     padding: 20px;
-    }
-    .container {
+}
+
+.container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    }
-    .header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    color: white;
-    }
-    .quiz-card {
+}
+
+.quiz-card {
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
     color: white;
-    }
-    .question {
+}
+
+.question {
     display: flex;
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px dashed #FFFFFF26;
-    }
-    .question:last-child {
+}
+
+.question:last-child {
     border-bottom: none;
-    }
-    .question-image {
+}
+
+.question-image {
     flex: 0 0 200px;
     margin-right: 20px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    }
-    .emoji-container {
+}
+
+.emoji-container {
     flex: 0 0 200px;
     margin-right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    }
-    .question-content {
+}
+
+.question-content {
     flex: 1;
-    }
-    .question-options {
+}
+
+.question-options {
     display: flex;
     flex-direction: column;
-    }
-    .button-container {
+}
+
+.button-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    }
-    button {
+}
+
+button {
     background-color: #f0ff9e !important;
     user-select: none;
     display: inline-flex;
@@ -81,40 +85,46 @@ body {
     width: 100%;
     max-width: 200px;
     color: #000000;
-    }
-    button:hover {
+}
+
+button:hover {
     filter: brightness(1.15);
-    }
-    .emoji {
+}
+
+.emoji {
     font-size: 70px;
     display: block;
     text-align: center;
-    }
-    .pixelated-movie {
+}
+
+.pixelated-movie {
     width: 100%;
     max-width: 200px;
     border-radius: 10px;
     margin: 0;
-    }
-    .results {
+}
+
+.results {
     color: white;
     margin-top: 20px;
     font-size: 20px; 
     text-align: center;
     padding: 14px;
-    }
-    img {
+}
+
+img {
     width: 100%;
     max-width: 400px;
     height: auto;
     display: block;
     margin: 0 auto 50px;
-    }
-    /* Radio button styling */
-    .radio-wrapper-13 {
+}
+
+.radio-wrapper-13 {
     margin-bottom: 10px;
-    }
-    .radio-wrapper-13 .rdo {
+}
+
+.radio-wrapper-13 .rdo {
     position: relative;
     display: inline-block;
     width: 18px;
@@ -124,8 +134,9 @@ body {
     transition: all 0.15s ease;
     margin-right: 10px;
     vertical-align: middle;
-    }
-    .radio-wrapper-13 .rdo:after {
+}
+
+.radio-wrapper-13 .rdo:after {
     content: "";
     position: absolute;
     display: block;
@@ -137,44 +148,52 @@ body {
     background: #fff;
     opacity: 0;
     transform: scale(0);
-    }
-    .radio-wrapper-13 label {
+}
+
+.radio-wrapper-13 label {
     display: flex;
     align-items: center;
     cursor: pointer;
     margin-bottom: 8px;
     color: #FFFFFF80;
-    }
-    .radio-wrapper-13 input[type="radio"] {
+}
+
+.radio-wrapper-13 input[type="radio"] {
     position: absolute;
     opacity: 0;
-    }
-    .radio-wrapper-13 input[type="radio"]:checked + .rdo {
+}
+
+.radio-wrapper-13 input[type="radio"]:checked + .rdo {
     background-image: linear-gradient(#9ca1ed, #5962e1);
-    }
-    .radio-wrapper-13 input[type="radio"]:checked + .rdo:after {
+}
+
+.radio-wrapper-13 input[type="radio"]:checked + .rdo:after {
     opacity: 1;
     transform: scale(1);
     transition: all 0.15s ease;
-    }
-    /* For mobile responsiveness */
-    @media (max-width: 600px) {
+}
+
+/* For mobile responsiveness */
+@media (max-width: 600px) {
     .question {
-    flex-direction: column;
+        flex-direction: column;
     }
+    
     .question-image, .emoji-container {
-    flex: 0 0 auto;
-    width: auto;
-    margin-bottom: 15px;
-    margin-right: 0;
-    justify-content: flex-start;
+        flex: 0 0 auto;
+        width: auto;
+        margin-bottom: 15px;
+        margin-right: 0;
+        justify-content: flex-start;
     }
+    
     .pixelated-movie {
-    max-width: 150px;
-    height: auto;
+        max-width: 150px;
+        height: auto;
     }
+    
     .emoji {
-    font-size: 50px;
-    text-align: left;
+        font-size: 50px;
+        text-align: left;
     }
-    }
+}
