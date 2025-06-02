@@ -12,7 +12,7 @@ $current_user = "carlnorwood12";
 	<title>Contact Us</title>
 	<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/forms.css">
 </head>
 <body>
 <div class="radial-gradient"></div>
@@ -51,11 +51,11 @@ $current_user = "carlnorwood12";
 			</div>
 		</div>
 		<div class="right">
-    	<form class="w-450 p-3" 
+    	<form>
     	      action="php/contact.php" 
     	      method="post">
     		<h1 id="account-h1">Contact Us</h1>
-			<p id="account-p">We'd love to hear from you. Send us a message!</p>
+			<p id="account-p">We'd love to hear from you!</p>
             
 			<div class="input-wrapper">
 				<img class="icon shown" src="/svg/form/user.svg" width="20px" aria-label="Icon"/>

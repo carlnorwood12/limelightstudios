@@ -1,8 +1,11 @@
 <?php
 // connection to the database
 session_start();
-include './connection.php';
+include 'connection.php';
 global $dbhandle;
+
+// Initialize $sort with a default value or from a GET/POST request
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'highest_rated'; // Default to 'highest_rated'
 
 // Determine the SQL query based on the sorting criterion
 $sql = "";
@@ -22,6 +25,9 @@ if ($sort === "highest_rated") {
     ";
 } else if ($sort === "release_date") {
     $sql = "SELECT * FROM movies ORDER BY release_date DESC";
+} else {
+    // Handle unexpected $sort values
+    $sql = "SELECT * FROM movies ORDER BY movie_rating DESC"; // Default query
 }
 
 // Execute the query

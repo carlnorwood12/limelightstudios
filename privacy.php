@@ -409,10 +409,6 @@
           </ul>
         </div>
       </div>
-
-      <p class="text-xs text-gray-500 dark:text-gray-400">
-          &copy; 2025 Limelight Cinemas. All rights reserved.
-      </p>
     </div>
   </footer>
 </body>

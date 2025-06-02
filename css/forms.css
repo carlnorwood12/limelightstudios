@@ -4,17 +4,6 @@ body
 {
   font-family: 'System-ui', sans-serif;
 }
-*:focus
-{
-  outline: none;
-  border: none;
-}
-.contact-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
 .right {
   position: relative;
   display: flex;
@@ -37,23 +26,10 @@ body
   height: 100%;
 }
 
-*:focus, *:focus-visible {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
 .password {
   cursor: pointer;
   z-index: 999;
   transition: filter 0.5s ease;
-}
-#testing-h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  font-size: 20px;
 }
 .video-form
 {
@@ -63,10 +39,6 @@ body
   height: 100% !important;
   width: 100%;
   object-fit: cover;
-}
-.marquee:hover {
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
 }
 
 .twinkle {
@@ -87,7 +59,6 @@ body
 
 
 input:hover,
-textarea:hover,
 input[type="submit"]:hover {
   filter: brightness(1.15);
   transition: filter 0.2s ease;
@@ -98,16 +69,6 @@ input[type="submit"]:hover {
   align-items: center;
   height: 100vh;
 }
-
-.header-container-transparent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  align-items: center;
-  height: clamp(3.125rem, 2.8571rem + 1.4286vw, 3.75rem);
-  border-radius: 19px;
-}
 .radial-gradient {
   position: fixed;
   top: 0;
@@ -116,28 +77,10 @@ input[type="submit"]:hover {
   width: 100%;
   background-image: radial-gradient(circle at 100% 100%, #14142B 0%, #14142B 2%, #14142A 4%, #141329 6%, #131329 8%, #131328 9%, #131227 11%, #131225 13%, #121124 14%, #121123 16%, #121022 18%, #111020 20%, #110F1F 22%, #100F1E 24%, #0F0E1D 27%, #0F0D1B 30%, #0E0D1A 33%, #0D0C19 36%, #0D0C18 40%, #0C0B17 44%, #0B0B17 48%, #0B0A16 53%, #0A0A15 59%, #0A0A15 64%, #0A0A15 71%);
 }
-.radial-gradient::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgAB/axk9QAAAABJRU5ErkJggg==");
-  background-size: cover, 4px 4px;
-  background-repeat: no-repeat, repeat;
-  z-index: 9;
-  opacity: 0.2;
-  mix-blend-mode: multiply;
-}
-.h1text {
-  text-transform: uppercase;
-  font-size: clamp(0.9375rem, 0.8036rem + 0.7143vw, 1.25rem);
-  font-family: "Subjectivity", sans-serif;
-  letter-spacing: 0.05rem;
-  color: var(--black);
-  white-space: nowrap;
-  z-index: 0;
+form
+{
+  max-width: 400px;
+  min-width: 300px;
 }
 
 *:focus {
@@ -153,9 +96,6 @@ iframe {
   width: 100%;
   z-index: 1;
 }
-.scrolling-text-container:hover .scrolling-text-inner > div {
-  animation-play-state: paused;
-}
 
 input[type="submit"]:hover {
   filter: brightness(1.15);
@@ -169,23 +109,11 @@ input[type="submit"]:hover {
   .left {
     display: none;
   }
-  .form, .form-2 {
+  .form {
     padding: 0 15px;
     max-width: 450px;
   }
-
-  .contact-container {
-    flex-direction: column !important;
-  }
 }
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
-}
-input[data-autocompleted] {
-  background-color: transparent !important; /* Changed to transparent */
-}
-/* ----------- contact ----------- */
 
 .form {
   display: flex;
@@ -195,18 +123,6 @@ input[data-autocompleted] {
   width: 100%;
   height: 100%;
   max-width: 400px;
-  z-index: 10;
-}
-.form-2 {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  max-width: 400px;
-  height: 100%;
-  font-size: clamp(0.9375rem, 0.4459rem + 2.2866vw, 1.875rem);
-  font-family: "Montserrat", sans-serif;
   z-index: 10;
 }
 
@@ -235,13 +151,6 @@ p {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.video-h1 {
-  position: absolute;
-  bottom: 0;
-  left: 10px;
-  font-size: 100px;
-  color: black;
-}
 .input-wrapper::after {
   content: "";
   position: absolute;
@@ -255,9 +164,6 @@ p {
   border-radius: inherit;
   opacity: 0.2;
   z-index: -1;
-}
-.btn {
-  background-color: red !important;
 }
 svg {
   z-index: 99999;
@@ -278,59 +184,18 @@ a::after {
   opacity: 0;
   transition: opacity 300ms, transform 300ms;
 }
-.a_red::after {
-  background-color: transparent !important;
-}
-
 a:hover::after,
 a:focus::after {
   opacity: 1;
   transform: translate3d(0, 0.1em, 0);
 }
 
-
-.input-wrapper input:user-valid ~ span::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background-image: url("circle-check.svg");
-  background-size: contain;
-}
-
-/* when you exit focus within the input-wrxapper the @ sign disapears */
-.input-wrapper input:focus-within:user-valid ~ span::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background-image: url("circle-check.svg");
-  background-size: contain;
-}
-
-.input-wrapper input:not(:placeholder-shown):user-invalid ~ span::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background-image: url("circle-x.svg");
-  background-size: contain;
-}
 .icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 25px;
 }
-.input-wrapper input:focus-within:invalid ~ span::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background-image: url("circle-x.svg");
-  background-size: contain;
-}
-
 .input-wrapper span {
   opacity: 1;
   position: absolute;
@@ -349,18 +214,6 @@ a:focus::after {
   outline: 1px solid rgba(255, 255, 255, 1);
   outline-offset: 0px;
   z-index: 10;
-}
-textarea
-{
-  resize: none;
-  height: 300px;
-  outline: none;
-  border: none;
-}
-textarea::placeholder
-{
-  color: #7c82b0cc;
-  font-size: 13px;
 }
 .label {
   position: absolute;
@@ -387,7 +240,7 @@ textarea::placeholder
   color: #ffffff;
   border: none;
   outline: none;
-  background-color: transparent; /* Changed to transparent */
+  background-color: transparent;
   padding: 20px 0 0;
   height: 100%;
   box-sizing: border-box;
@@ -405,7 +258,6 @@ textarea::placeholder
   gap: 5px;
   border: none;
   font-family: inherit;
-  margin-top: 20px;
   font-size: 15px;
   font-weight: 700;
   white-space: nowrap;
@@ -438,14 +290,6 @@ textarea::placeholder
   transition: all 0.2s ease;
 }
 
-.flex-row {
-  height: 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-}
-
 .span {
   font-size: 14px;
   color: rgb(255, 255, 255);
@@ -453,24 +297,12 @@ textarea::placeholder
   font-weight: bold;
   cursor: pointer;
   transition: filter 0.2s ease;
-} 
-.already-have-2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  height: 40px;
-  gap: 10px;
 }
 
 .p-already {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 20px;
-}
-.p-already-2 {
-  font-size: 14px;
-  color: var(--text-color);
 }
 
 a {
@@ -479,20 +311,9 @@ a {
   color: white;
   font-weight: 600;
 }
-
-.content-wrapper {
-  padding-inline: 8px;
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-  animation: scroll 15s linear infinite;
-}
 .p-marquee:hover {
   color:#fff !important;
   transition: color 0.5s ease;
-}
-.marquee-container:hover .content-wrapper {
-  animation-play-state: paused !important;
 }
 .p-marquee {
   white-space: nowrap;
@@ -501,9 +322,6 @@ a {
   transition: color 0.5s ease;
   font-family: "Subjectivity", sans-serif;
   color: #94958C !important;
-}
-.content-wrapper p {
-  font-weight: 800;
 }
 @keyframes scroll {
   from {
@@ -567,19 +385,6 @@ a {
   align-items: center;
   gap: 10px;
 }
-.already-have-2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  height: 40px;
-  gap: 10px;
-}
-
-.p-already-2 {
-  font-size: 14px;
-  color: var(--text-color);
-}
 
 a {
   position: relative;
@@ -587,20 +392,9 @@ a {
   color: white;
   font-weight: 600;
 }
-
-.content-wrapper {
-  padding-inline: 8px;
-  display: flex;
-  column-gap: 20px;
-  align-items: center;
-  animation: scroll 15s linear infinite;
-}
 .p-marquee:hover {
   color:#fff !important;
   transition: color 0.5s ease;
-}
-.marquee-container:hover .content-wrapper {
-  animation-play-state: paused !important;
 }
 .p-marquee {
   white-space: nowrap;
@@ -609,9 +403,6 @@ a {
   transition: color 0.5s ease;
   font-family: "Subjectivity", sans-serif;
   color: #94958C !important;
-}
-.content-wrapper p {
-  font-weight: 800;
 }
 @keyframes scroll {
   from {
@@ -660,16 +451,6 @@ a {
   transition: background-color 0.15s ease-out;
   margin-bottom: 10px;
   cursor: text;
-}
-#h1-venues
-{
-  position: relative;
-  text-align: center;
-  font-size: 10px;
-  font-weight: 800;
-  background-color: red;
-  white-space: nowrap;
-  padding-bottom: 8px;
 }
 
 #account-h1
@@ -816,10 +597,4 @@ a {
 .alert-danger img
 {
   width: 14px;
-}
-.tippy-box {
-  color: rgba(255, 255, 255, 0.75); 
-  border-radius: 8px; 
-  padding: 10px; 
-  font-size: 14px; 
 }

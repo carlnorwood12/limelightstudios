@@ -31,7 +31,7 @@ if (isset($_COOKIE['logged_in']))
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
       <link rel="stylesheet" type="text/css" href="./css/venues.css" />
    </head>
-   <body style="background-color: black;">
+   <body>
       <div class="radial-gradient"></div>
       <header>
          <a class="hamburger-icon">

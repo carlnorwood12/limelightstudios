@@ -1,6 +1,9 @@
 @import "resets.css";
 
-
+body
+{
+  font-family: 'System-ui', sans-serif;
+}
 body {
     background-color: black;
 }

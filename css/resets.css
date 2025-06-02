@@ -13,7 +13,7 @@
   -webkit-tap-highlight-color: rgba(225, 255, 255, 0);
 }
 
-*::after,
+*::after, 
 *::before {
   pointer-events: none;
 }
@@ -39,6 +39,14 @@ h6 {
   overflow-wrap: break-word;
   line-height: 1;
   margin: 0;
+}
+
+h1 {
+  padding-bottom: calc(28px - 8px);
+}
+
+h2 {
+  padding-bottom: 1px;
 }
 
 /* Form Elements */
@@ -87,6 +95,7 @@ html {
   min-width: 344px;
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
+  background-color: black;
 }
 
 /* Scrollbar Styles */
@@ -100,6 +109,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #000;
+  background: #888;
   border-radius: 50px;
 }

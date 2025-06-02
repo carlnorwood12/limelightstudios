@@ -119,7 +119,7 @@ if (isset($_POST['save_movie'])) {
 
                                     <!-- Both Admin and Adult users see Profile button -->
                                     <a
-                                        href="<?= $_SESSION['user_status'] === 'Admin' ? '/adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>">
+                                        href="<?= $_SESSION['user_status'] === 'Admin' ? './adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>">
                                         <button class="nav-buttons settings">
                                             <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
@@ -127,7 +127,7 @@ if (isset($_POST['save_movie'])) {
                                     </a>
                                 <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
                                     <!-- Junior users only see Profile button -->
-                                    <a href="profile.php">
+                                    <a href="./adultpanel/profile.php">
                                         <button class="nav-buttons settings">
                                             <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
