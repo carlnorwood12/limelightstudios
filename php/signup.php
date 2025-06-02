@@ -6,8 +6,6 @@ function redirectWithError($error, $data) {
     header("Location: ../register.php?error=$error&$data");
     exit;
 }
-
-
 if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob'])) 
 {
     $name = $_POST['name'];
@@ -27,10 +25,8 @@ if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob']))
         if (!preg_match($password_regex, $pass)) {
             redirectWithError("Please match the requested format for the password.", $data);
         }
-
         // Determine account type based on age
         $account = ($age < 18) ? 'Junior' : 'Adult';
-
         // Handle file upload
         if (!empty($_FILES['profile_picture']['name'])) {
             $img_name = $_FILES['profile_picture']['name'];
@@ -77,7 +73,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob']))
 
             $stmt->execute([$name, $email, $hashed_pass, $dob, $age, $account, $created]);
         }
-
         // Set session variables
         $_SESSION['name'] = $name;
         $_SESSION['user_status'] = $account;

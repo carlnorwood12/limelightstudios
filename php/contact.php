@@ -35,7 +35,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
         $stmt->execute([$name, $email, $message]);
 
         // Redirect to contact page on success
-        header("Location: ../contact.php?success=Your message has been sent successfully! We'll get back to you soon.");
+        header("Location: ../contact.php?success=Your message has been sent successfully!");
         exit;
     } catch (PDOException $e) {
         redirectWithError("Error: " . $e->getMessage(), $data); // Use the actual exception message

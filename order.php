@@ -1,7 +1,7 @@
 <?php
 // connection to the database
 session_start();
-include 'connection.php';
+include './connection.php';
 global $dbhandle;
 
 // Determine the SQL query based on the sorting criterion
