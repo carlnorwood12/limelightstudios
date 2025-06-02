@@ -1,6 +1,10 @@
 @import "resets.css";
 
 
+body {
+    background-color: black;
+}
+
 aside {
     border: none !important;
     background-color: #000 !important;
