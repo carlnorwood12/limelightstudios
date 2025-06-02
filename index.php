@@ -72,8 +72,8 @@ if (isset($_POST['save_movie'])) {
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/nice-select2@2.2.0/dist/js/nice-select2.min.js" defer></script>
-    <link rel="stylesheet" href="dropdown.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./css/dropdown.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
@@ -690,7 +690,7 @@ if (isset($_POST['save_movie'])) {
 
                     <ul class="mt-6 space-y-4 text-sm">
                         <li>
-                            <a href="/profile.php" class="text-white transition"
+                            <a href="/adultpanel/profile.php" class="text-white transition"
                                 style="opacity: 0.5; transition: opacity 0.3s ease;"
                                 onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
                                 My Account
@@ -698,10 +698,17 @@ if (isset($_POST['save_movie'])) {
                         </li>
 
                         <li>
-                            <a href="/bookings.php" class="text-white transition"
+                            <a href="/adultpanel/bookings.php" class="text-white transition"
                                 style="opacity: 0.5; transition: opacity 0.3s ease;"
                                 onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
                                 My Bookings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/adultpanel/saved.php" class="text-white transition"
+                                style="opacity: 0.5; transition: opacity 0.3s ease;"
+                                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+                                My Saved
                             </a>
                         </li>
                     </ul>

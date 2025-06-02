@@ -91,7 +91,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
    <title>Adult Bookings</title>
    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-   <link rel="stylesheet" href="../adult.css"/>
+   <link rel="stylesheet" href="../css/adult.css"/>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <!-- Add Print.js CSS and JS -->
    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
@@ -779,11 +779,9 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
             printable: `printable-ticket-${bookingId}`,
             type: 'html',
             css: ['https://printjs-4de6.kxcdn.com/print.min.css'],
-            documentTitle: 'Limelight Cinema E-Ticket',
-            header: '<div style="text-align:center; font-size:12px; margin-bottom:10px;">Limelight Cinema E-Ticket</div>'
+            header: 'Limelight Cinema E-Ticket'
          });
       }
-
       // Force cell widths on load
       $(document).ready(function () {
          $('.poster-cell').css('width', '200px');

@@ -29,7 +29,7 @@ if (isset($_COOKIE['logged_in']))
       <script src="https://cdn.tailwindcss.com"></script>
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-      <link rel="stylesheet" type="text/css" href="styles2.css" />
+      <link rel="stylesheet" type="text/css" href="./css/venues.css" />
    </head>
    <body style="background-color: black;">
       <div class="radial-gradient"></div>
@@ -41,6 +41,7 @@ if (isset($_COOKIE['logged_in']))
          </a>
          <img src="/svg/logo/limelight.svg" id="limelight-logo" />
       </header>
+
     <div class="menu-overlay">
         <div class="menu-cols">
             <div class="col-2">
@@ -56,34 +57,39 @@ if (isset($_COOKIE['logged_in']))
                             <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
                             <div class="row-buttons">
                                 <?php if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): ?>
-                                    <!-- Admin and Adult both see Dashboard button -->
-                                    <a
-                                        href="<?= $_SESSION['user_status'] === 'Admin' ? 'adminpanel.php' : 'dashboard.php' ?>">
-                                        <button class="nav-buttons dashboard">
-                                            <img src="/svg/menu/dashboard.svg" alt="dashboard" class="menu-icon">
-                                            Dashboard
-                                        </button>
-                                    </a>
+                                    <?php if ($_SESSION['user_status'] === 'Admin'): ?>
+                                        <a href="adminpanel/dashboard.php">
+                                            <button class="nav-buttons dashboard">
+                                                <img src="/svg/adminpanel/dashboard.svg" alt="dashboard" class="menu-icon">
+                                                Dashboard
+                                            </button>
+                                        </a>
+                                    <?php elseif ($_SESSION['user_status'] === 'Adult'): ?>
+                                        <a href="./adultpanel/bookings.php">
+                                            <button class="nav-buttons dashboard">
+                                                <img src="/svg/adminpanel/bookings.svg" alt="bookings" class="menu-icon">
+                                                Bookings
+                                            </button>
+                                        </a>
+                                    <?php endif; ?>
 
-                                    <!-- Both also see Profile button -->
-                                    <a href="settings2.php">
+                                    <!-- Both Admin and Adult users see Profile button -->
+                                    <a
+                                        href="<?= $_SESSION['user_status'] === 'Admin' ? '/adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>">
                                         <button class="nav-buttons settings">
-                                            <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
+                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
                                         </button>
                                     </a>
-
                                 <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
                                     <!-- Junior users only see Profile button -->
-                                    <a href="settings2.php">
+                                    <a href="profile.php">
                                         <button class="nav-buttons settings">
-                                            <img src="/svg/menu/profile.svg" alt="settings" class="menu-icon">
+                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
                                             Profile
                                         </button>
                                     </a>
-
                                 <?php else: ?>
-
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -93,6 +99,11 @@ if (isset($_COOKIE['logged_in']))
                     <div class="search-contain">
                         <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
                         <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
+                        <div class="result">
+                            <p></p>
+                        </div>
+                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270"
+                            id="/svg/menu/go-right" alt="enter movie">
                     </div>
                     <div class="menu-link">
                         <a href="index.html">Home</a>

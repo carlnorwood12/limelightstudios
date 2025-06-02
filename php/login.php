@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_POST['email']) && isset($_POST['pass'])) {
-    include "../db_conn.php";
+    include "../connection.php";
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $data = "email=" . $email;

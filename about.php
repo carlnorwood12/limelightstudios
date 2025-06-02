@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <meta charset="UTF-8" />
-  <title>Cinema Page with Spotlight Hero</title>
+  <title>Limelight Cinema | About</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="./css/about.css" />
 </head>
 
 <body>

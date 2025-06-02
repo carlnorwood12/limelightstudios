@@ -60,7 +60,7 @@
       <title>Saved Movies</title>
       <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-      <link rel="stylesheet" href="../adult.css"/>
+      <link rel="stylesheet" href="../css/adult.css"/>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <style>
          aside.navbar-vertical {

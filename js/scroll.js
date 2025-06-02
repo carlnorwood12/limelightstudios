@@ -1,52 +1,43 @@
-// Timeline 1 - .uk-accordion Animation
 
 
-
-
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".uk-accordion",
-    start: "top+=800 bottom+=800", // Increased to 800px offset for start and end
-    end: "bottom+=800 bottom+=800",
-    scrub: 1, // Smooth scrub for consistent timing
-    id: "scrub",
+gsap.fromTo(".marquee-container", 
+  {
+    filter: "blur(5px) grayscale(100%)",
+    opacity: 0,
+    clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
+    ease: "power2.out",
+    duration: 2,
   },
-});
-tl.from(".uk-accordion", {
-  scale: 0.95,
-  opacity: 0,
-  filter: "grayscale(100%)",
-  duration: 1,
-});
+  {
+    filter: "blur(0px) grayscale(0%)",
+    opacity: 1,
+    clipPath: "polygon(0 100%, 100% 100%, 100% 0%, 0% 0%)",
+    duration: 2,
+    ease: "power2.out",
+  }
+);
 
-tl2.from(".container", {
-  scale: 0.95,
-  opacity: 0,
-  filter: "grayscale(100%)",
-  duration: 1,
-});
-
-gsap.set(".swiper-slide:not(.hero-swiper .swiper-slide)", { opacity: 0 });
-ScrollTrigger.batch(".swiper-slide:not(.hero-swiper .swiper-slide)", {
+gsap.set(".swiper-slide:not(.hero-swiper .swiper-slide):not(.card-swiper .swiper-slide)", { opacity: 0 });
+ScrollTrigger.batch(".swiper-slide:not(.hero-swiper .swiper-slide):not(.card-swiper .swiper-slide)", {
   start: "top 95%",
   once: true,
   onEnter: (batch) => {
-    gsap.from(batch, {
-      duration: 0.5,
-      opacity: 0,
-      stagger: 0.05,
-      ease: "ease",
-    });
-    gsap.to(batch, {
-      duration: 0.5,
-      opacity: 1,
-      stagger: 0.05,
-      ease: "ease",
-    });
+    gsap.fromTo(batch, 
+      {
+        opacity: 0,
+        filter: "blur(1px) grayscale(100%)",
+        y: 50, 
+        scale: 0.9
+      },
+      {
+        duration: 0.8,
+        opacity: 1,
+        filter: "blur(0px) grayscale(0%)",
+        y: 0,
+        scale: 1,
+        stagger: 0.1,
+        ease: "power2.out",
+      }
+    );
   },
 });
-
-
-gsap.fromTo(".button", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
-gsap.fromTo(".button2", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 1 });
-

@@ -1,17 +1,8 @@
 <?php
-// Database connection
-$hostname = "127.0.0.1";  // Use localhost
-$username = "root";
-$password = "your_new_password";
-$database = "limelightcinema";
-
-$dbhandle = mysqli_connect($hostname, $username, $password, $database);
-if (!$dbhandle) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// Get the sorting criterion from the POST data
-$sort = isset($_POST['sort']) ? $_POST['sort'] : '';
+// connection to the database
+session_start();
+include 'connection.php';
+global $dbhandle;
 
 // Determine the SQL query based on the sorting criterion
 $sql = "";

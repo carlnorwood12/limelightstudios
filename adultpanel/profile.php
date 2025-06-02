@@ -60,7 +60,7 @@
       <title>Adult Profile</title>
       <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-      <link rel="stylesheet" href="../adult.css"/>
+      <link rel="stylesheet" href="../css/adult.css"/>
       <style>
          /* Remove navbar border */
          aside.navbar-vertical {

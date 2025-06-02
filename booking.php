@@ -85,9 +85,8 @@ while ($screeningRow = mysqli_fetch_array($screeningResult, MYSQLI_ASSOC)) {
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="dropdown.css">
-      <link rel="stylesheet" href="progressjs.css" />
-      <link rel="stylesheet" href="styles.css" />
+      <link rel="stylesheet" href="./css/dropdown.css">
+      <link rel="stylesheet" href="./css/styles.css" />
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
       <style>
