@@ -1,14 +1,15 @@
 <?php
-session_start(); // Start the session
-include "../db_conn.php"; // Ensure this file sets up the $conn variable
-
+session_start();
+include "../connection.php"; 
 function redirectWithError($error, $data) {
     $data = urlencode($data);
     header("Location: ../register.php?error=$error&$data");
     exit;
 }
 
-if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob'])) {
+
+if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob'])) 
+{
     $name = $_POST['name'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];

@@ -78,7 +78,6 @@ $booking_query = "
        ORDER BY 
            b.booking_time DESC
    ";
-
 $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error querying bookings: ' . mysqli_error($dbhandle));
 ?>
 <!DOCTYPE html>
@@ -461,7 +460,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                   </div>
                </div>
                <div class="navbar-nav flex-row d-lg-none">
-                  <!-- Mobile menu controls -->
                </div>
                <div class="collapse navbar-collapse" id="sidebar-menu">
                   <ul class="navbar-nav pt-lg-3">

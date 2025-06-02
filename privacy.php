@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <meta charset="UTF-8" />
-  <title>Limelight Cinema | Terms and Conditions</title>
+  <title>Limelight Cinema | Privacy Policy</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Terms and Conditions for Limelight Cinema" />
+  <meta name="description" content="Privacy Policy for Limelight Cinema" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -68,15 +68,6 @@
       overflow: hidden;
     }
 
-    .animate-spotlight {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(156, 161, 237, 0.3), transparent);
-      opacity: 0;
-    }
 
     .title {
       font-family: 'Montserrat', sans-serif;
@@ -133,14 +124,6 @@
       font-weight: 600;
     }
 
-    .highlight-box {
-      background: rgba(156, 161, 237, 0.1);
-      border: 1px solid rgba(156, 161, 237, 0.3);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
     .last-updated {
       text-align: center;
       color: var(--text-secondary);
@@ -176,200 +159,162 @@
   <div class="content-body">
     <section class="hero-card">
       <div class="card hero">
-        <svg class="animate-spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"
-          preserveAspectRatio="none"></svg>
-        <h1 class="title">Terms & Conditions</h1>
-        <p class="hero-paragraph">Please read these terms carefully before using our services and facilities.</p>
+        <h1 class="title">Privacy Policy</h1>
+        <p class="hero-paragraph">Your privacy matters to us. Learn how we collect, use, and protect your personal information.</p>
       </div>
     </section>
-
-    <div class="last-updated">
-      <p>Last updated: June 2, 2025</p>
-    </div>
-
     <section class="terms-section">
-      <h2 class="section-title">1. Acceptance of Terms</h2>
+      <h2 class="section-title">1. Information We Collect</h2>
       <div class="terms-content">
-        <p>By accessing and using Limelight Cinema's services, facilities, or website, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.</p>
-        <div class="highlight-box">
-          <p><strong>Important:</strong> These terms constitute a legally binding agreement between you and Limelight Cinema.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">2. Ticket Purchases and Reservations</h2>
-      <div class="terms-content">
-        <p><strong>Booking Process:</strong></p>
+        <p><strong>Personal Information:</strong></p>
         <ul>
-          <li>All ticket purchases are subject to availability</li>
-          <li>Tickets must be purchased in advance through our website or at the venue</li>
-          <li>Payment must be completed at the time of booking</li>
-          <li>Confirmation will be provided via email or SMS</li>
+          <li>Name, email address, and phone number when booking tickets</li>
+          <li>Payment information (processed securely through third-party providers)</li>
+          <li>Age verification data for age-restricted screenings</li>
+          <li>Account preferences and booking history</li>
         </ul>
-        <p><strong>Pricing:</strong></p>
+        <p><strong>Automatically Collected Data:</strong></p>
         <ul>
-          <li>All prices are displayed in GBP and include applicable taxes</li>
-          <li>Special pricing may apply for students, seniors, and groups</li>
-          <li>Prices are subject to change without notice</li>
+          <li>IP address, browser type, and device information</li>
+          <li>Website usage patterns and analytics data</li>
+          <li>Location data (if permission granted)</li>
+          <li>CCTV footage for security purposes</li>
         </ul>
       </div>
     </section>
-
     <section class="terms-section">
-      <h2 class="section-title">3. Cancellation and Refund Policy</h2>
+      <h2 class="section-title">2. How We Use Your Information</h2>
       <div class="terms-content">
-        <p><strong>Customer Cancellations:</strong></p>
+        <p>We use your personal information for the following purposes:</p>
         <ul>
-          <li>Tickets may be cancelled up to 2 hours before showtime for a full refund</li>
-          <li>Cancellations within 2 hours of showtime are non-refundable</li>
-          <li>Refunds will be processed within 5-7 business days</li>
-        </ul>
-        <p><strong>Cinema Cancellations:</strong></p>
-        <ul>
-          <li>If we cancel a screening, full refunds will be automatically processed</li>
-          <li>Alternative showings may be offered when available</li>
-          <li>We are not responsible for travel costs or other expenses</li>
-        </ul>
-        <div class="highlight-box">
-          <p><strong>No-Show Policy:</strong> Tickets for missed screenings are non-refundable and non-transferable.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">4. Cinema Rules and Conduct</h2>
-      <div class="terms-content">
-        <p><strong>Prohibited Activities:</strong></p>
-        <ul>
-          <li>Recording, photographing, or streaming any part of the screening</li>
-          <li>Disruptive behavior including loud talking, use of mobile phones during screenings</li>
-          <li>Bringing outside food or beverages (except for medical requirements)</li>
-          <li>Smoking or vaping anywhere on the premises</li>
-          <li>Consumption of alcohol by persons under 18</li>
-        </ul>
-        <p><strong>Age Restrictions:</strong></p>
-        <ul>
-          <li>Film age ratings will be strictly enforced</li>
-          <li>Photo ID may be required for age verification</li>
-          <li>Children under 12 must be accompanied by an adult for all screenings</li>
+          <li>Processing ticket bookings and payments</li>
+          <li>Sending booking confirmations and important updates</li>
+          <li>Providing customer support and responding to inquiries</li>
+          <li>Improving our services and website functionality</li>
+          <li>Marketing communications (only with your consent)</li>
+          <li>Ensuring security and preventing fraud</li>
+          <li>Complying with legal obligations</li>
         </ul>
       </div>
     </section>
 
     <section class="terms-section">
-      <h2 class="section-title">5. Liability and Safety</h2>
+      <h2 class="section-title">3. Information Sharing and Disclosure</h2>
       <div class="terms-content">
-        <p><strong>Limited Liability:</strong></p>
-        <p>Limelight Cinema's liability is limited to the price of your ticket. We are not responsible for:</p>
+        <p>We do not sell your personal information. We may share your data only in the following circumstances:</p>
         <ul>
-          <li>Personal injury or property damage unless caused by our negligence</li>
-          <li>Lost or stolen personal items</li>
-          <li>Technical issues affecting screening quality</li>
-          <li>Third-party actions or weather-related cancellations</li>
+          <li>With payment processors to complete transactions</li>
+          <li>With service providers who assist in operating our business</li>
+          <li>When required by law or to protect our legal rights</li>
+          <li>In case of business transfer or merger (with prior notice)</li>
+          <li>With your explicit consent for specific purposes</li>
         </ul>
-        <p><strong>Safety Requirements:</strong></p>
+        <p><strong>Third-Party Services:</strong></p>
         <ul>
-          <li>Customers must follow all safety instructions and emergency procedures</li>
-          <li>Emergency exits must remain clear at all times</li>
-          <li>Report any safety concerns to staff immediately</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">6. Privacy and Data Protection</h2>
-      <div class="terms-content">
-        <p>Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which forms part of these terms.</p>
-        <p><strong>Data Collection:</strong></p>
-        <ul>
-          <li>We collect information necessary to process bookings and improve our services</li>
-          <li>CCTV is in operation for security purposes</li>
-          <li>Marketing communications are opt-in only</li>
-        </ul>
-        <div class="highlight-box">
-          <p><strong>GDPR Compliance:</strong> You have the right to access, modify, or delete your personal data. Contact us for data requests.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">7. Intellectual Property</h2>
-      <div class="terms-content">
-        <p>All content displayed at Limelight Cinema, including films, promotional materials, and our website content, is protected by copyright and other intellectual property laws.</p>
-        <p><strong>Restrictions:</strong></p>
-        <ul>
-          <li>No reproduction or distribution of copyrighted content</li>
-          <li>Our logo and branding materials are trademarked</li>
-          <li>User-generated content may be used for promotional purposes</li>
+          <li>Payment processing: Stripe, PayPal (secure encrypted transactions)</li>
+          <li>Email services: Mailgun for booking confirmations</li>
+          <li>Analytics: Google Analytics (anonymized data)</li>
         </ul>
       </div>
     </section>
 
     <section class="terms-section">
-      <h2 class="section-title">8. Website Terms</h2>
+      <h2 class="section-title">4. Data Security</h2>
       <div class="terms-content">
-        <p><strong>Website Use:</strong></p>
+        <p>We implement appropriate technical and organizational measures to protect your personal information:</p>
         <ul>
-          <li>Our website is provided "as is" without warranties</li>
-          <li>We may update or modify the website without notice</li>
-          <li>Users are responsible for maintaining account security</li>
-          <li>Automated booking systems or bots are prohibited</li>
-        </ul>
-        <p><strong>Cookies:</strong> Our website uses cookies to enhance user experience and analyze usage patterns.</p>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">9. Force Majeure</h2>
-      <div class="terms-content">
-        <p>Limelight Cinema is not liable for failure to perform due to circumstances beyond our reasonable control, including but not limited to:</p>
-        <ul>
-          <li>Natural disasters, severe weather conditions</li>
-          <li>Government regulations or public health emergencies</li>
-          <li>Power outages, technical failures, or equipment breakdown</li>
-          <li>Labor disputes or supplier issues</li>
-        </ul>
-        <div class="highlight-box">
-          <p><strong>COVID-19:</strong> Additional health and safety measures may be implemented as required by government guidelines.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">10. Modifications and Termination</h2>
-      <div class="terms-content">
-        <p><strong>Changes to Terms:</strong></p>
-        <p>We reserve the right to modify these terms at any time. Changes will be posted on our website and take effect immediately upon posting.</p>
-        <p><strong>Account Termination:</strong></p>
-        <p>We may suspend or terminate user accounts for violation of these terms or inappropriate behavior.</p>
-      </div>
-    </section>
-
-    <section class="terms-section">
-      <h2 class="section-title">11. Governing Law and Disputes</h2>
-      <div class="terms-content">
-        <p>These terms are governed by Scottish law and subject to the jurisdiction of Scottish courts.</p>
-        <p><strong>Dispute Resolution:</strong></p>
-        <ul>
-          <li>We encourage resolution through direct communication</li>
-          <li>Formal complaints should be submitted in writing</li>
-          <li>Mediation may be required before legal proceedings</li>
+          <li>SSL encryption for all data transmission</li>
+          <li>Secure servers with regular security updates</li>
+          <li>Access controls limiting who can view your data</li>
+          <li>Regular security audits and vulnerability assessments</li>
+          <li>Staff training on data protection practices</li>
         </ul>
       </div>
     </section>
 
     <section class="terms-section">
-      <h2 class="section-title">12. Contact Information</h2>
+      <h2 class="section-title">5. Your Rights Under GDPR</h2>
       <div class="terms-content">
-        <p>For questions about these Terms and Conditions, please contact us:</p>
-        <div class="highlight-box">
-          <p><strong>Limelight Cinema</strong><br>
-          Email: legal@limelightcinema.co.uk<br>
-          Phone: +44 (0) 131 XXX XXXX<br>
-          Address: [Cinema Address], Scotland</p>
-        </div>
-        <p>Customer service hours: Monday-Sunday, 10:00 AM - 10:00 PM</p>
+        <p>As a data subject, you have the following rights:</p>
+        <ul>
+          <li><strong>Right to Access:</strong> Request a copy of your personal data</li>
+          <li><strong>Right to Rectification:</strong> Correct inaccurate or incomplete data</li>
+          <li><strong>Right to Erasure:</strong> Request deletion of your personal data</li>
+          <li><strong>Right to Portability:</strong> Receive your data in a structured format</li>
+          <li><strong>Right to Object:</strong> Opt out of processing for marketing purposes</li>
+          <li><strong>Right to Restrict:</strong> Limit how we process your data</li>
+        </ul>
+        <p>To exercise these rights, contact us at privacy@limelightcinema.co.uk. We will respond within 30 days.</p>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <h2 class="section-title">6. Data Retention</h2>
+      <div class="terms-content">
+        <p>We retain your personal information for as long as necessary to fulfill the purposes outlined in this policy:</p>
+        <ul>
+          <li>Booking data: 7 years for accounting and tax purposes</li>
+          <li>Marketing preferences: Until you withdraw consent</li>
+          <li>Website analytics: 26 months (anonymized)</li>
+          <li>CCTV footage: 30 days unless incident reported</li>
+          <li>Account data: Until account deletion requested</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <h2 class="section-title">7. Cookies and Tracking</h2>
+      <div class="terms-content">
+        <p><strong>Essential Cookies:</strong> Required for website functionality (session management, security)</p>
+        <p><strong>Analytics Cookies:</strong> Help us understand website usage (Google Analytics)</p>
+        <p><strong>Marketing Cookies:</strong> Used for targeted advertising (only with consent)</p>
+        <p>You can manage cookie preferences through your browser settings or our cookie banner when you first visit our site.</p>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <h2 class="section-title">8. Children's Privacy</h2>
+      <div class="terms-content">
+        <p>We do not knowingly collect personal information from children under 13 without parental consent.</p>
+        <ul>
+          <li>Children under 13 require parent/guardian to complete bookings</li>
+          <li>Age verification may be required for certain screenings</li>
+          <li>Parents can request deletion of their child's data</li>
+          <li>Special protections apply to children's data under GDPR</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <h2 class="section-title">9. International Data Transfers</h2>
+      <div class="terms-content">
+        <p>Your data is primarily processed within the UK and EU. When we transfer data outside the EU:</p>
+        <ul>
+          <li>We ensure adequate protection through approved mechanisms</li>
+          <li>Standard Contractual Clauses are used with third parties</li>
+          <li>We verify the recipient country has adequate protection laws</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <h2 class="section-title">10. Changes to This Policy</h2>
+      <div class="terms-content">
+        <p>We may update this Privacy Policy to reflect changes in our practices or legal requirements.</p>
+        <ul>
+          <li>Material changes will be notified via email</li>
+          <li>Updated policy will be posted on our website</li>
+          <li>Date of last update is shown at the top of this page</li>
+          <li>Continued use constitutes acceptance of changes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms-section">
+      <h2 class="section-title">11. Contact Information</h2>
+      <div class="terms-content">
+        <p>For privacy-related questions or to exercise your data rights:</p>
+        <p>You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) if you believe your data protection rights have been violated.</p>
       </div>
     </section>
   </div>
@@ -470,57 +415,5 @@
       </p>
     </div>
   </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.fromTo(".animate-spotlight",
-      {
-        width: "0%",
-        opacity: 0,
-      },
-      {
-        width: "100%",
-        opacity: 0.6,
-        filter: "blur(50px) grayscale(0)",
-        duration: 5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".hero-card",
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-          markers: false,
-        },
-      }
-    );
-
-    gsap.to(".card.hero", {
-      opacity: 1,
-      duration: 2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".hero-card",
-        start: "top 70%",
-        toggleActions: "play none none none",
-      },
-    });
-
-    // Smooth scrolling for any internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  </script>
 </body>
 </html>

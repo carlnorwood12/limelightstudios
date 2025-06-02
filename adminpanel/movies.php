@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $delete = "DELETE FROM movies WHERE id='$hidden'";
             mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
     }
-
     if (isset($_POST['update']))
     {
         $update = "UPDATE movies SET title='$title', duration='$duration', age_rating='$age_rating', poster_url='$poster_url' WHERE id='$hidden'";
