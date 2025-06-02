@@ -38,38 +38,38 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="name">
-              <h1>Jake Thompson</h1>
+              <h1>Jake</h1>
               <p>Owner</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="name">
-              <h1>Andrew Bennett</h1>
-              <p>Marketing Specialist</p>
+              <h1>Andrew</h1>
+              <p>Marketing</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="name">
-              <h1>Mike Carter</h1>
-              <p>Customer Manager</p>
+              <h1>Mike</h1>
+              <p>Manager</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="name">
-              <h1>Angel Ramirez</h1>
-              <p>Customer Service</p>
+              <h1>Angel</h1>
+              <p>Manager</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="name">
-              <h1>Sandy Peterson</h1>
-              <p>Venue Manager</p>
+              <h1>Sandy</h1>
+              <p>Manager</p>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="name">
-              <h1>Julie Harper</h1>
-              <p>General Manager</p>
+              <h1>Julie</h1>
+              <p>Manager</p>
             </div>
           </div>
         </div>
@@ -315,18 +315,6 @@
       mousewheel: { invert: false, forceToAxis: true, },
       keyboard: { enabled: true, onlyInViewport: false, },
       pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true, },
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var passwordIcon = document.querySelector(".icon.password");
-      var passwordInput = document.getElementById("password-input");
-
-      if (passwordIcon && passwordInput) {
-        passwordIcon.addEventListener("click", function () {
-          const type = passwordInput.getAttribute("type") === "password" ? "email" : "password";
-          passwordInput.setAttribute("type", type);
-        });
-      }
     });
   </script>
 </body>
