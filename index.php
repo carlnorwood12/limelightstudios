@@ -781,6 +781,7 @@ if (isset($_POST['save_movie'])) {
     <script src="/js/gsap.js" defer></script>
     <script src="/js/scroll.js" defer></script>
     <script>
+        
         $(document).ready(function () {
             $('#a-select').niceSelect();
             $('#select-venue').niceSelect();
