@@ -27,6 +27,10 @@
            }
        }
    }
+   if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
+      header("Location: ../index.php");
+      exit;
+   }
    
    // Fetch current logged-in user information only
    $current_user = null;

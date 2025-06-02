@@ -37,6 +37,10 @@
          }
       }
    }
+   if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
+      header("Location: ../index.php");
+      exit;
+   }
    
    // Fetch saved movies
    $saved_movies_query = "
