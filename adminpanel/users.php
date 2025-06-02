@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $age_value = intval($age);
         }
-
         $update = "UPDATE users SET email='$user', password='$pass', email='$email', dob='$dob', account='$account', name='$name', age=$age_value WHERE id='$hidden'";
         mysqli_query($dbhandle, $update) or die('Cannot update database!');
     }

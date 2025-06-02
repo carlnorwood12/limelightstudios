@@ -28,7 +28,7 @@ if (isset($_COOKIE['logged_in'])) {
    }
 }
 
-// Check if the user is an adult - FIXED: Changed 'adult' to 'Adult' to match session data
+// Check if the user is an adult
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
    header("Location: ../");
    exit;
@@ -36,11 +36,10 @@ if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
 
 // Handle booking deletion if submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_booking'])) {
-   $booking_id = intval($_POST['booking_id'] ?? 0); // Use intval for better security
+   $booking_id = intval($_POST['booking_id'] ?? 0);
    if ($booking_id > 0) {
-      $delete_query = "DELETE FROM bookings WHERE id = $booking_id"; // Removed quotes for integer
+      $delete_query = "DELETE FROM bookings WHERE id = $booking_id";
       if (mysqli_query($dbhandle, $delete_query)) {
-         // Redirect to prevent form resubmission
          header("Location: " . $_SERVER['PHP_SELF'] . "?deleted=1");
          exit;
       }
@@ -91,9 +90,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
    <link rel="stylesheet" href="../css/adult.css"/>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <!-- Add Print.js CSS and JS -->
-   <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
-   <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
    <style>
       /* Remove navbar border */
       aside.navbar-vertical {
@@ -105,26 +101,21 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          border-right: none !important;
       }
 
-      /* Set minimum widths to prevent squishing */
+      /* Table responsive */
       .table-responsive {
          overflow-x: auto;
       }
 
       .table {
          min-width: 1300px !important;
-         /* Ensure table has a minimum width */
          table-layout: fixed !important;
-         /* Fixed table layout to respect column widths */
       }
 
-      /* Increased poster cell width - with higher specificity */
+      /* Column widths */
       .table th.poster-cell,
-      .table td.poster-cell,
-      th.poster-cell,
-      td.poster-cell {
+      .table td.poster-cell {
          width: 200px !important;
          min-width: 200px !important;
-         /* Forced minimum width */
          text-align: center;
          padding: 15px;
       }
@@ -132,13 +123,11 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       .booking-details-cell {
          width: 300px;
          min-width: 300px;
-         /* Minimum width */
       }
 
       .tickets-cell {
          width: 200px;
          min-width: 200px;
-         /* Minimum width */
       }
 
       .seats-cell {
@@ -149,17 +138,17 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       .actions-cell {
          width: 180px;
          min-width: 180px;
-         /* Minimum width */
       }
 
+      /* Poster styling */
       .poster-thumbnail {
          width: 200px;
-         /* Slightly increased thumbnail size */
          border-radius: 8px;
          transition: transform 0.3s ease;
          display: inline-block;
       }
 
+      /* Movie title */
       .movie-title {
          margin-bottom: 15px;
          font-weight: 700;
@@ -168,6 +157,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          opacity: 0.75;
       }
 
+      /* Booking details */
       .booking-details {
          display: flex;
          flex-direction: column;
@@ -185,6 +175,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          min-width: 80px;
       }
 
+      /* Ticket info */
       .ticket-info {
          display: flex;
          flex-direction: column;
@@ -207,6 +198,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          font-weight: 600;
       }
 
+      /* Seat badges */
       .seat-badge {
          display: inline-flex;
          align-items: center;
@@ -221,79 +213,64 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          margin: 3px;
       }
 
-      /* Updated button styles */
-      .btn {
-         position: relative;
-         background-color: rgb(4, 21, 19) !important;
-         color: #2BCFC1 !important;
-         transition: all 0.2s ease !important;
-         overflow: hidden !important;
-         border: none !important;
-      }
-
+      /* Button styles */
       .print-btn {
-         position: relative;
          background-color: #0c0414 !important;
          color: #7928ca !important;
-         transition: all 0.2s ease !important;
-         overflow: hidden !important;
          border: none !important;
          display: inline-flex;
          gap: 5px;
          align-items: center;
          justify-content: center;
-         padding: 0.5rem 1rem; /* Reduced padding */
-         border-radius: 4px; /* Changed to match delete button */
+         padding: 0.5rem 1rem;
+         border-radius: 4px;
          cursor: pointer;
          font-weight: 500;
-         font-size: 0.875rem; /* Added consistent font size */
-         white-space: nowrap; /* Prevent text wrapping */
-         min-width: 80px; /* Set minimum width */
+         font-size: 0.875rem;
+         white-space: nowrap;
+         min-width: 80px;
+         transition: all 0.2s ease;
       }
 
       .print-btn:hover {
          background-color: #1a0a2e !important;
+         transform: translateY(-1px);
+         box-shadow: 0 4px 8px rgba(121, 40, 202, 0.3);
       }
 
       .delete-btn {
-         position: relative;
          background-color: #150406 !important;
          color: #cf2b39 !important;
-         transition: all 0.2s ease !important;
-         overflow: hidden !important;
          border: none !important;
          padding: 0.5rem 1rem;
          border-radius: 4px;
          cursor: pointer;
          font-weight: 500;
-         font-size: 0.875rem; /* Added consistent font size */
-         min-width: 80px; /* Reduced min-width */
+         font-size: 0.875rem;
+         min-width: 80px;
+         transition: all 0.2s ease;
       }
 
       .delete-btn:hover {
          background-color: #2a0a0f !important;
          transform: translateY(-1px);
+         box-shadow: 0 4px 8px rgba(207, 43, 57, 0.3);
+      }
+
+      /* Action buttons layout */
+      .action-buttons {
+         display: flex;
+         flex-direction: row;
+         gap: 8px;
+         justify-content: flex-start;
+         align-items: center;
       }
 
       .table td {
          vertical-align: middle;
       }
 
-      .action-buttons {
-         display: flex;
-         flex-direction: row; /* Inline buttons */
-         gap: 8px;
-         justify-content: flex-start;
-         align-items: center;
-      }
-
-      .page-title {
-         font-size: 1.5rem;
-         font-weight: 700;
-         color: #fff;
-      }
-
-      /* Profile image styles */
+      /* Profile styles */
       .profile-image-container {
          margin-right: 10px;
       }
@@ -311,21 +288,23 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       }
 
       .profile-name {
-            font-weight: 600;
-            font-size: 15px;
-            margin: 0;
-            color: #fff;
-         }
-         .profile-role {
+         font-weight: 600;
+         font-size: 15px;
+         margin: 0;
+         color: #fff;
+      }
+
+      .profile-role {
          font-size: 12px;
          color: #777;
          margin: 0;
-         }
-         .navbar-brand {
+      }
+
+      .navbar-brand {
          justify-content: flex-start !important;
          align-items: flex-start !important;
          margin-left: 20px;
-         }
+      }
 
       /* E-Ticket Styling */
       .e-ticket {
@@ -335,17 +314,19 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          background-color: #fff;
          border-radius: 8px;
          overflow: hidden;
+         font-family: Arial, sans-serif;
+      }
+
+      .e-ticket-header {
+         background: linear-gradient(135deg, #7928CA 0%, #9c8af2 100%);
+         color: white;
+         padding: 20px;
+         text-align: center;
       }
 
       .e-ticket-logo {
-         max-width: 150px;
+         max-width: 300px;
          margin-bottom: 10px;
-      }
-
-      .e-ticket-title {
-         font-size: 24px;
-         font-weight: bold;
-         margin: 0;
       }
 
       .e-ticket-body {
@@ -362,6 +343,12 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          width: 100%;
          border-radius: 4px;
       }
+
+      .page-title {
+         font-size: 1.5rem;
+         font-weight: 700;
+         color: #fff;
+         }
 
       .e-ticket-details {
          flex: 1;
@@ -393,7 +380,21 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          flex: 1;
          color: #333;
       }
-      
+
+      .e-ticket-seats {
+         margin-top: 20px;
+      }
+
+      .e-ticket-seat {
+         display: inline-block;
+         padding: 5px 10px;
+         background-color: #f0f0f0;
+         border-radius: 4px;
+         margin-right: 5px;
+         margin-bottom: 5px;
+         font-weight: bold;
+         color: #333;
+      }
 
       .e-ticket-footer {
          background-color: #f8f9fa;
@@ -403,18 +404,15 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          color: #666;
          border-top: 1px dashed #ddd;
       }
-      .e-ticket-logo
-      {
-         min-width: 300px;
-      }
 
       .e-ticket-barcode {
-    margin-top: 15px;
-    text-align: center; /* Centers the barcode horizontally */
-    display: flex; /* Enables flexbox */
-    justify-content: center; /* Centers the barcode horizontally */
-    align-items: center; /* Centers the barcode vertically */
-}
+         margin-top: 15px;
+         text-align: center;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
       .e-ticket-barcode img {
          max-width: 80%;
          height: 70px;
@@ -423,15 +421,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       .col {
          padding: 10px 20px;
       }
-
-      /* Print-specific styles */
-      @media print {
-         .e-ticket-header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-         }
-      }
    </style>
 </head>
 
@@ -439,59 +428,53 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
    <div class="radial-gradient"></div>
    <div class="page">
       <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
-      <div class="container-fluid">
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+         <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
-               </button>
-               <!-- Updated profile section -->
-               <div class="navbar-brand py-3">
-                  <div class="d-flex align-items-center">
-                     <div class="profile-image-container">
-                        <img class="profile-image" src="../upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
-                     </div>
-                     <div class="profile-info">
-                        <h3 class="profile-name"><?=$_SESSION['name'] ?? "Please login" ?></h3>
-                        <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
-                     </div>
+            </button>
+            <!-- Profile section -->
+            <div class="navbar-brand py-3">
+               <div class="d-flex align-items-center">
+                  <div class="profile-image-container">
+                     <img class="profile-image" src="../upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
+                  </div>
+                  <div class="profile-info">
+                     <h3 class="profile-name"><?=$_SESSION['name'] ?? "Please login" ?></h3>
+                     <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
                   </div>
                </div>
-               <div class="navbar-nav flex-row d-lg-none">
-               </div>
-               <div class="collapse navbar-collapse" id="sidebar-menu">
-                  <ul class="navbar-nav pt-lg-3">
-                     <li class="nav-item">
-                        <a class="nav-link" href="profile.php" >
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
-                        </span>
-                        <span class="nav-link-title">
-                        Profile
-                        </span>
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="bookings.php" >
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <img src="/svg/adminpanel/bookings.svg" class="icon" width="20px" />
-                        </span>
-                        <span class="nav-link-title">
-                        Bookings
-                        </span>
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="saved.php" >
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <img src="/svg/adminpanel/saveforlater.svg" class="icon" width="20px" />
-                        </span>
-                        <span class="nav-link-title">
-                        Saved
-                        </span>
-                        </a>
-                     </li>
-                  </ul>
-               </div>
             </div>
+            <div class="navbar-nav flex-row d-lg-none">
+            </div>
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+               <ul class="navbar-nav pt-lg-3">
+                  <li class="nav-item">
+                     <a class="nav-link" href="profile.php" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                           <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
+                        </span>
+                        <span class="nav-link-title">Profile</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="bookings.php" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                           <img src="/svg/adminpanel/bookings.svg" class="icon" width="20px" />
+                        </span>
+                        <span class="nav-link-title">Bookings</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="saved.php" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                           <img src="/svg/adminpanel/saveforlater.svg" class="icon" width="20px" />
+                        </span>
+                        <span class="nav-link-title">Saved</span>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
       </aside>
       <div class="page-wrapper">
          <div class="page-header d-print-none">
@@ -508,19 +491,12 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
             <div class="container-xl">
                <div class="row row-cards">
                   <div class="col-12">
-                     <?php if (isset($_GET['deleted']) && $_GET['deleted'] == '1'): ?>
-                        <div class="alert alert-success alert-dismissible" role="alert">
-                           <div>Booking was successfully deleted.</div>
-                           <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-                        </div>
-                     <?php endif; ?>
                      <div class="card">
                         <div class="table-responsive">
                            <table class="table table-vcenter card-table" style="min-width: 1300px;">
                               <thead>
                                  <tr>
-                                    <th style="width: 200px !important; min-width: 200px !important;"
-                                       class="poster-cell">Movie Poster</th>
+                                    <th class="poster-cell">Movie Poster</th>
                                     <th class="booking-details-cell">Booking Details</th>
                                     <th class="tickets-cell">Tickets & Extras</th>
                                     <th class="seats-cell">Seats</th>
@@ -530,15 +506,13 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                               <tbody>
                                  <?php while ($booking = mysqli_fetch_assoc($bookings_result)): ?>
                                     <tr>
-                                       <td style="width: 200px !important; min-width: 200px !important;"
-                                          class="poster-cell">
+                                       <td class="poster-cell">
                                           <img src="<?php echo htmlspecialchars($booking['poster_url']); ?>"
                                              alt="<?php echo htmlspecialchars($booking['movie_title']); ?>"
                                              class="poster-thumbnail">
                                        </td>
-                                       <td class="booking-details-cell" data-label="Booking Details">
+                                       <td class="booking-details-cell">
                                           <div class="booking-details">
-                                             <!-- Movie title moved to booking details -->
                                              <div class="movie-title">
                                                 <?php echo htmlspecialchars($booking['movie_title']); ?>
                                              </div>
@@ -548,23 +522,20 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                              </div>
                                              <div class="detail-item">
                                                 <span class="detail-label">Booked on:</span>
-                                                <span
-                                                   class="detail-value"><?php echo date('M j, Y g:i A', strtotime($booking['booking_time'])); ?></span>
+                                                <span class="detail-value"><?php echo date('M j, Y g:i A', strtotime($booking['booking_time'])); ?></span>
                                              </div>
                                              <div class="detail-item">
                                                 <span class="detail-label">Screening:</span>
-                                                <span
-                                                   class="detail-value"><?php echo date('M j, Y', strtotime($booking['screening_date'])); ?></span>
+                                                <span class="detail-value"><?php echo date('M j, Y', strtotime($booking['screening_date'])); ?></span>
                                              </div>
                                              <div class="detail-item">
                                                 <span class="detail-label">Time:</span>
-                                                <span
-                                                   class="detail-value"><?php echo date('g:i A', strtotime($booking['start_time'])); ?>
+                                                <span class="detail-value"><?php echo date('g:i A', strtotime($booking['start_time'])); ?>
                                                    - <?php echo date('g:i A', strtotime($booking['end_time'])); ?></span>
                                              </div>
                                           </div>
                                        </td>
-                                       <td class="tickets-cell" data-label="Tickets & Extras">
+                                       <td class="tickets-cell">
                                           <div class="ticket-info">
                                              <?php if ($booking['adult_tickets'] > 0): ?>
                                                 <div class="ticket-row">
@@ -598,7 +569,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                              <?php endif; ?>
                                           </div>
                                        </td>
-                                       <td class="seats-cell" data-label="Seats">
+                                       <td class="seats-cell">
                                           <div class="d-flex flex-wrap gap-1">
                                              <?php
                                              $seats = explode(',', $booking['seats']);
@@ -614,7 +585,11 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                           <div class="action-buttons">
                                              <button type="button" class="print-btn"
                                                 onclick="printTicket(<?php echo $booking['booking_id']; ?>)">
-                                                <img src="./svg/booking/print.svg" alt="Print Ticket" class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                   <polyline points="6,9 6,2 18,2 18,9"></polyline>
+                                                   <path d="M6,18H4a2,2,0,0,1-2-2V11a2,2,0,0,1,2-2H20a2,2,0,0,1,2,2v5a2,2,0,0,1-2,2H18"></path>
+                                                   <polyline points="6,14 18,14 18,22 6,22 6,14"></polyline>
+                                                </svg>
                                                 Print
                                              </button>
                                              <button type="button" class="delete-btn"
@@ -718,13 +693,13 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                                 </div>
                                              </div>
                                              <div class="e-ticket-footer">
-                                                <p>Please present this e-ticket at the cinema entrance. Enjoy your movie!
-                                                </p>
+                                                <p>Please present this e-ticket at the cinema entrance. Enjoy your movie!</p>
                                                 <div class="e-ticket-barcode">
                                                    <img
                                                       src="https://barcode.tec-it.com/barcode.ashx?data=LIMELIGHT<?php echo $booking['booking_id']; ?>&code=Code128&dpi=96"
                                                       alt="Barcode">
                                                 </div>
+                                                <p class="mt-2">Limelight Cinema - The Ultimate Cinema Experience</p>
                                              </div>
                                           </div>
                                        </td>
@@ -740,77 +715,87 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          </div>
       </div>
    </div>
-   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
    <script>
-      // Function to handle delete confirmation
       function confirmDelete(bookingId, movieTitle) {
-         Swal.fire({
-            title: 'Are you sure?',
-            text: `You are about to delete the booking for "${movieTitle}". This action cannot be undone!`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#7928ca',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
-         }).then((result) => {
-            if (result.isConfirmed) {
-               // Submit the delete form
-               document.getElementById(`delete-form-${bookingId}`).submit();
+    console.log(`Booking ID: ${bookingId}, Movie Title: ${movieTitle}`); // Debugging log
+    Swal.fire({
+        title: 'Are you sure?',
+        text: `You are about to delete the booking for "${movieTitle}". This action cannot be undone!`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#7928ca',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const form = document.getElementById(`delete-form-${bookingId}`);
+            if (form) {
+                form.submit();
+            } else {
+                console.error(`Form for booking ID ${bookingId} not found.`);
             }
-         });
-      }
-      // Function to print a ticket
-function printTicket(bookingId) {
-    const ticketElement = document.getElementById(`printable-ticket-${bookingId}`);
-    if (ticketElement) {
-        // Store original styles
-        const originalPageStyles = document.body.style.cssText;
-        const originalDisplay = ticketElement.style.display;
-
-        // Create a style element for print-specific styles
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = `
-            @media print {
-                body * { visibility: hidden; }
-                #printable-ticket-${bookingId}, #printable-ticket-${bookingId} * { 
-                    visibility: visible; 
-                }
-                #printable-ticket-${bookingId} {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    display: block !important;
-                }
-            }
-        `;
-
-        // Append the style element to the document head
-        document.head.appendChild(styleSheet);
-        ticketElement.style.display = 'block';
-
-        // Trigger the print dialog
-        window.print();
-
-        // Restore original styles after a short delay
-        setTimeout(() => {
-            document.head.removeChild(styleSheet);
-            ticketElement.style.display = originalDisplay;
-            document.body.style.cssText = originalPageStyles;
-        }, 100);
-    } else {
-        console.error('Ticket element not found');
-        Swal.fire({
-            title: 'Error',
-            text: 'Unable to find the ticket to print. Please try again.',
-            icon: 'error',
-            confirmButtonColor: '#7928ca'
-        });
-    }
+        }
+    });
 }
 
+      // Function to print a ticket
+      function printTicket(bookingId) {
+         const ticketElement = document.getElementById(`printable-ticket-${bookingId}`);
+         if (ticketElement) {
+            // Create style to hide everything except ticket
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+               body * { visibility: hidden; }
+               #printable-ticket-${bookingId}, #printable-ticket-${bookingId} * { 
+                  visibility: visible; 
+               }
+               #printable-ticket-${bookingId} {
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  display: block !important;
+               }
+               @media print {
+                  body * { visibility: hidden; }
+                  #printable-ticket-${bookingId}, #printable-ticket-${bookingId} * { 
+                     visibility: visible; 
+                  }
+                  #printable-ticket-${bookingId} {
+                     position: absolute;
+                     left: 0;
+                     top: 0;
+                     width: 100%;
+                     display: block !important;
+                  }
+               }
+            `;
+            
+            // Store original display and add styles
+            const originalDisplay = ticketElement.style.display;
+            document.head.appendChild(styleSheet);
+            ticketElement.style.display = 'block';
+            
+            // Print
+            window.print();
+            
+            // Restore original state
+            setTimeout(() => {
+               document.head.removeChild(styleSheet);
+               ticketElement.style.display = originalDisplay;
+            }, 100);
+            
+         } else {
+            Swal.fire({
+               title: 'Error',
+               text: 'Unable to find the ticket to print. Please try again.',
+               icon: 'error',
+               confirmButtonColor: '#7928ca'
+            });
+         }
+      }
 
       // Force cell widths on load
       $(document).ready(function () {
@@ -818,12 +803,9 @@ function printTicket(bookingId) {
          $('.poster-cell').css('min-width', '200px');
       });
    </script>
-   <script src="./dist/js/tabler.min.js?1692870487" defer></script>
-   <script src="./dist/js/demo.min.js?1692870487" defer></script>
 </body>
 
 </html>
 <?php
-// Close the connection
 mysqli_close($dbhandle);
 ?>
