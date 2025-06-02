@@ -27,6 +27,11 @@
            }
        }
    }
+
+   if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+    header("Location: ../");
+    exit;
+    }
    
    // Fetch current logged-in user information only
    $current_user = null;
@@ -51,119 +56,97 @@
            $current_user = mysqli_fetch_assoc($user_result);
        }
    }
-   ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="utf-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Adult Profile</title>
+      <title>User Profile | Limelight Cinema</title>
       <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-      <link rel="stylesheet" href="tailwind_override.css"/>
+      <link rel="stylesheet" href="../css/tailwind_override.css"/>
       <link rel="stylesheet" href="./adminstyles.css"/>
    </head>
    <body>
-<div class="page">
-    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Updated profile section - from bookings.php -->
-            <div class="navbar-brand py-3">
-                <div class="d-flex align-items-center">
-                    <div class="profile-image-container">
+      <div class="radial-gradient"></div>
+      
+      <div class="page">
+         <!-- Sidebar -->
+         <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+            <div class="container-fluid">
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+               
+               <!-- Profile section -->
+               <div class="navbar-brand py-3">
+                  <div class="d-flex align-items-center">
+                     <div class="profile-image-container">
                         <img class="profile-image" src="../upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" alt="Profile Picture">
-                    </div>
-                    <div class="profile-info">
+                     </div>
+                     <div class="profile-info">
                         <h3 class="profile-name"><?=$_SESSION['name'] ?? "Please login" ?></h3>
                         <p class="profile-role">
                             <?= $_SESSION['user_status'] ?? "To view account details" ?>
                         </p>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="navbar-nav flex-row d-lg-none">
+                  <!-- Mobile menu controls -->
+               </div>
+               
+               <!-- Navigation menu -->
+               <div class="collapse navbar-collapse" id="sidebar-menu">
+                  <ul class="navbar-nav pt-lg-3">
+                     <li class="nav-item">
+                        <a class="nav-link active" href="profile.php">
+                           <span class="nav-link-icon d-md-none d-lg-inline-block">
+                              <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
+                           </span>
+                           <span class="nav-link-title">Profile</span>
+                        </a>
+                     </li>
+                     
+                     <?php if ($_SESSION['user_status'] !== 'Junior'): ?>
+                        <li class="nav-item">
+                           <a class="nav-link" href="bookings.php">
+                              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                 <img src="/svg/adminpanel/bookings.svg" class="icon" width="20px" />
+                              </span>
+                              <span class="nav-link-title">Bookings</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="saved.php">
+                              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                 <img src="/svg/adminpanel/saveforlater.svg" class="icon" width="20px" />
+                              </span>
+                              <span class="nav-link-title">Saved</span>
+                           </a>
+                        </li>
+                     <?php endif; ?>
+                  </ul>
+               </div>
             </div>
-            <div class="navbar-nav flex-row d-lg-none">
-                <!-- Mobile menu controls -->
+         </aside>
+         
+         <!-- Page wrapper -->
+         <div class="page-wrapper">
+            <div class="page-header d-print-none">
+               <div class="container-xl">
+                  <div class="row g-2 align-items-center">
+                     <div class="col">
+                        <h2 class="page-title">Profile</h2>
+                        <p class="text-muted mt-1">View your account information</p>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <div class="collapse navbar-collapse" id="sidebar-menu">
-                <ul class="navbar-nav pt-lg-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <img src="/svg/dashboard.svg" class="icon" width="20px" />
-                            </span>
-                            <span class="nav-link-title">
-                                Dashboard
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="users.php" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <img src="/svg/adminpanel/users.svg" class="icon" width="20px" />
-                            </span>
-                            <span class="nav-link-title">
-                                Users
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="staff.php" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <img src="/svg/adminpanel/users.svg" class="icon" width="20px" />
-                            </span>
-                            <span class="nav-link-title">
-                                Staff
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="movies.php" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <img src="/svg/adminpanel/movies.svg" class="icon" width="20px" />
-                            </span>
-                            <span class="nav-link-title">
-                                Movies
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="screenings.php" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <img src="/svg/adminpanel/projector.svg" class="icon" width="20px" />
-                            </span>
-                            <span class="nav-link-title">
-                                Screenings
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bookings-admin.php" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <img src="/svg/adminpanel/tickets.svg" class="icon" width="20px" />
-                            </span>
-                            <span class="nav-link-title">
-                                Bookings
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </aside>
-    <div class="page-wrapper">
-        <div class="page-header d-print-none">
-            <div class="container-xl">
-                <div class="row g-2 align-items-center">
-                    <div class="col">
-                        <h2 class="page-title">Movies</h2>
-                        <p class="text-muted mt-1">View all movies and manage them easily.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            
+            <!-- Page body -->
             <div class="page-body">
                <div class="container-xl">
                   <div class="row row-cards">
@@ -244,4 +227,4 @@
 <?php
    // Close the connection
    mysqli_close($dbhandle);
-   ?>
+?>

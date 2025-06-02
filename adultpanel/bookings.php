@@ -181,14 +181,11 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       }
 
       .detail-label {
-         font-weight: 500;
+         font-weight: 600;
          color: #718096;
          min-width: 80px;
       }
 
-      .detail-value {
-         font-weight: 600;
-      }
 
       .ticket-info {
          display: flex;

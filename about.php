@@ -13,6 +13,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="./css/about.css" />
 </head>
+
 <body>
   <div class="radial-gradient"></div>
   <div class="content-body">
@@ -298,6 +299,34 @@
         start: "top 70%",
         toggleActions: "play none none none",
       },
+    });
+
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 2,
+      spaceBetween: 10,
+      grabCursor: true,
+      breakpoints: {
+        200: { slidesPerView: 2, },
+        400: { slidesPerView: 3, },
+        600: { slidesPerView: 4, },
+        800: { slidesPerView: 5, },
+      },
+      simulateTouch: true,
+      mousewheel: { invert: false, forceToAxis: true, },
+      keyboard: { enabled: true, onlyInViewport: false, },
+      pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true, },
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var passwordIcon = document.querySelector(".icon.password");
+      var passwordInput = document.getElementById("password-input");
+
+      if (passwordIcon && passwordInput) {
+        passwordIcon.addEventListener("click", function () {
+          const type = passwordInput.getAttribute("type") === "password" ? "email" : "password";
+          passwordInput.setAttribute("type", type);
+        });
+      }
     });
   </script>
 </body>

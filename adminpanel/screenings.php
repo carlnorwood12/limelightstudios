@@ -7,7 +7,7 @@
    <link rel="stylesheet" href="adult.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-    <link rel="stylesheet" href="../tailwind_override.css"/>
+    <link rel="stylesheet" href="../css/tailwind_override.css"/>
     <link rel="stylesheet" href="./adminstyles.css"/>
 </head>
 <body>
@@ -41,6 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
+if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+    header("Location: ../");
+    exit;
+}
 
 // Fetch all screenings from the database
 $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_date DESC, start_time ASC") or die('Error querying database');
@@ -71,6 +75,16 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
             </div>
             <div class="collapse navbar-collapse" id="sidebar-menu">
                 <ul class="navbar-nav pt-lg-3">
+                <li class="nav-item">
+                        <a class="nav-link" href="profile-admin.php" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                        <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
+                        </span>
+                        <span class="nav-link-title">
+                        Profile
+                        </span>
+                        </a>
+                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.php" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block">

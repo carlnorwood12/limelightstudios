@@ -27,6 +27,12 @@
            }
        }
    }
+
+if (!isset($_SESSION['user_status']) || ($_SESSION['user_status'] !== 'Adult' && $_SESSION['user_status'] !== 'Junior')) {
+   header("Location: ../");
+   exit;
+}
+
    // Fetch current logged-in user information only
    $current_user = null;
    if (isset($_SESSION['name'])) {
@@ -87,11 +93,9 @@
          gap: 12px;
          }
          .detail-label {
-         font-weight: 500;
-         color: #718096;
-         }
-         .detail-value {
-         font-weight: 600;
+            font-weight: 600;
+            color: #718096;
+         min-width: 80px;
          }
          .table td {
          vertical-align: middle;

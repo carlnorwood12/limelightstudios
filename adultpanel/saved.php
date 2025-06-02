@@ -137,16 +137,12 @@
          gap: 12px;
          }
 
+
          .detail-label {
-         font-weight: 500;
-         color: #718096;
+            font-weight: 600;
+            color: #718096;
          min-width: 80px;
          }
-
-         .detail-value {
-         font-weight: 600;
-         }
-
          .saved-info {
          display: flex;
          flex-direction: column;
@@ -220,11 +216,6 @@
 
          .col {
             padding: 10px 20px;
-         }
-
-         .saved-date {
-            color: #9ca1ed;
-            font-size: 0.9rem;
          }
       </style>
    </head>
@@ -417,16 +408,6 @@
          $(document).ready(function () {
             $('.poster-cell').css('width', '200px');
             $('.poster-cell').css('min-width', '200px');
-         });
-
-         $(document).mousemove(function (event) {
-             var windowWidth = $(window).width();
-             var windowHeight = $(window).height();
-             var scrollX = $(window).scrollLeft();
-             var scrollY = $(window).scrollTop();
-             var mouseXpercentage = Math.round(((event.pageX - scrollX) / windowWidth) * 100);
-             var mouseYpercentage = Math.round(((event.pageY - scrollY) / windowHeight) * 100);
-             $(".radial-gradient").css("background", "radial-gradient(circle at " + mouseXpercentage + "% " + mouseYpercentage + "%, #14142B 0%, #14142B 2%, #14142A 4%, #13132A 6%, #131329 8%, #131328 9%, #121228 11%, #121227 13%, #121226 14%, #111125 16%, #111123 18%, #101022 20%, #0F0F21 22%, #0F0F20 24%, #0E0E1E 27%, #0E0E1D 30%, #0D0D1C 33%, #0D0D1B 36%, #0C0C19 40%, #0B0B18 44%, #0B0B17 48%, #0B0B16 53%, #0A0A16 59%, #0A0A15 64%, #0A0A15 71%)");
          });
       </script>
       <script src="./dist/js/tabler.min.js?1692870487" defer></script>

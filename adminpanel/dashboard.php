@@ -28,69 +28,46 @@ if (isset($_COOKIE['logged_in'])) {
 }
 
 // Check if user is admin
-$isAdmin = (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Admin');
-
-// Redirect if not admin
-if (!$isAdmin) {
-    header("Location: ../index.php");
+if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+    header("Location: ../");
     exit;
 }
+// Fetch dashboard statistics
+// Total users
+$user_result = mysqli_query($dbhandle, "SELECT COUNT(*) as total FROM users");
+$total_users = mysqli_fetch_assoc($user_result)['total'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'] ?? '';
-    $duration = $_POST['duration'] ?? '';
-    $age_rating = $_POST['age_rating'] ?? '';
-    $poster_url = $_POST['poster_url'] ?? '';
-    $hidden = $_POST['hidden'] ?? '';
+// Total bookings
+$booking_result = mysqli_query($dbhandle, "SELECT COUNT(*) as total FROM bookings");
+$total_bookings = mysqli_fetch_assoc($booking_result)['total'];
 
-    if (isset($_POST['delete'])) {
-        $delete = "DELETE FROM movies WHERE id='$hidden'";
-        mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
-    }
-
-    if (isset($_POST['update'])) {
-        $update = "UPDATE movies SET title='$title', duration='$duration', age_rating='$age_rating', poster_url='$poster_url' WHERE id='$hidden'";
-        mysqli_query($dbhandle, $update) or die('Cannot update database!');
-    }
-    
-    if (isset($_POST['add'])) {
-        $add = "INSERT INTO movies (title, duration, age_rating, movie_banner) VALUES ('$title', '$duration', '$age_rating', '$poster_url')";
-        if (mysqli_query($dbhandle, $add)) {
-            $title = $duration = $age_rating = $poster_url = '';
-            echo 'Data added successfully!';
-        } else {
-            die('Cannot add to database!');
-        }
-    }
-}
-
-$result = mysqli_query($dbhandle, "SELECT * FROM movies") or die('Error querying database');
+// Total venues (static count as you have 5 venues)
+$total_venues = 5;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Admin Panel | Movies</title>
+    <title>Admin Dashboard | Limelight Cinema</title>
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-    <link rel="stylesheet" href="adult.css"/>
-    <link rel="stylesheet" href="../tailwind_override.css"/>
+    <link rel="stylesheet" href="../css/tailwind_override.css"/>
     <link rel="stylesheet" href="./adminstyles.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-    </style>
-</head>
+</head>c
 <body>
 <div class="radial-gradient"></div>
 
 <div class="page">
+    <!-- Sidebar -->
     <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Updated profile section - from bookings.php -->
+            
+            <!-- Profile section -->
             <div class="navbar-brand py-3">
                 <div class="d-flex align-items-center">
                     <div class="profile-image-container">
@@ -104,141 +81,200 @@ $result = mysqli_query($dbhandle, "SELECT * FROM movies") or die('Error querying
                     </div>
                 </div>
             </div>
+            
             <div class="navbar-nav flex-row d-lg-none">
                 <!-- Mobile menu controls -->
             </div>
+            
             <div class="collapse navbar-collapse" id="sidebar-menu">
                 <ul class="navbar-nav pt-lg-3">
+                <li class="nav-item">
+                        <a class="nav-link" href="profile-admin.php" >
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                        <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
+                        </span>
+                        <span class="nav-link-title">
+                        Profile
+                        </span>
+                        </a>
+                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php" >
+                        <a class="nav-link active" href="dashboard.php">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/dashboard.svg" class="icon" width="20px" />
                             </span>
-                            <span class="nav-link-title">
-                                Dashboard
-                            </span>
+                            <span class="nav-link-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="users.php" >
+                        <a class="nav-link" href="users.php">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/users.svg" class="icon" width="20px" />
                             </span>
-                            <span class="nav-link-title">
-                                Users
-                            </span>
+                            <span class="nav-link-title">Users</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff.php" >
+                        <a class="nav-link" href="staff.php">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/staff.svg" class="icon" width="20px" />
                             </span>
-                            <span class="nav-link-title">
-                                Staff
-                            </span>
+                            <span class="nav-link-title">Staff</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="movies.php" >
+                        <a class="nav-link" href="movies.php">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/movies.svg" class="icon" width="20px" />
                             </span>
-                            <span class="nav-link-title">
-                                Movies
-                            </span>
+                            <span class="nav-link-title">Movies</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="screenings.php" >
+                        <a class="nav-link" href="screenings.php">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/projector.svg" class="icon" width="20px" />
                             </span>
-                            <span class="nav-link-title">
-                                Screenings
-                            </span>
+                            <span class="nav-link-title">Screenings</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="bookings-admin.php" >
+                        <a class="nav-link" href="bookings-admin.php">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <img src="/svg/adminpanel/tickets.svg" class="icon" width="20px" />
                             </span>
-                            <span class="nav-link-title">
-                                Bookings
-                            </span>
+                            <span class="nav-link-title">Bookings</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </aside>
+    
+    <!-- Page wrapper -->
     <div class="page-wrapper">
         <div class="page-header d-print-none">
             <div class="container-xl">
                 <div class="row g-2 align-items-center">
                     <div class="col">
                         <h2 class="page-title">Dashboard</h2>
-                        <p class="text-muted mt-1">View website analytics and more.</p>
+                        <p class="text-muted mt-1">View website analytics and overview.</p>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Page body -->
         <div class="page-body">
             <div class="container-xl">
-                <div class="row row-cards">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="table-responsive">
-                                <table class="table table-vcenter table-mobile-md card-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Duration</th>
-                                        <th>Age Rating</th>
-                                        <th>Poster URL</th>
-                                        <th class="w-1">Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)): ?>
-                                        <tr>
-                                            <form action="movies.php" method="post">
-                                                <td data-label="Title">
-                                                    <input class="text-title" type="text" name="title" value="<?php echo htmlspecialchars($row['title'] ?? ''); ?>"/>
-                                                </td>
-                                                <td data-label="Duration">
-                                                    <input type="text" name="duration" value="<?php echo htmlspecialchars($row['duration'] ?? ''); ?>"/>
-                                                </td>
-                                                <td data-label="Age Rating">
-                                                    <input type="text" name="age_rating" value="<?php echo htmlspecialchars($row['age_rating'] ?? ''); ?>"/>
-                                                </td>
-                                                <td data-label="Poster URL">
-                                                    <input type="text" name="poster_url" value="<?php echo htmlspecialchars($row['poster_url'] ?? ''); ?>"/>
-                                                </td>
-                                                <input type="hidden" name="hidden" value="<?php echo $row['id']; ?>"/>
-                                                <td>
-                                                    <div class="btn-list flex-nowrap">
-                                                        <input type="submit" name="add" value="Add" class="btn"/>
-                                                        <input type="submit" name="update" value="Update" class="btn"/>
-                                                        <input type="submit" name="delete" value="Delete" class="btn"/>
-                                                    </div>
-                                                </td>
-                                            </form>
-                                        </tr>
-                                    <?php endwhile; ?>
-                                    </tbody>
-                                </table>
+                <div class="row row-deck row-cards">
+                    
+                    <!-- Total Users -->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card card-sm">
+                        <div class="card-body" style="background-color: #000911; border-radius: 20px; border: 0.5px solid #066FD1;">
+                        <div class="row align-items-center">
+                                    <div class="col-auto">
+                                    <span class="text-white avatar" style="background-color: #066FD1;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="m0 0h24v24H0z" fill="none"/>
+                                                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/>
+                                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <div class="total-text">
+                                            Total Users
+                                        </div>
+                                        <div class="total-users-number">
+                                            <?php echo number_format($total_users); ?>
+                                        </div>
+                                        <div class="text-muted">
+                                            Registered members
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Total Bookings -->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card card-sm">
+                            <div class="card-body" style="background-color: #040e06; border-radius: 20px; border: 0.5px solid #31B245;">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                    <span class="text-white avatar" style="background-color: #31B245;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="m0 0h24v24H0z" fill="none"/>
+                                                <path d="M15 5v2"/>
+                                                <path d="M15 11v2"/>
+                                                <path d="M15 17v2"/>
+                                                <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <div class="total-text">
+                                            Total Bookings
+                                        </div>
+                                        <div class="total-bookings-number">
+                                            <?php echo number_format($total_bookings); ?>
+                                        </div>
+                                        <div class="text-muted">
+                                            Since Launch
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Total Venues -->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card card-sm">
+                        <div class="card-body" style="background-color: #040e06; border-radius: 20px; border: 0.5px solid #b2ac31;">
+                        <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="text-white avatar" style="background-color: #b2ac31;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="m0 0h24v24H0z" fill="none"/>
+                                                <path d="M3 21l18 0"/>
+                                                <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/>
+                                                <path d="M9 9l0 .01"/>
+                                                <path d="M15 9l0 .01"/>
+                                                <path d="M10 12l4 0"/>
+                                                <path d="M10 15l4 0"/>
+                                                <path d="M10 18l4 0"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                    <div class="total-text">
+                                    Total Venues
+                                        </div>
+                                        <div class="total-venues-number">
+                                            <?php echo number_format($total_venues); ?>
+                                        </div>
+                                        <div class="text-muted">
+                                            Cinema locations
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="./dist/js/tabler.min.js?1692870487" defer></script>
-<script src="./dist/js/demo.min.js?1692870487" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js" defer></script>
 </body>
 </html>
 
