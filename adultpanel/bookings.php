@@ -36,9 +36,9 @@ if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
 
 // Handle booking deletion if submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_booking'])) {
-   $booking_id = $_POST['booking_id'] ?? 0;
+   $booking_id = intval($_POST['booking_id'] ?? 0); // Use intval for better security
    if ($booking_id > 0) {
-      $delete_query = "DELETE FROM bookings WHERE id = '$booking_id'";
+      $delete_query = "DELETE FROM bookings WHERE id = $booking_id"; // Removed quotes for integer
       if (mysqli_query($dbhandle, $delete_query)) {
          // Redirect to prevent form resubmission
          header("Location: " . $_SERVER['PHP_SELF'] . "?deleted=1");
@@ -157,7 +157,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          /* Slightly increased thumbnail size */
          border-radius: 8px;
          transition: transform 0.3s ease;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
          display: inline-block;
       }
 
@@ -185,7 +184,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          color: #718096;
          min-width: 80px;
       }
-
 
       .ticket-info {
          display: flex;
@@ -244,11 +242,17 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          gap: 5px;
          align-items: center;
          justify-content: center;
-         padding: 1rem 1.5rem;
-         /* This might be too large */
-         border-radius: 50px;
+         padding: 0.5rem 1rem; /* Reduced padding */
+         border-radius: 4px; /* Changed to match delete button */
          cursor: pointer;
          font-weight: 500;
+         font-size: 0.875rem; /* Added consistent font size */
+         white-space: nowrap; /* Prevent text wrapping */
+         min-width: 80px; /* Set minimum width */
+      }
+
+      .print-btn:hover {
+         background-color: #1a0a2e !important;
       }
 
       .delete-btn {
@@ -262,8 +266,13 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          border-radius: 4px;
          cursor: pointer;
          font-weight: 500;
-         max-width: 100px;
-         min-width: 100px;
+         font-size: 0.875rem; /* Added consistent font size */
+         min-width: 80px; /* Reduced min-width */
+      }
+
+      .delete-btn:hover {
+         background-color: #2a0a0f !important;
+         transform: translateY(-1px);
       }
 
       .table td {
@@ -272,10 +281,10 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
 
       .action-buttons {
          display: flex;
-         flex-direction: row;
-         /* Changed to row for side-by-side layout */
+         flex-direction: row; /* Inline buttons */
          gap: 8px;
          justify-content: flex-start;
+         align-items: center;
       }
 
       .page-title {
@@ -321,20 +330,11 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       /* E-Ticket Styling */
       .e-ticket {
          display: none;
-         font-family: 'Arial', sans-serif;
          max-width: 800px;
          margin: 0 auto;
          background-color: #fff;
          border-radius: 8px;
          overflow: hidden;
-         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .e-ticket-header {
-         background: linear-gradient(135deg, #7928CA 0%, #9c8af2 100%);
-         color: white;
-         padding: 20px;
-         text-align: center;
       }
 
       .e-ticket-logo {
@@ -361,7 +361,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
       .e-ticket-poster img {
          width: 100%;
          border-radius: 4px;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       .e-ticket-details {
@@ -394,21 +393,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          flex: 1;
          color: #333;
       }
-
-      .e-ticket-seats {
-         margin-top: 20px;
-      }
-
-      .e-ticket-seat {
-         display: inline-block;
-         padding: 5px 10px;
-         background-color: #f0f0f0;
-         border-radius: 4px;
-         margin-right: 5px;
-         margin-bottom: 5px;
-         font-weight: bold;
-         color: #333;
-      }
+      
 
       .e-ticket-footer {
          background-color: #f8f9fa;
@@ -418,21 +403,35 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
          color: #666;
          border-top: 1px dashed #ddd;
       }
-
-      .e-ticket-barcode {
-         margin-top: 15px;
-         text-align: center;
+      .e-ticket-logo
+      {
+         min-width: 300px;
       }
 
+      .e-ticket-barcode {
+    margin-top: 15px;
+    text-align: center; /* Centers the barcode horizontally */
+    display: flex; /* Enables flexbox */
+    justify-content: center; /* Centers the barcode horizontally */
+    align-items: center; /* Centers the barcode vertically */
+}
       .e-ticket-barcode img {
          max-width: 80%;
          height: 70px;
       }
 
-      .col
-         {
-            padding: 10px 20px;
+      .col {
+         padding: 10px 20px;
+      }
+
+      /* Print-specific styles */
+      @media print {
+         .e-ticket-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
          }
+      }
    </style>
 </head>
 
@@ -615,11 +614,11 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                           <div class="action-buttons">
                                              <button type="button" class="print-btn"
                                                 onclick="printTicket(<?php echo $booking['booking_id']; ?>)">
-                                                <img src="./svg/printer.svg" class="icon" width="20px" />
+                                                <img src="./svg/booking/print.svg" alt="Print Ticket" class="icon">
                                                 Print
                                              </button>
                                              <button type="button" class="delete-btn"
-                                                onclick="confirmDelete(<?php echo $booking['booking_id']; ?>, '<?php echo htmlspecialchars($booking['movie_title']); ?>')">
+                                                onclick="confirmDelete(<?php echo $booking['booking_id']; ?>, '<?php echo htmlspecialchars($booking['movie_title'], ENT_QUOTES); ?>')">
                                                 Delete
                                              </button>
                                           </div>
@@ -632,14 +631,12 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                              <input type="hidden" name="delete_booking" value="1">
                                           </form>
 
-
                                           <!-- Hidden printable ticket -->
                                           <div id="printable-ticket-<?php echo $booking['booking_id']; ?>"
                                              class="e-ticket">
                                              <div class="e-ticket-header">
-                                                <img src="/svg/logo/limelight.svg" alt="Limelight Cinema"
+                                                <img src="/svg/logo/limelight_dark.svg" alt="Limelight Cinema"
                                                    class="e-ticket-logo">
-                                                <h1 class="e-ticket-title">E-TICKET</h1>
                                              </div>
                                              <div class="e-ticket-body">
                                                 <div class="e-ticket-poster">
@@ -728,7 +725,6 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
                                                       src="https://barcode.tec-it.com/barcode.ashx?data=LIMELIGHT<?php echo $booking['booking_id']; ?>&code=Code128&dpi=96"
                                                       alt="Barcode">
                                                 </div>
-                                                <p class="mt-2">Limelight Cinema - The Ultimate Cinema Experience</p>
                                              </div>
                                           </div>
                                        </td>
@@ -765,17 +761,57 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
             }
          });
       }
-
       // Function to print a ticket
-      function printTicket(bookingId) {
-         // Use Print.js to print the e-ticket
-         printJS({
-            printable: `printable-ticket-${bookingId}`,
-            type: 'html',
-            css: ['https://printjs-4de6.kxcdn.com/print.min.css'],
-            header: 'Limelight Cinema E-Ticket'
-         });
-      }
+function printTicket(bookingId) {
+    const ticketElement = document.getElementById(`printable-ticket-${bookingId}`);
+    if (ticketElement) {
+        // Store original styles
+        const originalPageStyles = document.body.style.cssText;
+        const originalDisplay = ticketElement.style.display;
+
+        // Create a style element for print-specific styles
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @media print {
+                body * { visibility: hidden; }
+                #printable-ticket-${bookingId}, #printable-ticket-${bookingId} * { 
+                    visibility: visible; 
+                }
+                #printable-ticket-${bookingId} {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    display: block !important;
+                }
+            }
+        `;
+
+        // Append the style element to the document head
+        document.head.appendChild(styleSheet);
+        ticketElement.style.display = 'block';
+
+        // Trigger the print dialog
+        window.print();
+
+        // Restore original styles after a short delay
+        setTimeout(() => {
+            document.head.removeChild(styleSheet);
+            ticketElement.style.display = originalDisplay;
+            document.body.style.cssText = originalPageStyles;
+        }, 100);
+    } else {
+        console.error('Ticket element not found');
+        Swal.fire({
+            title: 'Error',
+            text: 'Unable to find the ticket to print. Please try again.',
+            icon: 'error',
+            confirmButtonColor: '#7928ca'
+        });
+    }
+}
+
+
       // Force cell widths on load
       $(document).ready(function () {
          $('.poster-cell').css('width', '200px');
