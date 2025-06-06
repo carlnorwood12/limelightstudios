@@ -8,14 +8,125 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="./css/about.css" />
+  <link rel="stylesheet" href="./css/menu.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
 </head>
 
 <body>
   <div class="radial-gradient"></div>
+
+    <!-- Header -->
+    <header>
+        <a class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <img src="/svg/logo/limelight.svg" id="limelight-logo" />
+    </header>
+    <!-- Header -->
+    <!-- Menu Overlay -->
+    <div class="menu-overlay">
+        <div class="menu-cols">
+            <div class="col-2">
+                <div class="first-menu-item">
+                    <div class="profile-section">
+                        <div class="profile-image-container">
+                            <img class="profile-image" 
+                                 src="upload/<?php echo $_SESSION['profile_picture'] ?? 'default_pfp.svg'; ?>" 
+                                 alt="Profile Picture">
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-name"><?= $_SESSION['name'] ?? "Please login" ?></h3>
+                            <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
+                            <div class="row-buttons">
+                                <?php 
+                                // If the user_status is set, show different buttons based on the user type
+                                if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): 
+                                ?>
+                                    <?php if ($_SESSION['user_status'] === 'Admin'): ?>
+                                        <a href="adminpanel/dashboard.php">
+                                            <button class="nav-buttons dashboard">
+                                                <img src="/svg/adminpanel/dashboard.svg" alt="dashboard" class="menu-icon">
+                                                Dashboard
+                                            </button>
+                                        </a>
+                                    <?php elseif ($_SESSION['user_status'] === 'Adult'): ?>
+                                        <a href="./adultpanel/bookings.php">
+                                            <button class="nav-buttons dashboard">
+                                                <img src="/svg/adminpanel/bookings.svg" alt="bookings" class="menu-icon">
+                                                Bookings
+                                            </button>
+                                        </a>
+                                    <?php endif; ?>
+                                    <!-- Both Admin and Adult users see Profile -->
+                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? './adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>">
+                                        <button class="nav-buttons settings">
+                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
+                                            Profile
+                                        </button>
+                                    </a>
+                                    <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
+                                        <!-- Junior users only can see the Profile -->
+                                        <a href="./adultpanel/profile.php">
+                                            <button class="nav-buttons settings">
+                                                <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
+                                                Profile
+                                            </button>
+                                        </a>
+                                    <?php else: ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-menu-item">
+                    <!-- Search functionality -->
+                    <div class="search-contain">
+                        <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
+                        <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
+                        <div class="result">
+                            <p></p>
+                        </div>
+                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right" alt="enter movie">
+                    </div>
+                    <!-- Menu links -->
+                    <div class="menu-link"><a href="index.html">Home</a></div>
+                    <div class="menu-link"><a href="venues.php">Venues</a></div>
+                    <div class="menu-link"><a href="contact.php">Contact</a></div>
+                    <div class="menu-link"><a href="about.php">About</a></div>
+                    <?php 
+                    // If user_status is set to 'Junior', show the Games link
+                    if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): 
+                    ?>
+                        <div class="menu-link"><a href="games.php">Games</a></div>
+                    <?php endif; ?>
+                </div>
+                <!-- Login / Logout Buttons -->
+                <div class="third-menu-item">
+                    <a href="logout.php">
+                        <button class="arrow-btn exit-btn">
+                            <span class="arrow-icon">
+                                <img src="/svg/menu/logout.svg" alt="exit">
+                                Logout
+                            </span>
+                        </button>
+                    </a>
+                    <a href="register.php">
+                        <button class="arrow-btn login-btn">
+                            <span class="arrow-icon">
+                                Login / Register
+                                <img src="/svg/menu/login.svg" alt="login">
+                            </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
   <div class="content-body">
     <section class="hero-card">
       <div class="card hero">
@@ -263,9 +374,11 @@
             </p>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="/js/script.js" defer></script>
   <script>
     gsap.registerPlugin(ScrollTrigger);
 

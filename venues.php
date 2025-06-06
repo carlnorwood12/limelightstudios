@@ -27,9 +27,12 @@ if (isset($_COOKIE['logged_in']))
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <script src="https://cdn.tailwindcss.com"></script>
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
       <link rel="stylesheet" type="text/css" href="./css/venues.css" />
+      <link rel="stylesheet" type="text/css" href="./css/menu.css" />
+      <link rel="stylesheet" type="text/css" href="./css/footer.css" />
    </head>
    <body>
       <div class="radial-gradient"></div>
@@ -154,6 +157,45 @@ if (isset($_COOKIE['logged_in']))
             </div>
          </div>
       </div>
+      <footer>
+        <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Links</p>
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li><a href="/" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Home</a></li>
+                        <li><a href="/venues.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Venues</a></li>
+                        <li><a href="/contact.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Contact</a></li>
+                        <li><a href="/about.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Account</p>
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li><a href="/adultpanel/profile.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">My Account</a></li>
+                        <li><a href="/adultpanel/bookings.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">My Bookings</a></li>
+                        <li><a href="/adultpanel/saved.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">My Saved</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Entertainment</p>
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li><a href="/games.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Games</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold" style="color: #9ca1ed;">Legal</p>
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li><a href="/terms.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Terms and Conditions</a></li>
+                        <li><a href="/privacy.php" class="text-white transition" style="opacity: 0.5; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+                &copy; 2025 Limelight Cinemas. All rights reserved.
+            </p>
+        </div>
+    </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
       <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -161,7 +203,6 @@ if (isset($_COOKIE['logged_in']))
       <script src="/js/script.js" defer></script>
       <script src="/js/gsap.js" defer></script>
       <script src="/js/map.js"></script>
-      <script src="/js/gradient.js" async></script>
       <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
    </body>
 </html>

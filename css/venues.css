@@ -1,23 +1,5 @@
 @import "resets.css";
 
-/* Body and HTML Styles */
-body,
-html {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  min-width: 344px;
-  overflow-x: hidden;
-}
-/* Sub-menu Styles */
-
-/* Search Navigation */
-#search-nav {
-  font-size: 13px;
-}
 
 /* Radial Gradient */
 .radial-gradient {
@@ -30,24 +12,9 @@ html {
 }
 
 /* Swiper Styles */
-
 .swiper {
   width: 100%;
   padding: 5px;
-}
-
-/* Media Queries */
-
-/* Video Styles */
-
-/* Dark Mode */
-
-/* Content Trending */
-
-/* Search Contain */
-.search-contain:hover > img {
-  transform: rotate(-10deg) scale(1.1);
-  transition: all 0.3s ease;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip
@@ -67,7 +34,7 @@ html {
   font-size: 16px;
   font-weight: 800;
   margin-bottom: 15px;
-  color: white; /* Customize the color */
+  color: white; 
 }
 .popup-address
 {
@@ -78,7 +45,7 @@ html {
 }
 .popup-content p {
   margin: 5px 0;
-  color: #ffffffbf; /* Customize the color */
+  color: #ffffffbf; 
   font-size: 14px;
 }
 .popup-phone, .popup-email {
@@ -89,11 +56,11 @@ html {
   align-items: center;
 }
 .icon {
-  margin-right: 8px; /* Adds some space between the icon and the text */
+  margin-right: 8px; 
 }
 
 .popup-content a:hover {
-  text-decoration: underline; /* Underline on hover */
+  text-decoration: underline; 
 }
 
 .title {
@@ -112,374 +79,10 @@ html {
   color: #5c5c77;
 }
 
-
-/* ----------- Navigation Menu ----------- */
-
-.menu-icon {
-  width: 12px;
-}
-
-.menu-overlay {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 0;
-  height: 100%;
-  max-height: 550px;
-  pointer-events: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-  background-color: rgba(0, 0, 0, 0.65) !important;
-  backdrop-filter: saturate(300%) blur(100px);
-  -webkit-backdrop-filter: saturate(300%) blur(100px);
-  box-shadow: 0px 0px 3px 0.05px rgba(255, 255, 255, 0.2) inset;
-  border-radius: 0 8px 8px 0;
-  z-index: 9999999 !important;
-}
-
-.col-2 {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.col-2 > * {
-  padding: 0 20px;
-}
-
-.menu-cols {
-  display: flex;
-  height: 100%;
-}
-
-.search-contain {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  width: 100%;
-  position: relative;
-  background-color: #ffffff0d;
-  border-radius: 8px;
-  padding: 5px 0px;
-}
-
-.search-contain:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.search-contain img {
-  height: 15px;
-  margin-left: 15px;
-  margin-right: 5px;
-  transition: all 0.3s ease;
-}
-
-#search-nav {
-  background: transparent;
-  border: none;
-  color: white;
-  width: 100%;
-  padding: 8px;
-  outline: none;
-}
-
-input:focus > .search-contain {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-/* Remove autofill background color */
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
-}
-
-#search-nav::placeholder {
-  color: #ffffff80;
-}
-
-.hamburger-icon {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.05);
-  left: 10px;
-  top: 10px;
-  border-radius: 50px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000 !important;
-}
-
-.search-contain:hover > img {
-  transform: rotate(-10deg) scale(1.1);
-  transition: all 0.3s ease;
-}
-
-.menu-link a {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.menu-link {
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-}
-
-.menu-link:hover {
-  cursor: pointer;
-}
-
-.menu-link:hover a {
-  color: white;
-}
-
 a {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-header {
-  position: fixed;
-  width: 100%;
-  height: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-/* Profile Section Styles */
-.profile-section {
-  display: flex;
-  align-items: center;
-  padding: 15px 0;
-}
-
-.profile-name {
-  background: radial-gradient(circle farthest-corner at bottom center, #FFFFFF 0%, #bcbcbc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 15px;
-  margin: 0;
-  margin-left: 5px;
-  font-weight: 700;
-}
-.row-buttons {
-  display: flex;
-  background-color: transparent;
-  gap: 5px;
-  margin-top: 5px;
-  font-weight: 500;
-}
-
-.profile-image-container {
-  width: 80px;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ffffff1a;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-left: 10px;
-}
-
-.profile-role {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  white-space: nowrap;
-  margin: 0;
-  margin-left: 5px;
-}
-
-.arrow-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-weight: 600;
-}
-
-.arrow-btn {
-  border: none;
-  padding: 8px 12px;
-  font-size: 12px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline-offset: 0px;
-  transition: outline 0.5s ease;
-}
-
-/* Hover effect for exit button (left arrow) */
-.exit-btn:hover .arrow-icon img {
-  transform: translateX(-2px);
-}
-
-.login-btn:hover .arrow-icon img {
-  transform: translateX(2px);
-}
-
-.arrow-icon img {
-  width: 15px;
-  transition: transform 0.3s ease;
-}
-
-/* First menu item was empty, now contains profile */
-.first-menu-item {
-  margin: 0;
-  margin-left: 5px;
-  margin-top: 5px;
-}
-
-.arrow-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-.arrow-btn {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: none;
-  padding: 8px 12px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline-offset: 0px;
-  transition: outline 0.5s ease;
-}
-
-/* Hover effect for exit button (left arrow) */
-.exit-btn:hover .arrow-icon img {
-  transform: translateX(-2px);
-}
-
-.login-btn:hover .arrow-icon img {
-  transform: translateX(2px);
-}
-
-.exit-btn {
-  background-color: rgba(255, 94, 94, 0.05);
-  color: #ff5e5e;
-  transition: background-color 0.3s ease;
-}
-
-.login-btn {
-  background-color: rgba(126, 255, 94, 0.05);
-  color: #7eff5e;
-  transition: background-color 0.3s ease;
-}
-
-.login-btn:hover {
-  background-color: rgba(126, 255, 94, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.exit-btn:hover {
-  background-color: rgba(255, 94, 94, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.arrow-icon img {
-  width: 15px;
-  transition: transform 0.3s ease;
-}
-
-/* First menu item was empty, now contains profile */
-.first-menu-item {
-  border-width: 0 0 1px 0;
-  border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025));
-  border-image-slice: 1;
-  border-style: solid;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-/* Second menu item contains navigation links */
-.second-menu-item {
-  flex-grow: 8;
-  padding: 20px;
-}
-
-/* Second menu item contains navigation links */
-.third-menu-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-}
-
-/* Styles for nav-buttons */
-.nav-buttons {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: #ffffff80;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  min-width: max-content;
-  padding: 8px 10px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dashboard {
-  color: #f0ff9e;
-  background-color: rgba(240, 255, 158, 0.05);
-}
-
-.settings:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.dashboard:hover {
-  background-color: rgba(240, 255, 158, 0.1);
-}
-
-/* ----------- Navigation Menu ----------- */
-
-#log-in {
-  width: 15px;
 }
 
 *:focus {
@@ -518,9 +121,6 @@ header {
   z-index: 99;
 }
 
-
-/* Media Queries */
-
 svg {
   z-index: 99999;
 }
@@ -531,34 +131,6 @@ a:focus::after {
   transform: translate3d(0, 0.1em, 0);
   background-position: 0 0;
 }
-/* Hover effect for exit button (left arrow) */
-.exit-btn:hover .arrow-icon img {
-    transform: translateX(-2px);
-  }
-  .login-btn:hover .arrow-icon img {
-    transform: translateX(2px);
-  }
-
-.hamburger-icon span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    height: 1px;
-    width: 50%;
-    background: #FFFFFF7F;
-    -webkit-transition: all 0.3s ease-in-out;
-  }
-  .hamburger-icon span:nth-child(1) {
-    transform: translate(-50%, 5px);
-  }
-  .hamburger-icon span:nth-child(2) {
-    transform: translate(-50%, 0);
-  }
-  .hamburger-icon span:nth-child(3) {
-    transform: translate(-50%, -5px);
-  }
 
 .container-venues
 {
