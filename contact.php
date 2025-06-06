@@ -2,10 +2,6 @@
 // Start the session allowing us to access session variables for user information
 session_start();
 
-// Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted)
-$current_date = "2025-05-15 18:14:35";
-$current_user = "carlnorwood12";
-
 // Include the database connection file
 include 'connection.php';
 global $dbhandle; // Make sure $dbhandle is accessible globally
