@@ -1,3 +1,29 @@
+<?php
+// Start the session allowing us to access session variables for user information
+session_start();
+
+// Include the database connection file
+include 'connection.php';
+global $dbhandle; // Make sure $dbhandle is accessible globally
+// Check if the user is logged in with cookies
+if (isset($_COOKIE['logged_in'])) 
+{
+    // Ensures the username is safe to use in a SQL query
+    $username = mysqli_real_escape_string($dbhandle, $_COOKIE['logged_in']);
+    // Query selecting everything from the users table where the name matches the cookie
+    $query = "SELECT * FROM users WHERE name='{$_COOKIE['logged_in']}'";
+    // Execute the query and get the results
+    $result = mysqli_query($dbhandle, $query);
+    // Convert the result into an associative array
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    // If the profile picture is not empty, set the file path
+    if (!empty($user['profile_picture'])) 
+    {
+        // set $filePath to the profile picture path, ensuring it's safe for HTML output
+        $filePath = htmlspecialchars($user['profile_picture']);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <meta charset="UTF-8" />
