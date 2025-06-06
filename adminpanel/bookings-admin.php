@@ -241,7 +241,8 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                                                 <td data-label="Ticket Types">
                                                     <div class="text-sm">
                                                         <?php
-                                                        $tickets = [];
+                                                        $tickets = []; // Initialize an array to hold ticket types
+                                                        // if bigger than 0, initialize the array with the number of tickets and type, etc for each type
                                                         if ($row['adult_tickets'] > 0) {
                                                             $tickets[] = $row['adult_tickets'] . ' Adult';
                                                         }
@@ -258,7 +259,7 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                                                 <td data-label="Snacks">
                                                     <div class="text-sm">
                                                         <?php
-                                                        $snacks = [];
+                                                        $snacks = []; //same thing here if we don't do this it'll output snacks we haven't selected
                                                         if ($row['popcorn'] > 0) {
                                                             $snacks[] = $row['popcorn'] . ' Popcorn';
                                                         }
@@ -269,6 +270,7 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                                                         ?>
                                                     </div>
                                                 </td>
+                                                <!-- Jun 2, 2025 12:35 AM for example for the format -->
                                                 <td data-label="Booking Time">
                                                     <?php echo date('M j, Y g:i A', strtotime($row['booking_time'] ?? '')); ?>
                                                 </td>
