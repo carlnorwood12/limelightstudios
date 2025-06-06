@@ -1,0 +1,366 @@
+@import "../css/resets.css";
+
+/* ================================
+   NAVBAR & SIDEBAR STYLES
+   ================================ */
+
+/* Remove navbar border */
+
+aside.navbar-vertical,
+.navbar-vertical.navbar-expand-lg {
+    border: none !important;
+    border-right: none !important;
+}
+
+.navbar-brand {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    margin-left: 20px;
+}
+
+/* Profile section in navbar */
+.profile-image-container {
+    margin-right: 10px;
+}
+
+.profile-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0;
+    color: #fff;
+}
+
+.profile-role {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}
+
+/* ================================
+   TABLE STYLES
+   ================================ */
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    min-width: 1300px !important;
+    table-layout: fixed !important;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Column widths */
+.poster-cell {
+    width: 200px !important;
+    min-width: 200px !important;
+    text-align: center;
+    padding: 15px;
+}
+
+.booking-details-cell,
+.movie-details-cell {
+    width: 300px;
+    min-width: 300px;
+}
+
+.member-info-cell {
+    width: 250px;
+    min-width: 250px;
+}
+
+.tickets-cell,
+.seats-cell,
+.saved-info-cell {
+    width: 200px;
+    min-width: 200px;
+}
+
+.actions-cell {
+    width: 180px;
+    min-width: 180px;
+}
+
+/* ================================
+   CONTENT STYLES
+   ================================ */
+
+/* Movie and member details */
+.movie-title {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    opacity: 0.75;
+}
+
+.booking-details,
+.movie-details,
+.member-details,
+.saved-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-item {
+    display: flex;
+    gap: 12px;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #718096;
+    min-width: 80px;
+}
+
+/* Profile pictures in tables */
+.member-profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #9ca1ed;
+}
+
+/* Poster images */
+.poster-thumbnail {
+    width: 200px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+/* ================================
+   TICKET STYLES
+   ================================ */
+
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ticket-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ticket-label {
+    font-weight: 500;
+    color: #718096;
+    min-width: 60px;
+}
+
+.ticket-value {
+    font-weight: 600;
+}
+
+/* Seat badges */
+.seat-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #9ca1ed;
+    color: #9ca1ed;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    margin: 3px;
+}
+
+/* ================================
+   BUTTON STYLES
+   ================================ */
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.print-btn {
+    background-color: #0c0414 !important;
+    color: #7928ca !important;
+    border: none !important;
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    min-width: 80px;
+    transition: all 0.2s ease;
+}
+
+.print-btn:hover {
+    background-color: #1a0a2e !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(121, 40, 202, 0.3);
+}
+
+.delete-btn {
+    background-color: #150406 !important;
+    color: #cf2b39 !important;
+    border: none !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    min-width: 80px;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #2a0a0f !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(207, 43, 57, 0.3);
+}
+
+/* ================================
+   E-TICKET STYLES
+   ================================ */
+
+.e-ticket {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.e-ticket-header {
+    background: linear-gradient(135deg, #7928CA 0%, #9c8af2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.e-ticket-logo {
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+.e-ticket-body {
+    padding: 20px;
+    display: flex;
+}
+
+.e-ticket-poster {
+    flex: 0 0 200px;
+    margin-right: 20px;
+}
+
+.e-ticket-poster img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.e-ticket-details {
+    flex: 1;
+}
+
+.e-ticket-movie-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.e-ticket-info {
+    margin-bottom: 20px;
+}
+
+.e-ticket-info-row {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.e-ticket-info-label {
+    flex: 0 0 120px;
+    font-weight: bold;
+    color: #666;
+}
+
+.e-ticket-info-value {
+    flex: 1;
+    color: #333;
+}
+
+.e-ticket-seats {
+    margin-top: 20px;
+}
+
+.e-ticket-seat {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.e-ticket-footer {
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px dashed #ddd;
+}
+
+.e-ticket-barcode {
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.e-ticket-barcode img {
+    max-width: 80%;
+    height: 70px;
+}
+
+/* ================================
+   LAYOUT STYLES
+   ================================ */
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.col {
+    padding: 10px 20px;
+}
