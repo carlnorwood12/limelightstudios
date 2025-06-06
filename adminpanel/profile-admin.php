@@ -1,36 +1,32 @@
 <?php
-// Start session at the very beginning before any output
+// Initialize session and database connection
 session_start();
 include '../connection.php';
 global $dbhandle;
 
-// Check if user is admin
+// Restrict access to admin users only
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
     header("Location: ../");
     exit;
 }
 
-// Fetch current logged-in user information only
+// Fetch current user's profile information from database
 $current_user = null;
 if (isset($_SESSION['name'])) {
-    $username = mysqli_real_escape_string($dbhandle, $_SESSION['name']);
-    $user_query = "
-        SELECT 
-            u.id as user_id,
-            u.name,
-            u.email,
-            u.account as status,
-            u.profile_picture,
-            u.created
-        FROM 
-            users u
-        WHERE u.name = '$username'
-        LIMIT 1
-    ";
-    
-    $user_result = mysqli_query($dbhandle, $user_query) or die('Error querying user: ' . mysqli_error($dbhandle));
-    if ($user_result && mysqli_num_rows($user_result) > 0) {
-        $current_user = mysqli_fetch_assoc($user_result);
+    // Use prepared statement to prevent SQL injection and only fetch 1 user since thats the one logged in
+    $stmt = mysqli_prepare($dbhandle, "SELECT name, email, account as status FROM users WHERE name = ? LIMIT 1");
+    // was the prepared statement created successfully?
+    if ($stmt) 
+    {
+         // Bind parameters and execute the statement
+        mysqli_stmt_bind_param($stmt, "s", $_SESSION['name']);
+        mysqli_stmt_execute($stmt);
+        $user_result = mysqli_stmt_get_result($stmt);
+        //  Check if user data was retrieved successfully   
+        if ($user_result && mysqli_num_rows($user_result) > 0) {
+            $current_user = mysqli_fetch_assoc($user_result);
+        }
+        mysqli_stmt_close($stmt);
     }
 }
 ?>
@@ -50,14 +46,15 @@ if (isset($_SESSION['name'])) {
     <div class="radial-gradient"></div>
     
     <div class="page">
-        <!-- Sidebar -->
+        <!-- Admin Navigation Sidebar -->
         <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
             <div class="container-fluid">
+                <!-- Mobile menu toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
-                <!-- Profile section -->
+                <!-- User profile display section -->
                 <div class="navbar-brand py-3">
                     <div class="d-flex align-items-center">
                         <div class="profile-image-container">
@@ -72,13 +69,16 @@ if (isset($_SESSION['name'])) {
                     </div>
                 </div>
                 
+                <!-- Mobile navigation controls (collapsed by default) -->
                 <div class="navbar-nav flex-row d-lg-none">
                     <!-- Mobile menu controls -->
                 </div>
 
+                <!-- Main navigation menu -->
                 <div class="collapse navbar-collapse" id="sidebar-menu">
                     <ul class="navbar-nav pt-lg-3">
-                    <li class="nav-item">
+                        <!-- Profile page (current page) -->
+                        <li class="nav-item">
                             <a class="nav-link active" href="profile-admin.php" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <img src="/svg/adminpanel/profile.svg" class="icon" width="20px" />
@@ -88,6 +88,7 @@ if (isset($_SESSION['name'])) {
                             </span>
                             </a>
                         </li>
+                        <!-- Dashboard link -->
                         <li class="nav-item">
                             <a class="nav-link" href="dashboard.php">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -96,6 +97,7 @@ if (isset($_SESSION['name'])) {
                                 <span class="nav-link-title">Dashboard</span>
                             </a>
                         </li>
+                        <!-- Users management link -->
                         <li class="nav-item">
                             <a class="nav-link" href="users.php">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -104,6 +106,7 @@ if (isset($_SESSION['name'])) {
                                 <span class="nav-link-title">Users</span>
                             </a>
                         </li>
+                        <!-- Staff management link -->
                         <li class="nav-item">
                             <a class="nav-link" href="staff.php">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -112,6 +115,7 @@ if (isset($_SESSION['name'])) {
                                 <span class="nav-link-title">Staff</span>
                             </a>
                         </li>
+                        <!-- Movies management link -->
                         <li class="nav-item">
                             <a class="nav-link" href="movies.php">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -120,6 +124,7 @@ if (isset($_SESSION['name'])) {
                                 <span class="nav-link-title">Movies</span>
                             </a>
                         </li>
+                        <!-- Screenings management link -->
                         <li class="nav-item">
                             <a class="nav-link" href="screenings.php">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -128,6 +133,7 @@ if (isset($_SESSION['name'])) {
                                 <span class="nav-link-title">Screenings</span>
                             </a>
                         </li>
+                        <!-- Bookings management link -->
                         <li class="nav-item">
                             <a class="nav-link" href="bookings-admin.php">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -141,8 +147,9 @@ if (isset($_SESSION['name'])) {
             </div>
         </aside>
         
-        <!-- Page wrapper -->
+        <!-- Main content area -->
         <div class="page-wrapper">
+            <!-- Page header with title and description -->
             <div class="page-header d-print-none">
                 <div class="container-xl">
                     <div class="row g-2 align-items-center">
@@ -153,14 +160,15 @@ if (isset($_SESSION['name'])) {
                     </div>
                 </div>
             </div>
-            
-            <!-- Page body -->
+            <!-- Page content -->
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row row-cards">
                         <div class="col-12">
+                            <!-- Profile information card -->
                             <div class="card">
                                 <div class="table-responsive">
+                                    <!-- User details table -->
                                     <table class="table table-vcenter card-table" style="min-width: 800px;">
                                         <thead>
                                             <tr>
@@ -171,6 +179,7 @@ if (isset($_SESSION['name'])) {
                                         </thead>
                                         <tbody>
                                             <?php if ($current_user): ?>
+                                            <!-- Display user information if logged in -->
                                             <tr>
                                                 <td class="member-info-cell" data-label="Information">
                                                     <div class="member-details">
@@ -193,6 +202,7 @@ if (isset($_SESSION['name'])) {
                                                 </td>
                                             </tr>
                                             <?php else: ?>
+                                            <!-- Show message if user data couldn't be loaded -->
                                             <tr>
                                                 <td colspan="3" class="text-center py-4">
                                                     <p class="text-muted">Please log in to view your account information.</p>
@@ -209,20 +219,12 @@ if (isset($_SESSION['name'])) {
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script>
-        // Force cell widths on load
-        $(document).ready(function() {
-            $('.profile-cell').css('width', '120px');
-            $('.profile-cell').css('min-width', '120px');
-        });
-    </script>
     <script src="./dist/js/tabler.min.js?1692870487" defer></script>
     <script src="./dist/js/demo.min.js?1692870487" defer></script>
 </body>
 </html>
 <?php
-// Close the connection
+// Clean up database connection
 mysqli_close($dbhandle);
 ?>
