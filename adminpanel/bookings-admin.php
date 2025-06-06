@@ -58,10 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 // from bookings with alias b
 // join the tables together using left join where user_id in bookings matches id in users, same with screening alias s
 // then well order by booking_time in descending order
-$query = "SELECT b.*, u.name as user_name, u.email, s.screening_date, s.start_time, s.end_time, s.available_seats
+$query = "SELECT b.id, b.user_id, b.screening_id, b.seats, b.adult_tickets, b.child_tickets, 
+          b.senior_tickets, b.popcorn, b.drinks, b.booking_time,
+          u.name as user_name, u.email, 
+          s.screening_date, s.start_time, s.end_time, s.available_seats
           FROM bookings b 
           LEFT JOIN users u ON b.user_id = u.id 
           LEFT JOIN screening s ON b.screening_id = s.id 
+          GROUP BY b.id
           ORDER BY b.booking_time DESC";
 // execute the query or die with an error message
 $result = mysqli_query($dbhandle, $query) or die('Error querying database');
@@ -197,6 +201,7 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <!-- Loop through the results and display each booking -->
                                     <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)): ?>
                                         <tr>
                                             <form action="bookings-admin.php" method="post">
@@ -218,6 +223,7 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                                                 </td>
                                                 <td data-label="Screening">
                                                     <div class="text-sm">
+                                                        <!-- Display screening information with date and time -->
                                                         <?php 
                                                         $screening_info = '';
                                                         if ($row['screening_date']) {

@@ -4,8 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Admin panel for Limelight Cinema management"/>
-    <title>Users | Admin Panel</title>
-
+<title>Users | Admin Panel</title>
 <link rel="icon" type="image/png" href="../favicon_limelightcinema/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="../favicon_limelightcinema/favicon.svg">
 <link rel="shortcut icon" href="../favicon_limelightcinema/favicon.ico">
@@ -25,12 +24,17 @@ session_start();
 include '../connection.php';
 global $dbhandle;
 
+// in users if we add a new user, it would be stored as plain text theres no hashing so its better to remove
+// to prevent staff from knowing passwords of other users so thats why theres no add user form here
+// i removed update, delete for admins changing other admins so admins cant change other admins details
+
 // Check if user is admin
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
     header("Location: ../");
     exit;
 }
 
+// Handle form submission for updating or deleting users
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';
     $user = $_POST['email'] ?? '';
@@ -46,28 +50,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
     }
     // Handle updating user details
-    if (isset($_POST['update'])) {
+    if (isset($_POST['update'])) 
+    {
+        // Validate and sanitize inputs
         $account = $_SESSION['user_status'] ?? '';
-
-        if ($age === '' || !is_numeric($age)) {
+        // if empty or 
+        if ($age === '' || !is_numeric($age)) 
+        {
             $age_value = "NULL";
-        } else {
+        } 
+        else 
+        {
+            // otherwise convert to integer
             $age_value = intval($age);
         }
+        // update statement setting credentials
         $update = "UPDATE users SET email='$user', password='$pass', email='$email', dob='$dob', account='$account', name='$name', age=$age_value WHERE id='$hidden'";
         mysqli_query($dbhandle, $update) or die('Cannot update database!');
     }
-    if (isset($_POST['add'])) {
-        // Insert a new row with default values (no values specified)
-        $insert = "INSERT INTO users () VALUES ()";
-        mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
-    }
 }
-if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-    header("Location: ../");
-    exit;
-}
-
 // Fetch all users from the database
 $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying database');
 ?>
@@ -228,8 +229,10 @@ $result = mysqli_query($dbhandle, "SELECT * FROM users") or die('Error querying 
                     <input type="hidden" name="hidden" value="<?php echo $row['id']; ?>"/>
                     <td>
                         <div class="btn-list flex-nowrap">
+                        <?php if ($row['account'] !== 'Admin'): ?>
                             <input type="submit" name="update" value="Update" class="btn btn-primary"/>
                             <input type="submit" name="delete" value="Delete" class="btn"/>
+                        <?php endif; ?>
                         </div>
                     </td>
                 </form>

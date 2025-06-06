@@ -3,49 +3,22 @@ session_start();
 include '../connection.php';
 global $dbhandle;
 
-
 // Check if user is admin
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
     header("Location: ../");
     exit;
 }
-
-// Check if user is logged in via cookies
-if (isset($_COOKIE['logged_in'])) {
-    $username = mysqli_real_escape_string($dbhandle, $_COOKIE['logged_in']);
-    $query = "SELECT * FROM users WHERE name='{$_COOKIE['logged_in']}'";
-    $result = mysqli_query($dbhandle, $query);
-    
-    if ($result && mysqli_num_rows($result) > 0) {
-        $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        
-        // Set session variables if they're not already set
-        if (!isset($_SESSION['name'])) {
-            $_SESSION['name'] = $user['name'];
-        }
-        
-        if (!isset($_SESSION['profile_picture']) && !empty($user['profile_picture'])) {
-            $_SESSION['profile_picture'] = $user['profile_picture'];
-        }
-        
-        if (!isset($_SESSION['user_status']) && isset($user['account'])) {
-            $_SESSION['user_status'] = $user['account'];
-        }
-    }
-}
-// Fetch dashboard statistics
-// Total users
+// Fetch dashboard statistics ( just counting the number of rows )
 $user_result = mysqli_query($dbhandle, "SELECT COUNT(*) as total FROM users");
 $total_users = mysqli_fetch_assoc($user_result)['total'];
 
-// Total bookings
+// Total bookings same here
 $booking_result = mysqli_query($dbhandle, "SELECT COUNT(*) as total FROM bookings");
 $total_bookings = mysqli_fetch_assoc($booking_result)['total'];
 
-// Total venues (static count as you have 5 venues)
+// Total venues static theres only 5 venues if needed just change the number
 $total_venues = 5;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +48,6 @@ $total_venues = 5;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
             <!-- Profile section -->
             <div class="navbar-brand py-3">
                 <div class="d-flex align-items-center">
@@ -90,11 +62,9 @@ $total_venues = 5;
                     </div>
                 </div>
             </div>
-            
             <div class="navbar-nav flex-row d-lg-none">
                 <!-- Mobile menu controls -->
             </div>
-            
             <div class="collapse navbar-collapse" id="sidebar-menu">
                 <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
@@ -159,7 +129,6 @@ $total_venues = 5;
             </div>
         </div>
     </aside>
-    
     <!-- Page wrapper -->
     <div class="page-wrapper">
         <div class="page-header d-print-none">
@@ -172,12 +141,10 @@ $total_venues = 5;
                 </div>
             </div>
         </div>
-        
         <!-- Page body -->
         <div class="page-body">
             <div class="container-xl">
                 <div class="row row-deck row-cards">
-                    
                     <!-- Total Users -->
                     <div class="col-sm-6 col-lg-4">
                         <div class="card card-sm">

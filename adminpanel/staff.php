@@ -18,36 +18,7 @@ session_start();
 include '../connection.php';
 global $dbhandle;
 
-// Check if user is admin
-if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-    header("Location: ../");
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_POST['user_id'] ?? '';
-    $screening_id = $_POST['screening_id'] ?? '';
-    $seats = $_POST['seats'] ?? '';
-    $adult_tickets = $_POST['adult_tickets'] ?? '';
-    $child_tickets = $_POST['child_tickets'] ?? '';
-    $senior_tickets = $_POST['senior_tickets'] ?? '';
-    $popcorn = $_POST['popcorn'] ?? '';
-    $drinks = $_POST['drinks'] ?? '';
-    $booking_time = $_POST['booking_time'] ?? '';
-    $hidden = $_POST['hidden'] ?? '';
-
-    // Handle deletion if the delete button is pressed
-    if (isset($_POST['delete'])) {
-        $delete = "DELETE FROM bookings WHERE id='$hidden'";
-        mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
-    }
-
-    if (isset($_POST['add'])) {
-        // Insert a new booking with default values
-        $insert = "INSERT INTO bookings (user_id, screening_id, seats, adult_tickets, child_tickets, senior_tickets, popcorn, drinks, booking_time) VALUES ('', '', '', 0, 0, 0, 0, 0, NOW())";
-        mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
-    }
-}
+// Check if user is admin otherwise redirect to home page
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
     header("Location: ../");
     exit;
