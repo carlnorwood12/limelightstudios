@@ -77,16 +77,12 @@ if (isset($_POST['save_movie']))
 
 <head>
     <meta charset="UTF-8">
-    <title>LimelightCinema | Home</title>
+    <title>Limelight Cinema | Premium Movie Experience in Edinburgh</title>
     <link rel="icon" type="image/png" href="favicon_limelightcinema/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="favicon_limelightcinema/favicon.svg">
     <link rel="shortcut icon" href="favicon_limelightcinema/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_limelightcinema/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-title" content="MyWebSite">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000">
-    <meta name="description" content="Limelight Cinema is a movie streaming platform that offers a wide range of movies and TV shows.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,8 +94,8 @@ if (isset($_POST['save_movie']))
     <script src="https://cdn.jsdelivr.net/npm/nice-select2@2.2.0/dist/js/nice-select2.min.js" defer></script>
     <link rel="stylesheet" href="./css/dropdown.css">
     <link rel="stylesheet" href="./css/index.css">
-	<link rel="stylesheet" type="text/css" href="./css/menu.css">
-	<link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <link rel="stylesheet" type="text/css" href="./css/menu.css">
+    <link rel="stylesheet" type="text/css" href="./css/footer.css">
 </head>
 
 <body>

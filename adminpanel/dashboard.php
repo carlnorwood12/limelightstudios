@@ -51,11 +51,18 @@ $total_venues = 5;
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dashboard | Admin Panel</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
-    <link rel="stylesheet" href="../css/tailwind_override.css"/>
-    <link rel="stylesheet" href="./adminstyles.css"/>
-</head>c
+
+<link rel="icon" type="image/png" href="../favicon_limelightcinema/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="../favicon_limelightcinema/favicon.svg">
+<link rel="shortcut icon" href="../favicon_limelightcinema/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon_limelightcinema/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+<link rel="stylesheet" href="../css/tailwind_override.css"/>
+<link rel="stylesheet" href="./adminstyles.css"/>
+</head>
 <body>
 <div class="radial-gradient"></div>
 

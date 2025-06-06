@@ -9,15 +9,23 @@ $current_user = "carlnorwood12";
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Contact Us</title>
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet" />
-		<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-	<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="./css/forms.css">
-	<link rel="stylesheet" type="text/css" href="./css/menu.css">
-	<link rel="stylesheet" type="text/css" href="./css/footer.css">
+	
+<title>Contact Us | Limelight Cinema</title>
+
+<link rel="icon" type="image/png" href="favicon_limelightcinema/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon_limelightcinema/favicon.svg">
+<link rel="shortcut icon" href="favicon_limelightcinema/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_limelightcinema/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+	rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/forms.css">
+<link rel="stylesheet" type="text/css" href="./css/menu.css">
+<link rel="stylesheet" type="text/css" href="./css/footer.css">
 </head>
 <body>
 <div class="radial-gradient"></div>
