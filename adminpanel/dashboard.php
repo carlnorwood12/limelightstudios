@@ -3,6 +3,13 @@ session_start();
 include '../connection.php';
 global $dbhandle;
 
+
+// Check if user is admin
+if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+    header("Location: ../");
+    exit;
+}
+
 // Check if user is logged in via cookies
 if (isset($_COOKIE['logged_in'])) {
     $username = mysqli_real_escape_string($dbhandle, $_COOKIE['logged_in']);
@@ -25,12 +32,6 @@ if (isset($_COOKIE['logged_in'])) {
             $_SESSION['user_status'] = $user['account'];
         }
     }
-}
-
-// Check if user is admin
-if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-    header("Location: ../");
-    exit;
 }
 // Fetch dashboard statistics
 // Total users

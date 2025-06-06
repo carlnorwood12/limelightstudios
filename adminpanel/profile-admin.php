@@ -3,6 +3,13 @@
    session_start();
    include '../connection.php';
    global $dbhandle;
+
+   
+// Check if user is admin
+if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+   header("Location: ../");
+   exit;
+}
    
    // Check if user is logged in via cookies
    if (isset($_COOKIE['logged_in'])) {
@@ -27,11 +34,6 @@
            }
        }
    }
-
-   if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-    header("Location: ../");
-    exit;
-    }
    
    // Fetch current logged-in user information only
    $current_user = null;
@@ -164,7 +166,6 @@
             </div>
             </div>
          </aside>
-         
          <!-- Page wrapper -->
          <div class="page-wrapper">
             <div class="page-header d-print-none">
@@ -177,7 +178,6 @@
                   </div>
                </div>
             </div>
-            
             <!-- Page body -->
             <div class="page-body">
                <div class="container-xl">
@@ -188,8 +188,8 @@
                               <table class="table table-vcenter card-table" style="min-width: 800px;">
                                  <thead>
                                     <tr>
-                                       <th class="member-info-cell">Information</th>
-                                       <th class="contact-cell">Contact</th>
+                                       <th class="member-info-cell">Name</th>
+                                       <th class="contact-cell">Email</th>
                                        <th class="status-cell">Status</th>
                                     </tr>
                                  </thead>
@@ -199,23 +199,13 @@
                                        <td class="member-info-cell" data-label="Information">
                                           <div class="member-details">
                                              <div class="detail-item">
-                                                <span class="detail-label">Name:</span>
                                                 <span class="detail-value"><?php echo htmlspecialchars($current_user['name']); ?></span>
-                                             </div>
-                                             <div class="detail-item">
-                                                <span class="detail-label">Member ID:</span>
-                                                <span class="detail-value">#<?php echo $current_user['user_id']; ?></span>
-                                             </div>
-                                             <div class="detail-item">
-                                                <span class="detail-label">Joined:</span>
-                                                <span class="detail-value"><?php echo date('M j, Y', strtotime($current_user['created'])); ?></span>
                                              </div>
                                           </div>
                                        </td>
                                        <td class="contact-cell" data-label="Contact">
                                           <div class="contact-info">
                                              <div class="detail-item">
-                                                <span class="detail-label">Email:</span>
                                                 <span class="detail-value"><?php echo htmlspecialchars($current_user['email']); ?></span>
                                              </div>
                                           </div>

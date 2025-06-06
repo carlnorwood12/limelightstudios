@@ -14,12 +14,22 @@
 <body>
 <div class="radial-gradient"></div>
 <?php
+// start the session and include the database connection and global variable
 session_start();
 include '../connection.php';
 global $dbhandle;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_POST['user_id'] ?? '';
+// Check if user isn't logged in or is not an admin
+if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+    header("Location: ../");
+    exit;
+}
+
+// Handle the form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
+    // retrieve form data or set default values if null to empty strings
+    $user_id = $_POST['user_id'] ?? ''; 
     $screening_id = $_POST['screening_id'] ?? '';
     $seats = $_POST['seats'] ?? '';
     $adult_tickets = $_POST['adult_tickets'] ?? '';
@@ -29,30 +39,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $drinks = $_POST['drinks'] ?? '';
     $booking_time = $_POST['booking_time'] ?? '';
     $hidden = $_POST['hidden'] ?? '';
-
+    
     // Handle deletion if the delete button is pressed
-    if (isset($_POST['delete'])) {
+    if (isset($_POST['delete'])) 
+    {
         $delete = "DELETE FROM bookings WHERE id='$hidden'";
         mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
     }
-
+    // Handle add booking if the add button is pressed
     if (isset($_POST['add'])) {
-        // Insert a new booking with default values
         $insert = "INSERT INTO bookings (user_id, screening_id, seats, adult_tickets, child_tickets, senior_tickets, popcorn, drinks, booking_time) VALUES ('', '', '', 0, 0, 0, 0, 0, NOW())";
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
-if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-    header("Location: ../");
-    exit;
-}
-
-// Fetch all bookings from the database with related information
+// Fetch all bookings from the database 
+// SELECT b.* = get all the column in bookings with alias as 'b', get name and rename to 'user_name' to avoid conflicts
+// get email address from users table (alias 'u'), etc
+// from bookings with alias b
+// join the tables together using left join where user_id in bookings matches id in users, same with screening alias s
+// then well order by booking_time in descending order
 $query = "SELECT b.*, u.name as user_name, u.email, s.screening_date, s.start_time, s.end_time, s.available_seats
           FROM bookings b 
           LEFT JOIN users u ON b.user_id = u.id 
           LEFT JOIN screening s ON b.screening_id = s.id 
           ORDER BY b.booking_time DESC";
+// execute the query or die with an error message
 $result = mysqli_query($dbhandle, $query) or die('Error querying database');
 ?>
 
@@ -77,7 +88,7 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                 </div>
             </div>
             <div class="navbar-nav flex-row d-lg-none">
-                <!-- Mobile menu controls -->
+            <!-- Mobile menu controls -->
             </div>
             <div class="collapse navbar-collapse" id="sidebar-menu">
                 <ul class="navbar-nav pt-lg-3">
@@ -210,7 +221,7 @@ $result = mysqli_query($dbhandle, $query) or die('Error querying database');
                                                         <?php 
                                                         $screening_info = '';
                                                         if ($row['screening_date']) {
-                                                            $screening_info = date('M j, Y', strtotime($row['screening_date']));
+                                                            $screening_info = date('M j, Y', strtotime($row['screening_date'])); // Format date to "Month Day, Year"
                                                         }
                                                         if ($row['start_time']) {
                                                             $screening_info .= '<br>' . date('g:i A', strtotime($row['start_time']));

@@ -18,6 +18,12 @@ session_start();
 include '../connection.php';
 global $dbhandle;
 
+// Check if user is admin
+if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
+    header("Location: ../");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $screening_date = $_POST['screening_date'] ?? '';
     $start_time = $_POST['start_time'] ?? '';
