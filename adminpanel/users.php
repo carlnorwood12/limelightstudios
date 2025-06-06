@@ -66,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-
 // Display messages
 if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
     echo '<div class="alert alert-important alert-success alert-dismissible" role="alert">' . htmlspecialchars($_SESSION['message']) . '</div>';
@@ -76,11 +75,9 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
     echo '<div class="alert alert-danger">' . htmlspecialchars($_SESSION['error']) . '</div>';
     unset($_SESSION['error']);
 }
-
 // Fetch all users from the database
 $result = mysqli_query($dbhandle, "SELECT * FROM users ORDER BY account, name") or die('Error querying database');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -4,36 +4,11 @@ session_start();
 include '../connection.php';
 global $dbhandle;
 
-// Check if user is logged in via cookies
-if (isset($_COOKIE['logged_in'])) {
-   $username = mysqli_real_escape_string($dbhandle, $_COOKIE['logged_in']);
-   $query = "SELECT * FROM users WHERE name='{$_COOKIE['logged_in']}'";
-   $result = mysqli_query($dbhandle, $query);
-
-   if ($result && mysqli_num_rows($result) > 0) {
-      $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-      // Set session variables if they're not already set
-      if (!isset($_SESSION['name'])) {
-         $_SESSION['name'] = $user['name'];
-      }
-
-      if (!isset($_SESSION['profile_picture']) && !empty($user['profile_picture'])) {
-         $_SESSION['profile_picture'] = $user['profile_picture'];
-      }
-
-      if (!isset($_SESSION['user_status']) && isset($user['account'])) {
-         $_SESSION['user_status'] = $user['account'];
-      }
-   }
-}
-
 // Check if the user is an adult
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
    header("Location: ../");
    exit;
 }
-
 // Handle booking deletion if submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_booking'])) {
    $booking_id = intval($_POST['booking_id'] ?? 0);
