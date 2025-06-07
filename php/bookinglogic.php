@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../register.php");
     exit;
 }
-
 $user_id = $_SESSION['user_id'];
 
 // Helper function to display errors

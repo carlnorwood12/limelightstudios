@@ -76,7 +76,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob']))
         // Set session variables
         $_SESSION['name'] = $name;
         $_SESSION['user_status'] = $account;
-
         // Redirect to login page on success
         header("Location: ../login.php?success=Your account has been created successfully!");
         exit;
