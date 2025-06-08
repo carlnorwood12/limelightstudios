@@ -1,3 +1,5 @@
+// GSAP Animations
+
 gsap.to(".contain-the-image", {
     opacity: 1,
     scale: 1,

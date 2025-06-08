@@ -16,7 +16,7 @@ gsap.fromTo(".marquee-container",
     ease: "power2.out",
   }
 );
-
+// ScrollTrigger batch for Swiper slides were avoiding the hero and card swipers
 gsap.set(".swiper-slide:not(.hero-swiper .swiper-slide):not(.card-swiper .swiper-slide)", { opacity: 0 });
 ScrollTrigger.batch(".swiper-slide:not(.hero-swiper .swiper-slide):not(.card-swiper .swiper-slide)", {
   start: "top 95%",

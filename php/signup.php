@@ -1,3 +1,6 @@
+<!-- Reference: https://github.com/codingWithElias/login-signup-2022/tree/profile-img -->
+<!-- I've had a working signup working which was uploaded but i wanted the profile picture upload functionality -->
+
 <?php
 session_start();
 include "../connection.php"; 
@@ -6,6 +9,7 @@ function redirectWithError($error, $data) {
     header("Location: ../register.php?error=$error&$data");
     exit;
 }
+// We're getting the 
 if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob'])) 
 {
     $name = $_POST['name'];
@@ -27,17 +31,19 @@ if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob']))
         }
         // Determine account type based on age
         $account = ($age < 18) ? 'Junior' : 'Adult';
-        // Handle file upload
-        if (!empty($_FILES['profile_picture']['name'])) {
+        // If not empty, proceed with file upload and database insertion
+        if (!empty($_FILES['profile_picture']['name'])) 
+        {
             $img_name = $_FILES['profile_picture']['name'];
             $tmp_name = $_FILES['profile_picture']['tmp_name'];
             $error = $_FILES['profile_picture']['error'];
 
             if ($error === 0) {
                 $img_ex = strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
-                $allowed_exs = ['jpg', 'jpeg', 'png', 'gif'];
+                $allowed_exs = ['jpg', 'jpeg', 'png', 'gif']; // here are the allowed file extensions
                 $max_file_size = 2 * 1024 * 1024; // 2MB max
 
+                // Check if the file extension is allowed and size is within limit
                 if (in_array($img_ex, $allowed_exs) && $_FILES['profile_picture']['size'] <= $max_file_size) {
                     $new_img_name = uniqid($email, true) . '.' . $img_ex;
                     $upload_path = "../upload/" . $new_img_name;
@@ -53,7 +59,10 @@ if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob']))
                     $sql = "INSERT INTO users(name, email, password, dob, age, profile_picture, account, created) VALUES(?,?,?,?,?,?,?,?)";
                     $stmt = $conn->prepare($sql);
                     $stmt->execute([$name, $email, $hashed_pass, $dob, $age, $new_img_name, $account, $created]);
-                } else {
+                } 
+                else 
+                {
+                    // else well show some errors
                     $error_message = $_FILES['profile_picture']['size'] > $max_file_size 
                         ? "File size exceeds the maximum limit of 2MB" 
                         : "You can't upload files of this type";

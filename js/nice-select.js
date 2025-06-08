@@ -1,5 +1,4 @@
 NiceSelect.bind(document.getElementById("a-select"), { placeholder: "Sort by" });
-
 $(document).ready(function () {
     $("#a-select").change(function () {
         const sortCriterion = $(this).val();

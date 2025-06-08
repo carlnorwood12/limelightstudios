@@ -2,20 +2,20 @@
 session_start(); // Start the session
 include "../db_conn.php"; // Ensure this file sets up the $conn variable
 
-// Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted)
-$current_date = "2025-05-15 18:14:35";
-$current_user = "carlnorwood12";
 
+// Function to redirect with error message that'll redirect to the contact page with error and data and show the specific error message
 function redirectWithError($error, $data) {
     $data = urlencode($data);
     header("Location: ../contact.php?error=$error&$data");
     exit;
 }
 
+// Check if the required fields are set in the POST request
 if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
+    // prepare the data to be sent back in case of error
     $data = "name=$name&email=$email&message=$message";
 
     try {
@@ -23,17 +23,10 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             redirectWithError("Please enter a valid email address.", $data);
         }
-
-        // Insert into messages table
+        // Insert into messages table 
         $sql = "INSERT INTO messages(name, email, message) VALUES(?,?,?)";
         $stmt = $conn->prepare($sql);
-
-        // Debugging: Log the query and values
-        error_log("SQL Query: $sql");
-        error_log("Values: " . json_encode([$name, $email, $message]));
-
         $stmt->execute([$name, $email, $message]);
-
         // Redirect to contact page on success
         header("Location: ../contact.php?success=Your message has been sent successfully!");
         exit;
