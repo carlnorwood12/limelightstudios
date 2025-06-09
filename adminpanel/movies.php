@@ -49,19 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // Handle adding new movie
-    if (isset($_POST['add'])) {
-        $stmt = mysqli_prepare($dbhandle, "INSERT INTO movies (title, duration, age_rating, movie_banner) VALUES (?, ?, ?, ?)");
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ssss", $title, $duration, $age_rating, $poster_url);
-            if (mysqli_stmt_execute($stmt)) {
-                $message = "Movie added successfully!";
-            } else {
-                $error = "Error adding movie: " . mysqli_error($dbhandle);
-            }
-            mysqli_stmt_close($stmt);
-        } else {
-            $error = "Error preparing insert statement: " . mysqli_error($dbhandle);
-        }
+    if (isset($_POST['add'])) 
+    {
+        $insert = "INSERT INTO movies (title, duration, age_rating, movie_banner) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($dbhandle, $insert) or die("Error preparing statement: " . mysqli_error($dbhandle));
     }
     
     // Redirect to prevent form resubmission

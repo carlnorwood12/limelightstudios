@@ -10,11 +10,17 @@ if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Adult') {
    exit;
 }
 // Handle booking deletion if submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_booking'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_booking'])) 
+{
+   // Check if booking_id is set and is a valid integer
    $booking_id = intval($_POST['booking_id'] ?? 0);
-   if ($booking_id > 0) {
+   // if booking_id is bigger than 0
+   if ($booking_id > 0) 
+   {
       $delete_query = "DELETE FROM bookings WHERE id = $booking_id";
-      if (mysqli_query($dbhandle, $delete_query)) {
+      if (mysqli_query($dbhandle, $delete_query)) 
+      {
+         // Redirect to the same page with a success message
          header("Location: " . $_SERVER['PHP_SELF'] . "?deleted=1");
          exit;
       }

@@ -48,11 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
-if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
-    header("Location: ../");
-    exit;
-}
-
 // Fetch all screenings from the database
 $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_date DESC, start_time ASC") or die('Error querying database');
 ?>
