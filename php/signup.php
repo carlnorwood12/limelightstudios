@@ -23,7 +23,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['pass'], $_POST['dob']))
     $created = date("Y-m-d H:i:s"); // Current timestamp
     $data = "name=$name&email=$email&dob=$dob";
     $password_regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
-
     try {
         // Validate password format
         if (!preg_match($password_regex, $pass)) {

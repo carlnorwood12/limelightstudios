@@ -106,8 +106,8 @@ if (isset($_POST['save_movie']))
             <span></span>
             <span></span>
         </a>
-        <img src="/svg/logo/limelight.svg" id="limelight-logo" alt="" />
-    </header>
+        <img src="/svg/logo/limelight.svg" id="limelight-logo" alt="" aria-hidden="true">
+        </header>
     <!-- Header -->
     <!-- Menu Overlay -->
     <div class="menu-overlay">

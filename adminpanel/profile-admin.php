@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
     header("Location: ../");
     exit;
 }
-
 // Fetch current user's profile information from database
 $current_user = null;
 if (isset($_SESSION['name'])) {

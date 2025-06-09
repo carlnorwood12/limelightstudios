@@ -271,7 +271,6 @@ $result = mysqli_query($dbhandle, "SELECT s.*, m.title FROM screening s JOIN mov
         </div>
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
     $(document).mousemove(function (event) {
@@ -288,7 +287,6 @@ $result = mysqli_query($dbhandle, "SELECT s.*, m.title FROM screening s JOIN mov
 <script src="./dist/js/demo.min.js?1692870487" defer></script>
 </body>
 </html>
-
 <?php
 // Close the connection
 mysqli_close($dbhandle);
