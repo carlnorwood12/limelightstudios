@@ -47,20 +47,20 @@
         }
     }
     // Fetch all bookings from the database 
-// SELECT b.* = get all the column in bookings with alias as 'b', get name and rename to 'user_name' to avoid conflicts
-// get email address from users table (alias 'u'), etc
-// from bookings with alias b
-// join the tables together using left join where user_id in bookings matches id in users, same with screening alias s
-// then well order by booking_time in descending order
-    $query = "SELECT b.id, b.user_id, b.screening_id, b.seats, b.adult_tickets, b.child_tickets, 
-          b.senior_tickets, b.popcorn, b.drinks, b.booking_time,
-          u.name as user_name, u.email, 
-          s.screening_date, s.start_time, s.end_time, s.available_seats
-          FROM bookings b 
-          LEFT JOIN users u ON b.user_id = u.id 
-          LEFT JOIN screening s ON b.screening_id = s.screening_id 
-          GROUP BY b.id
-          ORDER BY b.booking_time DESC";
+    // SELECT b.* = get all the column in bookings with alias as 'b', get name and rename to 'user_name' to avoid conflicts
+    // get email address from users table (alias 'u'), etc
+    // from bookings with alias b
+    // join the tables together using left join where user_id in bookings matches id in users, same with screening alias s
+    // then well order by booking_time in descending order
+    $query = "SELECT b.id, b.user_id, b.screening_id, b.seats, b.adult_tickets, b.child_tickets,
+      b.senior_tickets, b.popcorn, b.drinks, b.booking_time,
+      u.name as user_name, u.email,
+      s.screening_date, s.start_time, s.end_time, s.available_seats
+      FROM bookings b
+      LEFT JOIN users u ON b.user_id = u.id
+      LEFT JOIN screening s ON b.screening_id = s.screening_id
+      GROUP BY b.id
+      ORDER BY b.booking_time DESC";
     // execute the query or die with an error message
     $result = mysqli_query($dbhandle, $query) or die('Error querying database');
     ?>
@@ -235,30 +235,33 @@
                                                             <div class="text-sm">
                                                                 <?php
                                                                 $screening_parts = [];
-                                                                if ($row['screening_date']) {
-                                                                    $screening_parts[] = date('M j, Y', strtotime($row['screening_date']));
+                                                                // Check if screening_date is available and valid
+                                                                if (!empty($row['screening_date']) && ($date = strtotime($row['screening_date']))) {
+                                                                    $screening_parts[] = date('M j, Y', $date);
                                                                 }
 
                                                                 $time_parts = [];
-                                                                if ($row['start_time']) {
-                                                                    $time_parts[] = date('g:i A', strtotime($row['start_time']));
+                                                                // Check if start_time is available and valid
+                                                                if (!empty($row['start_time']) && ($start = strtotime($row['start_time']))) {
+                                                                    $time_parts[] = date('g:i A', $start);
                                                                 }
-                                                                if ($row['end_time']) {
-                                                                    $time_parts[] = date('g:i A', strtotime($row['end_time']));
+                                                                // Check if end_time is available and valid
+                                                                if (!empty($row['end_time']) && ($end = strtotime($row['end_time']))) {
+                                                                    $time_parts[] = date('g:i A', $end);
                                                                 }
 
                                                                 if (count($time_parts) > 0) {
                                                                     $screening_parts[] = implode(' - ', $time_parts);
                                                                 }
 
-                                                                echo implode('<br>', $screening_parts) ?: 'N/A';
+                                                                // Echo the formatted parts or 'N/A' if empty
+                                                                echo count($screening_parts) > 0 ? implode('<br>', $screening_parts) : 'N/A';
                                                                 ?>
                                                                 <div class="text-muted small">
                                                                     <?php echo htmlspecialchars($row['available_seats'] ?? 'N/A'); ?>
-                                                                    seats left</div>
+                                                                    seats left
+                                                                </div>
                                                             </div>
-                                                            <input type="hidden" name="screening_id"
-                                                                value="<?php echo htmlspecialchars($row['screening_id'] ?? ''); ?>" />
                                                         </td>
                                                         <td data-label="Seats">
                                                             <?php echo htmlspecialchars($row['seats'] ?? ''); ?>

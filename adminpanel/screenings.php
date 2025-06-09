@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
         $hidden = $_POST['hidden'] ?? '';
-        $delete = "DELETE FROM screening WHERE id=?";
+        $delete = "DELETE FROM screening WHERE screening_id=?";
         $stmt = mysqli_prepare($dbhandle, $delete);
         mysqli_stmt_bind_param($stmt, "i", $hidden);
         if(!mysqli_stmt_execute($stmt)){
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $available_seats = $_POST['available_seats'] ?? '';
         $hidden = $_POST['hidden'] ?? '';
         $available_seats = intval($available_seats);
-        $update = "UPDATE screening SET screening_date=?, start_time=?, end_time=?, available_seats=? WHERE id=?";
+        $update = "UPDATE screening SET screening_date=?, start_time=?, end_time=?, available_seats=? WHERE screening_id=?";
         $stmt = mysqli_prepare($dbhandle, $update);
         mysqli_stmt_bind_param($stmt, "sssii", $screening_date, $start_time, $end_time, $available_seats, $hidden);
         if(!mysqli_stmt_execute($stmt)){
@@ -56,40 +56,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ".$_SERVER['PHP_SELF']);
         exit;
     }
-    if (isset($_POST['add'])) {
-        $movie_id = $_POST['id'] ?? '';
-        $screening_date = $_POST['screening_date'] ?? '';
-        $start_time = $_POST['start_time'] ?? '';
-        $end_time = $_POST['end_time'] ?? '';
-        $available_seats = $_POST['available_seats'] ?? 0;
-        $available_seats = intval($available_seats);
-
-        // Check if movie_id exists in the movies table
-        $check_movie_query = "SELECT id FROM movies WHERE id = ?";
-        $stmt = mysqli_prepare($dbhandle, $check_movie_query);
-        mysqli_stmt_bind_param($stmt, "i", $movie_id);
-        mysqli_stmt_execute($stmt);
-        $movie_result = mysqli_stmt_get_result($stmt);
-
-        if (mysqli_num_rows($movie_result) > 0) {
-            // Movie exists, so we can add the screening
-            $insert_query = "INSERT INTO screening (id, screening_date, start_time, end_time, available_seats) VALUES (?, ?, ?, ?, ?)";
-            $stmt_insert = mysqli_prepare($dbhandle, $insert_query);
-            mysqli_stmt_bind_param($stmt_insert, "isssi", $movie_id, $screening_date, $start_time, $end_time, $available_seats);
-
-            if(mysqli_stmt_execute($stmt_insert)){
-                 echo "<script>alert('Screening added successfully!');</script>";
-            } else {
-                die('Cannot insert into database!');
-            }
-             mysqli_stmt_close($stmt_insert);
-
+if (isset($_POST['add'])) {
+    $movie_id = $_POST['movie_id'] ?? '';
+    $screening_date = $_POST['screening_date'] ?? '';
+    $start_time = $_POST['start_time'] ?? '';
+    $end_time = $_POST['end_time'] ?? '';
+    $available_seats = intval($_POST['available_seats'] ?? 0);
+    // Check if movie_id exists in the movies table
+    $movie_result = mysqli_query($dbhandle, "SELECT id FROM movies WHERE id = $movie_id");
+    // Check if number of rows returned is greater than 0
+    if (mysqli_num_rows($movie_result) > 0)
+     {
+        // Movie exists, so we can add the screening
+        $insert_query = "INSERT INTO screening (movie_id, screening_date, start_time, end_time, available_seats) 
+                         VALUES ('$movie_id', '$screening_date', '$start_time', '$end_time', $available_seats)";
+        if (mysqli_query($dbhandle, $insert_query)) 
+        {
+            // Redirect to the same page to avoid resubmission
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit;
         } else {
-            // Movie does not exist, show an alert
-            echo "<script>alert('Movie ID does not exist. Please enter a valid Movie ID.');</script>";
+            die('Cannot insert into database!');
         }
-        mysqli_stmt_close($stmt);
+    } else {
+        // say it doesnt exist
+        echo "<script>alert('Movie ID does not exist. Please enter a valid Movie ID.');</script>";
     }
+}
 }
 // Fetch all screenings from the database and join with movies to get the title
 $result = mysqli_query($dbhandle, "SELECT s.*, m.title FROM screening s JOIN movies m ON s.movie_id = m.id ORDER BY s.screening_date DESC, s.start_time ASC") or die('Error querying database');
@@ -231,7 +224,7 @@ $result = mysqli_query($dbhandle, "SELECT s.*, m.title FROM screening s JOIN mov
                                         <tr>
                                             <form action="screenings.php" method="post">
                                                 <td data-label="Screening ID">
-                                                    <strong>#<?php echo htmlspecialchars($row['id'] ?? ''); ?></strong>
+                                                    <strong>#<?php echo htmlspecialchars($row['screening_id'] ?? ''); ?></strong>
                                                 </td>
                                                 <td data-label="Movie">
                                                     <?php echo htmlspecialchars($row['title'] ?? ''); ?>
@@ -248,7 +241,7 @@ $result = mysqli_query($dbhandle, "SELECT s.*, m.title FROM screening s JOIN mov
                                                 <td data-label="Available Seats">
                                                     <input type="number" min="0" name="available_seats" value="<?php echo htmlspecialchars($row['available_seats'] ?? ''); ?>"/>
                                                 </td>
-                                                <input type="hidden" name="hidden" value="<?php echo $row['id']; ?>"/>
+                                                <input type="hidden" name="hidden" value="<?php echo $row['screening_id']; ?>"/>
                                                 <td>
                                                     <div class="btn-list flex-nowrap">
                                                         <input type="submit" name="update" value="Update" class="btn"/>
