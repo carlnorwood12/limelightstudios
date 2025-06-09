@@ -30,23 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_time = $_POST['end_time'] ?? '';
     $available_seats = $_POST['available_seats'] ?? '';
     $hidden = $_POST['hidden'] ?? '';
-    $date = DateTime::createFromFormat('d/m/Y', $screening_date); 
-    $formatted_date = $date->format('Y-m-d'); 
 
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
         $delete = "DELETE FROM screening WHERE id='$hidden'";
         mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
+        exit;
     }
     // Handle updating screening details
     if (isset($_POST['update'])) {
         $available_seats = intval($available_seats);
-        $update = "UPDATE screening SET screening_date='$formatted_date', start_time='$start_time', end_time='$end_time', available_seats=$available_seats WHERE id='$hidden'";
+        $update = "UPDATE screening SET screening_date='$screening_date', start_time='$start_time', end_time='$end_time', available_seats=$available_seats WHERE id='$hidden'";
         mysqli_query($dbhandle, $update) or die('Cannot update database!');
     }
     if (isset($_POST['add'])) {
         // Insert a new screening with default values
-        $insert = "INSERT INTO screening (screening_date, start_time, end_time, available_seats) VALUES ('$formatted_date', '$start_time', '$end_time', $available_seats)";
+        $insert = "INSERT INTO screening (screening_date, start_time, end_time, available_seats) VALUES ('$screening_date', '$start_time', '$end_time', $available_seats)";
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
@@ -59,7 +58,6 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Updated profile section - from bookings.php -->
             <div class="navbar-brand py-3">
                 <div class="d-flex align-items-center">
                     <div class="profile-image-container">
@@ -74,8 +72,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
                 </div>
             </div>
             <div class="navbar-nav flex-row d-lg-none">
-                <!-- Mobile menu controls -->
-            </div>
+                </div>
             <div class="collapse navbar-collapse" id="sidebar-menu">
                 <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
@@ -221,7 +218,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
                             <div class="card-footer">
                                 <form action="screenings.php" method="post" class="d-inline">
                                     <input type="text" name="movie_id" placeholder="Movie ID" required/>
-                                    <input type="text" name="screening_date" placeholder="Screening Date" required/>
+                                    <input type="date" name="screening_date" placeholder="Screening Date" required/>
                                     <input type="time" name="start_time" placeholder="Start Time" required/>
                                     <input type="time" name="end_time" placeholder="End Time" required/>
                                     <input type="number" name="available_seats" placeholder="Available Seats" min="0" required/>
