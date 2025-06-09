@@ -158,7 +158,7 @@
        showErrorPage('Screening Not Found', "The selected screening (ID: $screening_id) could not be found. Please contact support.");
    }
    // Get the movie ID from the movie row, if it exists, otherwise set it to 0
-   $movie_id = $movie_row['id'] ?? 0;
+   $movie_id = $movie_row['movie_id'] ?? 0;
    
    // Check current stock same concept as above where we prepare the statement and bind the parameters
    $stock_stmt = mysqli_prepare($dbhandle, "SELECT stock FROM movies WHERE id = ?");

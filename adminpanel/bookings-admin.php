@@ -39,17 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $drinks = $_POST['drinks'] ?? '';
     $booking_time = $_POST['booking_time'] ?? '';
     $hidden = $_POST['hidden'] ?? '';
-    
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) 
     {
         $delete = "DELETE FROM bookings WHERE id='$hidden'";
         mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
-    }
-    // Handle add booking if the add button is pressed
-    if (isset($_POST['add'])) {
-        $insert = "INSERT INTO bookings (user_id, screening_id, seats, adult_tickets, child_tickets, senior_tickets, popcorn, drinks, booking_time) VALUES ('', '', '', 0, 0, 0, 0, 0, NOW())";
-        mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
 // Fetch all bookings from the database 
@@ -64,7 +58,7 @@ $query = "SELECT b.id, b.user_id, b.screening_id, b.seats, b.adult_tickets, b.ch
           s.screening_date, s.start_time, s.end_time, s.available_seats
           FROM bookings b 
           LEFT JOIN users u ON b.user_id = u.id 
-          LEFT JOIN screening s ON b.screening_id = s.id 
+          LEFT JOIN screening s ON b.screening_id = s.screening_id 
           GROUP BY b.id
           ORDER BY b.booking_time DESC";
 // execute the query or die with an error message
