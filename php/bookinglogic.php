@@ -79,7 +79,7 @@
        {
         // Decrease available seats by total tickets same concept as above where the first ? is the $total_tickets and second is $screening_id thats why its ii and not i because theres two integers
            $update_seats_stmt = mysqli_prepare($dbhandle, 
-               "UPDATE screening SET available_seats = available_seats - ? WHERE id = ?");
+               "UPDATE screening SET available_seats = available_seats - ? WHERE movie_id = ?");
            mysqli_stmt_bind_param($update_seats_stmt, "ii", $total_tickets, $screening_id);
            mysqli_stmt_execute($update_seats_stmt);
            mysqli_stmt_close($update_seats_stmt);
@@ -146,7 +146,7 @@
         
         // Check and update movie stock
         // same concept as above where we prepare the statement and bind the parameters
-        $get_movie_stmt = mysqli_prepare($dbhandle, "SELECT * FROM screening WHERE screening_id = ? OR id = ?");
+        $get_movie_stmt = mysqli_prepare($dbhandle, "SELECT * FROM screening WHERE screening_id = ? OR movie_id = ?");
         mysqli_stmt_bind_param($get_movie_stmt, "ii", $screening_id, $screening_id);
         mysqli_stmt_execute($get_movie_stmt);
         $movie_result = mysqli_stmt_get_result($get_movie_stmt);

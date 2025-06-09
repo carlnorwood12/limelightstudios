@@ -235,9 +235,9 @@ while ($screeningRow = mysqli_fetch_array($screeningResult, MYSQLI_ASSOC)) {
                      <?php foreach ($screenings as $screeningRow): ?>
                         <label class="venue-option">
                            <div class="radio-wrapper-13">
-                              <label for="example-13-<?php echo $screeningRow['id']; ?>">
-                                 <input id="example-13-<?php echo $screeningRow['id']; ?>" type="radio" name="screening_id"
-                                    value="<?php echo $screeningRow['id']; ?>">
+                              <label for="example-13-<?php echo $screeningRow['movie_id']; ?>">
+                                 <input id="example-13-<?php echo $screeningRow['movie_id']; ?>" type="radio" name="screening_id"
+                                    value="<?php echo $screeningRow['movie_id']; ?>">
                                  <span class="rdo"></span>
                               </label>
                            </div>
