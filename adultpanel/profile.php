@@ -19,7 +19,6 @@ if (isset($_SESSION['name'])) {
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['name']);
         mysqli_stmt_execute($stmt);
         $user_result = mysqli_stmt_get_result($stmt);
-        
         if ($user_result && mysqli_num_rows($user_result) > 0) {
             $current_user = mysqli_fetch_assoc($user_result);
         }

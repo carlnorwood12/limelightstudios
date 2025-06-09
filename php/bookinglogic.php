@@ -159,7 +159,6 @@
    }
    // Get the movie ID from the movie row, if it exists, otherwise set it to 0
    $movie_id = $movie_row['movie_id'] ?? 0;
-   
    // Check current stock same concept as above where we prepare the statement and bind the parameters
    $stock_stmt = mysqli_prepare($dbhandle, "SELECT stock FROM movies WHERE id = ?");
    mysqli_stmt_bind_param($stock_stmt, "i", $movie_id);
@@ -167,18 +166,14 @@
    $stock_result = mysqli_stmt_get_result($stock_stmt);
    $stock_row = mysqli_fetch_assoc($stock_result);
    mysqli_stmt_close($stock_stmt);
-   
    if (!$stock_row) {
        showErrorPage('Movie Not Found', "The selected movie (ID: $movie_id) could not be found.");
    }
-   
    $current_stock = $stock_row['stock'];
-   
    // Check if enough stock is available
    if ($current_stock < $total_tickets) {
        showErrorPage('Not Enough Tickets', "Please adjust your selection.");
    }
-   
    // Show the processing message and handle booking
    ?>
 <!DOCTYPE html>

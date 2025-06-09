@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_movie'])) {
         }
     }
 }
-
 // Fetch saved movies
 $saved_movies_query = "
     SELECT 
