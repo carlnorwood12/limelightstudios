@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt) {
             // Bind the parameters
             mysqli_stmt_bind_param($stmt, "ssss", $title, $duration, $age_rating, $poster_url);
-            
             // Execute the statement
             if (mysqli_stmt_execute($stmt)) {
                 $message = "Movie added successfully!";

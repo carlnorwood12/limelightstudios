@@ -51,7 +51,7 @@ if (isset($_COOKIE['logged_in']))
             <span></span>
             <span></span>
         </a>
-        <img src="/svg/logo/limelight.svg" id="limelight-logo" />
+        <img src="/svg/logo/limelight.svg" id="limelight-logo" alt="" />
     </header>
     <!-- Header -->
     <!-- Menu Overlay -->

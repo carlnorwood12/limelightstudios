@@ -26,7 +26,6 @@
         header("Location: ../");
         exit;
     }
-
     // Handle the form submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // retrieve form data or set default values if null to empty strings
@@ -46,12 +45,9 @@
             mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
         }
     }
-    // Fetch all bookings from the database 
-    // SELECT b.* = get all the column in bookings with alias as 'b', get name and rename to 'user_name' to avoid conflicts
-    // get email address from users table (alias 'u'), etc
-    // from bookings with alias b
-    // join the tables together using left join where user_id in bookings matches id in users, same with screening alias s
-    // then well order by booking_time in descending order
+    // Fetch the booking id, user_id, screening_id, seats, adult_tickets, child_tickets, senior_tickets, etc, select name as user_name, email, etc
+    // from the bookings table with alias 'b'
+    // 
     $query = "SELECT b.id, b.user_id, b.screening_id, b.seats, b.adult_tickets, b.child_tickets,
       b.senior_tickets, b.popcorn, b.drinks, b.booking_time,
       u.name as user_name, u.email,
