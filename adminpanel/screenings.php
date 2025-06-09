@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_time = $_POST['end_time'] ?? '';
     $available_seats = $_POST['available_seats'] ?? '';
     $hidden = $_POST['hidden'] ?? '';
+    $date = DateTime::createFromFormat('d/m/Y', $screening_date); 
+    $formatted_date = $date->format('Y-m-d'); 
 
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
@@ -39,19 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle updating screening details
     if (isset($_POST['update'])) {
         $available_seats = intval($available_seats);
-        $update = "UPDATE screening SET screening_date='$screening_date', start_time='$start_time', end_time='$end_time', available_seats=$available_seats WHERE id='$hidden'";
+        $update = "UPDATE screening SET screening_date='$formatted_date', start_time='$start_time', end_time='$end_time', available_seats=$available_seats WHERE id='$hidden'";
         mysqli_query($dbhandle, $update) or die('Cannot update database!');
     }
     if (isset($_POST['add'])) {
         // Insert a new screening with default values
-        $insert = "INSERT INTO screening (screening_date, start_time, end_time, available_seats) VALUES (CURDATE(), '00:00:00', '00:00:00', 0)";
+        $insert = "INSERT INTO screening (screening_date, start_time, end_time, available_seats) VALUES ('$formatted_date', '$start_time', '$end_time', $available_seats)";
         mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
     }
 }
 // Fetch all screenings from the database
 $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_date DESC, start_time ASC") or die('Error querying database');
 ?>
-
 <div class="page">
     <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid">
@@ -219,6 +220,11 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
                             </div>
                             <div class="card-footer">
                                 <form action="screenings.php" method="post" class="d-inline">
+                                    <input type="text" name="movie_id" placeholder="Movie ID" required/>
+                                    <input type="text" name="screening_date" placeholder="Screening Date" required/>
+                                    <input type="time" name="start_time" placeholder="Start Time" required/>
+                                    <input type="time" name="end_time" placeholder="End Time" required/>
+                                    <input type="number" name="available_seats" placeholder="Available Seats" min="0" required/>
                                     <input type="submit" name="add" value="Add Screening" class="btn"/>
                                 </form>
                             </div>
