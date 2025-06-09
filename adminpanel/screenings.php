@@ -17,13 +17,11 @@
 session_start();
 include '../connection.php';
 global $dbhandle;
-
 // Check if user is admin otherwise redirect to home page
 if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
     header("Location: ../");
     exit;
 }
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
