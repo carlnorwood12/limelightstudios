@@ -89,7 +89,7 @@ function formatDate($dateString, $format = 'F j, Y')
 // initialize an empty array to hold screenings
 $screenings = [];
 // Query to fetch screenings for the movie
-$screeningResult = mysqli_query($dbhandle, "SELECT * FROM screening WHERE id = $id");
+$screeningResult = mysqli_query($dbhandle, "SELECT * FROM screening WHERE movie_id = $id");
 // While loop to fetch all screenings and store them in the screenings array
 while ($screeningRow = mysqli_fetch_array($screeningResult, MYSQLI_ASSOC)) {
    $screenings[] = $screeningRow;

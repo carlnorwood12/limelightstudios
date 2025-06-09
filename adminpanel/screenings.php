@@ -25,32 +25,74 @@ if (!isset($_SESSION['user_status']) || $_SESSION['user_status'] !== 'Admin') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $screening_date = $_POST['screening_date'] ?? '';
-    $start_time = $_POST['start_time'] ?? '';
-    $end_time = $_POST['end_time'] ?? '';
-    $available_seats = $_POST['available_seats'] ?? '';
-    $hidden = $_POST['hidden'] ?? '';
-
     // Handle deletion if the delete button is pressed
     if (isset($_POST['delete'])) {
-        $delete = "DELETE FROM screening WHERE id='$hidden'";
-        mysqli_query($dbhandle, $delete) or die('Cannot delete from database!');
+        $hidden = $_POST['hidden'] ?? '';
+        $delete = "DELETE FROM screening WHERE id=?";
+        $stmt = mysqli_prepare($dbhandle, $delete);
+        mysqli_stmt_bind_param($stmt, "i", $hidden);
+        if(!mysqli_stmt_execute($stmt)){
+            die('Cannot delete from database!');
+        }
+        mysqli_stmt_close($stmt);
+        header("Location: ".$_SERVER['PHP_SELF']);
         exit;
     }
     // Handle updating screening details
     if (isset($_POST['update'])) {
+        $screening_date = $_POST['screening_date'] ?? '';
+        $start_time = $_POST['start_time'] ?? '';
+        $end_time = $_POST['end_time'] ?? '';
+        $available_seats = $_POST['available_seats'] ?? '';
+        $hidden = $_POST['hidden'] ?? '';
         $available_seats = intval($available_seats);
-        $update = "UPDATE screening SET screening_date='$screening_date', start_time='$start_time', end_time='$end_time', available_seats=$available_seats WHERE id='$hidden'";
-        mysqli_query($dbhandle, $update) or die('Cannot update database!');
+        $update = "UPDATE screening SET screening_date=?, start_time=?, end_time=?, available_seats=? WHERE id=?";
+        $stmt = mysqli_prepare($dbhandle, $update);
+        mysqli_stmt_bind_param($stmt, "sssii", $screening_date, $start_time, $end_time, $available_seats, $hidden);
+        if(!mysqli_stmt_execute($stmt)){
+            die('Cannot update database!');
+        }
+        mysqli_stmt_close($stmt);
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit;
     }
     if (isset($_POST['add'])) {
-        // Insert a new screening with default values
-        $insert = "INSERT INTO screening (screening_date, start_time, end_time, available_seats) VALUES ('$screening_date', '$start_time', '$end_time', $available_seats)";
-        mysqli_query($dbhandle, $insert) or die('Cannot insert into database!');
+        $movie_id = $_POST['id'] ?? '';
+        $screening_date = $_POST['screening_date'] ?? '';
+        $start_time = $_POST['start_time'] ?? '';
+        $end_time = $_POST['end_time'] ?? '';
+        $available_seats = $_POST['available_seats'] ?? 0;
+        $available_seats = intval($available_seats);
+
+        // Check if movie_id exists in the movies table
+        $check_movie_query = "SELECT id FROM movies WHERE id = ?";
+        $stmt = mysqli_prepare($dbhandle, $check_movie_query);
+        mysqli_stmt_bind_param($stmt, "i", $movie_id);
+        mysqli_stmt_execute($stmt);
+        $movie_result = mysqli_stmt_get_result($stmt);
+
+        if (mysqli_num_rows($movie_result) > 0) {
+            // Movie exists, so we can add the screening
+            $insert_query = "INSERT INTO screening (id, screening_date, start_time, end_time, available_seats) VALUES (?, ?, ?, ?, ?)";
+            $stmt_insert = mysqli_prepare($dbhandle, $insert_query);
+            mysqli_stmt_bind_param($stmt_insert, "isssi", $movie_id, $screening_date, $start_time, $end_time, $available_seats);
+
+            if(mysqli_stmt_execute($stmt_insert)){
+                 echo "<script>alert('Screening added successfully!');</script>";
+            } else {
+                die('Cannot insert into database!');
+            }
+             mysqli_stmt_close($stmt_insert);
+
+        } else {
+            // Movie does not exist, show an alert
+            echo "<script>alert('Movie ID does not exist. Please enter a valid Movie ID.');</script>";
+        }
+        mysqli_stmt_close($stmt);
     }
 }
-// Fetch all screenings from the database
-$result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_date DESC, start_time ASC") or die('Error querying database');
+// Fetch all screenings from the database and join with movies to get the title
+$result = mysqli_query($dbhandle, "SELECT s.*, m.title FROM screening s JOIN movies m ON s.movie_id = m.id ORDER BY s.screening_date DESC, s.start_time ASC") or die('Error querying database');
 ?>
 <div class="page">
     <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
@@ -176,6 +218,7 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
                                     <thead>
                                     <tr>
                                         <th>Screening ID</th>
+                                        <th>Movie</th>
                                         <th>Date</th>
                                         <th>Start Time</th>
                                         <th>End Time</th>
@@ -189,6 +232,9 @@ $result = mysqli_query($dbhandle, "SELECT * FROM screening ORDER BY screening_da
                                             <form action="screenings.php" method="post">
                                                 <td data-label="Screening ID">
                                                     <strong>#<?php echo htmlspecialchars($row['id'] ?? ''); ?></strong>
+                                                </td>
+                                                <td data-label="Movie">
+                                                    <?php echo htmlspecialchars($row['title'] ?? ''); ?>
                                                 </td>
                                                 <td data-label="Date">
                                                     <input type="date" name="screening_date" value="<?php echo htmlspecialchars($row['screening_date'] ?? ''); ?>" class="text-name"/>
