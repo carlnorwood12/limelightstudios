@@ -26,6 +26,7 @@
          body {
          font-family: 'Montserrat', sans-serif;
          background-color: #000;
+         opacity: 0.2;
          margin: 0;
          padding: 0;
          display: flex;
@@ -175,7 +176,7 @@
    
    // Check if enough stock is available
    if ($current_stock < $total_tickets) {
-       showErrorPage('Not Enough Tickets', "Only $current_stock tickets are available. Please adjust your selection.");
+       showErrorPage('Not Enough Tickets', "Please adjust your selection.");
    }
    
    // Show the processing message and handle booking
@@ -244,7 +245,14 @@
                      timer: 2000,
                      showConfirmButton: false
                  }).then(function() {
-                     window.location.href = '/dashboard.php';
+                     if (<?php echo isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Adult' ? 'true' : 'false'; ?>) 
+                     {
+                         window.location.href = '../adultpanel/bookings.php';
+                     } 
+                     else 
+                     {
+                         window.location.href = '../adminpanel/bookings-admin.php';
+                     }
                  });
              } else {
                  // Show error message

@@ -49,6 +49,7 @@ $saved_movies_result = mysqli_query($dbhandle, $saved_movies_query) or die('Erro
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
     <link rel="stylesheet" href="../css/adult.css"/>
+    <link rel="stylesheet" href="./adultstyles.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>

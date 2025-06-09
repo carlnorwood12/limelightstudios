@@ -124,6 +124,10 @@ while ($screeningRow = mysqli_fetch_array($screeningResult, MYSQLI_ASSOC)) {
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
    <!-- this is to ensure that the poster image is blurred in the background -->
    <style>
+      body
+      {
+         background-color: rgba(0, 0, 0, 0.05) !important;
+      }
       html::before {
          content: '';
          position: fixed;

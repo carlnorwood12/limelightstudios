@@ -64,6 +64,7 @@ $bookings_result = mysqli_query($dbhandle, $booking_query) or die('Error queryin
    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
    <link rel="stylesheet" href="../css/adult.css"/>
+   <link rel="stylesheet" href="./adultstyles.css"/>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>

@@ -1,10 +1,5 @@
 @import "resets.css";
 
-body
-{
-  font-family: 'System-ui', sans-serif;
-}
-
 aside {
     border: none !important;
     background-color: #000 !important;
@@ -76,9 +71,6 @@ th {
     color: white !important;
 }
 
-th:first-child {
-    width: 20px !important;
-}
 
 .card {
     background-color: black !important;
@@ -131,7 +123,6 @@ input {
     font-size: 20px !important;
     color: #9ca1ed !important;
     background-color: black !important;
-    font-weight: 800 !important;
     padding-right: 10px !important;
     width: 100% !important;
     text-align: left !important;
