@@ -1,7 +1,6 @@
 <?php
 // Start the session allowing us to access session variables for user information
 session_start();
-
 // Include the database connection file
 include 'connection.php';
 global $dbhandle; // Make sure $dbhandle is accessible globally
@@ -77,7 +76,7 @@ if (isset($_POST['save_movie']))
 
 <head>
     <meta charset="UTF-8">
-    <title>Limelight Cinema | Premium Movie Experience in Edinburgh</title>
+    <title>Limelight Cinema | Home</title>
     <link rel="icon" type="image/png" href="favicon_limelightcinema/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="favicon_limelightcinema/favicon.svg">
     <link rel="shortcut icon" href="favicon_limelightcinema/favicon.ico">

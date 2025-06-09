@@ -17,7 +17,7 @@ $booking_result = mysqli_query($dbhandle, "SELECT COUNT(*) as total FROM booking
 $total_bookings = mysqli_fetch_assoc($booking_result)['total'];
 
 // Total venues static theres only 5 venues if needed just change the number
-$total_venues = 5;
+$total_venues = 4;
 ?>
 <!DOCTYPE html>
 <html lang="en">
