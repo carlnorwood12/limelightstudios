@@ -6,7 +6,7 @@ session_start();
 include 'connection.php';
 global $dbhandle; // Make sure $dbhandle is accessible globally
 // Check if the user is logged in with cookies
-if (isset($_COOKIE['logged_in'])) 
+if (isset($_COOKIE['logged_in']))
 {
     // Ensures the username is safe to use in a SQL query
     $username = mysqli_real_escape_string($dbhandle, $_COOKIE['logged_in']);
@@ -17,7 +17,7 @@ if (isset($_COOKIE['logged_in']))
     // Convert the result into an associative array
     $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
     // If the profile picture is not empty, set the file path
-    if (!empty($user['profile_picture'])) 
+    if (!empty($user['profile_picture']))
     {
         // set $filePath to the profile picture path, ensuring it's safe for HTML output
         $filePath = htmlspecialchars($user['profile_picture']);
@@ -28,9 +28,9 @@ if (isset($_COOKIE['logged_in']))
 <!DOCTYPE html>
 <html class="dark">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 <title>Contact Us | Limelight Cinema</title>
 
 <link rel="icon" type="image/png" href="favicon_limelightcinema/favicon-96x96.png" sizes="96x96">
@@ -41,7 +41,7 @@ if (isset($_COOKIE['logged_in']))
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-	rel="stylesheet" />
+    rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/forms.css">
@@ -51,17 +51,14 @@ if (isset($_COOKIE['logged_in']))
 <body>
 <div class="radial-gradient"></div>
 
-    <!-- Header -->
     <header>
         <a class="hamburger-icon">
             <span></span>
             <span></span>
             <span></span>
         </a>
-        <img src="/svg/logo/limelight.svg" id="limelight-logo" alt="" aria-hidden="true">
+        <img src="/svg/logo/limelight.svg" id="limelight-logo" alt="Limelight Cinema Logo">
         </header>
-    <!-- Header -->
-    <!-- Menu Overlay -->
     <div class="menu-overlay">
         <div class="menu-cols">
             <div class="col-2">
@@ -76,167 +73,147 @@ if (isset($_COOKIE['logged_in']))
                             <h3 class="profile-name"><?= $_SESSION['name'] ?? "Please login" ?></h3>
                             <p class="profile-role"><?= $_SESSION['user_status'] ?? "To view account details" ?></p>
                             <div class="row-buttons">
-                                <?php 
+                                <?php
                                 // If the user_status is set, show different buttons based on the user type
-                                if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')): 
+                                if (isset($_SESSION['user_status']) && ($_SESSION['user_status'] === 'Admin' || $_SESSION['user_status'] === 'Adult')):
                                 ?>
                                     <?php if ($_SESSION['user_status'] === 'Admin'): ?>
-                                        <a href="adminpanel/dashboard.php">
-                                            <button class="nav-buttons dashboard">
-                                                <img src="/svg/adminpanel/dashboard.svg" alt="dashboard" class="menu-icon">
-                                                Dashboard
-                                            </button>
+                                        <a href="adminpanel/dashboard.php" class="nav-buttons dashboard">
+                                            <img src="/svg/adminpanel/dashboard.svg" alt="dashboard icon" class="menu-icon">
+                                            Dashboard
                                         </a>
                                     <?php elseif ($_SESSION['user_status'] === 'Adult'): ?>
-                                        <a href="./adultpanel/bookings.php">
-                                            <button class="nav-buttons dashboard">
-                                                <img src="/svg/adminpanel/bookings.svg" alt="bookings" class="menu-icon">
-                                                Bookings
-                                            </button>
+                                        <a href="./adultpanel/bookings.php" class="nav-buttons dashboard">
+                                            <img src="/svg/adminpanel/bookings.svg" alt="bookings icon" class="menu-icon">
+                                            Bookings
                                         </a>
                                     <?php endif; ?>
-                                    <!-- Both Admin and Adult users see Profile -->
-                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? './adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>">
-                                        <button class="nav-buttons settings">
-                                            <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
-                                            Profile
-                                        </button>
+                                    <a href="<?= $_SESSION['user_status'] === 'Admin' ? './adminpanel/profile-admin.php' : './adultpanel/profile.php' ?>" class="nav-buttons settings">
+                                        <img src="/svg/adminpanel/profile.svg" alt="profile icon" class="menu-icon">
+                                        Profile
                                     </a>
                                     <?php elseif (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): ?>
-                                        <!-- Junior users only can see the Profile -->
-                                        <a href="./adultpanel/profile.php">
-                                            <button class="nav-buttons settings">
-                                                <img src="/svg/adminpanel/profile.svg" alt="settings" class="menu-icon">
-                                                Profile
-                                            </button>
+                                        <a href="./adultpanel/profile.php" class="nav-buttons settings">
+                                            <img src="/svg/adminpanel/profile.svg" alt="profile icon" class="menu-icon">
+                                            Profile
                                         </a>
-                                    <?php else: ?>
-                                <?php endif; ?>
+                                    <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="second-menu-item">
-                    <!-- Search functionality -->
                     <div class="search-contain">
-                        <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
+                        <img src="/svg/menu/search.svg" id="log-in" alt="search icon">
                         <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
                         <div class="result">
                             <p></p>
                         </div>
                         <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right" alt="enter movie">
                     </div>
-                    <!-- Menu links -->
                     <div class="menu-link"><a href="index.html">Home</a></div>
                     <div class="menu-link"><a href="venues.php">Venues</a></div>
                     <div class="menu-link"><a href="contact.php">Contact</a></div>
                     <div class="menu-link"><a href="about.php">About</a></div>
-                    <?php 
+                    <?php
                     // If user_status is set to 'Junior', show the Games link
-                    if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'): 
+                    if (isset($_SESSION['user_status']) && $_SESSION['user_status'] === 'Junior'):
                     ?>
                         <div class="menu-link"><a href="games.php">Games</a></div>
                     <?php endif; ?>
                 </div>
-                <!-- Login / Logout Buttons -->
                 <div class="third-menu-item">
-                    <a href="logout.php">
-                        <button class="arrow-btn exit-btn">
-                            <span class="arrow-icon">
-                                <img src="/svg/menu/logout.svg" alt="exit">
-                                Logout
-                            </span>
-                        </button>
+                    <a href="logout.php" class="arrow-btn exit-btn">
+                        <span class="arrow-icon">
+                            <img src="/svg/menu/logout.svg" alt="exit icon">
+                            Logout
+                        </span>
                     </a>
-                    <a href="register.php">
-                        <button class="arrow-btn login-btn">
-                            <span class="arrow-icon">
-                                Login / Register
-                                <img src="/svg/menu/login.svg" alt="login">
-                            </span>
-                        </button>
+                    <a href="register.php" class="arrow-btn login-btn">
+                        <span class="arrow-icon">
+                            Login / Register
+                            <img src="/svg/menu/login.svg" alt="login icon">
+                        </span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <div class="form-container">
-		<div class="left">
-			<video class="video-form" playsinline autoplay muted>
-				<source src="https://limelightcinema.b-cdn.net/donthear_video.webm" type="video/mp4">
-			</video>
-			<div class="bottom">
-			<div class="marquee-container">
+        <div class="left">
+            <video class="video-form" playsinline autoplay muted>
+                <source src="https://limelightcinema.b-cdn.net/donthear_video.webm" type="video/mp4">
+            </video>
+            <div class="bottom">
+            <div class="marquee-container">
             <div class="content-wrapper-scrolling">
-				<p class="p-marquee">〝Simply Stunning〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
-				<p class="p-marquee">〝Best Cinema in Edinburgh〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
-				<p class="p-marquee">〝Breathtaking Atmosphere〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
+                <p class="p-marquee">〝Simply Stunning〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
+                <p class="p-marquee">〝Best Cinema in Edinburgh〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
+                <p class="p-marquee">〝Breathtaking Atmosphere〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
             </div>
             <div class="content-wrapper-scrolling">
-				<p class="p-marquee">〝Simply Stunning〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
-				<p class="p-marquee">〝Best Cinema in Edinburgh〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
-				<p class="p-marquee">〝Breathtaking Atmosphere〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
+                <p class="p-marquee">〝Simply Stunning〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
+                <p class="p-marquee">〝Best Cinema in Edinburgh〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
+                <p class="p-marquee">〝Breathtaking Atmosphere〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
             </div>
             <div class="content-wrapper-scrolling">
-				<p class="p-marquee">〝Simply Stunning〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
-				<p class="p-marquee">〝Best Cinema in Edinburgh〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
-				<p class="p-marquee">〝Breathtaking Atmosphere〞</p>
-				<img class="twinkle" src="/svg/darktwinkle.svg" alt="" aria-label="">
+                <p class="p-marquee">〝Simply Stunning〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
+                <p class="p-marquee">〝Best Cinema in Edinburgh〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
+                <p class="p-marquee">〝Breathtaking Atmosphere〞</p>
+                <img class="twinkle" src="/svg/darktwinkle.svg" alt="">
             </div>
         </div>
-			</div>
-		</div>
-		<div class="right">
-    	<form>
-    	      action="php/contact.php" 
-    	      method="post">
-    		<h1 id="account-h1">Contact Us</h1>
-			<p id="account-p">We'd love to hear from you!</p>
+            </div>
+        </div>
+        <div class="right">
+        <form action="php/contact.php" method="post">
+            <h1 id="account-h1">Contact Us</h1>
+            <p id="account-p">We'd love to hear from you!</p>
             
-			<div class="input-wrapper">
-				<img class="icon shown" src="/svg/form/user.svg" width="20px" aria-label="Icon"/>
-				<input type="text" id="name-input" class="input" name="name" value="<?php echo (isset($_GET['name']))? $_GET['name']:"" ?>" placeholder=" " spellcheck="false" required />
-				<label for="name-input" class="label">Your name</label>
-			</div>
-			<div class="input-wrapper">
-				<img class="icon shown" src="/svg/form/email.svg" width="20px" aria-label="Icon"/>
-				<input type="email" id="email-input" class="input" name="email" value="<?php echo (isset($_GET['email']))? $_GET['email']:"" ?>" placeholder=" " spellcheck="false" required />
-				<label for="email-input" class="label">Your email</label>
-				<div class="error-message"><?php echo (isset($_GET['email_error']))? $_GET['email_error']:"" ?></div>
-			</div>
+            <div class="input-wrapper">
+                <img class="icon shown" src="/svg/form/user.svg" width="20" alt="User icon"/>
+                <input type="text" id="name-input" class="input" name="name" value="<?php echo (isset($_GET['name']))? $_GET['name']:"" ?>" placeholder=" " spellcheck="false" required />
+                <label for="name-input" class="label">Your name</label>
+            </div>
+            <div class="input-wrapper">
+                <img class="icon shown" src="/svg/form/email.svg" width="20" alt="Email icon"/>
+                <input type="email" id="email-input" class="input" name="email" value="<?php echo (isset($_GET['email']))? $_GET['email']:"" ?>" placeholder=" " spellcheck="false" required />
+                <label for="email-input" class="label">Your email</label>
+                <div class="error-message"><?php echo (isset($_GET['email_error']))? $_GET['email_error']:"" ?></div>
+            </div>
             <div class="input-wrapper" style="height: 120px;">
-				<textarea id="message-input" class="input" name="message" placeholder=" " spellcheck="false" required style="height: 100%; padding-top: 15px; resize: none;"><?php echo (isset($_GET['message']))? $_GET['message']:"" ?></textarea>
-				<label for="message-input" class="label" style="top: 15px;">Your message</label>
-			</div>
+                <textarea id="message-input" class="input" name="message" placeholder=" " spellcheck="false" required style="height: 100%; padding-top: 15px; resize: none;"><?php echo (isset($_GET['message']))? $_GET['message']:"" ?></textarea>
+                <label for="message-input" class="label" style="top: 15px;">Your message</label>
+            </div>
             
-			<button class="button-submit" type="submit">
-				Send Message
-				<img src="/svg/right.svg" width="20px" aria-label="Icon"></img>
-			</button>
+            <button class="button-submit" type="submit">
+                Send Message
+                <img src="/svg/right.svg" width="20" alt="Arrow icon">
+            </button>
             
-    		<?php if(isset($_GET['error'])){ ?>
-				<div class="alert-danger" role="alert">
-					<img src="/svg/warning.svg" width="20px" aria-label="Icon">
-					<?php echo $_GET['error']; ?>
-				</div>
-		    <?php } ?>
+            <?php if(isset($_GET['error'])){ ?>
+                <div class="alert-danger" role="alert">
+                    <img src="/svg/warning.svg" width="20" alt="Warning icon">
+                    <?php echo $_GET['error']; ?>
+                </div>
+            <?php } ?>
             
             <?php if(isset($_GET['success'])){ ?>
-				<div class="alert-success" role="alert">
-					<img src="/svg/success.svg" width="20px" aria-label="Icon">
-					<?php echo $_GET['success']; ?>
-				</div>
-		    <?php } ?>
-		</form>
-		</div>
+                <div class="alert-success" role="alert">
+                    <img src="/svg/success.svg" width="20" alt="Success icon">
+                    <?php echo $_GET['success']; ?>
+                </div>
+            <?php } ?>
+        </form>
+        </div>
     </div>
 
     <footer>
@@ -279,33 +256,33 @@ if (isset($_COOKIE['logged_in']))
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-	<script src="/js/script.js" defer></script>
-	<script src="/js/gsap.js" defer></script>
-	<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/gsap.js" defer></script>
+    <script>
         // Movie search functionality
         $(function () {
             // Listen for keyboard typing in the search input
             $('.search-contain input').on("keyup", function () {
                 var val = $(this).val(); // Get the value of the input
                 var result = $(this).siblings(".result"); // Find sibling element with class 'result'
-                // If the search value has a length 
-                if (val.length) 
-                { 
-                    // Sends a get request to the server with the search term on the same page ("") 
-                    //  
-                    $.get("", { search_term: val }).done(function (data) 
+                // If the search value has a length
+                if (val.length)
+                {
+                    // Sends a get request to the server with the search term on the same page ("")
+                    //
+                    $.get("", { search_term: val }).done(function (data)
                     {
-                        // 
-                        if (data.trim()) 
-                        { 
+                        //
+                        if (data.trim())
+                        {
                             // Show only the first result
                             var firstResult = $(data).first();
-                            if (firstResult.length > 0) 
+                            if (firstResult.length > 0)
                             {
                                 result.html(firstResult).show();
-                            } 
-                            else 
+                            }
+                            else
                             {
                                 result.hide();
                             }
