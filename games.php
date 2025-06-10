@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
    <title>Movie Quiz</title>
@@ -137,13 +137,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="second-menu-item">
                <!-- Search functionality -->
                <div class="search-contain">
-                  <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
-                  <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
+                  <img src="/svg/menu/search.svg" id="log-in" alt="search icon" aria-hidden="true">
+                  <label for="search-nav" class="sr-only">Search</label>
+                  <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false" aria-label="Search">
                   <div class="result">
                      <p></p>
                   </div>
                   <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right"
-                     alt="enter movie">
+                     alt="go right icon" aria-hidden="true">
                </div>
                <!-- Menu links -->
                <div class="menu-link"><a href="index.html">Home</a></div>

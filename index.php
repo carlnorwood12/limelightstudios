@@ -168,6 +168,7 @@ if (isset($_POST['save_movie']))
                     <!-- Search functionality -->
                     <div class="search-contain">
                         <img src="/svg/menu/search.svg" id="log-in" alt="log-in">
+                        <label for="search-nav" class="sr-only">Search</label>
                         <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
                         <div class="result">
                             <p></p>
@@ -277,13 +278,13 @@ if (isset($_POST['save_movie']))
                                 ?>
                                     <!-- If the user is a junior it will call the NotJunior method restricting access to bookings -->
                                     <button class="book-button" type="button" onclick="notJunior()">
-                                        <img src="/svg/tickets/tickets.svg" alt="" class="ticket-icon">
+                                        <img src="/svg/tickets/tickets.svg" alt="Book now" class="ticket-icon">
                                         Book now
                                     </button>
                                     <a href="register.php">
                                         <button class="start-button" type="submit">
                                             Get Started
-                                            <img src="/svg/arrows/right.svg" alt="" class="ticket-icon">
+                                            <img src="/svg/arrows/right.svg" alt="Get Started" class="ticket-icon">
                                         </button>
                                     </a>
                                 <?php else: ?>

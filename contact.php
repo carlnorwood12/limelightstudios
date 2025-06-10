@@ -26,7 +26,7 @@ if (isset($_COOKIE['logged_in']))
 ?>
 
 <!DOCTYPE html>
-<html class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,12 +104,13 @@ if (isset($_COOKIE['logged_in']))
                 </div>
                 <div class="second-menu-item">
                     <div class="search-contain">
-                        <img src="/svg/menu/search.svg" id="log-in" alt="search icon">
-                        <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false">
+                        <img src="/svg/menu/search.svg" id="log-in" alt="search icon" aria-hidden="true">
+                        <label for="search-nav" class="sr-only">Search</label>
+                        <input id="search-nav" type="text" placeholder="Search anything..." spellcheck="false" aria-label="Search">
                         <div class="result">
                             <p></p>
                         </div>
-                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right" alt="enter movie">
+                        <img src="https://ik.imagekit.io/carl/limelight/go-right.svg?updatedAt=1748539460270" id="go-right" alt="go right icon" aria-hidden="true">
                     </div>
                     <div class="menu-link"><a href="index.html">Home</a></div>
                     <div class="menu-link"><a href="venues.php">Venues</a></div>
